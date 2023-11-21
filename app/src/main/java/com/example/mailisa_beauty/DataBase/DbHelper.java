@@ -10,7 +10,7 @@ public class DbHelper extends SQLiteOpenHelper {
     private static final String DbName = "QLDT";
 
     public DbHelper(@Nullable Context context) {
-        super(context, DbName, null, 1);
+        super(context, DbName, null, 2);
     }
 
     @Override
