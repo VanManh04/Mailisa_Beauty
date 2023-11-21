@@ -17,6 +17,7 @@ import androidx.fragment.app.FragmentManager;
 
 import com.example.mailisa_beauty.DAO.TaiKhoanDAO;
 import com.example.mailisa_beauty.Model.TaiKhoan;
+import com.example.mailisa_beauty.frg_quanLy.QL_nhanVien;
 import com.example.mailisa_beauty.frg_quanLy.QL_trangChu;
 import com.google.android.material.navigation.NavigationView;
 
@@ -130,13 +131,14 @@ public class Nav_VIEW extends AppCompatActivity {
             nav.getMenu().findItem(R.id.nav_hoaDonQL).setVisible(false);
             nav.getMenu().findItem(R.id.nav_doanhSoQL).setVisible(false);
         }
-
-
-
         nav.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                if (item.getItemId()==R.id.nav_doiMatKhau){
+                if (item.getItemId()==R.id.nav_nhanVienQL){
+                    setTitle("Quản lý nhân viên");
+                    QL_nhanVien qlNhanVien = new QL_nhanVien();
+                    replaceFrg(qlNhanVien);
+                }else if (item.getItemId()==R.id.nav_doiMatKhau){
                     setTitle("Thay đổi mật khẩu");
                     doiMatKhau frchangepass = new doiMatKhau();
                     replaceFrg(frchangepass);
