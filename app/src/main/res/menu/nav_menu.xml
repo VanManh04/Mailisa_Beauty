@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/nav_trangChuKH"
+        android:icon="@drawable/icon_home"
+        android:title="Trang chủ"/>
+    <item android:id="@+id/nav_dichVuKH"
+        android:title="Dịch vụ"/>
+    <item
+        android:id="@+id/nav_datLichKH"
+        android:title="Đặt lịch"/>
+    <item
+        android:id="@+id/nav_lichSuKH"
+        android:title="Lịch sử hoạt động"/>
+    <item
+        android:id="@+id/nav_feedBackKH"
+        android:title="Dịch vụ"/>
+
+
+
+    <item android:id="@+id/nav_lichLamViecNV"
+        android:title="Lịch làm việc"/>
+    <item
+        android:id="@+id/nav_lichKhachHangNV"
+        android:title="Lịch đặt của khách hàng"/>
+    <item
+        android:id="@+id/nav_khachHangNV"
+        android:title="Quản lý khách hàng"/>
+
+    <item android:id="@+id/nav_lichKhachHangQL"
+        android:icon="@drawable/icon_ldckh"
+        android:title="Lịch đặt của khách hàng"/>
+
+    <item android:id="@+id/nav_nhanVienQL"
+        android:icon="@drawable/icon_qlnv"
+        android:title="Quản lý nhân viên"/>
+
+    <item android:id="@+id/nav_khachHangQL"
+        android:icon="@drawable/icon_qlkh"
+        android:title="Quản lý khách hàng"/>
+
+    <item android:id="@+id/nav_trangChuQL"
+        android:icon="@drawable/icon_home"
+        android:title="Quản lý trang chủ"/>
+
+    <item android:id="@+id/nav_sanPhamQL"
+        android:icon="@drawable/icon_doanhso"
+        android:title="Quản lý sản phẩm"/>
+
+    <item android:id="@+id/nav_lichLamViecQL"
+        android:icon="@drawable/icon_qlllv"
+        android:title="Quản lý lịch làm việc"/>
+
+
+
+    <group android:checkableBehavior="single">
+        <item android:title="Thống kê">
+            <menu>
+                <item android:id="@+id/nav_hoaDonQL"
+                    android:icon="@drawable/icon_hoadon"
+                    android:title="Quản lý hóa đơn"/>
+                <item android:id="@+id/nav_doanhSoQL"
+                    android:icon="@drawable/icon_doanhso"
+                    android:title="Quản lý doanh số"/>
+            </menu>
+        </item>
+    </group>
+
+    <group android:checkableBehavior="single">
+        <item android:title="Người dùng">
+            <menu>
+                <item android:id="@+id/nav_doiMatKhau"
+                    android:icon="@drawable/icon_doimatkhau"
+                    android:title="Đổi mật khẩu"/>
+                <item android:id="@+id/nav_dangXuat"
+                    android:icon="@drawable/icon_dangxuat"
+                    android:title="Đăng xuất"/>
+            </menu>
+        </item>
+    </group>
+</menu>
