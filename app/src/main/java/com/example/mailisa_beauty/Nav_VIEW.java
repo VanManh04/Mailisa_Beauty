@@ -136,7 +136,11 @@ public class Nav_VIEW extends AppCompatActivity {
         nav.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                 if (item.getItemId()==R.id.nav_dangXuat){
+                if (item.getItemId()==R.id.nav_doiMatKhau){
+                    setTitle("Thay đổi mật khẩu");
+                    doiMatKhau frchangepass = new doiMatKhau();
+                    replaceFrg(frchangepass);
+                }else if (item.getItemId()==R.id.nav_dangXuat){
                     Intent i = new Intent(Nav_VIEW.this,MainActivity.class);
                     startActivity(i);
                 }

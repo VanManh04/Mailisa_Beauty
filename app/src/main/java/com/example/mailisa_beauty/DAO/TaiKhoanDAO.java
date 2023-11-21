@@ -52,6 +52,15 @@ public class TaiKhoanDAO {
 
         return db.update("TaiKhoan", values, "maTK = ?", new String[]{String.valueOf(tk.getMa_TK())});
     }
+    public int updatePass(TaiKhoan tk) {
+        ContentValues values = new ContentValues();
+        values.put("sdt", tk.getSdt());
+        values.put("hoTen", tk.getHoTen());
+        values.put("matKhau", tk.getMatKhau());
+        values.put("chucVu", tk.getChucVu());
+
+        return db.update("TaiKhoan", values, "maTK = ?", new String[]{String.valueOf(tk.getMa_TK())});
+    }
 
     public int delete(int ma_tk) {
         return db.delete("TaiKhoan", "maTK = ?", new String[]{String.valueOf(ma_tk)});
@@ -113,5 +122,6 @@ public class TaiKhoanDAO {
             return 0;
         }
     }
+
 
 }
