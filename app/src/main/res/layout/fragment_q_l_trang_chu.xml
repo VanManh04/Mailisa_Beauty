@@ -33,13 +33,13 @@
             android:paddingTop="20dp">
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="70dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
-                android:orientation="vertical"
-                android:paddingLeft="10dp">
+                android:orientation="vertical">
 
                 <ImageButton
+                    android:layout_gravity="center"
                     android:id="@+id/buttondatlich"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
@@ -55,7 +55,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="70dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
                 android:orientation="vertical">
@@ -72,12 +72,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:textAlignment="center"
                     android:paddingTop="5dp"
                     android:text="Khuyến mại" />
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="70dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
                 android:orientation="vertical">
@@ -86,6 +87,7 @@
                     android:id="@+id/buttonlichsu"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
+                    android:layout_gravity="center"
                     android:background="@drawable/khungmenu"
                     android:src="@drawable/lichsu" />
 
@@ -98,15 +100,16 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="70dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
                 android:orientation="vertical"
-                android:paddingLeft="5dp">
+   >
 
                 <ImageButton
                     android:id="@+id/buttondichvu"
                     android:layout_width="50dp"
+                    android:layout_gravity="center"
                     android:layout_height="50dp"
                     android:background="@drawable/khungmenu"
                     android:src="@drawable/dichvu" />
@@ -132,10 +135,10 @@
 
         <com.denzcoskun.imageslider.ImageSlider
             android:id="@+id/imageSlider2"
+            android:layout_width="match_parent"
+            android:layout_height="232dp"
             android:layout_margin="10dp"
             android:background="@drawable/khungmenu"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
             app:iss_auto_cycle="true"
 
             app:iss_delay="2000"
