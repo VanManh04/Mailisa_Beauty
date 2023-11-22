@@ -6,7 +6,7 @@
     tools:context=".frg_quanLy.QL_nhanVien">
     <!-- TODO: Update blank fragment layout -->
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rcvTK"
+        android:id="@+id/rcvTKQL"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
     </androidx.recyclerview.widget.RecyclerView>

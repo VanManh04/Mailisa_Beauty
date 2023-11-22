@@ -27,6 +27,8 @@
         android:id="@+id/nav_khachHangNV"
         android:title="Quản lý khách hàng"/>
 
+
+
     <item android:id="@+id/nav_lichKhachHangQL"
         android:icon="@drawable/icon_ldckh"
         android:title="Lịch đặt của khách hàng"/>
@@ -42,7 +44,9 @@
     <item android:id="@+id/nav_trangChuQL"
         android:icon="@drawable/icon_home"
         android:title="Quản lý trang chủ"/>
-
+    <item android:id="@+id/nav_dichVuQL"
+        android:icon="@drawable/icon_qlnv"
+        android:title="Quản lý dịch vụ"/>
     <item android:id="@+id/nav_sanPhamQL"
         android:icon="@drawable/icon_doanhso"
         android:title="Quản lý sản phẩm"/>
