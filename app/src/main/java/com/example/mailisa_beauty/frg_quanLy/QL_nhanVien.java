@@ -36,14 +36,13 @@ public class QL_nhanVien extends Fragment {
     TaiKhoanADAPTER taiKhoanADAPTER;
     private ArrayList<TaiKhoan> list = new ArrayList<TaiKhoan>();
     ArrayList<TaiKhoan> listNV = new ArrayList<>();
-    ;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_q_l_nhan_vien, container, false);
-        rcvTaiKhoan = view.findViewById(R.id.rcvTK);
+        rcvTaiKhoan = view.findViewById(R.id.rcvTKQL);
         fladdTK = view.findViewById(R.id.fladdQLNV);
 
         taiKhoanDAO = new TaiKhoanDAO(getActivity());
