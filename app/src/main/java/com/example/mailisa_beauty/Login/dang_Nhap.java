@@ -2,11 +2,14 @@ package com.example.mailisa_beauty.Login;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.os.Build;
 import android.os.Bundle;
 import android.transition.Fade;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -30,6 +33,12 @@ public class dang_Nhap extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dang_nhap);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = getWindow();
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.setStatusBarColor(Color.WHITE);
+            window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+        }
 
 
         chua_cotaikhoan = findViewById(R.id.chua_cotaikhoan);
@@ -37,7 +46,7 @@ public class dang_Nhap extends AppCompatActivity {
         edPass = findViewById(R.id.edPass);
         chkCheck = findViewById(R.id.chkluu);
         btnLogin = findViewById(R.id.btnLogin);
-        btnCancel = findViewById(R.id.btnCancellg);
+
 
         chua_cotaikhoan.setPaintFlags(chua_cotaikhoan.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
         chua_cotaikhoan.setOnClickListener(new View.OnClickListener() {
@@ -55,13 +64,6 @@ public class dang_Nhap extends AppCompatActivity {
         edPass.setText(pref.getString("PASSWORD",""));
         chkCheck.setChecked(pref.getBoolean("REMEMBER",false));
 
-        btnCancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                edSdt.setText("");
-                edPass.setText("");
-            }
-        });
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override

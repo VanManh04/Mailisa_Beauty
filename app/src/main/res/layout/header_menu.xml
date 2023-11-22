@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="200dp"
-    android:background="#FBC8F9"
+    android:background="@drawable/background1"
     android:gravity="bottom"
     android:orientation="vertical"
     android:padding="20dp">
@@ -13,8 +13,8 @@
         android:orientation="horizontal">
 
         <ImageView
-            android:layout_width="110dp"
-            android:layout_height="110dp"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
             android:background="@color/white"
             android:src="@drawable/item_nguoi"/>
 
@@ -29,7 +29,7 @@
                 android:layout_marginTop="5dp"
                 android:text="Xin Chào !"
                 android:textColor="@color/black"
-                android:textSize="25dp"
+                android:textSize="15dp"
                 android:textStyle="bold" />
             <TextView
                 android:id="@+id/headertennguoidung"
@@ -39,7 +39,7 @@
                 android:layout_marginTop="5dp"
                 android:text="Tên người dùng"
                 android:textColor="@color/black"
-                android:textSize="25dp"
+                android:textSize="20dp"
                 android:textStyle="bold" />
         </LinearLayout>
 

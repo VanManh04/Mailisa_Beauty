@@ -1,8 +1,8 @@
 <!-- pink_square.xml -->
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="#FF00AA"/>
+    <solid android:color="#FFFFFF"/>
     <stroke
-        android:width="5dp"
-        android:color="#FF00AA"/> <!-- Độ dày viền -->
+        android:width="3dp"
+        android:color="#FFFFFF"/> <!-- Độ dày viền -->
     <corners android:radius="10dp" /> <!-- Độ cong góc viền -->
 </shape>

@@ -8,10 +8,13 @@
     tools:context=".Nav_VIEW"
     tools:openDrawer="start">
 
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+
 
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
@@ -20,9 +23,9 @@
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
-                android:background="#F00FFF"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
+                android:background="#FF00AA"
                 android:minHeight="?attr/actionBarSize" />
         </com.google.android.material.appbar.AppBarLayout>
 
@@ -30,17 +33,42 @@
             android:id="@+id/frmNav"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
+
+
     </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.etebarian.meowbottomnavigation.MeowBottomNavigation
+            android:id="@+id/bottomNavigation"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            app:mbn_circleColor="#ff00ff"
+            app:mbn_backgroundBottomColor="#FFF1F1"
+            app:mbn_countBackgroundColor="#ff6f00"
+            app:mbn_countTextColor="#ffffff"
+            app:mbn_defaultIconColor="#FF00FF"
+            app:mbn_rippleColor="#E8A50E0E"
+            app:mbn_selectedIconColor="#FFFFFF"
+            app:mbn_shadowColor="#0071525E"
+            android:layout_alignParentBottom="true"
+            />
+
+    </RelativeLayout>
 
 
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav"
-        android:layout_width="wrap_content"
+        android:layout_width="240dp"
         android:layout_height="match_parent"
         android:layout_gravity="start"
         app:headerLayout="@layout/header_menu"
         app:menu="@menu/nav_menu" />
+
+
 
 
 </androidx.drawerlayout.widget.DrawerLayout>

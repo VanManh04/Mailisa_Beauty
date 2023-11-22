@@ -15,6 +15,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
 import com.example.mailisa_beauty.DAO.TaiKhoanDAO;
 import com.example.mailisa_beauty.Model.TaiKhoan;
 import com.example.mailisa_beauty.frg_quanLy.QL_dichVu;
@@ -22,12 +23,17 @@ import com.example.mailisa_beauty.frg_quanLy.QL_nhanVien;
 import com.example.mailisa_beauty.frg_quanLy.QL_trangChu;
 import com.google.android.material.navigation.NavigationView;
 
+import kotlin.Unit;
+import kotlin.jvm.functions.Function1;
+
 public class Nav_VIEW extends AppCompatActivity {
     NavigationView nav;
     DrawerLayout drawerLayout;
     Toolbar toolbar;
     TaiKhoanDAO taiKhoanDAO;
     TextView headertennguoidung;
+
+    private MeowBottomNavigation bottomNavigation;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +42,58 @@ public class Nav_VIEW extends AppCompatActivity {
         drawerLayout = findViewById(R.id.drawerlayout);
         toolbar = findViewById(R.id.toolbar);
         nav = findViewById(R.id.nav);
+
+        bottomNavigation= findViewById(R.id.bottomNavigation);
+
+        bottomNavigation.add(new MeowBottomNavigation.Model(1,R.drawable.icon_home));
+        bottomNavigation.add(new MeowBottomNavigation.Model(2,R.drawable.icon_add));
+        bottomNavigation.add(new MeowBottomNavigation.Model(3,R.drawable.icon_dangxuat));
+        bottomNavigation.add(new MeowBottomNavigation.Model(4,R.drawable.icon_home));
+
+
+        bottomNavigation.show(1,true);
+
+        bottomNavigation.setOnClickMenuListener(new Function1<MeowBottomNavigation.Model, Unit>() {
+            @Override
+            public Unit invoke(MeowBottomNavigation.Model model) {
+                // YOUR CODES
+
+
+                switch (model.getId()){
+
+                    case 1:
+                        getSupportFragmentManager().beginTransaction()
+                                .replace(R.id.frmNav, new QL_trangChu())
+                                .commit();
+                        break;
+
+                    case 2:
+
+                        break;
+                    case 3:
+
+                        break;
+                    case 4:
+
+                        break;
+                }
+
+                return null;
+            }
+        });
+
+        bottomNavigation.setOnShowListener(new Function1<MeowBottomNavigation.Model, Unit>() {
+            @Override
+            public Unit invoke(MeowBottomNavigation.Model model) {
+                // YOUR CODES
+
+
+
+                return null;
+            }
+        });
+
+
 
 
         //set toolbar thay thế action bar
@@ -63,6 +121,7 @@ public class Nav_VIEW extends AppCompatActivity {
         headertennguoidung.setText(hoTen+" !");
 
         QL_trangChu qlTrangChu = new QL_trangChu();
+        setTitle(" ");
         replaceFrg(qlTrangChu);
 
         //set add tai khoan
@@ -143,6 +202,10 @@ public class Nav_VIEW extends AppCompatActivity {
                     setTitle("Quản lý dịch vụ");
                     QL_dichVu qlDichVu = new QL_dichVu();
                     replaceFrg(qlDichVu);
+                }else if (item.getItemId()==R.id.nav_trangChuKH){
+                    setTitle("  ");
+                    QL_trangChu frtrangChu = new QL_trangChu();
+                    replaceFrg(frtrangChu);
                 }else if (item.getItemId()==R.id.nav_nhanVienQL){
                     setTitle("Quản lý nhân viên");
                     QL_nhanVien qlNhanVien = new QL_nhanVien();
