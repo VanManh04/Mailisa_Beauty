@@ -44,7 +44,7 @@ public class DichVuADAPTER extends RecyclerView.Adapter<DichVuADAPTER.ViewHolder
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.btndatlich_itDV.setVisibility(View.GONE);
 
-        holder.tvTenDV_itDV.setText("Dịch vụ"+list.get(position).getTenDV());
+        holder.tvTenDV_itDV.setText("Dịch vụ: "+list.get(position).getTenDV());
         holder.tvgiaDV_itDV.setText("Giá: " + list.get(position).getGiaDV());
         holder.tvloaiDV_itDV.setText("Loại: "+list.get(position).getLoaiDV());
         holder.tvtrangThai_itDV.setText("Trạng thái: "+list.get(position).getTrangThai());
@@ -52,6 +52,7 @@ public class DichVuADAPTER extends RecyclerView.Adapter<DichVuADAPTER.ViewHolder
 
         String r = "R.drawable."+list.get(position).getHinhAnh();
         Toast.makeText(context, r, Toast.LENGTH_SHORT).show();
+
         Glide.with(context)
                 .load("file:///android_asset/" + list.get(position).getHinhAnh())
                 .placeholder(R.drawable.dv1)
