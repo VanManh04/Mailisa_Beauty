@@ -3,7 +3,9 @@ package com.example.mailisa_beauty.Login;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Paint;
+import android.os.Build;
 import android.os.Bundle;
+import android.transition.Fade;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -28,6 +30,7 @@ public class dang_Nhap extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dang_nhap);
+
 
         chua_cotaikhoan = findViewById(R.id.chua_cotaikhoan);
         edSdt = findViewById(R.id.edSdt);

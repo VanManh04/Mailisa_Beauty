@@ -1,8 +1,13 @@
 package com.example.mailisa_beauty;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.transition.Fade;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,6 +19,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Animation fadeIn = AnimationUtils.loadAnimation(this, R.anim.fade_in);
+        View welcomeText = findViewById(R.id.startsrc);
+        welcomeText.startAnimation(fadeIn);
+
+
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
