@@ -11,10 +11,13 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
+import com.denzcoskun.imageslider.ImageSlider;
+import com.denzcoskun.imageslider.constants.ScaleTypes;
+import com.denzcoskun.imageslider.models.SlideModel;
 import com.example.mailisa_beauty.R;
 
 import java.util.ArrayList;
-
 
 
 /**
@@ -69,5 +72,38 @@ public class QL_trangChu extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_q_l_trang_chu, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        ImageSlider imageSlider = view.findViewById(R.id.imageSlider);
+        ArrayList<SlideModel> slideModels= new ArrayList<>();
+        slideModels.add(new SlideModel(R.drawable.banner1, ScaleTypes.FIT));
+        slideModels.add(new SlideModel(R.drawable.banner2, ScaleTypes.FIT));
+        slideModels.add(new SlideModel(R.drawable.banner3, ScaleTypes.FIT));
+
+        imageSlider.setImageList(slideModels,ScaleTypes.FIT);
+
+        ImageSlider imageSlider2 = view.findViewById(R.id.imageSlider2);
+        ArrayList<SlideModel> slideModels2= new ArrayList<>();
+        slideModels2.add(new SlideModel(R.drawable.sk1, ScaleTypes.FIT));
+        slideModels2.add(new SlideModel(R.drawable.sk2, ScaleTypes.FIT));
+
+        imageSlider2.setImageList(slideModels2,ScaleTypes.FIT);
+
+        //
+        ImageView imageView = view.findViewById(R.id.imageView);
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Xử lý khi hình ảnh được click
+                Uri uri = Uri.parse("https://maps.app.goo.gl/EerPr9kWRqJwqDXV8"); // Đường dẫn liên kết của bạn
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+            }
+        });
+
+        super.onViewCreated(view, savedInstanceState);
+
     }
 }
