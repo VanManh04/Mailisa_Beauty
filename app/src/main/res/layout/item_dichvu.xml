@@ -7,7 +7,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/khung_test"
+        android:background="@drawable/khungnv"
         android:layout_margin="20dp">
 
         <LinearLayout
@@ -44,14 +44,7 @@
                     android:textColor="@color/black"
                     android:textStyle="bold"
                     android:text="giá:"/>
-                <TextView
-                    android:id="@+id/tvloaiDV_itDV"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:textStyle="bold"
-                    android:textColor="@color/black"
-                    android:layout_weight="1"
-                    android:text="loại"/>
+
             </LinearLayout>
             <TextView
                 android:id="@+id/tvtrangThai_itDV"
@@ -63,6 +56,14 @@
                 android:layout_marginTop="5dp"
                 android:textStyle="bold"
                 android:text="trạng thái"/>
+            <TextView
+                android:id="@+id/tvloaiDV_itDV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:layout_weight="1"
+                android:text="loại"/>
             <TextView
                 android:id="@+id/tvghiChu_itDV"
                 android:layout_width="match_parent"
