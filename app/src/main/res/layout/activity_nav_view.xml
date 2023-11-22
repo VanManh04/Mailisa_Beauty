@@ -20,7 +20,7 @@
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
-                android:background="#FFFFFF"
+                android:background="#F00FFF"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:minHeight="?attr/actionBarSize" />
@@ -32,6 +32,8 @@
             android:layout_height="match_parent" />
     </LinearLayout>
 
+
+
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav"
         android:layout_width="wrap_content"
@@ -39,4 +41,6 @@
         android:layout_gravity="start"
         app:headerLayout="@layout/header_menu"
         app:menu="@menu/nav_menu" />
+
+
 </androidx.drawerlayout.widget.DrawerLayout>

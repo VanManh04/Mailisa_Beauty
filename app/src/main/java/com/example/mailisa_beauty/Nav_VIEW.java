@@ -36,6 +36,7 @@ public class Nav_VIEW extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar);
         nav = findViewById(R.id.nav);
 
+
         //set toolbar thay thế action bar
         setSupportActionBar(toolbar);
 
@@ -156,4 +157,6 @@ public class Nav_VIEW extends AppCompatActivity {
         FragmentManager fm = getSupportFragmentManager();
         fm.beginTransaction().replace(R.id.frmNav,frg).commit();
     }
+
+
 }

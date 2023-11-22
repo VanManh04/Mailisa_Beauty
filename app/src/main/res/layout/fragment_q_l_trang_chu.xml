@@ -1,50 +1,129 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fillViewport="true"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+
     tools:context=".frg_khachHang.trangChu">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:orientation="vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="TIN TỨC"
-            android:textSize="25dp"
-            android:textStyle="italic"
-            android:textColor="@color/black"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="10dp"
-            android:layout_gravity="center"/>
+ 
 
         <com.denzcoskun.imageslider.ImageSlider
             android:id="@+id/imageSlider"
+            android:background="@drawable/khungmenu"
             android:layout_width="match_parent"
             android:layout_height="200dp"
             app:iss_auto_cycle="true"
-
             app:iss_delay="2000"
             app:iss_period="2000" />
+        
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="20dp"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:orientation="vertical">
+            <ImageButton
+                android:id="@+id/buttondatlich"
+                android:background="@drawable/khungmenu"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/datlich"
+                />
+                <TextView
+                    android:paddingTop="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Đặt lịch"
+                    android:layout_gravity="center"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:orientation="vertical">
+                <ImageButton
+                    android:id="@+id/buttonkhuyenmai"
+                    android:layout_gravity="center"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/khungmenu"
+                    android:src="@drawable/giamgia"
+                    />
+                <TextView
+                    android:paddingTop="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Khuyến mại"
+                    android:layout_gravity="center"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:orientation="vertical">
+                <ImageButton
+                    android:id="@+id/buttonlichsu"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/khungmenu"
+                    android:src="@drawable/lichsu"
+                    />
+                <TextView
+                    android:paddingTop="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Lịch sử"
+                    android:layout_gravity="center"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:orientation="vertical">
+                <ImageButton
+                    android:id="@+id/buttondichvu"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/dichvu"
+                    android:background="@drawable/khungmenu"
+                    />
+                <TextView
+                    android:paddingTop="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Dịch vụ"
+                    android:layout_gravity="center"/>
+            </LinearLayout>
+
+        </LinearLayout>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="SỰ KIỆN HOT"
-            android:textSize="25dp"
-            android:textStyle="italic"
-            android:textColor="@color/black"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="10dp"
-            android:layout_gravity="center"/>
+            android:text="|         SỰ KIỆN HOT        |"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:textColor="#A63CCC"
+            android:layout_marginTop="20dp" android:layout_gravity="center"/>
 
         <com.denzcoskun.imageslider.ImageSlider
             android:id="@+id/imageSlider2"
+            android:layout_margin="10dp"
+            android:background="@drawable/khungmenu"
             android:layout_width="match_parent"
             android:layout_height="200dp"
             app:iss_auto_cycle="true"
@@ -54,18 +133,249 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="CÁC CHI NHÁNH"
-            android:textSize="25dp"
-            android:textStyle="italic"
-            android:textColor="@color/black"
+            android:text="|      CÁC CHI NHÁNH      |"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:textColor="#AD3BD6"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="10dp"
             android:layout_gravity="center"/>
 
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_gravity="center"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="HÀ NỘI"
+                    android:textStyle="bold"
+                    android:layout_gravity="center"
+                    android:textSize="20dp" />
+
+                <ImageView
+                    android:background="@drawable/khungmenu"
+                    android:id="@+id/imageView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="249dp"
+                    android:layout_margin="10dp"
+                    android:src="@drawable/hn" />
+
+                <TextView
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="06 Nguyễn Khánh Toàn, P. Quan Hoa, Q. Cầu Giấy, Hà Nội"
+                    android:textSize="13dp"
+                    android:textColor="#842795"
+                    android:layout_marginBottom="20dp"
+                    android:layout_gravity="center"/>
+
+
+
+                <TextView
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="HỒ CHÍ MINH"
+                    android:textSize="20dp"
+                    android:layout_gravity="center"/>
+
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="254dp"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/khungmenu"
+                    android:src="@drawable/hcm" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="86-88-92 Huỳnh Văn Bánh, P.15, Q.Phú Nhuận, Tp. HCM"
+                    android:textSize="13dp"
+                    android:textStyle="bold"
+                    android:textColor="#842795"
+                    android:layout_marginBottom="20dp"
+                    android:layout_gravity="center"/>
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="BÌNH DƯƠNG"
+                    android:textStyle="bold"
+                    android:textSize="20dp"
+                    android:layout_gravity="center"/>
+
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="240dp"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/khungmenu"
+                    android:src="@drawable/bd" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="E3/16 Tổ 32, Kp. Bình Thuận 2, P. Thuận Giao, Tp. Thuận An, Tỉnh. Bình Dương"
+                    android:textSize="13dp"
+                    android:textStyle="bold"
+                    android:textAlignment="center"
+                    android:textColor="#842795"
+                    android:layout_marginBottom="20dp"
+                    android:layout_gravity="center"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:text="VINH - Nghệ An"
+                    android:textSize="20dp"
+                    android:layout_gravity="center"/>
+
+                <ImageView
+                    android:id="@+id/imageView4"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="229dp"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/khungmenu"
+                    android:src="@drawable/na" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Số 132 Nguyễn Văn Cừ, Khối Bình Phúc, P.Hưng Phúc, Tp.Vinh - Tỉnh Nghệ An "
+                    android:textSize="13dp"
+                    android:textStyle="bold"
+                    android:textAlignment="center"
+                    android:textColor="#842795"
+                    android:layout_marginBottom="20dp"
+                    android:layout_gravity="center"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="BUÔN MÊ THUỘT - Đăk Lăk"
+                    android:textStyle="bold"
+                    android:textSize="20dp"
+                    android:layout_gravity="center"/>
+
+                <ImageView
+                    android:background="@drawable/khungmenu"
+                    android:id="@+id/imageView5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="240dp"
+                    android:layout_margin="10dp"
+                    android:src="@drawable/dl" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="69-71 Ngô Quyền, P.Tân Lợi, TP.Buôn Mê Thuột, Đăk Lăk "
+                    android:textSize="13dp"
+                    android:textStyle="bold"
+                    android:textAlignment="center"
+                    android:textColor="#842795"
+                    android:layout_marginBottom="20dp"
+                    android:layout_gravity="center"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="CẦN THƠ"
+                    android:textStyle="bold"
+                    android:textSize="20dp"
+                    android:layout_gravity="center"/>
+
+                <ImageView
+                    android:background="@drawable/khungmenu"
+                    android:id="@+id/imageView6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="240dp"
+                    android:layout_margin="10dp"
+                    android:src="@drawable/cantho" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="67 Phan Đình Phùng, P.Tân An, Q.Ninh Kiều, Thành Phố Cần Thơ "
+                    android:textSize="13dp"
+                    android:textStyle="bold"
+                    android:textAlignment="center"
+                    android:textColor="#842795"
+                    android:layout_marginBottom="20dp"
+                    android:layout_gravity="center"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ĐÀ NẴNG"
+                    android:textStyle="bold"
+                    android:textSize="20dp"
+                    android:layout_gravity="center"/>
+
+                <ImageView
+                    android:id="@+id/imageView7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="247dp"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/khungmenu"
+                    android:src="@drawable/dn" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="97-99 Nguyễn Văn Linh, P.Nam Dương, Q.Hải Châu, Thành Phố Đà Nẵng"
+                    android:textSize="13dp"
+                    android:textStyle="bold"
+                    android:textAlignment="center"
+                    android:textColor="#842795"
+                    android:layout_marginBottom="20dp"
+                    android:layout_gravity="center"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="PHÚ QUỐC"
+                    android:textStyle="bold"
+                    android:textSize="20dp"
+                    android:layout_gravity="center"/>
+
+                <ImageView
+                    android:id="@+id/imageView8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="245dp"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/khungmenu"
+                    android:src="@drawable/pq" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="98, đường 30 tháng 4, Thị Trấn Dương Đông, TP. Phú Quốc, Tỉnh Kiên Giang"
+                    android:textSize="13dp"
+                    android:textAlignment="center"
+                    android:textColor="#842795"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="20dp"
+                    android:layout_gravity="center"/>
+
+
+
+
+
+            </LinearLayout>
 
 
     </LinearLayout>
 
 
 
-</ScrollView>
+</androidx.core.widget.NestedScrollView>
