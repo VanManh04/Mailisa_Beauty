@@ -55,7 +55,7 @@ public class DichVuDAO {
             obj.setMaDV(cursor.getInt(cursor.getColumnIndex("maDV")));
             obj.setHinhAnh(cursor.getString(cursor.getColumnIndex("hinhAnh")));
             obj.setTenDV(cursor.getString(cursor.getColumnIndex("tenDV")));
-            obj.setGiaDV(cursor.getInt(cursor.getColumnIndex("giaDV")));
+            obj.setGiaDV(cursor.getString(cursor.getColumnIndex("giaDV")));
             obj.setLoaiDV(cursor.getString(cursor.getColumnIndex("loaiDV")));
             obj.setTrangThai(cursor.getString(cursor.getColumnIndex("trangThai")));
             obj.setGhiChu(cursor.getString(cursor.getColumnIndex("ghiChu")));
