@@ -20,6 +20,7 @@ import com.example.mailisa_beauty.DAO.TaiKhoanDAO;
 import com.example.mailisa_beauty.Model.TaiKhoan;
 import com.example.mailisa_beauty.frg_quanLy.QL_dichVu;
 import com.example.mailisa_beauty.frg_quanLy.QL_khachHang;
+import com.example.mailisa_beauty.frg_quanLy.QL_lichLamViec;
 import com.example.mailisa_beauty.frg_quanLy.QL_nhanVien;
 import com.example.mailisa_beauty.frg_quanLy.QL_trangChu;
 import com.google.android.material.navigation.NavigationView;
@@ -199,7 +200,12 @@ public class Nav_VIEW extends AppCompatActivity {
         nav.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                if (item.getItemId()==R.id.nav_khachHangQL){
+
+                if (item.getItemId()==R.id.nav_lichLamViecQL){
+                    setTitle("Quản lý lịch làm việc");
+                    QL_lichLamViec qllichlamviec = new QL_lichLamViec();
+                    replaceFrg(qllichlamviec);
+                }else if (item.getItemId()==R.id.nav_khachHangQL){
                     setTitle("Quản lý khách hàng");
                     QL_khachHang qlkhachhang = new QL_khachHang();
                     replaceFrg(qlkhachhang);

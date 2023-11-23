@@ -26,8 +26,25 @@ public class DbHelper extends SQLiteOpenHelper {
         String data_TK = "INSERT INTO TaiKhoan VALUES" +
                 "(1,'01234567890','Vũ Đức Anh','123','KH')," +
                 "(2,'01122334455','Phạm Thị Hà','1234','NV')," +
-                "(3,'09988776655','Đỗ Thị Kim Anh','1235','QL')";
+                "(3,'01122334456','Hồng Quân','1234','NV')," +
+                "(4,'01122334457','Văn Đức','1234','NV')," +
+                "(5,'09988776655','Đỗ Thị Kim Anh','1235','QL')";
         db.execSQL(data_TK);
+
+        //BẢNG LỊCH LÀM VIỆC
+        String CreateTableLichLamViec = "CREATE TABLE LichLamViec(" +
+                "maLLV INTEGER PRIMARY KEY AUTOINCREMENT," +
+                "maTK INTEGER REFERENCES TaiKhoan(maTK)," +
+                "ngayBatDau DATE NOT NULL," +
+                "Ca INTEGER NOT NULL," +
+                "ghiChu TEXT NOT NULL)";
+        db.execSQL(CreateTableLichLamViec);
+        String data_LLV = "INSERT INTO LichLamViec VALUES" +
+                "(1,1,'2023/09/23','1','colich')," +
+                "(2,2,'2023/08/22','3','1234')," +
+                "(3,2,'2023/07/21','2','1235')";
+        db.execSQL(data_LLV);
+
         //BẢNG DỊCH VỤ
         String CreateTableDichVu = "CREATE TABLE DichVu(" +
                 "maDV INTEGER PRIMARY KEY AUTOINCREMENT," +
