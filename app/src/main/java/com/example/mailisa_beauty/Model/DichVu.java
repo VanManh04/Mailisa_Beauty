@@ -3,13 +3,13 @@ package com.example.mailisa_beauty.Model;
 public class DichVu {
     private int maDV;
     private String hinhAnh,tenDV;
-    private double giaDV;
+    private String giaDV;
     private String loaiDV,trangThai,ghiChu;
 
     public DichVu() {
     }
 
-    public DichVu(int maDV, String hinhAnh, String tenDV, double giaDV, String loaiDV, String trangThai, String ghiChu) {
+    public DichVu(int maDV, String hinhAnh, String tenDV, String giaDV, String loaiDV, String trangThai, String ghiChu) {
         this.maDV = maDV;
         this.hinhAnh = hinhAnh;
         this.tenDV = tenDV;
@@ -43,11 +43,11 @@ public class DichVu {
         this.tenDV = tenDV;
     }
 
-    public double getGiaDV() {
+    public String getGiaDV() {
         return giaDV;
     }
 
-    public void setGiaDV(double giaDV) {
+    public void setGiaDV(String giaDV) {
         this.giaDV = giaDV;
     }
 
