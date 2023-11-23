@@ -35,7 +35,6 @@ public class QL_nhanVien extends Fragment {
     TaiKhoanDAO taiKhoanDAO;
     TaiKhoanADAPTER taiKhoanADAPTER;
     private ArrayList<TaiKhoan> list = new ArrayList<TaiKhoan>();
-    ArrayList<TaiKhoan> listNV = new ArrayList<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -46,22 +45,11 @@ public class QL_nhanVien extends Fragment {
         fladdTK = view.findViewById(R.id.fladdQLNV);
 
         taiKhoanDAO = new TaiKhoanDAO(getActivity());
-        list = (ArrayList<TaiKhoan>) taiKhoanDAO.getAll();
-//        for (int i = 0; i < list.size(); i++) {
-//            TaiKhoan tk = list.get(i);
-//            if (tk.getChucVu().equals("KH")) {
-//                listNV.add(tk);
-//            }
-//        }
-        for (TaiKhoan tk : list) {
-            if (tk.getChucVu().equals("NV")) {
-                listNV.add(tk);
-            }
-        }
+        list = (ArrayList<TaiKhoan>) taiKhoanDAO.getAllNV();
         LinearLayoutManager layout = new LinearLayoutManager(getActivity());
         rcvTaiKhoan.setLayoutManager(layout);
 
-        taiKhoanADAPTER = new TaiKhoanADAPTER(getActivity(), listNV);
+        taiKhoanADAPTER = new TaiKhoanADAPTER(getActivity(), list);
         rcvTaiKhoan.setAdapter(taiKhoanADAPTER);
         fladdTK.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -107,14 +95,8 @@ public class QL_nhanVien extends Fragment {
 
                         if (taiKhoanDAO.insert(taiKhoan) > 0) {
                             list.clear();
-                            listNV.clear();
-                            list.addAll(taiKhoanDAO.getAll());
+                            list.addAll(taiKhoanDAO.getAllNV());
                             taiKhoanADAPTER.notifyDataSetChanged();
-                            for (TaiKhoan tk : list) {
-                                if (tk.getChucVu().equals("NV")) {
-                                    listNV.add(tk);
-                                }
-                            }
                             dialog.dismiss();
                             Toast.makeText(getActivity(), "Thêm thành công!", Toast.LENGTH_SHORT).show();
                         } else if (taiKhoanDAO.insert(taiKhoan) == -1) {

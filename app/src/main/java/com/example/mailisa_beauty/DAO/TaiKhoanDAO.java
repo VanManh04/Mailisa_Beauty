@@ -65,11 +65,6 @@ public class TaiKhoanDAO {
     public int delete(int ma_tk) {
         return db.delete("TaiKhoan", "maTK = ?", new String[]{String.valueOf(ma_tk)});
     }
-
-    public List<TaiKhoan> getAllNV() {
-        String sql = "SELECT * FROM TaiKhoan WHERE chucVu = 'NV'";
-        return getData(sql);
-    }
     @SuppressLint("Range")
     private List<TaiKhoan> getData(String sql, String... selectionArgs) {
         List<TaiKhoan> list = new ArrayList<TaiKhoan>();
@@ -89,6 +84,14 @@ public class TaiKhoanDAO {
     //GET ALL
     public List<TaiKhoan> getAll(){
         String sql = "SELECT * FROM TaiKhoan";
+        return getData(sql);
+    }
+    public List<TaiKhoan> getAllNV() {
+        String sql = "SELECT * FROM TaiKhoan WHERE chucVu = 'NV'";
+        return getData(sql);
+    }
+    public List<TaiKhoan> getAllKH() {
+        String sql = "SELECT * FROM TaiKhoan WHERE chucVu = 'KH'";
         return getData(sql);
     }
     //GET ID

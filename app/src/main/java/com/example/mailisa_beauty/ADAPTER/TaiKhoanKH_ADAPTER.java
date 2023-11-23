@@ -1,3 +1,6 @@
+//package com.example.mailisa_beauty.ADAPTER;
+//public class TaiKhoanKH_ADAPTER {
+//}
 package com.example.mailisa_beauty.ADAPTER;
 
 import android.app.Activity;
@@ -22,17 +25,15 @@ import com.example.mailisa_beauty.R;
 
 import java.util.ArrayList;
 
-public class TaiKhoanADAPTER extends RecyclerView.Adapter<TaiKhoanADAPTER.viewholder> {
+public class TaiKhoanKH_ADAPTER extends RecyclerView.Adapter<TaiKhoanKH_ADAPTER.viewholder> {
     private final Context context;
     private final ArrayList<TaiKhoan> list;
-    ArrayList<TaiKhoan> listNV = new ArrayList<>();
     TaiKhoanDAO taiKhoanDAO;
-    public TaiKhoanADAPTER(Context context, ArrayList<TaiKhoan> list) {
+    public TaiKhoanKH_ADAPTER(Context context, ArrayList<TaiKhoan> list) {
         this.context = context;
         this.list = list;
         taiKhoanDAO = new TaiKhoanDAO(context);
     }
-
     @NonNull
     @Override
     public viewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -61,7 +62,7 @@ public class TaiKhoanADAPTER extends RecyclerView.Adapter<TaiKhoanADAPTER.viewho
                     public void onClick(DialogInterface dialog, int which) {
                         if (taiKhoanDAO.delete(taiKhoan.getMa_TK())>0) {
                             list.clear();
-                            list.addAll(taiKhoanDAO.getAllNV());
+                            list.addAll(taiKhoanDAO.getAllKH());
                             notifyDataSetChanged();
                             Toast.makeText(context, "Xóa thành công!", Toast.LENGTH_SHORT).show();
                         } else {
@@ -124,11 +125,11 @@ public class TaiKhoanADAPTER extends RecyclerView.Adapter<TaiKhoanADAPTER.viewho
                         taiKhoan.setSdt(sdt);
                         taiKhoan.setHoTen(ten);
                         taiKhoan.setMatKhau(matkhau);
-                        taiKhoan.setChucVu("NV");
+                        taiKhoan.setChucVu("KH");
 
                         if (taiKhoanDAO.update(taiKhoan) > 0) {
                             list.clear();
-                            list.addAll(taiKhoanDAO.getAllNV());
+                            list.addAll(taiKhoanDAO.getAllKH());
                             notifyDataSetChanged();
                             dialog.dismiss();
                             Toast.makeText(context, "Sửa thành công!", Toast.LENGTH_SHORT).show();
