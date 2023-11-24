@@ -5,26 +5,33 @@
         android:icon="@drawable/icon_home"
         android:title="Trang chủ"/>
     <item android:id="@+id/nav_dichVuKH"
+        android:icon="@drawable/icon_service"
         android:title="Dịch vụ"/>
     <item
         android:id="@+id/nav_datLichKH"
+        android:icon="@drawable/icon_ldckh"
         android:title="Đặt lịch"/>
     <item
         android:id="@+id/nav_lichSuKH"
+        android:icon="@drawable/icon_history_24"
         android:title="Lịch sử hoạt động"/>
     <item
+        android:icon="@drawable/icon_feedback_24"
         android:id="@+id/nav_feedBackKH"
         android:title="feedBackKH"/>
 
 
 
     <item android:id="@+id/nav_lichLamViecNV"
+        android:icon="@drawable/icon_ldckh"
         android:title="Lịch làm việc"/>
     <item
         android:id="@+id/nav_lichKhachHangNV"
+        android:icon="@drawable/icon_ldckh"
         android:title="Lịch đặt của khách hàng"/>
     <item
         android:id="@+id/nav_khachHangNV"
+        android:icon="@drawable/icon_qlkh"
         android:title="Quản lý khách hàng"/>
 
 
@@ -45,7 +52,7 @@
         android:icon="@drawable/icon_home"
         android:title="Quản lý trang chủ"/>
     <item android:id="@+id/nav_dichVuQL"
-        android:icon="@drawable/icon_qlnv"
+        android:icon="@drawable/icon_service"
         android:title="Quản lý dịch vụ"/>
     <item android:id="@+id/nav_lichLamViecQL"
         android:icon="@drawable/icon_qlllv"

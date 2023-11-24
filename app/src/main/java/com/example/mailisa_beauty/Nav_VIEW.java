@@ -69,6 +69,7 @@ public class Nav_VIEW extends AppCompatActivity {
                         getSupportFragmentManager().beginTransaction()
                                 .replace(R.id.frmNav, new QL_trangChu())
                                 .commit();
+                        setTitle("Trang chủ");
                         break;
 
                     case 2:
@@ -122,10 +123,10 @@ public class Nav_VIEW extends AppCompatActivity {
         TaiKhoan taiKhoan = taiKhoanDAO.getSDT(sdt);
         String chucVu = taiKhoan.getChucVu();
         String hoTen = taiKhoan.getHoTen();
-        headertennguoidung.setText(hoTen+" !");
+        headertennguoidung.setText(hoTen);
 
         QL_trangChu qlTrangChu = new QL_trangChu();
-        setTitle(" ");
+        setTitle("Trang chủ");
         replaceFrg(qlTrangChu);
 
         //set add tai khoan
@@ -217,7 +218,7 @@ public class Nav_VIEW extends AppCompatActivity {
                     QL_dichVu qlDichVu = new QL_dichVu();
                     replaceFrg(qlDichVu);
                 }else if (item.getItemId()==R.id.nav_trangChuKH){
-                    setTitle("  ");
+                    setTitle("Trang chủ");
                     QL_trangChu frtrangChu = new QL_trangChu();
                     replaceFrg(frtrangChu);
                 }else if (item.getItemId()==R.id.nav_nhanVienQL){
