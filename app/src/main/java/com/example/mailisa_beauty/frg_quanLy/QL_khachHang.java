@@ -28,7 +28,7 @@ public class QL_khachHang extends Fragment {
         // Required empty public constructor
     }
     RecyclerView rcvTaikhoanKH;
-    FloatingActionButton fltaddKH;
+    Button fltaddKH;
     TaiKhoanDAO taiKhoanDAO;
     TaiKhoanKH_ADAPTER taiKhoanADAPTER;
     private ArrayList<TaiKhoan> list = new ArrayList<TaiKhoan>();
@@ -40,7 +40,7 @@ public class QL_khachHang extends Fragment {
         View view = inflater.inflate(R.layout.fragment_ql_khachhang, container, false);
 
         rcvTaikhoanKH = view.findViewById(R.id.rcvTKKHQL);
-        fltaddKH = view.findViewById(R.id.fladdQLKH);
+        fltaddKH = view.findViewById(R.id.btnAddKh);
 
         taiKhoanDAO = new TaiKhoanDAO(getActivity());
         list = (ArrayList<TaiKhoan>) taiKhoanDAO.getAllKH();
@@ -70,8 +70,8 @@ public class QL_khachHang extends Fragment {
         EditText edhoTen_DLNV = view.findViewById(R.id.edhoTen_DLNV);
         EditText edmatKhau_DLNV = view.findViewById(R.id.edmatKhau_DLNV);
         EditText ednhapLaiMatKhau_DLNV = view.findViewById(R.id.ednhapLaiMatKhau_DLNV);
-        Button btnSaveSach = view.findViewById(R.id.btnSaveSach);
-        Button btnCancelSach = view.findViewById(R.id.btnCancelSach);
+        Button btnSaveSach = view.findViewById(R.id.btnSave_DLNV);
+        Button btnCancelSach = view.findViewById(R.id.btnCancel_DLNV);
 
         btnSaveSach.setOnClickListener(new View.OnClickListener() {
             @Override

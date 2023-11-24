@@ -30,6 +30,12 @@ public class DichVuKH_ADAPTER extends RecyclerView.Adapter<DichVuKH_ADAPTER.View
         this.context = context;
         this.list = list;
         dichVuDAO = new DichVuDAO(context);
+
+
+    }
+
+    public interface OnItemClickListener {
+        void onItemClick(int position);
     }
 
     @NonNull
@@ -44,11 +50,13 @@ public class DichVuKH_ADAPTER extends RecyclerView.Adapter<DichVuKH_ADAPTER.View
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.imgdelete_itDV.setVisibility(View.GONE);
 
-        holder.tvTenDV_itDV.setText("Dịch vụ: "+list.get(position).getTenDV());
-        holder.tvgiaDV_itDV.setText("Giá: " + list.get(position).getGiaDV());
+        holder.tvTenDV_itDV.setText(list.get(position).getTenDV());
+        holder.tvgiaDV_itDV.setText(list.get(position).getGiaDV());
         holder.tvloaiDV_itDV.setText("Loại: "+list.get(position).getLoaiDV());
         holder.tvtrangThai_itDV.setText("Trạng thái: "+list.get(position).getTrangThai());
         holder.tvghiChu_itDV.setText(list.get(position).getGhiChu());
+
+
 
 //        String r = "R.drawable."+list.get(position).getHinhAnh();
 //        Toast.makeText(context, r, Toast.LENGTH_SHORT).show();
@@ -60,6 +68,7 @@ public class DichVuKH_ADAPTER extends RecyclerView.Adapter<DichVuKH_ADAPTER.View
         DichVu dichVu = list.get(position);
 
     }
+
 
     @Override
     public int getItemCount() {

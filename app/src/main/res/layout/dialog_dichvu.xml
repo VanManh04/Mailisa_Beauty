@@ -12,6 +12,8 @@
     <Button
         android:id="@+id/btnaddimg_DLDV"
         android:layout_gravity="end"
+        android:backgroundTint="#9C9C9C"
+        android:layout_marginRight="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Thêm ảnh"/>

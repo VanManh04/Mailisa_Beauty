@@ -28,7 +28,7 @@ public class QL_dichVu extends Fragment {
         // Required empty public constructor
     }
     RecyclerView rcvDichVu;
-    FloatingActionButton fladdDV;
+    Button fladdDV;
     DichVuDAO dichVuDAO;
     DichVuADAPTER dichVuADAPTER;
     private ArrayList<DichVu> list = new ArrayList<DichVu>();

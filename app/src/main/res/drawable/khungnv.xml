@@ -1,7 +1,7 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="#F6B4F6"/>
+    <solid android:color="#E6E6E6"/>
     <stroke
-        android:width="5dp"
-        android:color="#9F089F"/> <!-- Độ dày viền -->
+        android:width="0dp"
+       /> <!-- Độ dày viền -->
     <corners android:radius="10dp" /> <!-- Độ cong góc viền -->
 </shape>

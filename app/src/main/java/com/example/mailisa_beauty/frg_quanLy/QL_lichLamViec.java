@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -22,7 +23,7 @@ public class QL_lichLamViec extends Fragment {
         // Required empty public constructor
     }
     RecyclerView rcvQLLLVQL;
-    FloatingActionButton fladdQLLLVQL;
+    Button fladdQLLLVQL;
     private ArrayList<LichLamViec> list = new ArrayList<LichLamViec>();
     LichLamViecDAO lichLamViecDAO;
     LichLamViecADAPTER lichLamViecADAPTER;

@@ -29,7 +29,7 @@ public class QL_nhanVien extends Fragment {
     }
 
     RecyclerView rcvTaiKhoan;
-    FloatingActionButton fladdTK;
+    Button fladdTK;
     TaiKhoanDAO taiKhoanDAO;
     TaiKhoanADAPTER taiKhoanADAPTER;
     private ArrayList<TaiKhoan> list = new ArrayList<TaiKhoan>();
@@ -40,7 +40,7 @@ public class QL_nhanVien extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_ql_nhanvien, container, false);
         rcvTaiKhoan = view.findViewById(R.id.rcvTKQL);
-        fladdTK = view.findViewById(R.id.fladdQLNV);
+        fladdTK = view.findViewById(R.id.btnAddNv);
 
         taiKhoanDAO = new TaiKhoanDAO(getActivity());
         list = (ArrayList<TaiKhoan>) taiKhoanDAO.getAllNV();

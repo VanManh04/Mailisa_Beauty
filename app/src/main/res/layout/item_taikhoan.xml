@@ -8,7 +8,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/khungnv"
+        android:orientation="horizontal"
         android:layout_margin="20dp">
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/avt"/>
 
         <LinearLayout
             android:layout_width="350dp"

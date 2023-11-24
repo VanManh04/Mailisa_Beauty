@@ -4,6 +4,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".frg_quanLy.QL_khachHang">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+    <Button
+        android:layout_width="match_parent"
+        android:id="@+id/btnAddKh"
+        android:layout_margin="20dp"
+        android:layout_height="wrap_content"
+        android:text="Thêm khách hàng"
+        android:backgroundTint="#FF00FF"
+        android:layout_gravity="center"/>
 
     <!-- TODO: Update blank fragment layout -->
     <androidx.recyclerview.widget.RecyclerView
@@ -11,19 +24,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
     </androidx.recyclerview.widget.RecyclerView>
+    </LinearLayout>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fladdQLKH"
-        android:layout_gravity="end|bottom"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="20dp"
-        android:src="@drawable/icon_add"
-        android:backgroundTint="#009688" />
+
 
 
 </FrameLayout>

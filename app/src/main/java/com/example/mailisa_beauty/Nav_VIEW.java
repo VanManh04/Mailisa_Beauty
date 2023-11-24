@@ -50,9 +50,9 @@ public class Nav_VIEW extends AppCompatActivity {
         bottomNavigation= findViewById(R.id.bottomNavigation);
 
         bottomNavigation.add(new MeowBottomNavigation.Model(1,R.drawable.icon_home));
-        bottomNavigation.add(new MeowBottomNavigation.Model(2,R.drawable.icon_add));
-        bottomNavigation.add(new MeowBottomNavigation.Model(3,R.drawable.icon_dangxuat));
-        bottomNavigation.add(new MeowBottomNavigation.Model(4,R.drawable.icon_home));
+        bottomNavigation.add(new MeowBottomNavigation.Model(2,R.drawable.icon_dichvu));
+        bottomNavigation.add(new MeowBottomNavigation.Model(3,R.drawable.icon_giodv));
+        bottomNavigation.add(new MeowBottomNavigation.Model(4,R.drawable.icon_ldckh));
 
 
         bottomNavigation.show(1,true);
@@ -68,11 +68,15 @@ public class Nav_VIEW extends AppCompatActivity {
                     case 1:
                         getSupportFragmentManager().beginTransaction()
                                 .replace(R.id.frmNav, new QL_trangChu())
-                                .commit();
+                                .commit();;
+                                setTitle("Trang chủ");
                         break;
 
                     case 2:
-
+                        getSupportFragmentManager().beginTransaction()
+                                .replace(R.id.frmNav, new Frg_kh_dichVu())
+                                .commit();;
+                                setTitle("Dịch vụ");
                         break;
                     case 3:
 
@@ -125,7 +129,7 @@ public class Nav_VIEW extends AppCompatActivity {
         headertennguoidung.setText(hoTen+" !");
 
         QL_trangChu qlTrangChu = new QL_trangChu();
-        setTitle(" ");
+        setTitle("Trang chủ");
         replaceFrg(qlTrangChu);
 
         //set add tai khoan

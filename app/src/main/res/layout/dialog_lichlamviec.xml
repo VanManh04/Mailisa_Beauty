@@ -71,7 +71,7 @@
             android:text="Lưu"
             android:drawableStart="@drawable/icon_save"
             android:layout_marginHorizontal="20dp"
-            android:backgroundTint="#4CAF50"
+            android:backgroundTint="#56A85A"
             android:layout_weight="1"/>
         <Button
             android:id="@+id/btnCancelSach"
