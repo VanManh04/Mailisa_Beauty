@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".frg_khachHang.Frg_kh_chiTietDichVu">
+
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/img_itCTDV"
+            android:layout_width="match_parent"
+            android:layout_height="300dp" />
+
+        <TextView
+            android:id="@+id/tvTenDV_itCTDV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="14dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_marginTop="5dp"
+            android:text="Ten dv"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/tvgiaDV_itCTDV"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:textSize="20dp"
+                android:layout_marginTop="5dp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:text="giá:"/>
+
+        </LinearLayout>
+        <TextView
+            android:id="@+id/tvtrangThai_itCTDV"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_weight="1"
+            android:textSize="14dp"
+            android:textColor="@color/black"
+            android:layout_marginTop="5dp"
+            android:textStyle="bold"
+            android:text="trạng thái"/>
+        <TextView
+            android:id="@+id/tvloaiDV_itCTDV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_weight="1"
+            android:text="loại"/>
+        <TextView
+            android:id="@+id/tvghiChu_itCTDV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:layout_weight="1"
+            android:layout_marginTop="5dp"
+            android:textStyle="bold"
+            android:textSize="14dp"
+            android:text="ghi chú"/>
+<!--        <ImageView-->
+<!--            android:id="@+id/imgdelete_itDV"-->
+<!--            android:layout_marginTop="5dp"-->
+<!--            android:layout_marginRight="10dp"-->
+<!--            android:layout_width="36dp"-->
+<!--            android:layout_height="36dp"-->
+<!--            android:layout_gravity="end"-->
+<!--            android:layout_weight="1"-->
+<!--            android:src="@drawable/icon_delete"/>-->
+        <Button
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:id="@+id/btndatlich_itCTDV"
+            android:backgroundTint="#17B1BF"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Thêm đặt lịch"
+            android:layout_gravity="end|bottom"/>
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

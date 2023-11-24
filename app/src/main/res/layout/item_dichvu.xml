@@ -11,7 +11,7 @@
         android:layout_margin="20dp">
 
         <LinearLayout
-            android:layout_width="360dp"
+            android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:orientation="vertical">
@@ -76,16 +76,21 @@
                 android:text="ghi chú"/>
             <ImageView
                 android:id="@+id/imgdelete_itDV"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
                 android:layout_gravity="end"
                 android:layout_weight="1"
                 android:src="@drawable/icon_delete"/>
             <Button
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
                 android:id="@+id/btndatlich_itDV"
+                android:backgroundTint="#17B1BF"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Đặt lịch ngay"
+                android:text="Thêm đặt lịch"
                 android:layout_gravity="end"/>
         </LinearLayout>
 

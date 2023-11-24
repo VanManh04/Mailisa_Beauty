@@ -60,6 +60,6 @@ public class QL_lichKhachHang extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_q_l_lich_khach_hang, container, false);
+        return inflater.inflate(R.layout.fragment_ql_lichkhachhang, container, false);
     }
 }

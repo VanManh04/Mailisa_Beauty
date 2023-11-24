@@ -1,7 +1,6 @@
 package com.example.mailisa_beauty.frg_quanLy;
 
 import android.app.Dialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,7 +16,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mailisa_beauty.ADAPTER.TaiKhoanADAPTER;
 import com.example.mailisa_beauty.DAO.TaiKhoanDAO;
-import com.example.mailisa_beauty.Login.dang_Ky;
 import com.example.mailisa_beauty.Model.TaiKhoan;
 import com.example.mailisa_beauty.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -40,7 +38,7 @@ public class QL_nhanVien extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_q_l_nhan_vien, container, false);
+        View view = inflater.inflate(R.layout.fragment_ql_nhanvien, container, false);
         rcvTaiKhoan = view.findViewById(R.id.rcvTKQL);
         fladdTK = view.findViewById(R.id.fladdQLNV);
 
@@ -48,7 +46,6 @@ public class QL_nhanVien extends Fragment {
         list = (ArrayList<TaiKhoan>) taiKhoanDAO.getAllNV();
         LinearLayoutManager layout = new LinearLayoutManager(getActivity());
         rcvTaiKhoan.setLayoutManager(layout);
-
         taiKhoanADAPTER = new TaiKhoanADAPTER(getActivity(), list);
         rcvTaiKhoan.setAdapter(taiKhoanADAPTER);
         fladdTK.setOnClickListener(new View.OnClickListener() {
@@ -72,10 +69,10 @@ public class QL_nhanVien extends Fragment {
         EditText edhoTen_DLNV = view.findViewById(R.id.edhoTen_DLNV);
         EditText edmatKhau_DLNV = view.findViewById(R.id.edmatKhau_DLNV);
         EditText ednhapLaiMatKhau_DLNV = view.findViewById(R.id.ednhapLaiMatKhau_DLNV);
-        Button btnSaveSach = view.findViewById(R.id.btnSaveSach);
-        Button btnCancelSach = view.findViewById(R.id.btnCancelSach);
+        Button btnSave_DLNV = view.findViewById(R.id.btnSave_DLNV);
+        Button btnCancel_DLNV = view.findViewById(R.id.btnCancel_DLNV);
 
-        btnSaveSach.setOnClickListener(new View.OnClickListener() {
+        btnSave_DLNV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String sdt = edsdt_DLNV.getText().toString();
@@ -113,13 +110,20 @@ public class QL_nhanVien extends Fragment {
             }
         });
 
-        btnCancelSach.setOnClickListener(new View.OnClickListener() {
+        btnCancel_DLNV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                edsdt_DLNV.setText("");
-                edhoTen_DLNV.setText("");
-                edmatKhau_DLNV.setText("");
-                ednhapLaiMatKhau_DLNV.setText("");
+                String sdt = edsdt_DLNV.getText().toString();
+                String ten = edhoTen_DLNV.getText().toString();
+                String matkhau = edmatKhau_DLNV.getText().toString();
+                if (sdt.trim().isEmpty() && ten.trim().isEmpty() && matkhau.trim().isEmpty()){
+                    dialog.dismiss();
+                }else {
+                    edsdt_DLNV.setText("");
+                    edhoTen_DLNV.setText("");
+                    edmatKhau_DLNV.setText("");
+                    ednhapLaiMatKhau_DLNV.setText("");
+                }
             }
         });
     }

@@ -17,7 +17,9 @@ import androidx.fragment.app.FragmentManager;
 
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
 import com.example.mailisa_beauty.DAO.TaiKhoanDAO;
+import com.example.mailisa_beauty.Login.dang_Nhap;
 import com.example.mailisa_beauty.Model.TaiKhoan;
+import com.example.mailisa_beauty.frg_khachHang.Frg_kh_dichVu;
 import com.example.mailisa_beauty.frg_quanLy.QL_dichVu;
 import com.example.mailisa_beauty.frg_quanLy.QL_khachHang;
 import com.example.mailisa_beauty.frg_quanLy.QL_lichLamViec;
@@ -132,7 +134,6 @@ public class Nav_VIEW extends AppCompatActivity {
             nav.getMenu().findItem(R.id.nav_nhanVienQL).setVisible(true);
             nav.getMenu().findItem(R.id.nav_khachHangQL).setVisible(true);
             nav.getMenu().findItem(R.id.nav_trangChuQL).setVisible(true);
-            nav.getMenu().findItem(R.id.nav_sanPhamQL).setVisible(true);
             nav.getMenu().findItem(R.id.nav_lichLamViecQL).setVisible(true);
             nav.getMenu().findItem(R.id.nav_hoaDonQL).setVisible(true);
             nav.getMenu().findItem(R.id.nav_doanhSoQL).setVisible(true);
@@ -162,7 +163,6 @@ public class Nav_VIEW extends AppCompatActivity {
             nav.getMenu().findItem(R.id.nav_nhanVienQL).setVisible(false);
             nav.getMenu().findItem(R.id.nav_khachHangQL).setVisible(false);
             nav.getMenu().findItem(R.id.nav_trangChuQL).setVisible(false);
-            nav.getMenu().findItem(R.id.nav_sanPhamQL).setVisible(false);
             nav.getMenu().findItem(R.id.nav_lichLamViecQL).setVisible(false);
             nav.getMenu().findItem(R.id.nav_hoaDonQL).setVisible(false);
             nav.getMenu().findItem(R.id.nav_doanhSoQL).setVisible(false);
@@ -191,7 +191,6 @@ public class Nav_VIEW extends AppCompatActivity {
             nav.getMenu().findItem(R.id.nav_nhanVienQL).setVisible(false);
             nav.getMenu().findItem(R.id.nav_khachHangQL).setVisible(false);
             nav.getMenu().findItem(R.id.nav_trangChuQL).setVisible(false);
-            nav.getMenu().findItem(R.id.nav_sanPhamQL).setVisible(false);
             nav.getMenu().findItem(R.id.nav_lichLamViecQL).setVisible(false);
             nav.getMenu().findItem(R.id.nav_hoaDonQL).setVisible(false);
             nav.getMenu().findItem(R.id.nav_doanhSoQL).setVisible(false);
@@ -201,7 +200,11 @@ public class Nav_VIEW extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
-                if (item.getItemId()==R.id.nav_lichLamViecQL){
+                if (item.getItemId()==R.id.nav_dichVuKH){
+                    setTitle("Dịch vụ");
+                    Frg_kh_dichVu frgDichVu = new Frg_kh_dichVu();
+                    replaceFrg(frgDichVu);
+                }else if (item.getItemId()==R.id.nav_lichLamViecQL){
                     setTitle("Quản lý lịch làm việc");
                     QL_lichLamViec qllichlamviec = new QL_lichLamViec();
                     replaceFrg(qllichlamviec);
@@ -226,7 +229,7 @@ public class Nav_VIEW extends AppCompatActivity {
                     doiMatKhau frchangepass = new doiMatKhau();
                     replaceFrg(frchangepass);
                 }else if (item.getItemId()==R.id.nav_dangXuat){
-                    Intent i = new Intent(Nav_VIEW.this,MainActivity.class);
+                    Intent i = new Intent(Nav_VIEW.this, dang_Nhap.class);
                     startActivity(i);
                 }
                 drawerLayout.close();

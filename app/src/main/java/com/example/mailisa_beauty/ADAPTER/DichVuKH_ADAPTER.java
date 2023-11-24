@@ -21,12 +21,12 @@ import com.example.mailisa_beauty.R;
 
 import java.util.ArrayList;
 
-public class DichVuADAPTER extends RecyclerView.Adapter<DichVuADAPTER.ViewHolder> {
+public class DichVuKH_ADAPTER extends RecyclerView.Adapter<DichVuKH_ADAPTER.ViewHolder> {
     private final Context context;
     private final ArrayList<DichVu> list;
     DichVuDAO dichVuDAO;
 
-    public DichVuADAPTER(Context context, ArrayList<DichVu> list) {
+    public DichVuKH_ADAPTER(Context context, ArrayList<DichVu> list) {
         this.context = context;
         this.list = list;
         dichVuDAO = new DichVuDAO(context);
@@ -42,7 +42,7 @@ public class DichVuADAPTER extends RecyclerView.Adapter<DichVuADAPTER.ViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.btndatlich_itDV.setVisibility(View.GONE);
+        holder.imgdelete_itDV.setVisibility(View.GONE);
 
         holder.tvTenDV_itDV.setText("Dịch vụ: "+list.get(position).getTenDV());
         holder.tvgiaDV_itDV.setText("Giá: " + list.get(position).getGiaDV());
@@ -58,6 +58,7 @@ public class DichVuADAPTER extends RecyclerView.Adapter<DichVuADAPTER.ViewHolder
                 .placeholder(R.drawable.dv1)
                 .into(holder.img_itDV);
         DichVu dichVu = list.get(position);
+
     }
 
     @Override

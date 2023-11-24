@@ -10,11 +10,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mailisa_beauty.ADAPTER.LichLamViecADAPTER;
-import com.example.mailisa_beauty.ADAPTER.TaiKhoanADAPTER;
 import com.example.mailisa_beauty.DAO.LichLamViecDAO;
-import com.example.mailisa_beauty.DAO.TaiKhoanDAO;
 import com.example.mailisa_beauty.Model.LichLamViec;
-import com.example.mailisa_beauty.Model.TaiKhoan;
 import com.example.mailisa_beauty.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -33,7 +30,7 @@ public class QL_lichLamViec extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view =inflater.inflate(R.layout.fragment_q_l_lich_lam_viec, container, false);
+        View view =inflater.inflate(R.layout.fragment_ql_lichlamviec, container, false);
         rcvQLLLVQL = view.findViewById(R.id.rcvQLLLVQL);
         fladdQLLLVQL = view.findViewById(R.id.fladdQLLLVQL);
 

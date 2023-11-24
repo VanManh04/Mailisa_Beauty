@@ -65,7 +65,7 @@
         android:orientation="horizontal"
         android:layout_margin="20dp">
         <Button
-            android:id="@+id/btnSaveSach"
+            android:id="@+id/btnSave_DLNV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Lưu"
@@ -74,7 +74,7 @@
             android:backgroundTint="#4CAF50"
             android:layout_weight="1"/>
         <Button
-            android:id="@+id/btnCancelSach"
+            android:id="@+id/btnCancel_DLNV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Hủy"

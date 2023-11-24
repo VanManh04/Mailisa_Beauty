@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,7 +38,7 @@ public class TaiKhoanADAPTER extends RecyclerView.Adapter<TaiKhoanADAPTER.viewho
     @Override
     public viewholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = ((Activity)context).getLayoutInflater();
-        View view = inflater.inflate(R.layout.item_nhanvien,null);
+        View view = inflater.inflate(R.layout.item_taikhoan,null);
         return new viewholder(view);
     }
 
@@ -102,8 +103,8 @@ public class TaiKhoanADAPTER extends RecyclerView.Adapter<TaiKhoanADAPTER.viewho
         EditText edhoTen_DLNV = view.findViewById(R.id.edhoTen_DLNV);
         EditText edmatKhau_DLNV = view.findViewById(R.id.edmatKhau_DLNV);
         EditText ednhapLaiMatKhau_DLNV = view.findViewById(R.id.ednhapLaiMatKhau_DLNV);
-        Button btnSaveSach = view.findViewById(R.id.btnSaveSach);
-        Button btnCancelSach = view.findViewById(R.id.btnCancelSach);
+        Button btnSave_DLNV = view.findViewById(R.id.btnSave_DLNV);
+        Button btnCancel_DLNV = view.findViewById(R.id.btnCancel_DLNV);
 
 
         edsdt_DLNV.setText(taiKhoan.getSdt());
@@ -111,7 +112,7 @@ public class TaiKhoanADAPTER extends RecyclerView.Adapter<TaiKhoanADAPTER.viewho
         edmatKhau_DLNV.setText(taiKhoan.getMatKhau());
         // Ẩn ednhapLaiMatKhau_DLNV
         ednhapLaiMatKhau_DLNV.setVisibility(View.GONE);
-        btnSaveSach.setOnClickListener(new View.OnClickListener() {
+        btnSave_DLNV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String sdt = edsdt_DLNV.getText().toString();
@@ -142,7 +143,7 @@ public class TaiKhoanADAPTER extends RecyclerView.Adapter<TaiKhoanADAPTER.viewho
 
             }
         });
-        btnCancelSach.setOnClickListener(new View.OnClickListener() {
+        btnCancel_DLNV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 dialog.dismiss();
@@ -157,7 +158,7 @@ public class TaiKhoanADAPTER extends RecyclerView.Adapter<TaiKhoanADAPTER.viewho
 
     public static class viewholder extends RecyclerView.ViewHolder {
         TextView txtSDT_itNV, txthoTen_itNV, txtmatKhau_itNV;
-        Button btnupdate_itNV, btndelete_itNV;
+        ImageView btndelete_itNV;
 
         public viewholder(@NonNull View itemView) {
             super(itemView);
@@ -166,7 +167,6 @@ public class TaiKhoanADAPTER extends RecyclerView.Adapter<TaiKhoanADAPTER.viewho
             txthoTen_itNV = itemView.findViewById(R.id.txthoTen_itNV);
             txtmatKhau_itNV = itemView.findViewById(R.id.txtmatKhau_itNV);
             btndelete_itNV = itemView.findViewById(R.id.btndelete_itNV);
-            btnupdate_itNV = itemView.findViewById(R.id.btnupdate_itNV);
         }
 
     }

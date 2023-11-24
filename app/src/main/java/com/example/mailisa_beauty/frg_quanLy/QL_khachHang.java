@@ -14,7 +14,6 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.mailisa_beauty.ADAPTER.TaiKhoanADAPTER;
 import com.example.mailisa_beauty.ADAPTER.TaiKhoanKH_ADAPTER;
 import com.example.mailisa_beauty.DAO.TaiKhoanDAO;
 import com.example.mailisa_beauty.Model.TaiKhoan;
@@ -38,7 +37,7 @@ public class QL_khachHang extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_q_l_khach_hang, container, false);
+        View view = inflater.inflate(R.layout.fragment_ql_khachhang, container, false);
 
         rcvTaikhoanKH = view.findViewById(R.id.rcvTKKHQL);
         fltaddKH = view.findViewById(R.id.fladdQLKH);
@@ -46,6 +45,7 @@ public class QL_khachHang extends Fragment {
         taiKhoanDAO = new TaiKhoanDAO(getActivity());
         list = (ArrayList<TaiKhoan>) taiKhoanDAO.getAllKH();
         LinearLayoutManager layout = new LinearLayoutManager(getActivity());
+
         rcvTaikhoanKH.setLayoutManager(layout);
 
         taiKhoanADAPTER = new TaiKhoanKH_ADAPTER(getActivity(), list);

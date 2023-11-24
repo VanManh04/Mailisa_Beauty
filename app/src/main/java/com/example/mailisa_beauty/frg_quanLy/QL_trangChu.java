@@ -71,7 +71,7 @@ public class QL_trangChu extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_q_l_trang_chu, container, false);
+        return inflater.inflate(R.layout.fragment_ql_trangchu, container, false);
     }
 
     @Override

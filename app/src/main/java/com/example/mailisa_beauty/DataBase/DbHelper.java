@@ -56,7 +56,7 @@ public class DbHelper extends SQLiteOpenHelper {
                 "ghiChu TEXT)";
         db.execSQL(CreateTableDichVu);
         String data_DV = "INSERT INTO DichVu VALUES" +
-                "(1,'img.png','LÀM ĐẦY RÃNH CƯỜI BABIES LINE','12.000.000đ','PT','SALE','Rãnh cười chính là một đoạn nếp nhăn ở hai bên miệng, kéo dài từ cánh mũi chạy theo đường cong xuống tới cằm và nhìn rõ nhất khi cười.\n" +
+                "(1,'img_1.png','LÀM ĐẦY RÃNH CƯỜI BABIES LINE','12.000.000đ','PT','SALE','Rãnh cười chính là một đoạn nếp nhăn ở hai bên miệng, kéo dài từ cánh mũi chạy theo đường cong xuống tới cằm và nhìn rõ nhất khi cười.\n" +
                 "\n" +
                 "Rãnh cười xuất hiện ngay cả khi không cười thì đó chính là dấu hiệu cảnh báo về sự lão hóa khiến cho khuôn mặt bạn có vẻ già hơn.\n" +
                 "\n" +

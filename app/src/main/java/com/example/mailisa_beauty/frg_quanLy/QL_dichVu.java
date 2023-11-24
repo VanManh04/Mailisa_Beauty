@@ -1,12 +1,7 @@
 package com.example.mailisa_beauty.frg_quanLy;
 
-import android.app.Activity;
 import android.app.Dialog;
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +10,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -23,9 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mailisa_beauty.ADAPTER.DichVuADAPTER;
 import com.example.mailisa_beauty.DAO.DichVuDAO;
-import com.example.mailisa_beauty.DAO.TaiKhoanDAO;
 import com.example.mailisa_beauty.Model.DichVu;
-import com.example.mailisa_beauty.Model.TaiKhoan;
 import com.example.mailisa_beauty.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -45,7 +37,7 @@ public class QL_dichVu extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_ql_dich_vu, container, false);
+        View view = inflater.inflate(R.layout.fragment_ql_dichvu, container, false);
         rcvDichVu = view.findViewById(R.id.rcvDVQL);
         fladdDV = view.findViewById(R.id.fladdQLDV);
         dichVuDAO = new DichVuDAO(getActivity());

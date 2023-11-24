@@ -11,7 +11,7 @@
         android:layout_margin="20dp">
 
         <LinearLayout
-            android:layout_width="360dp"
+            android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:orientation="vertical">
@@ -19,46 +19,35 @@
                 android:id="@+id/txtSDT_itNV"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="25sp"
+                android:text="SDT"
+                android:textSize="16sp"
                 android:layout_margin="5dp"
                 android:textColor="#070707"/>
             <TextView
                 android:id="@+id/txthoTen_itNV"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="25sp"
+                android:text="tên"
+                android:textStyle="bold"
+                android:textSize="16sp"
                 android:layout_margin="5dp"
                 android:textColor="#070707"/>
             <TextView
                 android:id="@+id/txtmatKhau_itNV"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="25sp"
+                android:textSize="16sp"
+                android:text="mật khẩu"
                 android:layout_margin="5dp"
                 android:textColor="#070707"/>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:layout_marginTop="10dp"
-                android:orientation="horizontal">
-                <Button
-                    android:id="@+id/btnupdate_itNV"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Edit"
-                    android:textColor="@color/white"
-                    android:backgroundTint="#558B2F"
-                    />
-                <Button
+                <ImageView
                     android:id="@+id/btndelete_itNV"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="70dp"
-                    android:textColor="@color/white"
-                    android:backgroundTint="#F44336"
-                    android:text="Delete"/>
-            </LinearLayout>
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/icon_delete"
+                    android:layout_gravity="end"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="5dp"/>
         </LinearLayout>
 
     </LinearLayout>

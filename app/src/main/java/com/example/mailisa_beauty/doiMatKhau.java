@@ -26,7 +26,7 @@ public class doiMatKhau extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_doi_mat_khau, container, false);
+        View view = inflater.inflate(R.layout.fragment_doimatkhau, container, false);
         tkDao = new TaiKhoanDAO(getActivity());
         edPassOld = view.findViewById(R.id.edPassOld);
         edPassChange = view.findViewById(R.id.edPassChange);
