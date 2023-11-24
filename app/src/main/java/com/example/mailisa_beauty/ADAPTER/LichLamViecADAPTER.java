@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -95,7 +96,7 @@ public class LichLamViecADAPTER extends RecyclerView.Adapter<LichLamViecADAPTER.
 
     public static class viewholder extends RecyclerView.ViewHolder {
         TextView txttenNV_itLLV, txtngaybatdau_itLLV, txtca_itLLV,txtghichu_itLLV;
-        Button btnupdate_itLLV, btndelete_itLLV;
+        ImageView btndelete_itLLV;
 
         public viewholder(@NonNull View itemView) {
             super(itemView);
@@ -104,7 +105,6 @@ public class LichLamViecADAPTER extends RecyclerView.Adapter<LichLamViecADAPTER.
             txtngaybatdau_itLLV = itemView.findViewById(R.id.txtngaybatdau_itLLV);
             txtca_itLLV = itemView.findViewById(R.id.txtca_itLLV);
             txtghichu_itLLV = itemView.findViewById(R.id.txtghichu_itLLV);
-            btnupdate_itLLV = itemView.findViewById(R.id.btnupdate_itLLV);
             btndelete_itLLV = itemView.findViewById(R.id.btndelete_itLLV);
         }
 
