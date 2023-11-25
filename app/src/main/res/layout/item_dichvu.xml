@@ -25,6 +25,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="18dp"
                 android:textStyle="bold"
+                android:gravity="center"
                 android:textColor="#F353F8"
                 android:layout_marginTop="5dp"
                 android:text="Ten dv"/>
@@ -37,7 +38,6 @@
 
             </LinearLayout>
             <TextView
-                android:visibility="gone"
                 android:id="@+id/tvtrangThai_itDV"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -75,7 +75,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginRight="10dp"
                 android:text="giá:"
-                android:textColor="@color/black"
+                android:textColor="#606060"
                 android:textSize="20dp"
                 android:textStyle="bold" />
             <TextView
@@ -86,7 +86,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginRight="10dp"
                 android:text="giá sale:"
-                android:textColor="@color/black"
+                android:textColor="#D84315"
                 android:textSize="20dp"
                 android:textStyle="bold" />
             <ImageView

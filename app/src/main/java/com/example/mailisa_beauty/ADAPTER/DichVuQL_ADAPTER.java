@@ -41,13 +41,33 @@ public class DichVuQL_ADAPTER extends RecyclerView.Adapter<DichVuQL_ADAPTER.View
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.btndatlich_itDV.setVisibility(View.GONE);
+        holder.tvloaiDV_itDV.setVisibility(View.GONE);
+        holder.tvtrangThai_itDV.setVisibility(View.GONE);
 
-        holder.tvTenDV_itDV.setText("Dịch vụ: "+list.get(position).getTenDV());
+        DichVu dichVu = list.get(position);
+
+        holder.tvTenDV_itDV.setText(list.get(position).getTenDV());
         holder.tvloaiDV_itDV.setText("Loại: "+list.get(position).getLoaiDV());
         holder.tvtrangThai_itDV.setText("Trạng thái: "+list.get(position).getTrangThai());
-        holder.tvgiaDV_itDV.setText(String.valueOf("Giá: " +list.get(position).getGiaSALE()));
-        holder.tvgiaSALE_itDV.setText(String.valueOf("Giá SALE: " +list.get(position).getGiaSALE()));
-        holder.tvghiChu_itDV.setText(list.get(position).getGhiChu());
+
+        if (dichVu.getTrangThai().equals("NEW")||dichVu.getTrangThai().equals("KHONG")){
+            holder.tvgiaSALE_itDV.setVisibility(View.GONE);
+            holder.tvgiaDV_itDV.setText(String.valueOf("Giá: " +list.get(position).getGiaDV())+" VNĐ");
+            holder.tvgiaSALE_itDV.setText(String.valueOf("Giá SALE: " +list.get(position).getGiaSALE())+" VNĐ");
+        }else {
+            holder.tvgiaDV_itDV.setText(String.valueOf("Giá gốc: " +list.get(position).getGiaDV())+" VNĐ");
+            holder.tvgiaSALE_itDV.setText(String.valueOf("Giá SALE: " +list.get(position).getGiaSALE())+" VNĐ");
+        }
+
+
+
+        String ghiChu = dichVu.getGhiChu();
+        if (ghiChu.length() > 40) {
+            String first40Characters = ghiChu.substring(0, 80);
+            holder.tvghiChu_itDV.setText(first40Characters +"...");
+        } else {
+            holder.tvghiChu_itDV.setText(dichVu.getGhiChu());
+        }
 
 //        String r = "R.drawable."+list.get(position).getHinhAnh();
 //        Toast.makeText(context, r, Toast.LENGTH_SHORT).show();
@@ -56,7 +76,7 @@ public class DichVuQL_ADAPTER extends RecyclerView.Adapter<DichVuQL_ADAPTER.View
                 .load("file:///android_asset/" + list.get(position).getHinhAnh())
                 .placeholder(R.drawable.dv1)
                 .into(holder.img_itDV);
-        DichVu dichVu = list.get(position);
+
     }
 
     @Override

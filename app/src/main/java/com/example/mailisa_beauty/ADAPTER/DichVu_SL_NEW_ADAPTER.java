@@ -6,7 +6,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -20,12 +19,12 @@ import com.example.mailisa_beauty.R;
 
 import java.util.ArrayList;
 //DIch Vu SALE
-public class DichVuSL_ADAPTER extends RecyclerView.Adapter<DichVuSL_ADAPTER.ViewHolder> {
+public class DichVu_SL_NEW_ADAPTER extends RecyclerView.Adapter<DichVu_SL_NEW_ADAPTER.ViewHolder> {
     private final Context context;
     private final ArrayList<DichVu> list;
     DichVuDAO dichVuDAO;
 
-    public DichVuSL_ADAPTER(Context context, ArrayList<DichVu> list) {
+    public DichVu_SL_NEW_ADAPTER(Context context, ArrayList<DichVu> list) {
         this.context = context;
         this.list = list;
         dichVuDAO = new DichVuDAO(context);
@@ -42,12 +41,26 @@ public class DichVuSL_ADAPTER extends RecyclerView.Adapter<DichVuSL_ADAPTER.View
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         DichVu dichVu = list.get(position);
+        String ghiChu = dichVu.getGhiChu();
+
         holder.tvTenDV_itDVSL.setText(dichVu.getTenDV());
         holder.tvloaiDV_itDVSL.setText("Loại: "+dichVu.getLoaiDV());
         holder.tvtrangThai_itDVSL.setText("Trạng thái: "+dichVu.getTrangThai());
-        holder.tvgiaDV_itDVSL.setText(String.valueOf("Giá: " +list.get(position).getGiaSALE()));
-        holder.tvgiaSALE_itDVSL.setText(String.valueOf("Giá SALE: " +list.get(position).getGiaSALE()));
-        holder.tvghiChu_itDVSL.setText(dichVu.getGhiChu());
+        if (dichVu.getTrangThai().equals("NEW")||dichVu.getTrangThai().equals("KHONG")){
+            holder.tvgiaDV_itDVSL.setVisibility(View.GONE);
+            holder.tvgiaDV_itDVSL.setText(String.valueOf("Giá: " +list.get(position).getGiaDV())+" VNĐ");
+            holder.tvgiaDV_itDVSL.setText(String.valueOf("Giá SALE: " +list.get(position).getGiaSALE())+" VNĐ");
+        }else {
+            holder.tvgiaDV_itDVSL.setText(String.valueOf("Giá gốc: " +list.get(position).getGiaDV())+" VNĐ");
+            holder.tvgiaDV_itDVSL.setText(String.valueOf("Giá SALE: " +list.get(position).getGiaSALE())+" VNĐ");
+        }
+
+        if (ghiChu.length() > 40) {
+            String first40Characters = ghiChu.substring(0, 40);
+            holder.tvghiChu_itDVSL.setText(first40Characters +"...");
+        } else {
+            holder.tvghiChu_itDVSL.setText(dichVu.getGhiChu());
+        }
 
         if (dichVu.getGhiChu().length() > 40){
             holder.tvghiChu_itDVSL.setVisibility(View.GONE);

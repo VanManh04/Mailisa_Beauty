@@ -17,8 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
-import com.example.mailisa_beauty.ADAPTER.DichVuQL_ADAPTER;
-import com.example.mailisa_beauty.ADAPTER.DichVuSL_ADAPTER;
+import com.example.mailisa_beauty.ADAPTER.DichVu_SL_NEW_ADAPTER;
 import com.example.mailisa_beauty.DAO.DichVuDAO;
 import com.example.mailisa_beauty.Model.DichVu;
 import com.example.mailisa_beauty.R;
@@ -31,7 +30,7 @@ public class QL_trangChu extends Fragment {
     }
     RecyclerView rcvTCSPSALE,rcvTCSPNEW;
     DichVuDAO dichVuDAO;
-    DichVuSL_ADAPTER dichVuSLAdapter;
+    DichVu_SL_NEW_ADAPTER dichVuSLAdapter;
     private ArrayList<DichVu> list = new ArrayList<DichVu>();
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -45,7 +44,7 @@ public class QL_trangChu extends Fragment {
         LinearLayoutManager layout = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
         rcvTCSPSALE.setLayoutManager(layout);
 
-        dichVuSLAdapter = new DichVuSL_ADAPTER(getActivity(), list);
+        dichVuSLAdapter = new DichVu_SL_NEW_ADAPTER(getActivity(), list);
         rcvTCSPSALE.setAdapter(dichVuSLAdapter);
 
         rcvTCSPNEW = view.findViewById(R.id.rcvTCSPNEW);
@@ -54,7 +53,7 @@ public class QL_trangChu extends Fragment {
         LinearLayoutManager layout_DVNEW = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
         rcvTCSPNEW.setLayoutManager(layout_DVNEW);
 
-        dichVuSLAdapter = new DichVuSL_ADAPTER(getActivity(), list);
+        dichVuSLAdapter = new DichVu_SL_NEW_ADAPTER(getActivity(), list);
         rcvTCSPNEW.setAdapter(dichVuSLAdapter);
         return view;
     }
