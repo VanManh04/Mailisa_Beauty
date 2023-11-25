@@ -86,7 +86,7 @@ public class QL_dichVu extends Fragment {
                     }else {
                         DichVu dichVu = new DichVu();
                         dichVu.setTenDV(tenDV);
-                        dichVu.setGiaDV(giaDV);
+                        dichVu.setGiaDV(Integer.parseInt(giaDV));
                         dichVu.setLoaiDV(loaiDV);
                         dichVu.setTrangThai(trangThai);
                         dichVu.setGhiChu(ghiChu);

@@ -43,9 +43,10 @@ public class DichVuQL_ADAPTER extends RecyclerView.Adapter<DichVuQL_ADAPTER.View
         holder.btndatlich_itDV.setVisibility(View.GONE);
 
         holder.tvTenDV_itDV.setText("Dịch vụ: "+list.get(position).getTenDV());
-        holder.tvgiaDV_itDV.setText("Giá: " + list.get(position).getGiaDV());
         holder.tvloaiDV_itDV.setText("Loại: "+list.get(position).getLoaiDV());
         holder.tvtrangThai_itDV.setText("Trạng thái: "+list.get(position).getTrangThai());
+        holder.tvgiaDV_itDV.setText(String.valueOf("Giá: " +list.get(position).getGiaSALE()));
+        holder.tvgiaSALE_itDV.setText(String.valueOf("Giá SALE: " +list.get(position).getGiaSALE()));
         holder.tvghiChu_itDV.setText(list.get(position).getGhiChu());
 
 //        String r = "R.drawable."+list.get(position).getHinhAnh();
@@ -64,16 +65,17 @@ public class DichVuQL_ADAPTER extends RecyclerView.Adapter<DichVuQL_ADAPTER.View
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView tvTenDV_itDV, tvgiaDV_itDV,tvloaiDV_itDV,tvtrangThai_itDV,tvghiChu_itDV;
+        TextView tvTenDV_itDV, tvgiaDV_itDV,tvloaiDV_itDV,tvtrangThai_itDV,tvghiChu_itDV,tvgiaSALE_itDV;
         ImageView img_itDV,imgdelete_itDV;
         Button btndatlich_itDV;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             tvTenDV_itDV = itemView.findViewById(R.id.tvTenDV_itDV);
-            tvgiaDV_itDV = itemView.findViewById(R.id.tvgiaDV_itDV);
             tvloaiDV_itDV = itemView.findViewById(R.id.tvloaiDV_itDV);
             tvtrangThai_itDV = itemView.findViewById(R.id.tvtrangThai_itDV);
+            tvgiaDV_itDV = itemView.findViewById(R.id.tvgiaDV_itDV);
+            tvgiaSALE_itDV = itemView.findViewById(R.id.tvgiaSALE_itDV);
             tvghiChu_itDV = itemView.findViewById(R.id.tvghiChu_itDV);
             img_itDV = itemView.findViewById(R.id.img_itDV);
             imgdelete_itDV = itemView.findViewById(R.id.imgdelete_itDV);

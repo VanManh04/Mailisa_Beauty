@@ -3,19 +3,22 @@ package com.example.mailisa_beauty.Model;
 public class DichVu {
     private int maDV;
     private String hinhAnh,tenDV;
-    private String giaDV;
-    private String loaiDV,trangThai,ghiChu;
+
+    private String loaiDV,trangThai;
+    private int giaDV,giaSALE;
+    private String ghiChu;
 
     public DichVu() {
     }
 
-    public DichVu(int maDV, String hinhAnh, String tenDV, String giaDV, String loaiDV, String trangThai, String ghiChu) {
+    public DichVu(int maDV, String hinhAnh, String tenDV, String loaiDV, String trangThai, int giaDV, int giaSALE, String ghiChu) {
         this.maDV = maDV;
         this.hinhAnh = hinhAnh;
         this.tenDV = tenDV;
-        this.giaDV = giaDV;
         this.loaiDV = loaiDV;
         this.trangThai = trangThai;
+        this.giaDV = giaDV;
+        this.giaSALE = giaSALE;
         this.ghiChu = ghiChu;
     }
 
@@ -43,14 +46,6 @@ public class DichVu {
         this.tenDV = tenDV;
     }
 
-    public String getGiaDV() {
-        return giaDV;
-    }
-
-    public void setGiaDV(String giaDV) {
-        this.giaDV = giaDV;
-    }
-
     public String getLoaiDV() {
         return loaiDV;
     }
@@ -65,6 +60,22 @@ public class DichVu {
 
     public void setTrangThai(String trangThai) {
         this.trangThai = trangThai;
+    }
+
+    public int getGiaDV() {
+        return giaDV;
+    }
+
+    public void setGiaDV(int giaDV) {
+        this.giaDV = giaDV;
+    }
+
+    public int getGiaSALE() {
+        return giaSALE;
+    }
+
+    public void setGiaSALE(int giaSALE) {
+        this.giaSALE = giaSALE;
     }
 
     public String getGhiChu() {

@@ -26,9 +26,10 @@ public class DichVuDAO {
 //            values.put("maDV", );
         values.put("hinhAnh", dv.getHinhAnh());
         values.put("tenDV", dv.getTenDV());
-        values.put("giaDV", dv.getGiaDV());
         values.put("loaiDV", dv.getLoaiDV());
         values.put("trangThai", dv.getTrangThai());
+        values.put("giaDV", dv.getGiaDV());
+        values.put("giaSALE", dv.getGiaSALE());
         values.put("ghiChu", dv.getGhiChu());
         return db.insert("DichVu", null, values);
     }
@@ -37,9 +38,10 @@ public class DichVuDAO {
         ContentValues values = new ContentValues();
         values.put("hinhAnh", dv.getHinhAnh());
         values.put("tenDV", dv.getTenDV());
-        values.put("giaDV", dv.getGiaDV());
         values.put("loaiDV", dv.getLoaiDV());
         values.put("trangThai", dv.getTrangThai());
+        values.put("giaDV", dv.getGiaDV());
+        values.put("giaSALE", dv.getGiaSALE());
         values.put("ghiChu", dv.getGhiChu());
 
         return db.update("DichVu", values, "maDV = ?", new String[]{String.valueOf(dv.getMaDV())});
@@ -58,9 +60,10 @@ public class DichVuDAO {
             obj.setMaDV(cursor.getInt(cursor.getColumnIndex("maDV")));
             obj.setHinhAnh(cursor.getString(cursor.getColumnIndex("hinhAnh")));
             obj.setTenDV(cursor.getString(cursor.getColumnIndex("tenDV")));
-            obj.setGiaDV(cursor.getString(cursor.getColumnIndex("giaDV")));
             obj.setLoaiDV(cursor.getString(cursor.getColumnIndex("loaiDV")));
             obj.setTrangThai(cursor.getString(cursor.getColumnIndex("trangThai")));
+            obj.setGiaDV(cursor.getInt(cursor.getColumnIndex("giaDV")));
+            obj.setGiaSALE(cursor.getInt(cursor.getColumnIndex("giaSALE")));
             obj.setGhiChu(cursor.getString(cursor.getColumnIndex("ghiChu")));
             list.add(obj);
         }

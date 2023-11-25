@@ -66,17 +66,29 @@
                 android:textStyle="bold"
                 android:textSize="14dp"
                 android:text="ghi chú"/>
+
             <TextView
                 android:id="@+id/tvgiaDV_itDV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
-                android:layout_marginRight="10dp"
-                android:textSize="20dp"
                 android:layout_marginTop="5dp"
+                android:layout_marginRight="10dp"
+                android:text="giá:"
                 android:textColor="@color/black"
-                android:textStyle="bold"
-                android:text="giá:"/>
+                android:textSize="20dp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/tvgiaSALE_itDV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="10dp"
+                android:text="giá sale:"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:textStyle="bold" />
             <ImageView
                 android:id="@+id/imgdelete_itDV"
                 android:layout_marginTop="5dp"

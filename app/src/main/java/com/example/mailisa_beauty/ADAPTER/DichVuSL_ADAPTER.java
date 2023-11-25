@@ -43,9 +43,10 @@ public class DichVuSL_ADAPTER extends RecyclerView.Adapter<DichVuSL_ADAPTER.View
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         DichVu dichVu = list.get(position);
         holder.tvTenDV_itDVSL.setText(dichVu.getTenDV());
-        holder.tvgiaDV_itDVSL.setText(dichVu.getGiaDV());
         holder.tvloaiDV_itDVSL.setText("Loại: "+dichVu.getLoaiDV());
         holder.tvtrangThai_itDVSL.setText("Trạng thái: "+dichVu.getTrangThai());
+        holder.tvgiaDV_itDVSL.setText(String.valueOf("Giá: " +list.get(position).getGiaSALE()));
+        holder.tvgiaSALE_itDVSL.setText(String.valueOf("Giá SALE: " +list.get(position).getGiaSALE()));
         holder.tvghiChu_itDVSL.setText(dichVu.getGhiChu());
 
         if (dichVu.getGhiChu().length() > 40){
@@ -67,16 +68,17 @@ public class DichVuSL_ADAPTER extends RecyclerView.Adapter<DichVuSL_ADAPTER.View
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView tvTenDV_itDVSL, tvgiaDV_itDVSL,tvloaiDV_itDVSL,tvtrangThai_itDVSL,tvghiChu_itDVSL;
+        TextView tvTenDV_itDVSL, tvgiaDV_itDVSL,tvloaiDV_itDVSL,tvtrangThai_itDVSL,tvghiChu_itDVSL,tvgiaSALE_itDVSL;
         ImageView img_itDVSL;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             tvTenDV_itDVSL = itemView.findViewById(R.id.tvTenDV_itDVSL);
-            tvgiaDV_itDVSL = itemView.findViewById(R.id.tvgiaDV_itDVSL);
             tvloaiDV_itDVSL = itemView.findViewById(R.id.tvloaiDV_itDVSL);
             tvtrangThai_itDVSL = itemView.findViewById(R.id.tvtrangThai_itDVSL);
             tvghiChu_itDVSL = itemView.findViewById(R.id.tvghiChu_itDVSL);
+            tvgiaDV_itDVSL = itemView.findViewById(R.id.tvgiaDV_itDVSL);
+            tvgiaSALE_itDVSL = itemView.findViewById(R.id.tvgiaSALE_itDVSL);
             img_itDVSL = itemView.findViewById(R.id.img_itDVSL);
         }
     }
