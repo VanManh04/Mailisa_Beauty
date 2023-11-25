@@ -41,20 +41,26 @@ public class DichVu_SL_NEW_ADAPTER extends RecyclerView.Adapter<DichVu_SL_NEW_AD
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         DichVu dichVu = list.get(position);
-        String ghiChu = dichVu.getGhiChu();
-
+        holder.tvloaiDV_itDVSL.setVisibility(View.GONE);
         holder.tvTenDV_itDVSL.setText(dichVu.getTenDV());
+        String ten =dichVu.getTenDV();
+            if (ten.length()>20){
+                String ten33 = ten.substring(0, 17);
+                holder.tvTenDV_itDVSL.setText(ten33+"...");
+            }else {
+                holder.tvTenDV_itDVSL.setText(list.get(position).getTenDV());
+            }
         holder.tvloaiDV_itDVSL.setText("Loại: "+dichVu.getLoaiDV());
-        holder.tvtrangThai_itDVSL.setText("Trạng thái: "+dichVu.getTrangThai());
+        holder.tvtrangThai_itDVSL.setText("Dịch vụ "+dichVu.getTrangThai());
         if (dichVu.getTrangThai().equals("NEW")||dichVu.getTrangThai().equals("KHONG")){
-            holder.tvgiaDV_itDVSL.setVisibility(View.GONE);
+            holder.tvgiaSALE_itDVSL.setVisibility(View.GONE);
             holder.tvgiaDV_itDVSL.setText(String.valueOf("Giá: " +list.get(position).getGiaDV())+" VNĐ");
-            holder.tvgiaDV_itDVSL.setText(String.valueOf("Giá SALE: " +list.get(position).getGiaSALE())+" VNĐ");
+            holder.tvgiaSALE_itDVSL.setText(String.valueOf("Giá SALE: " +list.get(position).getGiaSALE())+" VNĐ");
         }else {
             holder.tvgiaDV_itDVSL.setText(String.valueOf("Giá gốc: " +list.get(position).getGiaDV())+" VNĐ");
-            holder.tvgiaDV_itDVSL.setText(String.valueOf("Giá SALE: " +list.get(position).getGiaSALE())+" VNĐ");
+            holder.tvgiaSALE_itDVSL.setText(String.valueOf("Giá SALE: " +list.get(position).getGiaSALE())+" VNĐ");
         }
-
+        String ghiChu = dichVu.getGhiChu();
         if (ghiChu.length() > 40) {
             String first40Characters = ghiChu.substring(0, 40);
             holder.tvghiChu_itDVSL.setText(first40Characters +"...");
