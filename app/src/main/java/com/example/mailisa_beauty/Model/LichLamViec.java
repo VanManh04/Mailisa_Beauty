@@ -5,13 +5,12 @@ import java.util.Date;
 public class LichLamViec {
     private int maLLV,maTK;
     private Date ngayBatDau;
-    private int ca;
-    private String ghiChu;
+    private String ca,ghiChu;
 
     public LichLamViec() {
     }
 
-    public LichLamViec(int maLLV, int maTK, Date ngayBatDau, int ca, String ghiChu) {
+    public LichLamViec(int maLLV, int maTK, Date ngayBatDau, String ca, String ghiChu) {
         this.maLLV = maLLV;
         this.maTK = maTK;
         this.ngayBatDau = ngayBatDau;
@@ -43,11 +42,11 @@ public class LichLamViec {
         this.ngayBatDau = ngayBatDau;
     }
 
-    public int getCa() {
+    public String getCa() {
         return ca;
     }
 
-    public void setCa(int ca) {
+    public void setCa(String ca) {
         this.ca = ca;
     }
 

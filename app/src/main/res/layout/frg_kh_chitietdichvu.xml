@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+
+    android:id="@+id/frg_chiTietDichVu"
     tools:context=".frg_khachHang.Frg_kh_chiTietDichVu">
 
     <!-- TODO: Update blank fragment layout -->
@@ -93,4 +95,4 @@
             android:layout_gravity="end|bottom"/>
     </LinearLayout>
 
-</androidx.core.widget.NestedScrollView>
+</FrameLayout>

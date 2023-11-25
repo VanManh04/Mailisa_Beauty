@@ -68,29 +68,44 @@
                 android:textStyle="bold"
                 android:textSize="14dp"
                 android:text="ghi chú"/>
+            <TextView
+                android:id="@+id/tvxemChiTiet_itDV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#575757"
+                android:layout_marginTop="10dp"
+                android:textStyle="bold|italic"
+                android:textSize="14dp"
+                android:text="Xem chi tiết."/>
 
-            <TextView
-                android:id="@+id/tvgiaDV_itDV"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:layout_marginTop="5dp"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_marginTop="20dp"
                 android:layout_marginRight="10dp"
-                android:text="giá:"
-                android:textColor="#606060"
-                android:textSize="20dp"
-                android:textStyle="bold" />
-            <TextView
-                android:id="@+id/tvgiaSALE_itDV"
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:layout_marginTop="5dp"
-                android:layout_marginRight="10dp"
-                android:text="giá sale:"
-                android:textColor="#D84315"
-                android:textSize="20dp"
-                android:textStyle="bold" />
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/tvgiaDV_itDV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="10dp"
+                    android:text="giá:"
+                    android:textColor="#606060"
+                    android:textSize="16dp"/>
+                <TextView
+                    android:id="@+id/tvgiaSALE_itDV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="10dp"
+                    android:text="giá sale:"
+                    android:textColor="#D84315"
+                    android:textSize="16dp"
+                    android:textStyle="bold" />
+            </LinearLayout>
             <ImageView
                 android:id="@+id/imgdelete_itDV"
                 android:layout_marginTop="5dp"

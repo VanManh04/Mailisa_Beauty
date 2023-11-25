@@ -53,7 +53,7 @@ public class LichLamViecADAPTER extends RecyclerView.Adapter<LichLamViecADAPTER.
         TaiKhoan taiKhoan = taiKhoanDAO.getID(String.valueOf(lichLamViec.getMaTK()));
         holder.txttenNV_itLLV.setText("Tên nhân viên: "+taiKhoan.getHoTen());
         holder.txtngaybatdau_itLLV.setText("Ngày bắt đầu: " + sdf.format(lichLamViec.getNgayBatDau()));
-        holder.txtca_itLLV.setText("Ca: "+ String.valueOf(lichLamViec.getCa()));
+        holder.txtca_itLLV.setText("Ca: "+ lichLamViec.getCa());
         holder.txtghichu_itLLV.setText("Ghi chú: "+lichLamViec.getGhiChu());
 
         holder.btndelete_itLLV.setOnClickListener(new View.OnClickListener() {

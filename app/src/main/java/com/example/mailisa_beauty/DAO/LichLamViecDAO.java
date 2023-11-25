@@ -58,7 +58,7 @@ public class LichLamViecDAO {
             } catch (ParseException e) {
                 e.printStackTrace();
             }
-            obj.setCa(cursor.getInt(cursor.getColumnIndex("Ca")));
+            obj.setCa(cursor.getString(cursor.getColumnIndex("Ca")));
             obj.setGhiChu(cursor.getString(cursor.getColumnIndex("ghiChu")));
             list.add(obj);
         }

@@ -28,7 +28,10 @@ public class DbHelper extends SQLiteOpenHelper {
                 "(2,'01122334455','Phạm Thị Hà','1234','NV')," +
                 "(3,'01122334456','Hồng Quân','1234','NV')," +
                 "(4,'01122334457','Văn Đức','1234','NV')," +
-                "(5,'09988776655','Đỗ Thị Kim Anh','1235','QL')";
+                "(5,'09988776655','Đỗ Thị Kim Anh','1235','QL')," +
+                "(6,'01234567891','Vũ Đức An','123','KH')," +
+                "(7,'01234567892','Vũ Đức A','123','KH')," +
+                "(8,'01234567893','Vũ Đức O','123','KH')";
         db.execSQL(data_TK);
 
         //BẢNG LỊCH LÀM VIỆC
@@ -40,9 +43,9 @@ public class DbHelper extends SQLiteOpenHelper {
                 "ghiChu TEXT NOT NULL)";
         db.execSQL(CreateTableLichLamViec);
         String data_LLV = "INSERT INTO LichLamViec VALUES" +
-                "(1,1,'2023/09/23','1','colich')," +
-                "(2,2,'2023/08/22','3','1234')," +
-                "(3,2,'2023/07/21','2','1235')";
+                "(1,1,'2023/09/23','Sáng','colich')," +
+                "(2,2,'2023/08/22','Chiều','1234')," +
+                "(3,2,'2023/07/21','Chiều','1235')";
         db.execSQL(data_LLV);
 
         //BẢNG DỊCH VỤ
@@ -98,10 +101,27 @@ public class DbHelper extends SQLiteOpenHelper {
                 "Dụng cụ mới vô trùng riêng biệt cho từng khách hàng, kết hợp cùng màu mực Doctor Magic nhập khẩu chính hãng, giúp cho màu sắc được bền, đẹp, tự nhiên, tuyệt đối không bị trổ xanh trổ đỏ; tông màu chính xác, phối màu nào ra màu đó, an toàn cho sức khỏe, đảm bảo gu thẩm mỹ. '),"+
                 "(8,'img_7.png','PHUN MÍ MỞ TRÒNG MẮT\n','PS','SALE',10500000,19500000,'Với phương châm “Trao Bạn Nét Đẹp Mà Tự Nhiên”, khi mỗi quý khách hàng đến với Mailisa sẽ được đội ngũ nhân viên chuyên môn cao, tay nghề giỏi tư vấn kiểu đường mí phù hợp, hài hòa với đôi mắt và khuôn mặt. Khi khách hàng thực sự hài lòng thì chuyên viên mới bắt đầu thực hiện phun mí. Đây là phương pháp sử dụng một đầu bút mảnh để tạo đường phun mí ôm nhuyễn theo đường cong trong lông mi, giúp cho “cửa sổ tâm hồn” có chiều sâu theo phong cách đẹp tự nhiên, thu hút mọi ánh nhìn.')"
                 ;
-
         db.execSQL(data_DV);
 
+        //Bảng LỊCH ĐẶT CỦA KHÁCH HÀNG
+        String CreateTableLichKhachHang = "CREATE TABLE LichKhachHang(" +
+                "maLKH INTEGER PRIMARY KEY AUTOINCREMENT," +
+                "maTK INTEGER REFERENCES TaiKhoan(maTK)," +
+                "maDV INTEGER REFERENCES DichVu(maDV)," +
+                "ngayDat DATE NOT NULL," +
+                "gioDat TEXT NOT NULL," +
+                "tongTien INTEGER NOT NULL," +
+                "PTTT TEXT NOT NULL," +
+                "trangThat TEXT NOT NULL," +
+                "feedBack TEXT ," +
+                "ghiChu TEXT)";
+        db.execSQL(CreateTableLichKhachHang);
 
+        String data_LKH = "INSERT INTO LichKhachHang VALUES" +
+                "(1,1,1,'2023/09/23','12:30','Sáng','colich')," +
+                "(2,6,3,'2023/08/22','9:10','Chiều','1234')," +
+                "(3,7,2,'2023/07/21','15:20','Chiều','1235')";
+        db.execSQL(data_LKH);
     }
 
     @Override
