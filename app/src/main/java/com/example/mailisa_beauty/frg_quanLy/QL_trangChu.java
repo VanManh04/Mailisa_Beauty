@@ -11,67 +11,52 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
+import com.example.mailisa_beauty.ADAPTER.DichVuQL_ADAPTER;
+import com.example.mailisa_beauty.ADAPTER.DichVuSL_ADAPTER;
+import com.example.mailisa_beauty.DAO.DichVuDAO;
+import com.example.mailisa_beauty.Model.DichVu;
 import com.example.mailisa_beauty.R;
 
 import java.util.ArrayList;
-
-
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link QL_trangChu#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class QL_trangChu extends Fragment {
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
     public QL_trangChu() {
         // Required empty public constructor
     }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment QL_trangChu.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static QL_trangChu newInstance(String param1, String param2) {
-        QL_trangChu fragment = new QL_trangChu();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
-
+    RecyclerView rcvTCSPSALE,rcvTCSPNEW;
+    DichVuDAO dichVuDAO;
+    DichVuSL_ADAPTER dichVuSLAdapter;
+    private ArrayList<DichVu> list = new ArrayList<DichVu>();
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_ql_trangchu, container, false);
+        View view = inflater.inflate(R.layout.fragment_ql_trangchu, container, false);
+
+        rcvTCSPSALE = view.findViewById(R.id.rcvTCSPSALE);
+        dichVuDAO = new DichVuDAO(getActivity());
+        list = (ArrayList<DichVu>) dichVuDAO.getAllSALE();
+        LinearLayoutManager layout = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+        rcvTCSPSALE.setLayoutManager(layout);
+
+        dichVuSLAdapter = new DichVuSL_ADAPTER(getActivity(), list);
+        rcvTCSPSALE.setAdapter(dichVuSLAdapter);
+
+        rcvTCSPNEW = view.findViewById(R.id.rcvTCSPNEW);
+        dichVuDAO = new DichVuDAO(getActivity());
+        list = (ArrayList<DichVu>) dichVuDAO.getAllNEW();
+        LinearLayoutManager layout_DVNEW = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+        rcvTCSPNEW.setLayoutManager(layout_DVNEW);
+
+        dichVuSLAdapter = new DichVuSL_ADAPTER(getActivity(), list);
+        rcvTCSPNEW.setAdapter(dichVuSLAdapter);
+        return view;
     }
 
     @Override

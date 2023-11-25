@@ -68,8 +68,8 @@ public class Nav_VIEW extends AppCompatActivity {
                     case 1:
                         getSupportFragmentManager().beginTransaction()
                                 .replace(R.id.frmNav, new QL_trangChu())
-                                .commit();;
-                                 getSupportActionBar().setTitle("Trang chủ");
+                                .commit();
+                                 setTitle("Trang chủ");
                         break;
 
                     case 2:

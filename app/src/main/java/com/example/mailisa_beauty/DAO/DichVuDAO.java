@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.example.mailisa_beauty.DataBase.DbHelper;
 import com.example.mailisa_beauty.Model.DichVu;
+import com.example.mailisa_beauty.Model.TaiKhoan;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,16 +20,17 @@ public class DichVuDAO {
         DbHelper dbHelper = new DbHelper(context);
         db = dbHelper.getWritableDatabase();
     }
+
     public long insert(DichVu dv) {
-            ContentValues values = new ContentValues();
+        ContentValues values = new ContentValues();
 //            values.put("maDV", );
-            values.put("hinhAnh", dv.getHinhAnh());
-            values.put("tenDV", dv.getTenDV());
-            values.put("giaDV", dv.getGiaDV());
-            values.put("loaiDV", dv.getLoaiDV());
-            values.put("trangThai", dv.getTrangThai());
-            values.put("ghiChu", dv.getGhiChu());
-            return db.insert("DichVu", null, values);
+        values.put("hinhAnh", dv.getHinhAnh());
+        values.put("tenDV", dv.getTenDV());
+        values.put("giaDV", dv.getGiaDV());
+        values.put("loaiDV", dv.getLoaiDV());
+        values.put("trangThai", dv.getTrangThai());
+        values.put("ghiChu", dv.getGhiChu());
+        return db.insert("DichVu", null, values);
     }
 
     public int update(DichVu dv) {
@@ -46,6 +48,7 @@ public class DichVuDAO {
     public int delete(int ma_dv) {
         return db.delete("DichVu", "maDV = ?", new String[]{String.valueOf(ma_dv)});
     }
+
     @SuppressLint("Range")
     private List<DichVu> getData(String sql, String... selectionArgs) {
         List<DichVu> list = new ArrayList<DichVu>();
@@ -65,14 +68,23 @@ public class DichVuDAO {
     }
 
     //GET ALL
-    public List<DichVu> getAll(){
+    public List<DichVu> getAll() {
         String sql = "SELECT * FROM DichVu";
         return getData(sql);
     }
+
     //GET ID
     public DichVu getID(String ma_DV) {
         String sql = "SELECT * FROM DichVu WHERE maDV=?";
         List<DichVu> list = getData(sql, ma_DV);
         return list.get(0);
+    }
+    public List<DichVu> getAllSALE() {
+        String sql = "SELECT * FROM DichVu WHERE trangThai='SALE' ";
+        return getData(sql);
+    }
+    public List<DichVu> getAllNEW() {
+        String sql = "SELECT * FROM DichVu WHERE trangThai='NEW' ";
+        return getData(sql);
     }
 }

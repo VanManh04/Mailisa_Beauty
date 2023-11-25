@@ -15,11 +15,10 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.mailisa_beauty.ADAPTER.DichVuADAPTER;
+import com.example.mailisa_beauty.ADAPTER.DichVuQL_ADAPTER;
 import com.example.mailisa_beauty.DAO.DichVuDAO;
 import com.example.mailisa_beauty.Model.DichVu;
 import com.example.mailisa_beauty.R;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
@@ -30,7 +29,7 @@ public class QL_dichVu extends Fragment {
     RecyclerView rcvDichVu;
     Button fladdDV;
     DichVuDAO dichVuDAO;
-    DichVuADAPTER dichVuADAPTER;
+    DichVuQL_ADAPTER dichVuADAPTER;
     private ArrayList<DichVu> list = new ArrayList<DichVu>();
     private static final int REQUEST_IMAGE_PICK = 1;
     @Override
@@ -45,7 +44,7 @@ public class QL_dichVu extends Fragment {
         LinearLayoutManager layout = new LinearLayoutManager(getActivity());
         rcvDichVu.setLayoutManager(layout);
 
-        dichVuADAPTER = new DichVuADAPTER(getActivity(), list);
+        dichVuADAPTER = new DichVuQL_ADAPTER(getActivity(), list);
         rcvDichVu.setAdapter(dichVuADAPTER);
         fladdDV.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,17 +15,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.mailisa_beauty.DAO.DichVuDAO;
 import com.example.mailisa_beauty.Model.DichVu;
-import com.example.mailisa_beauty.Model.TaiKhoan;
 import com.example.mailisa_beauty.R;
 
 import java.util.ArrayList;
 
-public class DichVuADAPTER extends RecyclerView.Adapter<DichVuADAPTER.ViewHolder> {
+public class DichVuQL_ADAPTER extends RecyclerView.Adapter<DichVuQL_ADAPTER.ViewHolder> {
     private final Context context;
     private final ArrayList<DichVu> list;
     DichVuDAO dichVuDAO;
 
-    public DichVuADAPTER(Context context, ArrayList<DichVu> list) {
+    public DichVuQL_ADAPTER(Context context, ArrayList<DichVu> list) {
         this.context = context;
         this.list = list;
         dichVuDAO = new DichVuDAO(context);
