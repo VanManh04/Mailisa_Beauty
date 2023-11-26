@@ -154,6 +154,7 @@ public class QL_dichVu extends Fragment {
                 String tenDV = edtenDV_DLDV.getText().toString();
                 String giaDV = edgiaDV_DLDV.getText().toString();
                 String loaiDV = edloai_DLDV.getText().toString();
+                String giaSALE = edgiaSALE_DLDV.getText().toString();
                 String trangThai = edtrangThai_DLDV.getText().toString();
                 String ghiChu = edghiChu_DLDV.getText().toString();
                 if (isImageSelected == false) {
@@ -168,31 +169,49 @@ public class QL_dichVu extends Fragment {
                             dichVu.setLoaiDV("PT");
                         } else if (loaiDV.equals("Phun săm")) {
                             dichVu.setLoaiDV("PS");
-                        } else if (loaiDV.equals("Không")) {
+                        } else if (loaiDV.equals("Khác")) {
                             dichVu.setLoaiDV("KHAC");
                         } else {
                             Toast.makeText(getActivity(), "Loại vô lý !", Toast.LENGTH_SHORT).show();
                         }
                         if (trangThai.equals("SALE")) {
                             dichVu.setTrangThai("SALE");
+                            dichVu.setGiaSALE(Integer.parseInt(giaSALE));
                         } else if (trangThai.equals("NEW")) {
                             dichVu.setTrangThai("NEW");
-                        } else if (trangThai.equals("Khác")) {
+                            dichVu.setGiaSALE(0);
+                        } else if (trangThai.equals("Không")) {
                             dichVu.setTrangThai("KHONG");
+                            dichVu.setGiaSALE(0);
                         } else {
                             Toast.makeText(getActivity(), "Trạng thái vô lý !", Toast.LENGTH_SHORT).show();
                         }
                         dichVu.setGhiChu(ghiChu);
 
-
-                        if (dichVuDAO.insert(dichVu) > 0) {
-                            list.clear();
-                            list.addAll(dichVuDAO.getAll());
-                            dichVuADAPTER.notifyDataSetChanged();
-                            dialog.dismiss();
-                            Toast.makeText(getActivity(), "Thêm thành công!", Toast.LENGTH_SHORT).show();
-                        } else {
-                            Toast.makeText(getActivity(), "Thêm thất bại.", Toast.LENGTH_SHORT).show();
+                        if (dichVu.getTrangThai().equals("SALE")){
+                            if (Integer.parseInt(giaSALE)==0||Integer.parseInt(giaSALE)>Integer.parseInt(giaDV)){
+                                Toast.makeText(getActivity(), "Giá SALE phải lớn hơn 0 và nhỏ hơn giá gốc !", Toast.LENGTH_SHORT).show();
+                            }else {
+                                if (dichVuDAO.insert(dichVu) > 0) {
+                                    list.clear();
+                                    list.addAll(dichVuDAO.getAll());
+                                    dichVuADAPTER.notifyDataSetChanged();
+                                    dialog.dismiss();
+                                    Toast.makeText(getActivity(), "Thêm thành công!", Toast.LENGTH_SHORT).show();
+                                } else {
+                                    Toast.makeText(getActivity(), "Thêm thất bại.", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        }else {
+                            if (dichVuDAO.insert(dichVu) > 0) {
+                                list.clear();
+                                list.addAll(dichVuDAO.getAll());
+                                dichVuADAPTER.notifyDataSetChanged();
+                                dialog.dismiss();
+                                Toast.makeText(getActivity(), "Thêm thành công!", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(getActivity(), "Thêm thất bại.", Toast.LENGTH_SHORT).show();
+                            }
                         }
 
                     }
@@ -210,7 +229,8 @@ public class QL_dichVu extends Fragment {
                 String loaiDV = edloai_DLDV.getText().toString();
                 String trangThai = edtrangThai_DLDV.getText().toString();
                 String ghiChu = edghiChu_DLDV.getText().toString();
-                if (tenDV.trim().isEmpty() && giaDV.trim().isEmpty() && loaiDV.trim().isEmpty() && trangThai.trim().isEmpty() && ghiChu.trim().isEmpty()) {
+                String giaSALE = edgiaSALE_DLDV.getText().toString();
+                if (tenDV.trim().isEmpty() && giaDV.trim().isEmpty() && loaiDV.trim().isEmpty() && trangThai.trim().isEmpty() && ghiChu.trim().isEmpty()&& giaSALE.trim().isEmpty()) {
                     dialog.dismiss();
                 } else {
                     edtenDV_DLDV.setText("");
@@ -218,6 +238,7 @@ public class QL_dichVu extends Fragment {
                     edghiChu_DLDV.setText("");
                     edloai_DLDV.setText("");
                     edtrangThai_DLDV.setText("");
+                    edgiaSALE_DLDV.setText("");
                 }
             }
         });

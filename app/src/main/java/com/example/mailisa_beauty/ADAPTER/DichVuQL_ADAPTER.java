@@ -113,6 +113,9 @@ public class DichVuQL_ADAPTER extends RecyclerView.Adapter<DichVuQL_ADAPTER.View
             @Override
             public boolean onLongClick(View v) {
                 opendialogUPDATE(dichVu);
+                list.clear();
+                list.addAll(dichVuDAO.getAll());
+                notifyDataSetChanged();
                 return true;
             }
         });
@@ -249,6 +252,7 @@ public class DichVuQL_ADAPTER extends RecyclerView.Adapter<DichVuQL_ADAPTER.View
             public void onClick(View v) {
                 String tenDV = edtenDV_DLDV.getText().toString();
                 String giaDV = edgiaDV_DLDV.getText().toString();
+                String giaSALE = edgiaSALE_DLDV.getText().toString();
                 String loaiDV = edloai_DLDV.getText().toString();
                 String trangThai = edtrangThai_DLDV.getText().toString();
                 String ghiChu = edghiChu_DLDV.getText().toString();
@@ -269,6 +273,7 @@ public class DichVuQL_ADAPTER extends RecyclerView.Adapter<DichVuQL_ADAPTER.View
                     }
                     if (trangThai.equals("SALE")) {
                         dichVu1.setTrangThai("SALE");
+                        dichVu1.setGiaSALE(Integer.parseInt(giaSALE));
                     } else if (trangThai.equals("NEW")) {
                         dichVu1.setTrangThai("NEW");
                         dichVu1.setGiaSALE(0);
@@ -279,23 +284,57 @@ public class DichVuQL_ADAPTER extends RecyclerView.Adapter<DichVuQL_ADAPTER.View
                         Toast.makeText(context, "Trạng thái vô lý !", Toast.LENGTH_SHORT).show();
                     }
                     dichVu1.setGhiChu(ghiChu);
-                    if (dichVuDAO.update(dichVu1) > 0) {
-                        list.clear();
-                        list.addAll(dichVuDAO.getAll());
-                        notifyDataSetChanged();
-                        dialog.dismiss();
-                        Toast.makeText(context, "Sửa thành công!", Toast.LENGTH_SHORT).show();
-                    } else {
-                        Toast.makeText(context, "Sửa thất bại.", Toast.LENGTH_SHORT).show();
+                    if (dichVu1.getTrangThai().equals("SALE")){
+                        if (Integer.parseInt(giaSALE)==0||Integer.parseInt(giaSALE)>Integer.parseInt(giaDV)){
+                            Toast.makeText(context, "Giá SALE phải lớn hơn 0 và nhỏ hơn giá gốc !", Toast.LENGTH_SHORT).show();
+                        }else {
+                            if (dichVuDAO.update(dichVu1) > 0) {
+                                list.clear();
+                                list.addAll(dichVuDAO.getAll());
+                                notifyDataSetChanged();
+                                dialog.dismiss();
+                                Toast.makeText(context, "Sửa thành công!", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(context, "Sửa thất bại.", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    }else {
+                        if (dichVuDAO.update(dichVu1) > 0) {
+                            list.clear();
+                            list.addAll(dichVuDAO.getAll());
+                            notifyDataSetChanged();
+                            dialog.dismiss();
+                            Toast.makeText(context, "Sửa thành công!", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(context, "Sửa thất bại.", Toast.LENGTH_SHORT).show();
+                        }
                     }
+
+
                 }
             }
         });
         btnCancel_DLNV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dialog.dismiss();
+                String tenDV = edtenDV_DLDV.getText().toString();
+                String giaDV = edgiaDV_DLDV.getText().toString();
+                String loaiDV = edloai_DLDV.getText().toString();
+                String trangThai = edtrangThai_DLDV.getText().toString();
+                String ghiChu = edghiChu_DLDV.getText().toString();
+                String giaSALE = edgiaSALE_DLDV.getText().toString();
+                if (tenDV.trim().isEmpty() && giaDV.trim().isEmpty() && loaiDV.trim().isEmpty() && trangThai.trim().isEmpty() && ghiChu.trim().isEmpty()&& giaSALE.trim().isEmpty()) {
+                    dialog.dismiss();
+                } else {
+                    edtenDV_DLDV.setText("");
+                    edgiaDV_DLDV.setText("");
+                    edghiChu_DLDV.setText("");
+                    edloai_DLDV.setText("");
+                    edtrangThai_DLDV.setText("");
+                    edgiaSALE_DLDV.setText("");
+                }
             }
         });
     }
+
 }
