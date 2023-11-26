@@ -1,8 +1,11 @@
 package com.example.mailisa_beauty.Model;
 
+import android.net.Uri;
+
 public class DichVu {
     private int maDV;
-    private String hinhAnh,tenDV;
+    private Uri hinhAnh;
+    private String tenDV;
 
     private String loaiDV,trangThai;
     private int giaDV,giaSALE;
@@ -11,7 +14,7 @@ public class DichVu {
     public DichVu() {
     }
 
-    public DichVu(int maDV, String hinhAnh, String tenDV, String loaiDV, String trangThai, int giaDV, int giaSALE, String ghiChu) {
+    public DichVu(int maDV, Uri hinhAnh, String tenDV, String loaiDV, String trangThai, int giaDV, int giaSALE, String ghiChu) {
         this.maDV = maDV;
         this.hinhAnh = hinhAnh;
         this.tenDV = tenDV;
@@ -30,11 +33,11 @@ public class DichVu {
         this.maDV = maDV;
     }
 
-    public String getHinhAnh() {
+    public Uri getHinhAnh() {
         return hinhAnh;
     }
 
-    public void setHinhAnh(String hinhAnh) {
+    public void setHinhAnh(Uri hinhAnh) {
         this.hinhAnh = hinhAnh;
     }
 

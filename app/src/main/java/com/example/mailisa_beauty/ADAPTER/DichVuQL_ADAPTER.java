@@ -2,12 +2,14 @@ package com.example.mailisa_beauty.ADAPTER;
 
 import android.app.Activity;
 import android.content.Context;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
@@ -48,7 +50,7 @@ public class DichVuQL_ADAPTER extends RecyclerView.Adapter<DichVuQL_ADAPTER.View
         holder.tvtrangThai_itDV.setVisibility(View.GONE);
 
         DichVu dichVu = list.get(position);
-
+        holder.img_itDV.setImageURI(dichVu.getHinhAnh());
         holder.tvTenDV_itDV.setText(list.get(position).getTenDV());
         holder.tvloaiDV_itDV.setText("Loại: " + list.get(position).getLoaiDV());
         holder.tvtrangThai_itDV.setText("Trạng thái: " + list.get(position).getTrangThai());
@@ -61,6 +63,8 @@ public class DichVuQL_ADAPTER extends RecyclerView.Adapter<DichVuQL_ADAPTER.View
             holder.tvgiaDV_itDV.setText(String.valueOf("Giá gốc: " + list.get(position).getGiaDV()) + " VNĐ");
             holder.tvgiaSALE_itDV.setText(String.valueOf("Giá SALE: " + list.get(position).getGiaSALE()) + " VNĐ");
         }
+        int imageResourceId = R.drawable.avt; // Đặt tên tài nguyên của bạn ở đây
+
 
 
         String ghiChu = dichVu.getGhiChu();
@@ -70,28 +74,6 @@ public class DichVuQL_ADAPTER extends RecyclerView.Adapter<DichVuQL_ADAPTER.View
         } else {
             holder.tvghiChu_itDV.setText(dichVu.getGhiChu());
         }
-
-//        String r = "R.drawable."+list.get(position).getHinhAnh();
-//        Toast.makeText(context, r, Toast.LENGTH_SHORT).show();
-
-        Glide.with(context)
-                .load("file:///android_asset/" + list.get(position).getHinhAnh())
-                .placeholder(R.drawable.dv1)
-                .into(holder.img_itDV);
-
-//        holder.tvxemChiTiet_itDV.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                // Chuyển sang Fragment mới
-//                if (context instanceof Activity) {
-//                    FragmentTransaction transaction = ((FragmentActivity) context).getSupportFragmentManager().beginTransaction();
-//                    transaction.replace(R.id.frg_chiTietDichVu, new Frg_kh_chiTietDichVu());
-//                    transaction.addToBackStack(null);
-//                    transaction.commit();
-//                }
-//            }
-//        });
-
     }
 
     @Override

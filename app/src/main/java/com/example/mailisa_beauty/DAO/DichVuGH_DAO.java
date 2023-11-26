@@ -23,7 +23,7 @@ public class DichVuGH_DAO {
     public long insert(DichVu dv) {
         ContentValues values = new ContentValues();
 //            values.put("maDV", );
-        values.put("hinhAnh", dv.getHinhAnh());
+//        values.put("hinhAnh", dv.getHinhAnh());
         values.put("tenDV", dv.getTenDV());
         values.put("loaiDV", dv.getLoaiDV());
         values.put("trangThai", dv.getTrangThai());
@@ -35,7 +35,7 @@ public class DichVuGH_DAO {
 
     public int update(DichVu dv) {
         ContentValues values = new ContentValues();
-        values.put("hinhAnh", dv.getHinhAnh());
+//        values.put("hinhAnh", dv.getHinhAnh());
         values.put("tenDV", dv.getTenDV());
         values.put("loaiDV", dv.getLoaiDV());
         values.put("trangThai", dv.getTrangThai());
@@ -59,7 +59,7 @@ public class DichVuGH_DAO {
         while (cursor.moveToNext()) {
             DichVu obj = new DichVu();
             obj.setMaDV(cursor.getInt(cursor.getColumnIndex("maDV")));
-            obj.setHinhAnh(cursor.getString(cursor.getColumnIndex("hinhAnh")));
+//            obj.setHinhAnh(cursor.getString(cursor.getColumnIndex("hinhAnh")));
             obj.setTenDV(cursor.getString(cursor.getColumnIndex("tenDV")));
             obj.setLoaiDV(cursor.getString(cursor.getColumnIndex("loaiDV")));
             obj.setTrangThai(cursor.getString(cursor.getColumnIndex("trangThai")));

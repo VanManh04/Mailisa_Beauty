@@ -23,6 +23,7 @@
         android:src="@drawable/logo_mailisa" />
 
     <TextView
+        android:id="@+id/n1"
         android:layout_marginTop="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

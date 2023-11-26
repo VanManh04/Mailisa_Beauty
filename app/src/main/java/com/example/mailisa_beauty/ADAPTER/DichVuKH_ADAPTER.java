@@ -63,6 +63,7 @@ public class DichVuKH_ADAPTER extends RecyclerView.Adapter<DichVuKH_ADAPTER.View
 
 
         DichVu dichVu = list.get(position);
+        holder.img_itDV.setImageURI(dichVu.getHinhAnh());
         holder.tvTenDV_itDV.setText(list.get(position).getTenDV());
         String ten = dichVu.getTenDV();
 
@@ -90,20 +91,12 @@ public class DichVuKH_ADAPTER extends RecyclerView.Adapter<DichVuKH_ADAPTER.View
         } else {
             holder.tvghiChu_itDV.setText(dichVu.getGhiChu());
         }
-//        String r = "R.drawable."+list.get(position).getHinhAnh();
-//        Toast.makeText(context, r, Toast.LENGTH_SHORT).show();
-
-        Glide.with(context)
-                .load("file:///android_asset/" + list.get(position).getHinhAnh())
-                .placeholder(R.drawable.dv1)
-                .into(holder.img_itDV);
-
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 String masp = ""+list.get(position).getMaDV();
-                String anh = list.get(position).getHinhAnh();
+//                String anh = list.get(position).getHinhAnh();
                 String ten = list.get(position).getTenDV();
                 String gia =""+ list.get(position).getGiaSALE();
                 String loai = list.get(position).getLoaiDV();
@@ -113,7 +106,7 @@ public class DichVuKH_ADAPTER extends RecyclerView.Adapter<DichVuKH_ADAPTER.View
                 Context context = view.getContext();
                 Intent intent = new Intent(context, giaoDienChiTietSP.class);
                 intent.putExtra("masp", masp);
-                intent.putExtra("anh",anh);
+//                intent.putExtra("anh",anh);
                 intent.putExtra("ten", ten);
                 intent.putExtra("gia", gia);
                 intent.putExtra("loai",loai);

@@ -1,7 +1,13 @@
 package com.example.mailisa_beauty.frg_quanLy;
 
+import static android.app.Activity.RESULT_OK;
+
 import android.app.Dialog;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +16,10 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -19,7 +29,9 @@ import com.example.mailisa_beauty.ADAPTER.DichVuQL_ADAPTER;
 import com.example.mailisa_beauty.DAO.DichVuDAO;
 import com.example.mailisa_beauty.Model.DichVu;
 import com.example.mailisa_beauty.R;
+import com.squareup.picasso.Picasso;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class QL_dichVu extends Fragment {
@@ -32,6 +44,9 @@ public class QL_dichVu extends Fragment {
     DichVuQL_ADAPTER dichVuADAPTER;
     private ArrayList<DichVu> list = new ArrayList<DichVu>();
     private static final int REQUEST_IMAGE_PICK = 1;
+    DichVu dichVu = new DichVu();
+
+    ImageView imgDV_DLDV;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -63,16 +78,23 @@ public class QL_dichVu extends Fragment {
         Dialog dialog = builder.create();
         dialog.show();
         // anh xa
-        ImageView imgDV_DLDV = view.findViewById(R.id.imgDV_DLDV);
+        imgDV_DLDV = view.findViewById(R.id.imgDV_DLDV);
         EditText edtenDV_DLDV = view.findViewById(R.id.edtenDV_DLDV);
         EditText edgiaDV_DLDV = view.findViewById(R.id.edgiaDV_DLDV);
         EditText edloai_DLDV = view.findViewById(R.id.edloai_DLDV);
         EditText edtrangThai_DLDV = view.findViewById(R.id.edtrangThai_DLDV);
         EditText edghiChu_DLDV = view.findViewById(R.id.edghiChu_DLDV);
-
-        Button btnaddimg_DLDV = view.findViewById(R.id.btnaddimg_DLDV);
         Button btnSave_DLNV = view.findViewById(R.id.btnSave_DLNV);
         Button btnCancel_DLNV = view.findViewById(R.id.btnCancel_DLNV);
+
+        imgDV_DLDV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openImagePicker();
+
+            }
+        });
+
         btnSave_DLNV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -84,7 +106,6 @@ public class QL_dichVu extends Fragment {
                     if (tenDV.trim().isEmpty() || giaDV.trim().isEmpty() || loaiDV.trim().isEmpty()|| trangThai.trim().isEmpty()|| ghiChu.trim().isEmpty()) {
                         Toast.makeText(getActivity(), "Không đuợc bỏ trống thông tin!", Toast.LENGTH_SHORT).show();
                     }else {
-                        DichVu dichVu = new DichVu();
                         dichVu.setTenDV(tenDV);
                         dichVu.setGiaDV(Integer.parseInt(giaDV));
                         dichVu.setLoaiDV(loaiDV);
@@ -116,4 +137,66 @@ public class QL_dichVu extends Fragment {
             }
         });
     }
+    private void openImagePicker() {
+        Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        activityResultLauncher.launch(intent);
+    }
+
+    private ActivityResultLauncher<Intent> activityResultLauncher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            new ActivityResultCallback<ActivityResult>() {
+                @Override
+                public void onActivityResult(ActivityResult result) {
+                    if (result.getResultCode() == RESULT_OK) {
+                        Intent data = result.getData();
+                        if (data == null) {
+                            return;
+                        }
+                        Uri uri = data.getData();
+                        try {
+                            Bitmap bitmap = MediaStore.Images.Media.getBitmap(requireContext().getContentResolver(), uri);
+
+                            String imageUrl = String.valueOf(uri);
+
+                            // Load and display the image using Picasso
+                            Picasso.get()
+                                    .load(imageUrl)
+                                    .resize(0, 250) // Resize the image to have a fixed height of 250dp, width will be adjusted to maintain the aspect ratio
+                                    .centerCrop()    // Crop the image if necessary
+                                    .into(imgDV_DLDV);
+
+                            dichVu.setHinhAnh(uri);
+                            Toast.makeText(getActivity(), String.valueOf(uri), Toast.LENGTH_SHORT).show();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            }
+    );
+
+//    private ActivityResultLauncher<Intent> activityResultLauncher = registerForActivityResult(
+//            new ActivityResultContracts.StartActivityForResult(),
+//            new ActivityResultCallback<ActivityResult>() {
+//                @Override
+//                public void onActivityResult(ActivityResult result) {
+//                    if (result.getResultCode() == RESULT_OK) {
+//                        Intent data = result.getData();
+//                        if (data == null) {
+//                            return;
+//                        }
+//                        Uri uri = data.getData();
+//                        try {
+//                            Bitmap bitmap = MediaStore.Images.Media.getBitmap(requireContext().getContentResolver(), uri);
+//                            imgDV_DLDV.setImageBitmap(bitmap);
+//                            // Lưu uri hoặc bitmap tùy thuộc vào yêu cầu của bạn
+//
+//                            dichVu.setHinhAnh(uri);
+//                        } catch (IOException e) {
+//                            e.printStackTrace();
+//                        }
+//                    }
+//                }
+//            }
+//    );
 }

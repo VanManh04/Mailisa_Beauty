@@ -5,6 +5,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.net.Uri;
 
 import com.example.mailisa_beauty.DataBase.DbHelper;
 import com.example.mailisa_beauty.Model.DichVu;
@@ -24,7 +25,7 @@ public class DichVuDAO {
     public long insert(DichVu dv) {
         ContentValues values = new ContentValues();
 //            values.put("maDV", );
-        values.put("hinhAnh", dv.getHinhAnh());
+        values.put("hinhAnh", dv.getHinhAnh().toString());
         values.put("tenDV", dv.getTenDV());
         values.put("loaiDV", dv.getLoaiDV());
         values.put("trangThai", dv.getTrangThai());
@@ -36,7 +37,7 @@ public class DichVuDAO {
 
     public int update(DichVu dv) {
         ContentValues values = new ContentValues();
-        values.put("hinhAnh", dv.getHinhAnh());
+//        values.put("hinhAnh", dv.getHinhAnh());
         values.put("tenDV", dv.getTenDV());
         values.put("loaiDV", dv.getLoaiDV());
         values.put("trangThai", dv.getTrangThai());
@@ -60,7 +61,14 @@ public class DichVuDAO {
         while (cursor.moveToNext()) {
             DichVu obj = new DichVu();
             obj.setMaDV(cursor.getInt(cursor.getColumnIndex("maDV")));
-            obj.setHinhAnh(cursor.getString(cursor.getColumnIndex("hinhAnh")));
+            //            obj.setHinhAnh(cursor.getString(cursor.getColumnIndex("hinhAnh")));
+
+            String uriString = cursor.getString(cursor.getColumnIndex("hinhAnh"));
+            if (uriString != null) {
+                Uri uri = Uri.parse(uriString);
+                obj.setHinhAnh(uri);
+            }
+
             obj.setTenDV(cursor.getString(cursor.getColumnIndex("tenDV")));
             obj.setLoaiDV(cursor.getString(cursor.getColumnIndex("loaiDV")));
             obj.setTrangThai(cursor.getString(cursor.getColumnIndex("trangThai")));
