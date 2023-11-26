@@ -3,6 +3,7 @@ package com.example.mailisa_beauty.ADAPTER;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,7 @@ import com.bumptech.glide.Glide;
 import com.example.mailisa_beauty.DAO.DichVuDAO;
 import com.example.mailisa_beauty.Model.DichVu;
 import com.example.mailisa_beauty.R;
+import com.example.mailisa_beauty.giaoDienChiTietSP;
 
 import java.util.ArrayList;
 //DIch Vu SALE
@@ -79,7 +81,37 @@ public class DichVu_SL_NEW_ADAPTER extends RecyclerView.Adapter<DichVu_SL_NEW_AD
                 .load("file:///android_asset/" + dichVu.getHinhAnh())
                 .placeholder(R.drawable.dv1)
                 .into(holder.img_itDVSL);
+        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+
+                String masp = ""+list.get(position).getMaDV();
+                String anh = list.get(position).getHinhAnh();
+                String ten = list.get(position).getTenDV();
+                String gia =""+ list.get(position).getGiaSALE();
+                String loai = list.get(position).getLoaiDV();
+                String mota = list.get(position).getGhiChu();
+
+
+                Context context = view.getContext();
+                Intent intent = new Intent(context, giaoDienChiTietSP.class);
+                intent.putExtra("masp", masp);
+                intent.putExtra("anh",anh);
+                intent.putExtra("ten", ten);
+                intent.putExtra("gia", gia);
+                intent.putExtra("loai",loai);
+                intent.putExtra("mota", mota);
+
+                context.startActivity(intent);
+                return false;
+            }
+        });
     }
+
+
+
+
+
 
     @Override
     public int getItemCount() {

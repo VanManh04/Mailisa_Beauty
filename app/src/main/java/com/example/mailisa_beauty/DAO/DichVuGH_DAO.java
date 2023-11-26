@@ -8,15 +8,14 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.example.mailisa_beauty.DataBase.DbHelper;
 import com.example.mailisa_beauty.Model.DichVu;
-import com.example.mailisa_beauty.Model.TaiKhoan;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class DichVuDAO {
+public class DichVuGH_DAO {
     private SQLiteDatabase db;
 
-    public DichVuDAO(Context context) {
+    public DichVuGH_DAO(Context context) {
         DbHelper dbHelper = new DbHelper(context);
         db = dbHelper.getWritableDatabase();
     }

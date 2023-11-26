@@ -23,6 +23,9 @@
             android:name=".Login.dang_Nhap"
             android:exported="false" />
         <activity
+            android:name=".giaoDienChiTietSP"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
