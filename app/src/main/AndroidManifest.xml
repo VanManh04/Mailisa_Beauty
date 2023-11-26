@@ -23,7 +23,7 @@
             android:name=".Login.dang_Nhap"
             android:exported="false" />
         <activity
-            android:name=".giaoDienChiTietSP"
+            android:name=".frg_khachHang.Activity_kh_ChiTietSP"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

@@ -1,4 +1,4 @@
-package com.example.mailisa_beauty;
+package com.example.mailisa_beauty.frg_khachHang;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -7,36 +7,23 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 
-import com.bumptech.glide.Glide;
 import com.example.mailisa_beauty.DAO.DichVuDAO;
 import com.example.mailisa_beauty.Model.DichVu;
-import com.example.mailisa_beauty.frg_quanLy.QL_trangChu;
+import com.example.mailisa_beauty.R;
 
 import java.util.ArrayList;
 
 
-public class giaoDienChiTietSP extends AppCompatActivity {
-    ArrayList<DichVu> list;
-
-
-
-
+public class Activity_kh_ChiTietSP extends AppCompatActivity {
 DichVuDAO dao;
-
-ArrayList<DichVu> listgiohang;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_giao_dien_chi_tiet_sp);
-//        adapter= new SanPhamGH_Adapter(this,listgiohang,dao1);
-        dao = new DichVuDAO(this);
+        setContentView(R.layout.activity_kh_chitietsp);
 
         ImageButton imgbtTrove = findViewById(R.id.icon_back);
         imgbtTrove.setOnClickListener(new View.OnClickListener() {
@@ -56,7 +43,7 @@ ArrayList<DichVu> listgiohang;
         String loai = intent.getStringExtra("loai");
         String mota = intent.getStringExtra("mota");
 
-
+        DichVu dichVu = new DichVu();
 
         // Hiển thị dữ liệu trong Activity
         TextView tenTextView = findViewById(R.id.txttensp_ct);

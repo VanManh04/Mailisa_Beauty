@@ -13,11 +13,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
 import com.example.mailisa_beauty.DAO.DichVuDAO;
 import com.example.mailisa_beauty.Model.DichVu;
 import com.example.mailisa_beauty.R;
-import com.example.mailisa_beauty.giaoDienChiTietSP;
+import com.example.mailisa_beauty.frg_khachHang.Activity_kh_ChiTietSP;
 
 import java.util.ArrayList;
 //DIch Vu SALE
@@ -89,7 +88,7 @@ public class DichVu_SL_NEW_ADAPTER extends RecyclerView.Adapter<DichVu_SL_NEW_AD
 
 
                 Context context = view.getContext();
-                Intent intent = new Intent(context, giaoDienChiTietSP.class);
+                Intent intent = new Intent(context, Activity_kh_ChiTietSP.class);
                 intent.putExtra("masp", masp);
                 intent.putExtra("anh",anh);
                 intent.putExtra("ten", ten);

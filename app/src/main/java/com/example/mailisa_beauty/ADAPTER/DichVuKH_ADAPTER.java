@@ -3,30 +3,20 @@ package com.example.mailisa_beauty.ADAPTER;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.text.Html;
-import android.text.Layout;
-import android.text.SpannableString;
-import android.text.Spanned;
-import android.text.style.AlignmentSpan;
-import android.text.style.UnderlineSpan;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
 import com.example.mailisa_beauty.DAO.DichVuDAO;
 import com.example.mailisa_beauty.Model.DichVu;
-import com.example.mailisa_beauty.Model.TaiKhoan;
 import com.example.mailisa_beauty.R;
-import com.example.mailisa_beauty.giaoDienChiTietSP;
+import com.example.mailisa_beauty.frg_khachHang.Activity_kh_ChiTietSP;
 
 import java.util.ArrayList;
 
@@ -104,7 +94,7 @@ public class DichVuKH_ADAPTER extends RecyclerView.Adapter<DichVuKH_ADAPTER.View
 
 
                 Context context = view.getContext();
-                Intent intent = new Intent(context, giaoDienChiTietSP.class);
+                Intent intent = new Intent(context, Activity_kh_ChiTietSP.class);
                 intent.putExtra("masp", masp);
                 intent.putExtra("anh",anh);
                 intent.putExtra("ten", ten);
