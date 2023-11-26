@@ -37,12 +37,11 @@ ArrayList<DichVu> listgiohang;
 //        adapter= new SanPhamGH_Adapter(this,listgiohang,dao1);
         dao = new DichVuDAO(this);
 
-        ImageButton imgbtTrove = findViewById(R.id.imgbttv);
+        ImageButton imgbtTrove = findViewById(R.id.icon_back);
         imgbtTrove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(giaoDienChiTietSP.this, QL_trangChu.class);
-                startActivity(intent);
+                finish();
             }
         });
 
@@ -51,15 +50,23 @@ ArrayList<DichVu> listgiohang;
         String masp = intent.getStringExtra("masp");
         String ten = intent.getStringExtra("ten");
         String gia = intent.getStringExtra("gia");
+        String giaSL = intent.getStringExtra("giaSL");
         String loai = intent.getStringExtra("loai");
         String mota = intent.getStringExtra("mota");
 
         // Hiển thị dữ liệu trong Activity
         TextView tenTextView = findViewById(R.id.txttensp_ct);
-        tenTextView.setText(mota);
+        tenTextView.setText(ten);
 
-        TextView giaLoaiTextView = findViewById(R.id.txtgiasp_ct);
+//        txtgiaspOld_ct
+        TextView giaSale = findViewById(R.id.txtgiasp_ct);
+        giaSale.setText(giaSL);
+
+        TextView giaLoaiTextView = findViewById(R.id.txtgiaspOld_ct);
         giaLoaiTextView.setText(gia);
+
+        TextView moTa = findViewById(R.id.ghiChu_ct);
+        moTa.setText(mota);
 
         ImageView anh = findViewById(R.id.imgsanpham_chitiet);
 

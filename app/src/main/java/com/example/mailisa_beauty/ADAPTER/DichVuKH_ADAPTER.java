@@ -2,6 +2,7 @@ package com.example.mailisa_beauty.ADAPTER;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.text.Html;
 import android.text.Layout;
 import android.text.SpannableString;
@@ -25,6 +26,7 @@ import com.example.mailisa_beauty.DAO.DichVuDAO;
 import com.example.mailisa_beauty.Model.DichVu;
 import com.example.mailisa_beauty.Model.TaiKhoan;
 import com.example.mailisa_beauty.R;
+import com.example.mailisa_beauty.giaoDienChiTietSP;
 
 import java.util.ArrayList;
 
@@ -96,7 +98,30 @@ public class DichVuKH_ADAPTER extends RecyclerView.Adapter<DichVuKH_ADAPTER.View
                 .placeholder(R.drawable.dv1)
                 .into(holder.img_itDV);
 
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
+                String masp = ""+list.get(position).getMaDV();
+                String anh = list.get(position).getHinhAnh();
+                String ten = list.get(position).getTenDV();
+                String gia =""+ list.get(position).getGiaSALE();
+                String loai = list.get(position).getLoaiDV();
+                String mota = list.get(position).getGhiChu();
+
+
+                Context context = view.getContext();
+                Intent intent = new Intent(context, giaoDienChiTietSP.class);
+                intent.putExtra("masp", masp);
+                intent.putExtra("anh",anh);
+                intent.putExtra("ten", ten);
+                intent.putExtra("gia", gia);
+                intent.putExtra("loai",loai);
+                intent.putExtra("mota", mota);
+
+                context.startActivity(intent);
+            }
+        });
     }
 
 

@@ -88,7 +88,8 @@ public class DichVu_SL_NEW_ADAPTER extends RecyclerView.Adapter<DichVu_SL_NEW_AD
                 String masp = ""+list.get(position).getMaDV();
                 String anh = list.get(position).getHinhAnh();
                 String ten = list.get(position).getTenDV();
-                String gia =""+ list.get(position).getGiaSALE();
+                String gia =""+ list.get(position).getGiaDV();
+                String giaSale =""+ list.get(position).getGiaSALE();
                 String loai = list.get(position).getLoaiDV();
                 String mota = list.get(position).getGhiChu();
 
@@ -99,6 +100,7 @@ public class DichVu_SL_NEW_ADAPTER extends RecyclerView.Adapter<DichVu_SL_NEW_AD
                 intent.putExtra("anh",anh);
                 intent.putExtra("ten", ten);
                 intent.putExtra("gia", gia);
+                intent.putExtra("giaSL", giaSale);
                 intent.putExtra("loai",loai);
                 intent.putExtra("mota", mota);
 
