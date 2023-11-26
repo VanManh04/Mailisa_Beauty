@@ -96,7 +96,7 @@ public class DichVuKH_ADAPTER extends RecyclerView.Adapter<DichVuKH_ADAPTER.View
             public void onClick(View view) {
 
                 String masp = ""+list.get(position).getMaDV();
-//                String anh = list.get(position).getHinhAnh();
+                String anh = String.valueOf(list.get(position).getHinhAnh());
                 String ten = list.get(position).getTenDV();
                 String gia =""+ list.get(position).getGiaSALE();
                 String loai = list.get(position).getLoaiDV();
@@ -106,7 +106,7 @@ public class DichVuKH_ADAPTER extends RecyclerView.Adapter<DichVuKH_ADAPTER.View
                 Context context = view.getContext();
                 Intent intent = new Intent(context, giaoDienChiTietSP.class);
                 intent.putExtra("masp", masp);
-//                intent.putExtra("anh",anh);
+                intent.putExtra("anh",anh);
                 intent.putExtra("ten", ten);
                 intent.putExtra("gia", gia);
                 intent.putExtra("loai",loai);

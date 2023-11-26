@@ -1,6 +1,7 @@
 package com.example.mailisa_beauty;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
@@ -48,11 +49,14 @@ ArrayList<DichVu> listgiohang;
 
         Intent intent = getIntent();
         String masp = intent.getStringExtra("masp");
+        String hinhanh = intent.getStringExtra("anh");
         String ten = intent.getStringExtra("ten");
         String gia = intent.getStringExtra("gia");
         String giaSL = intent.getStringExtra("giaSL");
         String loai = intent.getStringExtra("loai");
         String mota = intent.getStringExtra("mota");
+
+
 
         // Hiển thị dữ liệu trong Activity
         TextView tenTextView = findViewById(R.id.txttensp_ct);
@@ -68,8 +72,8 @@ ArrayList<DichVu> listgiohang;
         TextView moTa = findViewById(R.id.ghiChu_ct);
         moTa.setText(mota);
 
-        ImageView anh = findViewById(R.id.imgsanpham_chitiet);
-
+        ImageView imgsanpham_chitiet = findViewById(R.id.imgsanpham_chitiet);
+        imgsanpham_chitiet.setImageURI(Uri.parse(hinhanh));
 
 //        imgbt_giohang.setOnClickListener(new View.OnClickListener() {
 //            @Override

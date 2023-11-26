@@ -75,19 +75,12 @@ public class DichVu_SL_NEW_ADAPTER extends RecyclerView.Adapter<DichVu_SL_NEW_AD
             holder.tvghiChu_itDVSL.setVisibility(View.GONE);
         }
 
-//        String r = "R.drawable."+list.get(position).getHinhAnh();
-//        Toast.makeText(context, r, Toast.LENGTH_SHORT).show();
-
-//        Glide.with(context)
-//                .load("file:///android_asset/" + dichVu.getHinhAnh())
-//                .placeholder(R.drawable.dv1)
-//                .into(holder.img_itDVSL);
         holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
 
                 String masp = ""+list.get(position).getMaDV();
-//                String anh = list.get(position).getHinhAnh();
+                String anh = String.valueOf(list.get(position).getHinhAnh());
                 String ten = list.get(position).getTenDV();
                 String gia =""+ list.get(position).getGiaDV();
                 String giaSale =""+ list.get(position).getGiaSALE();
@@ -98,7 +91,7 @@ public class DichVu_SL_NEW_ADAPTER extends RecyclerView.Adapter<DichVu_SL_NEW_AD
                 Context context = view.getContext();
                 Intent intent = new Intent(context, giaoDienChiTietSP.class);
                 intent.putExtra("masp", masp);
-//                intent.putExtra("anh",anh);
+                intent.putExtra("anh",anh);
                 intent.putExtra("ten", ten);
                 intent.putExtra("gia", gia);
                 intent.putExtra("giaSL", giaSale);
