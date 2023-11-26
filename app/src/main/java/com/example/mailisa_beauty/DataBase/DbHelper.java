@@ -67,7 +67,7 @@ public class DbHelper extends SQLiteOpenHelper {
         //android.resource://com.example.mailisa_beauty/2131165480
         //android.resource://com.example.mailisa_beauty/2131165481
         String data_DV = "INSERT INTO DichVu VALUES" +
-                "(1,'android.resource://com.example.mailisa_beauty/2131165475','LÀM ĐẦY RÃNH CƯỜI BABIES LINE','PT','SALE',12000000,10000000,'Rãnh cười chính là một đoạn nếp nhăn ở hai bên miệng, kéo dài từ cánh mũi chạy theo đường cong xuống tới cằm và nhìn rõ nhất khi cười.\n" +
+                "(1,'android.resource://com.example.mailisa_beauty/2131165475','LÀM ĐẦY RÃNH CƯỜI BABIES LINE','KHAC','SALE',12000000,10000000,'Rãnh cười chính là một đoạn nếp nhăn ở hai bên miệng, kéo dài từ cánh mũi chạy theo đường cong xuống tới cằm và nhìn rõ nhất khi cười.\n" +
                 "\n" +
                 "Rãnh cười xuất hiện ngay cả khi không cười thì đó chính là dấu hiệu cảnh báo về sự lão hóa khiến cho khuôn mặt bạn có vẻ già hơn.\n" +
                 "\n" +
@@ -101,7 +101,7 @@ public class DbHelper extends SQLiteOpenHelper {
                 "(5,'android.resource://com.example.mailisa_beauty/2131165478','LÀM ĐẸP DA MỤN THÂM BẰNG CÔNG NGHỆ CAO\n','PS','SALE',2000000,1000000,'Nguyên lý loại bỏ mụn bằng công nghệ Pixel CO2 tại Mailisa:\n" +
                 "Khi bác sĩ, chuyên viên chiếu ánh sáng trực tiếp vào từng cồi mụn mục đích nghiền nát, phá vỡ, phân hủy tận gốc của từng cồi mụn. Ngoài ra công nghệ pixel CO2 này có thêm một chức năng thông qua một thấu kính tạo ra hàng ngàn vi điểm trực tiếp bắn vào những vùng da không bị mụn,mục đích làm cho làn da tổn thương trong chế độ an toàn theo cơ chế tự phục hồi của làn da, nó sẽ kích thích elastin sản sinh ra collagen.'),"+
                 "(6,'android.resource://com.example.mailisa_beauty/2131165479','PHẪU THUẬT KHÂU TẠO HÌNH MẮT 2 MÍ\n','PS','NEW',1600000,1000000,'“Khâu tạo hình mắt 2 mí” là một phương pháp tiểu phẫu nhưng cũng cần sự tinh tế và đòi hỏi tay nghề bác sĩ giỏi, có cặp mắt tinh tế và gu thẩm mỹ cao để xác định chính xác đường mí cần nhấn sao cho phù hợp với khuôn mặt và hốc mắt, giúp khách hàng trẻ trung, xinh đẹp. Thời gian thực hiện khoảng 20 - 30 phút'),"+
-                "(7,'android.resource://com.example.mailisa_beauty/2131165480','PHUN MÀY CHẠM HẠT SƯƠNG BAY\n','PS','KHONG',22000000,22000000,'Với phương châm “Trao Bạn Nét Đẹp Mà Tự Nhiên”, khi mỗi quý khách hàng đến với Mailisa sẽ được đội ngũ nhân viên chuyên môn cao, tay nghề giỏi tư vấn chọn màu, thiết kế vẽ mẫu phù hợp với từng khuôn mặt.\n" +
+                "(7,'android.resource://com.example.mailisa_beauty/2131165480','PHUN MÀY CHẠM HẠT SƯƠNG BAY\n','KHAC','KHONG',22000000,22000000,'Với phương châm “Trao Bạn Nét Đẹp Mà Tự Nhiên”, khi mỗi quý khách hàng đến với Mailisa sẽ được đội ngũ nhân viên chuyên môn cao, tay nghề giỏi tư vấn chọn màu, thiết kế vẽ mẫu phù hợp với từng khuôn mặt.\n" +
                 "\n" +
                 "Khi khách hàng thực sự hài lòng thì chuyên viên mới bắt đầu phun theo dáng mẫu vừa vẽ.\n" +
                 "\n" +

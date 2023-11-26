@@ -3,6 +3,7 @@ package com.example.mailisa_beauty.frg_quanLy;
 import static android.app.Activity.RESULT_OK;
 
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -14,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.result.ActivityResult;
@@ -38,6 +40,7 @@ public class QL_dichVu extends Fragment {
     public QL_dichVu() {
         // Required empty public constructor
     }
+
     RecyclerView rcvDichVu;
     Button fladdDV;
     DichVuDAO dichVuDAO;
@@ -47,6 +50,8 @@ public class QL_dichVu extends Fragment {
     DichVu dichVu = new DichVu();
 
     ImageView imgDV_DLDV;
+    private boolean isImageSelected = false;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -80,18 +85,66 @@ public class QL_dichVu extends Fragment {
         // anh xa
         imgDV_DLDV = view.findViewById(R.id.imgDV_DLDV);
         EditText edtenDV_DLDV = view.findViewById(R.id.edtenDV_DLDV);
-        EditText edgiaDV_DLDV = view.findViewById(R.id.edgiaDV_DLDV);
         EditText edloai_DLDV = view.findViewById(R.id.edloai_DLDV);
         EditText edtrangThai_DLDV = view.findViewById(R.id.edtrangThai_DLDV);
+        EditText edgiaDV_DLDV = view.findViewById(R.id.edgiaDV_DLDV);
+        EditText edgiaSALE_DLDV = view.findViewById(R.id.edgiaSALE_DLDV);
         EditText edghiChu_DLDV = view.findViewById(R.id.edghiChu_DLDV);
         Button btnSave_DLNV = view.findViewById(R.id.btnSave_DLNV);
         Button btnCancel_DLNV = view.findViewById(R.id.btnCancel_DLNV);
+        TextView hindgia = view.findViewById(R.id.hindgia);
 
         imgDV_DLDV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 openImagePicker();
 
+            }
+        });
+
+        edloai_DLDV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                android.app.AlertDialog.Builder builder1 = new android.app.AlertDialog.Builder(getActivity());
+                builder1.setTitle("Loại dịch vụ");
+                String[] loai = {"Phẫu thuật", "Phun săm", "Khác"};
+                builder1.setItems(loai, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        edloai_DLDV.setText(loai[which]);
+                    }
+                });
+                android.app.AlertDialog alertDialog = builder1.create();
+                alertDialog.show();
+            }
+        });
+
+        edgiaDV_DLDV.setHint("Giá");
+        edgiaSALE_DLDV.setVisibility(View.GONE);
+        edtrangThai_DLDV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                android.app.AlertDialog.Builder builder1 = new android.app.AlertDialog.Builder(getActivity());
+                builder1.setTitle("Trạng thái dịch vụ:");
+                String[] trangThai = {"SALE", "NEW", "Không"};
+                builder1.setItems(trangThai, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        edtrangThai_DLDV.setText(trangThai[which]);
+
+                        if (trangThai[which].equals("SALE")) {
+                            edgiaDV_DLDV.setHint("Giá gốc");
+                            hindgia.setText("Giá gốc");
+                            edgiaSALE_DLDV.setVisibility(View.VISIBLE);
+                        } else {
+                            edgiaSALE_DLDV.setVisibility(View.GONE);
+                            edgiaDV_DLDV.setHint("Giá");
+                            hindgia.setText("Giá");
+                        }
+                    }
+                });
+                android.app.AlertDialog alertDialog = builder1.create();
+                alertDialog.show();
             }
         });
 
@@ -103,13 +156,32 @@ public class QL_dichVu extends Fragment {
                 String loaiDV = edloai_DLDV.getText().toString();
                 String trangThai = edtrangThai_DLDV.getText().toString();
                 String ghiChu = edghiChu_DLDV.getText().toString();
-                    if (tenDV.trim().isEmpty() || giaDV.trim().isEmpty() || loaiDV.trim().isEmpty()|| trangThai.trim().isEmpty()|| ghiChu.trim().isEmpty()) {
+                if (isImageSelected == false) {
+                    Toast.makeText(getActivity(), "Bạn phải chọn ảnh cho dịch vụ!", Toast.LENGTH_SHORT).show();
+                } else {
+                    if (tenDV.trim().isEmpty() || giaDV.trim().isEmpty() || loaiDV.trim().isEmpty() || trangThai.trim().isEmpty() || ghiChu.trim().isEmpty()) {
                         Toast.makeText(getActivity(), "Không đuợc bỏ trống thông tin!", Toast.LENGTH_SHORT).show();
-                    }else {
+                    } else {
                         dichVu.setTenDV(tenDV);
                         dichVu.setGiaDV(Integer.parseInt(giaDV));
-                        dichVu.setLoaiDV(loaiDV);
-                        dichVu.setTrangThai(trangThai);
+                        if (loaiDV.equals("Phẫu thuật")) {
+                            dichVu.setLoaiDV("PT");
+                        } else if (loaiDV.equals("Phun săm")) {
+                            dichVu.setLoaiDV("PS");
+                        } else if (loaiDV.equals("Không")) {
+                            dichVu.setLoaiDV("KHAC");
+                        } else {
+                            Toast.makeText(getActivity(), "Loại vô lý !", Toast.LENGTH_SHORT).show();
+                        }
+                        if (trangThai.equals("SALE")) {
+                            dichVu.setTrangThai("SALE");
+                        } else if (trangThai.equals("NEW")) {
+                            dichVu.setTrangThai("NEW");
+                        } else if (trangThai.equals("Khác")) {
+                            dichVu.setTrangThai("KHONG");
+                        } else {
+                            Toast.makeText(getActivity(), "Trạng thái vô lý !", Toast.LENGTH_SHORT).show();
+                        }
                         dichVu.setGhiChu(ghiChu);
 
 
@@ -119,11 +191,13 @@ public class QL_dichVu extends Fragment {
                             dichVuADAPTER.notifyDataSetChanged();
                             dialog.dismiss();
                             Toast.makeText(getActivity(), "Thêm thành công!", Toast.LENGTH_SHORT).show();
-                        }else {
+                        } else {
                             Toast.makeText(getActivity(), "Thêm thất bại.", Toast.LENGTH_SHORT).show();
                         }
 
                     }
+                }
+
 
             }
         });
@@ -131,12 +205,24 @@ public class QL_dichVu extends Fragment {
         btnCancel_DLNV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                edtenDV_DLDV.setText("");
-                edgiaDV_DLDV.setText("");
-                edghiChu_DLDV.setText("");
+                String tenDV = edtenDV_DLDV.getText().toString();
+                String giaDV = edgiaDV_DLDV.getText().toString();
+                String loaiDV = edloai_DLDV.getText().toString();
+                String trangThai = edtrangThai_DLDV.getText().toString();
+                String ghiChu = edghiChu_DLDV.getText().toString();
+                if (tenDV.trim().isEmpty() && giaDV.trim().isEmpty() && loaiDV.trim().isEmpty() && trangThai.trim().isEmpty() && ghiChu.trim().isEmpty()) {
+                    dialog.dismiss();
+                } else {
+                    edtenDV_DLDV.setText("");
+                    edgiaDV_DLDV.setText("");
+                    edghiChu_DLDV.setText("");
+                    edloai_DLDV.setText("");
+                    edtrangThai_DLDV.setText("");
+                }
             }
         });
     }
+
     private void openImagePicker() {
         Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         activityResultLauncher.launch(intent);
@@ -166,7 +252,8 @@ public class QL_dichVu extends Fragment {
                                     .into(imgDV_DLDV);
 
                             dichVu.setHinhAnh(uri);
-                            Toast.makeText(getActivity(), String.valueOf(uri), Toast.LENGTH_SHORT).show();
+                            isImageSelected = true;
+//                            Toast.makeText(getActivity(), String.valueOf(uri), Toast.LENGTH_SHORT).show();
                         } catch (IOException e) {
                             e.printStackTrace();
                         }

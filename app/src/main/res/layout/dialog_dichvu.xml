@@ -40,20 +40,6 @@
                 android:hint="Tên dịch vụ"/>
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edgiaDV_DLDV"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Giá"/>
-        </com.google.android.material.textfield.TextInputLayout>
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -69,6 +55,10 @@
                     android:id="@+id/edloai_DLDV"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:inputType="none"
+                    android:cursorVisible="false"
                     android:hint="Loại"/>
             </com.google.android.material.textfield.TextInputLayout>
             <com.google.android.material.textfield.TextInputLayout
@@ -82,9 +72,50 @@
                     android:id="@+id/edtrangThai_DLDV"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:inputType="none"
+                    android:cursorVisible="false"
                     android:hint="Trạng thái"/>
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
+        <TextView
+            android:layout_marginLeft="29dp"
+            android:layout_marginRight="20dp"
+            android:id="@+id/hindgia"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="13dp"
+            android:text="Giá"/>
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp">
+
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edgiaDV_DLDV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"/>/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edgiaSALE_DLDV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:hint="Giá SALE"/>
+        </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
