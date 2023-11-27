@@ -3,6 +3,7 @@ package com.example.mailisa_beauty.ADAPTER;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Paint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -68,9 +69,12 @@ public class DichVuKH_ADAPTER extends RecyclerView.Adapter<DichVuKH_ADAPTER.View
         holder.tvtrangThai_itDV.setText("Trạng thái: "+list.get(position).getTrangThai());
         if (dichVu.getTrangThai().equals("NEW")||dichVu.getTrangThai().equals("KHONG")){
             holder.tvgiaSALE_itDV.setVisibility(View.GONE);
+            holder.tvgiaDV_itDV.setPaintFlags(holder.tvgiaDV_itDV.getPaintFlags() & (~Paint.STRIKE_THRU_TEXT_FLAG));
             holder.tvgiaDV_itDV.setText(String.valueOf("Giá: " +list.get(position).getGiaDV())+" VNĐ");
             holder.tvgiaSALE_itDV.setText(String.valueOf("Giá SALE: " +list.get(position).getGiaSALE())+" VNĐ");
         }else {
+            holder.tvgiaSALE_itDV.setVisibility(View.VISIBLE);
+            holder.tvgiaDV_itDV.setPaintFlags(holder.tvgiaDV_itDV.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
             holder.tvgiaDV_itDV.setText(String.valueOf("Giá gốc: " +list.get(position).getGiaDV())+" VNĐ");
             holder.tvgiaSALE_itDV.setText(String.valueOf("Giá SALE: " +list.get(position).getGiaSALE())+" VNĐ");
         }

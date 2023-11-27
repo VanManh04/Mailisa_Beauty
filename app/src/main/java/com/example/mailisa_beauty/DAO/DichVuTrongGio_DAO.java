@@ -77,4 +77,10 @@ public class DichVuTrongGio_DAO {
         String sql = "SELECT * FROM DichVuTrongGio";
         return getData(sql);
     }
+    //GET maTK
+    public List<DichVuTrongGio> getAllByMaTK(String maTK) {
+        String sql = "SELECT * FROM DichVuTrongGio WHERE maTK = ?";
+        return getData(sql, String.valueOf(maTK));
+    }
+
 }

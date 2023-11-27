@@ -25,7 +25,7 @@ public class DbHelper extends SQLiteOpenHelper {
         db.execSQL(CreateTableTaiKhoan);
         String data_TK = "INSERT INTO TaiKhoan VALUES" +
                 "(1,'01234567890','Vũ Đức Anh','123','KH')," +
-                "(2,'01122334455','Phạm Thị Hà','1234','NV')," +
+                "(2,'01122334455','Phạm Thị Hà','123','KH')," +
                 "(3,'01122334456','Hồng Quân','1234','NV')," +
                 "(4,'01122334457','Văn Đức','1234','NV')," +
                 "(5,'09988776655','Đỗ Thị Kim Anh','1235','QL')," +
@@ -121,7 +121,9 @@ public class DbHelper extends SQLiteOpenHelper {
         String data_DVTG = "INSERT INTO DichVuTrongGio VALUES" +
                 "(1,1,1,1,1)," +
                 "(2,1,6,2,0)," +
-                "(3,1,2,3,0)";
+                "(3,1,2,3,0)," +
+                "(4,2,2,3,0)," +
+                "(5,2,6,3,0)";
         db.execSQL(data_DVTG);
 
         //Bảng LỊCH ĐẶT CỦA KHÁCH HÀNG

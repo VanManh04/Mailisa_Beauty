@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Paint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,8 +20,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mailisa_beauty.DAO.DichVuDAO;
 import com.example.mailisa_beauty.DAO.DichVuTrongGio_DAO;
+import com.example.mailisa_beauty.DAO.TaiKhoanDAO;
 import com.example.mailisa_beauty.Model.DichVu;
 import com.example.mailisa_beauty.Model.DichVuTrongGio;
+import com.example.mailisa_beauty.Model.TaiKhoan;
 import com.example.mailisa_beauty.R;
 import com.example.mailisa_beauty.frg_khachHang.Activity_kh_ChiTietSP;
 
@@ -56,12 +59,10 @@ public class DichVuKHTrongGio_ADAPTER extends RecyclerView.Adapter<DichVuKHTrong
 //        tvTenDV_itDVTG,soLuong_itDVTG,tvgiaDV_itDVTG,tvgiaSALE_itDVTG;
 //        holder.imgdelete_itDV.setVisibility(View.GONE);
 
-
         DichVuTrongGio dichVuTrongGio = list.get(position);
         DichVu dichVu = dichVuDAO.getID(String.valueOf(dichVuTrongGio.getMaDV()));
 
         holder.img_itDVTG.setImageURI(dichVu.getHinhAnh());
-
 
         String ten = dichVu.getTenDV();
         if (ten.length() > 17) {
@@ -110,15 +111,16 @@ public class DichVuKHTrongGio_ADAPTER extends RecyclerView.Adapter<DichVuKHTrong
                 }
             }
         });
-
-
-        if (dichVu.getTrangThai().equals("NEW") || dichVu.getTrangThai().equals("KHONG")) {
+        if (dichVu.getTrangThai().equals("NEW")||dichVu.getTrangThai().equals("KHONG")){
             holder.tvgiaSALE_itDVTG.setVisibility(View.GONE);
-            holder.tvgiaDV_itDVTG.setText(String.valueOf("Giá: " + dichVu.getGiaDV() + " VNĐ"));
-            holder.tvgiaSALE_itDVTG.setText(String.valueOf("Giá SALE: " + dichVu.getGiaSALE()) + " VNĐ");
-        } else {
-            holder.tvgiaDV_itDVTG.setText(String.valueOf("Giá gốc: " + dichVu.getGiaDV() + " VNĐ"));
-            holder.tvgiaSALE_itDVTG.setText(String.valueOf("Giá SALE: " + dichVu.getGiaSALE()) + " VNĐ");
+            holder.tvgiaDV_itDVTG.setPaintFlags(holder.tvgiaDV_itDVTG.getPaintFlags() & (~Paint.STRIKE_THRU_TEXT_FLAG));
+            holder.tvgiaDV_itDVTG.setText(String.valueOf("Giá: " +dichVu.getGiaDV())+" VNĐ");
+            holder.tvgiaSALE_itDVTG.setText(String.valueOf("Giá SALE: " +dichVu.getGiaSALE())+" VNĐ");
+        }else {
+            holder.tvgiaSALE_itDVTG.setVisibility(View.VISIBLE);
+            holder.tvgiaDV_itDVTG.setPaintFlags(holder.tvgiaDV_itDVTG.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+            holder.tvgiaDV_itDVTG.setText(String.valueOf("Giá gốc: " +dichVu.getGiaDV())+" VNĐ");
+            holder.tvgiaSALE_itDVTG.setText(String.valueOf("Giá SALE: " +dichVu.getGiaSALE())+" VNĐ");
         }
 
         if (dichVuTrongGio.isCheck() == true) {

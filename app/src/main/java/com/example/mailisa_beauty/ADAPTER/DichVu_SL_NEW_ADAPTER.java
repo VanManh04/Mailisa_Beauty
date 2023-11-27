@@ -4,6 +4,7 @@ package com.example.mailisa_beauty.ADAPTER;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Paint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -56,11 +57,14 @@ public class DichVu_SL_NEW_ADAPTER extends RecyclerView.Adapter<DichVu_SL_NEW_AD
         holder.tvtrangThai_itDVSL.setText("Dịch vụ "+dichVu.getTrangThai());
         if (dichVu.getTrangThai().equals("NEW")||dichVu.getTrangThai().equals("KHONG")){
             holder.tvgiaSALE_itDVSL.setVisibility(View.GONE);
-            holder.tvgiaDV_itDVSL.setText(String.valueOf("Giá: " +list.get(position).getGiaDV())+" VNĐ");
-            holder.tvgiaSALE_itDVSL.setText(String.valueOf("Giá SALE: " +list.get(position).getGiaSALE())+" VNĐ");
+            holder.tvgiaDV_itDVSL.setPaintFlags(holder.tvgiaDV_itDVSL.getPaintFlags() & (~Paint.STRIKE_THRU_TEXT_FLAG));
+            holder.tvgiaDV_itDVSL.setText(String.valueOf("Giá: " +dichVu.getGiaDV())+" VNĐ");
+            holder.tvgiaSALE_itDVSL.setText(String.valueOf("Giá SALE: " +dichVu.getGiaSALE())+" VNĐ");
         }else {
-            holder.tvgiaDV_itDVSL.setText(String.valueOf("Giá gốc: " +list.get(position).getGiaDV())+" VNĐ");
-            holder.tvgiaSALE_itDVSL.setText(String.valueOf("Giá SALE: " +list.get(position).getGiaSALE())+" VNĐ");
+            holder.tvgiaSALE_itDVSL.setVisibility(View.VISIBLE);
+            holder.tvgiaDV_itDVSL.setPaintFlags(holder.tvgiaDV_itDVSL.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+            holder.tvgiaDV_itDVSL.setText(String.valueOf("Giá gốc: " +dichVu.getGiaDV())+" VNĐ");
+            holder.tvgiaSALE_itDVSL.setText(String.valueOf("Giá SALE: " +dichVu.getGiaSALE())+" VNĐ");
         }
         String ghiChu = dichVu.getGhiChu();
         if (ghiChu.length() > 40) {

@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Paint;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -62,14 +63,15 @@ public class DichVuQL_ADAPTER extends RecyclerView.Adapter<DichVuQL_ADAPTER.View
 
         if (dichVu.getTrangThai().equals("NEW") || dichVu.getTrangThai().equals("KHONG")) {
             holder.tvgiaSALE_itDV.setVisibility(View.GONE);
+            holder.tvgiaDV_itDV.setPaintFlags(holder.tvgiaDV_itDV.getPaintFlags() & (~Paint.STRIKE_THRU_TEXT_FLAG));
             holder.tvgiaDV_itDV.setText(String.valueOf("Giá: " + list.get(position).getGiaDV()) + " VNĐ");
             holder.tvgiaSALE_itDV.setText(String.valueOf("Giá SALE: " + list.get(position).getGiaSALE()) + " VNĐ");
         } else {
             holder.tvgiaSALE_itDV.setVisibility(View.VISIBLE);
+            holder.tvgiaDV_itDV.setPaintFlags(holder.tvgiaDV_itDV.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
             holder.tvgiaDV_itDV.setText(String.valueOf("Giá gốc: " + list.get(position).getGiaDV()) + " VNĐ");
             holder.tvgiaSALE_itDV.setText(String.valueOf("Giá SALE: " + list.get(position).getGiaSALE()) + " VNĐ");
         }
-
         String ghiChu = dichVu.getGhiChu();
         if (ghiChu.length() > 40) {
             String first40Characters = ghiChu.substring(0, 80);
@@ -272,6 +274,7 @@ public class DichVuQL_ADAPTER extends RecyclerView.Adapter<DichVuQL_ADAPTER.View
                     }
                     if (trangThai.equals("SALE")) {
                         dichVu1.setTrangThai("SALE");
+
                         dichVu1.setGiaSALE(Integer.parseInt(giaSALE));
                     } else if (trangThai.equals("NEW")) {
                         dichVu1.setTrangThai("NEW");
