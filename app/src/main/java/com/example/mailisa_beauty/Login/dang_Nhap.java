@@ -7,6 +7,7 @@ import android.graphics.Paint;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.transition.Fade;
 import android.view.View;
 import android.view.Window;
@@ -18,8 +19,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
+import com.example.mailisa_beauty.DAO.DichVuDAO;
 import com.example.mailisa_beauty.DAO.TaiKhoanDAO;
+import com.example.mailisa_beauty.Model.TaiKhoan;
 import com.example.mailisa_beauty.Nav_VIEW;
 import com.example.mailisa_beauty.R;
 import com.example.mailisa_beauty.frg_khachHang.Frg_kh_gioDichVu;
@@ -97,8 +101,6 @@ public class dang_Nhap extends AppCompatActivity {
         if (strSdt.isEmpty()||strPass.isEmpty()){
             Toast.makeText(getApplicationContext(), "Số điện thoại và mật khẩu không được bỏ trống!", Toast.LENGTH_SHORT).show();
         }else {
-            //gửi dữ liệu SĐT qua FRG và ADAPTER
-
             if (tkDAO.checkLogin(strSdt,strPass)==1){
                 Toast.makeText(getApplicationContext(), "Login Thành công!", Toast.LENGTH_SHORT).show();
                 rememberUser(strSdt,strPass,chkCheck.isChecked());

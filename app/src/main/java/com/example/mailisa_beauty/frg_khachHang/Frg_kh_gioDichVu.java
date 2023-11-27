@@ -38,6 +38,7 @@ public class Frg_kh_gioDichVu extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.frg_kh_giodichvu, container, false);
 
+
         rcvFRGKHGDV = view.findViewById(R.id.rcvFRGKHGDV);
         dichVuTrongGio_dao = new DichVuTrongGio_DAO(getActivity());
         list = (ArrayList<DichVuTrongGio>) dichVuTrongGio_dao.getAll();
