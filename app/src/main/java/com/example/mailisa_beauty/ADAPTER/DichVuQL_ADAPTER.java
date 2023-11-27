@@ -65,6 +65,7 @@ public class DichVuQL_ADAPTER extends RecyclerView.Adapter<DichVuQL_ADAPTER.View
             holder.tvgiaDV_itDV.setText(String.valueOf("Giá: " + list.get(position).getGiaDV()) + " VNĐ");
             holder.tvgiaSALE_itDV.setText(String.valueOf("Giá SALE: " + list.get(position).getGiaSALE()) + " VNĐ");
         } else {
+            holder.tvgiaSALE_itDV.setVisibility(View.VISIBLE);
             holder.tvgiaDV_itDV.setText(String.valueOf("Giá gốc: " + list.get(position).getGiaDV()) + " VNĐ");
             holder.tvgiaSALE_itDV.setText(String.valueOf("Giá SALE: " + list.get(position).getGiaSALE()) + " VNĐ");
         }
@@ -113,8 +114,6 @@ public class DichVuQL_ADAPTER extends RecyclerView.Adapter<DichVuQL_ADAPTER.View
             @Override
             public boolean onLongClick(View v) {
                 opendialogUPDATE(dichVu);
-                list.clear();
-                list.addAll(dichVuDAO.getAll());
                 notifyDataSetChanged();
                 return true;
             }
