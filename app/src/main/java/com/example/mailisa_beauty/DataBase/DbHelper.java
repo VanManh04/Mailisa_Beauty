@@ -110,6 +110,20 @@ public class DbHelper extends SQLiteOpenHelper {
                 ;
         db.execSQL(data_DV);
 
+        //Bảng DỊCH VỤ TRONG GIỎ DỊCH VỤ
+        String CreateTableDichVuTrongGio = "CREATE TABLE DichVuTrongGio(" +
+                "maDVTG INTEGER PRIMARY KEY AUTOINCREMENT," +
+                "maTK INTEGER REFERENCES TaiKhoan(maTK)," +
+                "maDV INTEGER REFERENCES DichVu(maDV)," +
+                "soLuong INTEGER NOT NULL," +
+                "isCheck INTEGER NOT NULL)";
+        db.execSQL(CreateTableDichVuTrongGio);
+        String data_DVTG = "INSERT INTO DichVuTrongGio VALUES" +
+                "(1,1,1,1,1)," +
+                "(2,1,6,2,0)," +
+                "(3,1,2,3,0)";
+        db.execSQL(data_DVTG);
+
         //Bảng LỊCH ĐẶT CỦA KHÁCH HÀNG
         String CreateTableLichKhachHang = "CREATE TABLE LichKhachHang(" +
                 "maLKH INTEGER PRIMARY KEY AUTOINCREMENT," +

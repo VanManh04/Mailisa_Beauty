@@ -20,6 +20,7 @@ import com.example.mailisa_beauty.DAO.TaiKhoanDAO;
 import com.example.mailisa_beauty.Login.dang_Nhap;
 import com.example.mailisa_beauty.Model.TaiKhoan;
 import com.example.mailisa_beauty.frg_khachHang.Frg_kh_dichVu;
+import com.example.mailisa_beauty.frg_khachHang.Frg_kh_gioDichVu;
 import com.example.mailisa_beauty.frg_quanLy.QL_dichVu;
 import com.example.mailisa_beauty.frg_quanLy.QL_khachHang;
 import com.example.mailisa_beauty.frg_quanLy.QL_lichLamViec;
@@ -204,7 +205,11 @@ public class Nav_VIEW extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
-                if (item.getItemId()==R.id.nav_dichVuKH){
+                if (item.getItemId()==R.id.nav_datLichKH){
+                    setTitle("Đặt lịch");
+                    Frg_kh_gioDichVu frggioDichVu = new Frg_kh_gioDichVu();
+                    replaceFrg(frggioDichVu);
+                }else if (item.getItemId()==R.id.nav_dichVuKH){
                     setTitle("Dịch vụ");
                     Frg_kh_dichVu frgDichVu = new Frg_kh_dichVu();
                     replaceFrg(frgDichVu);

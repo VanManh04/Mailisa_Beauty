@@ -21,11 +21,11 @@
         android:layout_marginRight="20dp">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edsdt_DLNV"
+            android:id="@+id/edten_DLLLV"
             android:inputType="number"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Tên"/>
+            android:hint="Họ tên"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -36,10 +36,10 @@
         android:layout_marginRight="20dp">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edhoTen_DLNV"
+            android:id="@+id/edngayBatDau_DLLLV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint=" Họ tên"/>
+            android:hint="Ngày bắt đầu làm việc"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -50,10 +50,10 @@
         android:layout_marginRight="20dp">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edmatKhau_DLNV"
+            android:id="@+id/edca_DLLLV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint=" Mật khẩu"/>
+            android:hint="Ca làm việc"/>
     </com.google.android.material.textfield.TextInputLayout>
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
@@ -63,10 +63,10 @@
         android:layout_marginRight="20dp">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/ednhapLaiMatKhau_DLNV"
+            android:id="@+id/edghiChu_DLLLV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint=" Nhập lại mật khẩu"/>
+            android:hint="Ghi chú"/>
     </com.google.android.material.textfield.TextInputLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -74,7 +74,7 @@
         android:orientation="horizontal"
         android:layout_margin="20dp">
         <Button
-            android:id="@+id/btnSaveSach"
+            android:id="@+id/btnSave_DLLLV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Lưu"
@@ -83,7 +83,7 @@
             android:backgroundTint="#56A85A"
             android:layout_weight="1"/>
         <Button
-            android:id="@+id/btnCancelSach"
+            android:id="@+id/btnCancel_DLLLV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Hủy"
