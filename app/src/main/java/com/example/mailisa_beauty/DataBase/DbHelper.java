@@ -133,18 +133,17 @@ public class DbHelper extends SQLiteOpenHelper {
                 "maDV INTEGER REFERENCES DichVu(maDV)," +
                 "ngayDat DATE NOT NULL," +
                 "gioDat TEXT NOT NULL," +
-                "tongTien INTEGER NOT NULL," +
                 "PTTT TEXT NOT NULL," +
                 "trangThat TEXT NOT NULL," +
                 "feedBack TEXT ," +
                 "ghiChu TEXT)";
         db.execSQL(CreateTableLichKhachHang);
 
-//        String data_LKH = "INSERT INTO LichKhachHang VALUES" +
-//                "(1,1,1,'2023/09/23','12:30','Sáng','colich')," +
-//                "(2,6,3,'2023/08/22','9:10','Chiều','1234')," +
-//                "(3,7,2,'2023/07/21','15:20','Chiều','1235')";
-//        db.execSQL(data_LKH);
+        String data_LKH = "INSERT INTO LichKhachHang VALUES" +
+                "(1,1,1,'2023/09/23','12:30','Chuyển khoản','Đang chờ','feedBack','ghiChu')," +
+                "(2,6,3,'2023/08/22','9:10','Tiền mặt','Đã xác nhận','feedBack','ghiChu')," +
+                "(3,7,2,'2023/07/21','15:20','Tiền mặt','Bị hủy','feedBack','ghiChu')";
+        db.execSQL(data_LKH);
     }
 
     @Override

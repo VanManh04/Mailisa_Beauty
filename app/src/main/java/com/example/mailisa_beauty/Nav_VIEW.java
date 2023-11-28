@@ -208,6 +208,12 @@ public class Nav_VIEW extends AppCompatActivity {
                 if (item.getItemId()==R.id.nav_datLichKH){
                     setTitle("Đặt lịch");
                     Frg_kh_gioDichVu frggioDichVu = new Frg_kh_gioDichVu();
+                    //Sent String to Frg_kh_gioDichVu
+                    Bundle bundle = new Bundle();
+                    String idTK = String.valueOf(taiKhoan.getMa_TK());
+                    bundle.putString("key_idTK", idTK);
+                    // Set the arguments to the fragment
+                    frggioDichVu.setArguments(bundle);
                     replaceFrg(frggioDichVu);
                 }else if (item.getItemId()==R.id.nav_dichVuKH){
                     setTitle("Dịch vụ");

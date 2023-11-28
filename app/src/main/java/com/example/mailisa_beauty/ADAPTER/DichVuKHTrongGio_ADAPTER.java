@@ -32,6 +32,7 @@ import java.util.ArrayList;
 public class DichVuKHTrongGio_ADAPTER extends RecyclerView.Adapter<DichVuKHTrongGio_ADAPTER.ViewHolder> {
     private final Context context;
     private final ArrayList<DichVuTrongGio> list;
+    private String dataMaTK="null";
     DichVuTrongGio_DAO dichVuTrongGio_dao;
     DichVuDAO dichVuDAO;
 
@@ -41,6 +42,14 @@ public class DichVuKHTrongGio_ADAPTER extends RecyclerView.Adapter<DichVuKHTrong
         dichVuTrongGio_dao = new DichVuTrongGio_DAO(context);
         dichVuDAO = new DichVuDAO(context);
     }
+    public DichVuKHTrongGio_ADAPTER(Context context, ArrayList<DichVuTrongGio> list,String dataMaTK) {
+        this.context = context;
+        this.list = list;
+        this.dataMaTK = dataMaTK;
+        dichVuTrongGio_dao = new DichVuTrongGio_DAO(context);
+        dichVuDAO = new DichVuDAO(context);
+    }
+
 
     public interface OnItemClickListener {
         void onItemClick(int position);
@@ -81,7 +90,7 @@ public class DichVuKHTrongGio_ADAPTER extends RecyclerView.Adapter<DichVuKHTrong
                 dichVuTrongGio.setSoLuong(slcong);
                 if (dichVuTrongGio_dao.update(dichVuTrongGio) > 0) {
                     list.clear();
-                    list.addAll(dichVuTrongGio_dao.getAll());
+                    list.addAll(dichVuTrongGio_dao.getAllByMaTK(dataMaTK));
                     notifyDataSetChanged();
 //                    Toast.makeText(context, "Sửa thành công!", Toast.LENGTH_SHORT).show();
                 } else {
@@ -102,7 +111,7 @@ public class DichVuKHTrongGio_ADAPTER extends RecyclerView.Adapter<DichVuKHTrong
                     dichVuTrongGio.setSoLuong(sltru);
                     if (dichVuTrongGio_dao.update(dichVuTrongGio) > 0) {
                         list.clear();
-                        list.addAll(dichVuTrongGio_dao.getAll());
+                        list.addAll(dichVuTrongGio_dao.getAllByMaTK(dataMaTK));
                         notifyDataSetChanged();
 //                    Toast.makeText(context, "Sửa thành công!", Toast.LENGTH_SHORT).show();
                     } else {
@@ -138,7 +147,7 @@ public class DichVuKHTrongGio_ADAPTER extends RecyclerView.Adapter<DichVuKHTrong
                     public void onClick(DialogInterface dialog, int which) {
                         if (dichVuTrongGio_dao.delete(dichVuTrongGio.getMaDVTG()) > 0) {
                             list.clear();
-                            list.addAll(dichVuTrongGio_dao.getAll());
+                            list.addAll(dichVuTrongGio_dao.getAllByMaTK(dataMaTK));
                             notifyDataSetChanged();
                             Toast.makeText(context, "Xóa thành công!", Toast.LENGTH_SHORT).show();
                         } else {

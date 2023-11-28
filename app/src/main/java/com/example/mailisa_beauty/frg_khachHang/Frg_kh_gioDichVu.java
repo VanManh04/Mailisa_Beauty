@@ -38,14 +38,21 @@ public class Frg_kh_gioDichVu extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.frg_kh_giodichvu, container, false);
 
+        String dataMaTK="null";
+        Bundle bundle = getArguments();
+        if (bundle != null) {
+            dataMaTK = bundle.getString("key_idTK");
+            // Now you have the string data, you can use it as needed
+        }
+//        Toast.makeText(getActivity(), dataMaTK, Toast.LENGTH_SHORT).show();
 
         rcvFRGKHGDV = view.findViewById(R.id.rcvFRGKHGDV);
         dichVuTrongGio_dao = new DichVuTrongGio_DAO(getActivity());
-        list = (ArrayList<DichVuTrongGio>) dichVuTrongGio_dao.getAll();
+        list = (ArrayList<DichVuTrongGio>) dichVuTrongGio_dao.getAllByMaTK(dataMaTK);
         LinearLayoutManager layout = new LinearLayoutManager(getActivity());
         rcvFRGKHGDV.setLayoutManager(layout);
 
-        dichVuKHTrongGioAdapter = new DichVuKHTrongGio_ADAPTER(getActivity(), list);
+        dichVuKHTrongGioAdapter = new DichVuKHTrongGio_ADAPTER(getActivity(), list,dataMaTK);
         rcvFRGKHGDV.setAdapter(dichVuKHTrongGioAdapter);
         return view;
     }
