@@ -17,16 +17,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
 import com.example.mailisa_beauty.DAO.DichVuDAO;
 import com.example.mailisa_beauty.Model.DichVu;
-import com.example.mailisa_beauty.Model.TaiKhoan;
 import com.example.mailisa_beauty.R;
-import com.example.mailisa_beauty.frg_khachHang.Frg_kh_chiTietDichVu;
 
 import java.util.ArrayList;
 

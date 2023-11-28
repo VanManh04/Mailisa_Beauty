@@ -232,7 +232,7 @@ public class Nav_VIEW extends AppCompatActivity {
                     QL_dichVu qlDichVu = new QL_dichVu();
                     replaceFrg(qlDichVu);
                 }else if (item.getItemId()==R.id.nav_trangChuKH){
-                    setTitle("  ");
+                    setTitle("");
                     QL_trangChu frtrangChu = new QL_trangChu();
                     replaceFrg(frtrangChu);
                 }else if (item.getItemId()==R.id.nav_nhanVienQL){

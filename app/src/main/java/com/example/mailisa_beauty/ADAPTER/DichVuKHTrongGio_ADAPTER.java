@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -81,6 +82,32 @@ public class DichVuKHTrongGio_ADAPTER extends RecyclerView.Adapter<DichVuKHTrong
             holder.tvTenDV_itDVTG.setText(dichVu.getTenDV());
         }
         holder.soLuong_itDVTG.setText(String.valueOf(dichVuTrongGio.getSoLuong()));
+        if (dichVuTrongGio.isCheck()==true){
+            holder.checkbox_itDVTG.setChecked(true);
+        }else{
+            holder.checkbox_itDVTG.setChecked(false);
+        }
+
+        holder.checkbox_itDVTG.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked==true){
+                    dichVuTrongGio.setCheck(true);
+                    holder.checkbox_itDVTG.setChecked(true);
+                }else{
+                    dichVuTrongGio.setCheck(false);
+                    holder.checkbox_itDVTG.setChecked(false);
+                }
+                if (dichVuTrongGio_dao.updateCheck(dichVuTrongGio) > 0) {
+                    list.clear();
+                    list.addAll(dichVuTrongGio_dao.getAllByMaTK(dataMaTK));
+                    notifyDataSetChanged();
+                    Toast.makeText(context, "Sửa thành công!", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(context, "Sửa thất bại.", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
         holder.slCong_itDVTG.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -130,10 +157,6 @@ public class DichVuKHTrongGio_ADAPTER extends RecyclerView.Adapter<DichVuKHTrong
             holder.tvgiaDV_itDVTG.setPaintFlags(holder.tvgiaDV_itDVTG.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
             holder.tvgiaDV_itDVTG.setText(String.valueOf("Giá gốc: " +dichVu.getGiaDV())+" VNĐ");
             holder.tvgiaSALE_itDVTG.setText(String.valueOf("Giá SALE: " +dichVu.getGiaSALE())+" VNĐ");
-        }
-
-        if (dichVuTrongGio.isCheck() == true) {
-            holder.checkbox_itDVTG.setChecked(true);
         }
         holder.imgdelete_itDVTG.setOnClickListener(new View.OnClickListener() {
             @Override

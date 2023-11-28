@@ -43,6 +43,12 @@ public class DichVuTrongGio_DAO {
         return db.update("DichVuTrongGio", values, "maDVTG= ?", new String[]{String.valueOf(dvtg.getMaDVTG())});
     }
 
+    public int updateCheck(DichVuTrongGio dvtg) {
+        ContentValues values = new ContentValues();
+        values.put("isCheck", dvtg.isCheck());
+        return db.update("DichVuTrongGio", values, "maDVTG= ?", new String[]{String.valueOf(dvtg.getMaDVTG())});
+    }
+
     public int delete(int ma_dvtg) {
         return db.delete("DichVuTrongGio", "maDVTG = ?", new String[]{String.valueOf(ma_dvtg)});
     }
@@ -81,6 +87,11 @@ public class DichVuTrongGio_DAO {
     public List<DichVuTrongGio> getAllByMaTK(String maTK) {
         String sql = "SELECT * FROM DichVuTrongGio WHERE maTK = ?";
         return getData(sql, String.valueOf(maTK));
+    }
+    public int setAllTrangThai(boolean inputSET) {
+        ContentValues values = new ContentValues();
+        values.put("isCheck", inputSET ? 1 : 0);
+        return db.update("DichVuTrongGio", values, null, null);
     }
 
 }

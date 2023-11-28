@@ -13,9 +13,12 @@
         android:theme="@style/Theme.Mailisa_Beauty"
         tools:targetApi="31">
         <activity
-            android:name=".Nav_VIEW"
-            android:theme="@style/Base.Theme.Mailisa_Beauty"
+            android:name=".frg_khachHang.Activity_kh_datLich"
             android:exported="false" />
+        <activity
+            android:name=".Nav_VIEW"
+            android:exported="false"
+            android:theme="@style/Base.Theme.Mailisa_Beauty" />
         <activity
             android:name=".Login.dang_Ky"
             android:exported="false" />

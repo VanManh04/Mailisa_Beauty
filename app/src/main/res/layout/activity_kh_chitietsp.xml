@@ -60,7 +60,7 @@
            android:id="@+id/txtgiaspOld_ct"
            android:textStyle="bold"
            android:textColor="#333333"
-           android:text="giá sale"/>
+           android:text="giá "/>
 
 
        <TextView

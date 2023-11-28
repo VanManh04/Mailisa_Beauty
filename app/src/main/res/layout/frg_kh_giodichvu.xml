@@ -6,10 +6,47 @@
     tools:context=".frg_khachHang.Frg_kh_gioDichVu">
 
     <!-- TODO: Update blank fragment layout -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rcvFRGKHGDV"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    </androidx.recyclerview.widget.RecyclerView>
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginRight="230dp"
+                android:orientation="horizontal">
+                <CheckBox
+                    android:id="@+id/checkbox_frg_kh_giohang"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Tất cả"
+                    android:gravity="center_vertical"
+                    android:textColor="@color/black"
+                    android:textSize="14dp" />
+            </LinearLayout>
+            <Button
+                android:id="@+id/btnDatLich_frg_kh_giohang"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/backgrow_btndatlich"
+                android:text="Đặt lịch"
+                android:textColor="@color/white1" />
+        </LinearLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rcvFRGKHGDV"
+            android:layout_width="match_parent"
+            android:layout_height="685dp">
+        </androidx.recyclerview.widget.RecyclerView>
+    </LinearLayout>
 
 </FrameLayout>
