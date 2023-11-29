@@ -179,10 +179,10 @@ public class QL_dichVu extends Fragment {
                             dichVu.setGiaSALE(Integer.parseInt(giaSALE));
                         } else if (trangThai.equals("NEW")) {
                             dichVu.setTrangThai("NEW");
-                            dichVu.setGiaSALE(0);
+                            dichVu.setGiaSALE(Integer.parseInt(giaDV));
                         } else if (trangThai.equals("Không")) {
                             dichVu.setTrangThai("KHONG");
-                            dichVu.setGiaSALE(0);
+                            dichVu.setGiaSALE(Integer.parseInt(giaDV));
                         } else {
                             Toast.makeText(getActivity(), "Trạng thái vô lý !", Toast.LENGTH_SHORT).show();
                         }

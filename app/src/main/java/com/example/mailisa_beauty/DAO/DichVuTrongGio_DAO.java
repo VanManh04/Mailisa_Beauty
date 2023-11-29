@@ -93,5 +93,22 @@ public class DichVuTrongGio_DAO {
         values.put("isCheck", inputSET ? 1 : 0);
         return db.update("DichVuTrongGio", values, null, null);
     }
+    public List<DichVuTrongGio> getAllByTrangThaiAndMaTK(boolean trangThai, String maTK) {
+        String sql = "SELECT * FROM DichVuTrongGio WHERE isCheck = ? AND maTK = ?";
+        return getData(sql, trangThai ? "1" : "0", maTK);
+    }
+    public int CheckedItemTrue(String maTK) {
+        String sql = "SELECT COUNT(*) FROM DichVuTrongGio WHERE isCheck = 1 AND maTK = ?";
+        Cursor cursor = db.rawQuery(sql, new String[]{maTK});
 
+        if (cursor.moveToFirst()) {
+            //true==1
+            int count = cursor.getInt(0);
+            cursor.close();
+            return count;
+        } else {
+            cursor.close();
+            return 0;
+        }
+    }
 }

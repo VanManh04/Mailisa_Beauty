@@ -24,6 +24,7 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/hoTen_ATVT_KHDL"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
@@ -32,6 +33,7 @@
                     android:textSize="16dp" />
 
                 <TextView
+                    android:id="@+id/sdt_ATVT_KHDL"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
@@ -40,7 +42,7 @@
                     android:textSize="16dp" />
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rcvDLKK"
+                    android:id="@+id/rcv_ATVT_KHDL"
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
                     android:layout_margin="5dp" />
@@ -61,10 +63,14 @@
                     android:layout_margin="5dp">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/edtenDV_DLDV"
+                        android:id="@+id/edNgayDat_ATVT_KHDL"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Ngày đặt"
+                        android:clickable="false"
+                        android:focusable="false"
+                        android:inputType="none"
+                        android:cursorVisible="false"
                         android:textColor="@color/black" />
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -74,10 +80,14 @@
                     android:layout_margin="5dp">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/edtenDV_DLDV1"
+                        android:id="@+id/edGioDat_ATVT_KHDL"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Giờ đặt"
+                        android:clickable="false"
+                        android:focusable="false"
+                        android:inputType="none"
+                        android:cursorVisible="false"
                         android:textColor="@color/black" />
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -87,9 +97,11 @@
                     android:layout_margin="10dp"
                     android:text="Lựa chọn phương thức thanh toán:"
                     android:textColor="@color/black"
-                    android:textSize="16dp" />
+                    android:textSize="20dp"
+                    android:textStyle="bold"/>
 
                 <RadioGroup
+                    android:id="@+id/gropRadio_ATVT_KHDL"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
@@ -145,6 +157,7 @@
                         android:textSize="16dp" />
 
                     <TextView
+                        android:id="@+id/tvtienGoc_ATVT_KHDL"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
@@ -171,6 +184,7 @@
                         android:textSize="16dp" />
 
                     <TextView
+                        android:id="@+id/tvtienSale_ATVT_KHDL"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
@@ -183,6 +197,7 @@
                 </LinearLayout>
 
                 <Button
+                    android:id="@+id/btnThanhToan_ATVT_KHDL"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="20dp"

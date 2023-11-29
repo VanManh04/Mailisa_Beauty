@@ -10,7 +10,7 @@ public class DbHelper extends SQLiteOpenHelper {
     private static final String DbName = "QLDT";
 
     public DbHelper(@Nullable Context context) {
-        super(context, DbName, null, 1);
+        super(context, DbName, null, 2);
     }
 
     @Override
@@ -100,7 +100,7 @@ public class DbHelper extends SQLiteOpenHelper {
                 "Và công nghệ này sẽ làm cho làn da tổn thương trong chế độ an toàn theo cơ chế tự phục hồi của làn da, nó sẽ kích thích elastin sản sinh ra collagen. Ngoài ra công nghệ này giúp loại bỏ hết tất cả các da sần sùi gồ ghề vỏ cam, làm cho làn da căng trắng mịn màng. Không còn tình trạng lồi lõm sần sùi, hỗ trợ điều tiết lượng nhờn, se khít lỗ chân lông, giúp hiệu quả ngay sau lần đầu sử dụng dịch vụ. Mailisa hy vọng sau khi quý khách hàng sử dụng dịch vụ lần đầu tiên làn da sẹo rỗ không chỉ được cải thiện đáng kể mà còn căng trắng mịn. chất da dai, lượng nhờn và lỗ chân lông được se khít.'),"+
                 "(5,'android.resource://com.example.mailisa_beauty/2131165478','LÀM ĐẸP DA MỤN THÂM BẰNG CÔNG NGHỆ CAO\n','PS','SALE',2000000,1000000,'Nguyên lý loại bỏ mụn bằng công nghệ Pixel CO2 tại Mailisa:\n" +
                 "Khi bác sĩ, chuyên viên chiếu ánh sáng trực tiếp vào từng cồi mụn mục đích nghiền nát, phá vỡ, phân hủy tận gốc của từng cồi mụn. Ngoài ra công nghệ pixel CO2 này có thêm một chức năng thông qua một thấu kính tạo ra hàng ngàn vi điểm trực tiếp bắn vào những vùng da không bị mụn,mục đích làm cho làn da tổn thương trong chế độ an toàn theo cơ chế tự phục hồi của làn da, nó sẽ kích thích elastin sản sinh ra collagen.'),"+
-                "(6,'android.resource://com.example.mailisa_beauty/2131165479','PHẪU THUẬT KHÂU TẠO HÌNH MẮT 2 MÍ\n','PS','NEW',1600000,1000000,'“Khâu tạo hình mắt 2 mí” là một phương pháp tiểu phẫu nhưng cũng cần sự tinh tế và đòi hỏi tay nghề bác sĩ giỏi, có cặp mắt tinh tế và gu thẩm mỹ cao để xác định chính xác đường mí cần nhấn sao cho phù hợp với khuôn mặt và hốc mắt, giúp khách hàng trẻ trung, xinh đẹp. Thời gian thực hiện khoảng 20 - 30 phút'),"+
+                "(6,'android.resource://com.example.mailisa_beauty/2131165479','PHẪU THUẬT KHÂU TẠO HÌNH MẮT 2 MÍ\n','PS','NEW',1600000,1600000,'“Khâu tạo hình mắt 2 mí” là một phương pháp tiểu phẫu nhưng cũng cần sự tinh tế và đòi hỏi tay nghề bác sĩ giỏi, có cặp mắt tinh tế và gu thẩm mỹ cao để xác định chính xác đường mí cần nhấn sao cho phù hợp với khuôn mặt và hốc mắt, giúp khách hàng trẻ trung, xinh đẹp. Thời gian thực hiện khoảng 20 - 30 phút'),"+
                 "(7,'android.resource://com.example.mailisa_beauty/2131165480','PHUN MÀY CHẠM HẠT SƯƠNG BAY\n','KHAC','KHONG',22000000,22000000,'Với phương châm “Trao Bạn Nét Đẹp Mà Tự Nhiên”, khi mỗi quý khách hàng đến với Mailisa sẽ được đội ngũ nhân viên chuyên môn cao, tay nghề giỏi tư vấn chọn màu, thiết kế vẽ mẫu phù hợp với từng khuôn mặt.\n" +
                 "\n" +
                 "Khi khách hàng thực sự hài lòng thì chuyên viên mới bắt đầu phun theo dáng mẫu vừa vẽ.\n" +
@@ -116,7 +116,7 @@ public class DbHelper extends SQLiteOpenHelper {
                 "maTK INTEGER REFERENCES TaiKhoan(maTK)," +
                 "maDV INTEGER REFERENCES DichVu(maDV)," +
                 "soLuong INTEGER NOT NULL," +
-                "isCheck INTEGER NOT NULL)";
+                "isCheck INTEGER)";
         db.execSQL(CreateTableDichVuTrongGio);
         String data_DVTG = "INSERT INTO DichVuTrongGio VALUES" +
                 "(1,1,1,1,1)," +
@@ -151,6 +151,8 @@ public class DbHelper extends SQLiteOpenHelper {
         if (newVersion != oldVersion) {
             db.execSQL("DROP TABLE IF EXISTS TaiKhoan");
             db.execSQL("DROP TABLE IF EXISTS DichVu");
+            db.execSQL("DROP TABLE IF EXISTS LichLamViec");
+            db.execSQL("DROP TABLE IF EXISTS DichVuTrongGio");
             onCreate(db);
         }
     }

@@ -269,14 +269,13 @@ public class DichVuQL_ADAPTER extends RecyclerView.Adapter<DichVuQL_ADAPTER.View
                     }
                     if (trangThai.equals("SALE")) {
                         dichVu1.setTrangThai("SALE");
-
                         dichVu1.setGiaSALE(Integer.parseInt(giaSALE));
                     } else if (trangThai.equals("NEW")) {
                         dichVu1.setTrangThai("NEW");
-                        dichVu1.setGiaSALE(0);
+                        dichVu1.setGiaSALE(dichVu1.getGiaDV());
                     } else if (trangThai.equals("Không")) {
                         dichVu1.setTrangThai("KHONG");
-                        dichVu1.setGiaSALE(0);
+                        dichVu1.setGiaSALE(dichVu1.getGiaDV());
                     } else {
                         Toast.makeText(context, "Trạng thái vô lý !", Toast.LENGTH_SHORT).show();
                     }

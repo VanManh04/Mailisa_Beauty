@@ -60,6 +60,7 @@ public class Frg_kh_gioDichVu extends Fragment {
 
         dichVuTrongGio_dao = new DichVuTrongGio_DAO(getActivity());
         int setLan1 = dichVuTrongGio_dao.setAllTrangThai(false);
+
         list = (ArrayList<DichVuTrongGio>) dichVuTrongGio_dao.getAllByMaTK(dataMaTK);
         LinearLayoutManager layout = new LinearLayoutManager(getActivity());
         rcvFRGKHGDV.setLayoutManager(layout);
@@ -91,11 +92,18 @@ public class Frg_kh_gioDichVu extends Fragment {
         });
 
 
+        String finalDataMaTK1 = dataMaTK;
         btnDatLich_frg_kh_giohang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), Activity_kh_datLich.class);
-                startActivity(intent);
+                int checkTrue = dichVuTrongGio_dao.CheckedItemTrue(String.valueOf(finalDataMaTK1));
+                if (checkTrue>0){
+                    Intent intent = new Intent(getActivity(), Activity_kh_datLich.class);
+                    intent.putExtra("key_idTK2", finalDataMaTK);
+                    startActivity(intent);
+                }else {
+                    Toast.makeText(getActivity(), "Bạn chưa chọn dịch vụ!", Toast.LENGTH_SHORT).show();
+                }
             }
         });
         return view;
