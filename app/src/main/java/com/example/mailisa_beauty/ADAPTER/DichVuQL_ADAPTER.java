@@ -107,12 +107,11 @@ public class DichVuQL_ADAPTER extends RecyclerView.Adapter<DichVuQL_ADAPTER.View
             }
         });
 
-        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onLongClick(View v) {
+            public void onClick(View v) {
                 opendialogUPDATE(dichVu);
                 notifyDataSetChanged();
-                return true;
             }
         });
     }

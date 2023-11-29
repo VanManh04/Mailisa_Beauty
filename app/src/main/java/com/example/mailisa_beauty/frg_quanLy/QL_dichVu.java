@@ -2,6 +2,8 @@ package com.example.mailisa_beauty.frg_quanLy;
 
 import static android.app.Activity.RESULT_OK;
 
+import static com.gun0912.tedpermission.provider.TedPermissionProvider.context;
+
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -32,6 +34,9 @@ import com.example.mailisa_beauty.DAO.DichVuDAO;
 import com.example.mailisa_beauty.Model.DichVu;
 import com.example.mailisa_beauty.R;
 import com.squareup.picasso.Picasso;
+import com.tsuryo.swipeablerv.SwipeLeftRightCallback;
+import com.tsuryo.swipeablerv.SwipeableRecyclerView;
+
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -41,7 +46,7 @@ public class QL_dichVu extends Fragment {
         // Required empty public constructor
     }
 
-    RecyclerView rcvDichVu;
+    SwipeableRecyclerView rcvDichVu;
     Button fladdDV;
     DichVuDAO dichVuDAO;
     DichVuQL_ADAPTER dichVuADAPTER;
@@ -72,6 +77,45 @@ public class QL_dichVu extends Fragment {
                 opendialogADD();
             }
         });
+        rcvDichVu.setListener(new SwipeLeftRightCallback.Listener() {
+            @Override
+            public void onSwipedRight(int position) {
+                dichVuADAPTER.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onSwipedLeft(int position) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                builder.setTitle("Cảnh báo");
+                builder.setIcon(R.drawable.icon_warning);
+                builder.setMessage("Bạn có muốn xóa không?");
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Xử lý logic khi người dùng chọn Yes
+                        DichVu dichVu = list.get(position); // Lấy đối tượng DichVu tại vị trí vuốt
+                        if (dichVuDAO.delete(dichVu.getMaDV()) > 0) {
+                            list.remove(position);
+                            dichVuADAPTER.notifyDataSetChanged();
+                            Toast.makeText(getActivity(), "Xóa thành công!", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(getActivity(), "Xóa thất bại", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Xử lý logic khi người dùng chọn No
+                        dialog.dismiss();
+                        dichVuADAPTER.notifyDataSetChanged();
+                    }
+                });
+                AlertDialog alertDialog = builder.create();
+                alertDialog.show();
+            }
+        });
+
         return view;
     }
 

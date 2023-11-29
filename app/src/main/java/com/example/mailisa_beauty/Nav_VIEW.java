@@ -206,7 +206,7 @@ public class Nav_VIEW extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
                 if (item.getItemId()==R.id.nav_datLichKH){
-                    setTitle("Đặt lịch");
+                    setTitle("Giỏ dịch vụ");
                     Frg_kh_gioDichVu frggioDichVu = new Frg_kh_gioDichVu();
                     //Sent String to Frg_kh_gioDichVu
                     Bundle bundle = new Bundle();

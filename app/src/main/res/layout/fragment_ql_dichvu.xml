@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".frg_quanLy.QL_dichVu">
 
     <LinearLayout
@@ -20,13 +21,14 @@
         android:layout_gravity="center"/>
 
     <!-- TODO: Update blank fragment layout -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rcvDVQL"
-        android:layout_gravity="center"
-        android:layout_margin="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    </androidx.recyclerview.widget.RecyclerView>
+        <com.tsuryo.swipeablerv.SwipeableRecyclerView
+            android:id="@+id/rcvDVQL"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:rightBgColor="@color/red"
+            app:rightText="Xóa"
+            app:textColor="@android:color/white"
+            app:textSize="20sp" />
 
     </LinearLayout>
 
