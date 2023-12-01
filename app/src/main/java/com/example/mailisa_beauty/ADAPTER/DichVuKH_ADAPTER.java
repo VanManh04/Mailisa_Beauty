@@ -3,19 +3,24 @@ package com.example.mailisa_beauty.ADAPTER;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Paint;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mailisa_beauty.DAO.DichVuDAO;
+import com.example.mailisa_beauty.DAO.DichVuTrongGio_DAO;
 import com.example.mailisa_beauty.Model.DichVu;
+import com.example.mailisa_beauty.Model.DichVuTrongGio;
 import com.example.mailisa_beauty.R;
 import com.example.mailisa_beauty.frg_khachHang.Activity_kh_ChiTietSP;
 
@@ -25,13 +30,12 @@ public class DichVuKH_ADAPTER extends RecyclerView.Adapter<DichVuKH_ADAPTER.View
     private final Context context;
     private final ArrayList<DichVu> list;
     DichVuDAO dichVuDAO;
+    DichVuTrongGio_DAO dichVuTrongGio_dao;
 
     public DichVuKH_ADAPTER(Context context, ArrayList<DichVu> list) {
         this.context = context;
         this.list = list;
         dichVuDAO = new DichVuDAO(context);
-
-
     }
 
     public interface OnItemClickListener {
@@ -89,24 +93,32 @@ public class DichVuKH_ADAPTER extends RecyclerView.Adapter<DichVuKH_ADAPTER.View
             @Override
             public void onClick(View view) {
 
-                String masp = ""+list.get(position).getMaDV();
-                String anh = String.valueOf(list.get(position).getHinhAnh());
-                String ten = list.get(position).getTenDV();
-                String gia =""+ list.get(position).getGiaSALE();
-                String loai = list.get(position).getLoaiDV();
-                String mota = list.get(position).getGhiChu();
+                String maDV = ""+list.get(position).getMaDV();
 
 
                 Context context = view.getContext();
                 Intent intent = new Intent(context, Activity_kh_ChiTietSP.class);
-                intent.putExtra("masp", masp);
-                intent.putExtra("anh",anh);
-                intent.putExtra("ten", ten);
-                intent.putExtra("gia", gia);
-                intent.putExtra("loai",loai);
-                intent.putExtra("mota", mota);
-
+                intent.putExtra("maDV", maDV);
                 context.startActivity(intent);
+            }
+        });
+        
+        holder.btnthemdatlich_itDV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+                String DATA_MATK = preferences.getString("DATA_MATK", "null");
+                dichVuTrongGio_dao = new DichVuTrongGio_DAO(context);
+                DichVuTrongGio dichVuTrongGio = new DichVuTrongGio();
+                dichVuTrongGio.setMaTK(Integer.parseInt(DATA_MATK));
+                dichVuTrongGio.setMaDV(list.get(position).getMaDV());
+                dichVuTrongGio.setSoLuong(1);
+                dichVuTrongGio.setCheck(false);
+                if (dichVuTrongGio_dao.insert(dichVuTrongGio)>0){
+                    Toast.makeText(context, "Thêm vào giỏ dịch vụ thành công !", Toast.LENGTH_SHORT).show();
+                }else {
+                    Toast.makeText(context, "Lỗi", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
@@ -120,7 +132,7 @@ public class DichVuKH_ADAPTER extends RecyclerView.Adapter<DichVuKH_ADAPTER.View
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView tvTenDV_itDV, tvgiaDV_itDV,tvloaiDV_itDV,tvtrangThai_itDV,tvghiChu_itDV,tvgiaSALE_itDV;
         ImageView img_itDV,imgdelete_itDV;
-        Button btndatlich_itDV;
+        Button btnthemdatlich_itDV;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -132,7 +144,7 @@ public class DichVuKH_ADAPTER extends RecyclerView.Adapter<DichVuKH_ADAPTER.View
             tvgiaSALE_itDV = itemView.findViewById(R.id.tvgiaSALE_itDV);
             img_itDV = itemView.findViewById(R.id.img_itDV);
             imgdelete_itDV = itemView.findViewById(R.id.imgdelete_itDV);
-            btndatlich_itDV = itemView.findViewById(R.id.btndatlich_itDV);
+            btnthemdatlich_itDV = itemView.findViewById(R.id.btndatlich_itDV);
         }
     }
 }

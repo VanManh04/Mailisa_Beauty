@@ -97,6 +97,15 @@ public class DichVuTrongGio_DAO {
         String sql = "SELECT * FROM DichVuTrongGio WHERE isCheck = ? AND maTK = ?";
         return getData(sql, trangThai ? "1" : "0", maTK);
     }
+    public int setTrangThaiByMaTKAndMaDV(boolean trangThai, String maTK, String maDV) {
+        ContentValues values = new ContentValues();
+        values.put("isCheck", trangThai ? 1 : 0);
+
+        String whereClause = "maTK = ? AND maDV = ?";
+        String[] whereArgs = {maTK, maDV};
+
+        return db.update("DichVuTrongGio", values, whereClause, whereArgs);
+    }
     public int CheckedItemTrue(String maTK) {
         String sql = "SELECT COUNT(*) FROM DichVuTrongGio WHERE isCheck = 1 AND maTK = ?";
         Cursor cursor = db.rawQuery(sql, new String[]{maTK});
@@ -109,6 +118,30 @@ public class DichVuTrongGio_DAO {
         } else {
             cursor.close();
             return 0;
+        }
+    }
+    // Trả về đối tượng DichVuTrongGio được chọn (isCheck == true) trong giỏ hàng của một tài khoản cụ thể
+    @SuppressLint("Range")
+    public DichVuTrongGio getSelectedDichVuTrongGioByMaTK(String maTK) {
+        String sql = "SELECT * FROM DichVuTrongGio " +
+                "WHERE isCheck = 1 AND maTK = ?";
+
+        Cursor cursor = db.rawQuery(sql, new String[]{maTK});
+
+        if (cursor.moveToFirst()) {
+            DichVuTrongGio dichVuTrongGio = new DichVuTrongGio();
+            dichVuTrongGio.setMaDVTG(cursor.getInt(cursor.getColumnIndex("maDVTG")));
+            dichVuTrongGio.setMaTK(cursor.getInt(cursor.getColumnIndex("maTK")));
+            dichVuTrongGio.setMaDV(cursor.getInt(cursor.getColumnIndex("maDV")));
+            dichVuTrongGio.setSoLuong(cursor.getInt(cursor.getColumnIndex("soLuong")));
+            int check = cursor.getInt(cursor.getColumnIndex("isCheck"));
+            dichVuTrongGio.setCheck(check == 1);
+
+            cursor.close();
+            return dichVuTrongGio;
+        } else {
+            cursor.close();
+            return null;
         }
     }
 }

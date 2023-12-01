@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/khung_test"
+        android:layout_margin="10dp">
+
+        <LinearLayout
+            android:layout_width="360dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:orientation="vertical">
+            <!-- Tên khách hàng hoặc số điện thoại -->
+            <TextView
+                android:id="@+id/texttenkh_ITFB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:text="Tên khách hàng" />
+
+            <!-- Số sao đánh giá -->
+            <RatingBar
+                android:id="@+id/ratingBar_ITFB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:numStars="5"
+                android:stepSize="1"
+                android:rating="0" />
+
+            <!-- Ô nhập ghi chú từ khách hàng -->
+            <TextView
+                android:id="@+id/ghiChuKH_ITFB"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nhập đánh giá"
+                android:textSize="17dp"/>
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:textStyle="bold"
+                android:layout_marginBottom="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Phản hồi của spa"
+                android:textSize="17dp"/>
+            <TextView
+                android:id="@+id/ghiChuQL_ITFB"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="17dp"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</LinearLayout>

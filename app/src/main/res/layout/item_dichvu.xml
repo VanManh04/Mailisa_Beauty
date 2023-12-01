@@ -116,15 +116,16 @@
                 android:visibility="gone"
                 android:layout_weight="1"
                 android:src="@drawable/icon_delete"/>
+
             <Button
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="10dp"
                 android:id="@+id/btndatlich_itDV"
-                android:backgroundTint="#4F9A42"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Thêm đặt lịch"
-                android:layout_gravity="end"/>
+                android:layout_gravity="end"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:backgroundTint="#4F9A42"
+                android:text="Thêm đặt lịch" />
         </LinearLayout>
 
     </LinearLayout>

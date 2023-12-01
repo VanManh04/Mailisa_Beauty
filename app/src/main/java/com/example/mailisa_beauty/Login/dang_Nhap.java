@@ -54,23 +54,23 @@ public class dang_Nhap extends AppCompatActivity {
         btnLogin = findViewById(R.id.btnLogin);
 
 
-//        // LẤY URI
-//        int imageResourceId = R.drawable.dv7_img;
-//        // Kiểm tra xem tài nguyên hình ảnh có tồn tại hay không
-//        if (imageResourceId != 0) {
-//            // Lấy URI của tài nguyên Drawable
-//            Uri imageUri = Uri.parse("android.resource://" + this.getPackageName() + "/" + imageResourceId);
-//
-//            // Bạn có thể sử dụng imageUri theo nhu cầu của mình ở đây
-//            // Ví dụ: đặt hình ảnh vào ImageView bằng Glide hoặc Picasso
-//            String Stringuri = String.valueOf(imageUri);
-//            Toast.makeText(this, Stringuri, Toast.LENGTH_SHORT).show();
-//            TextView n1 = findViewById(R.id.n1);
-//            n1.setText(Stringuri);
-//        } else {
-//            // Xử lý trường hợp tài nguyên không tồn tại
-//            // Ví dụ: hiển thị ảnh mặc định hoặc thông báo lỗi
-//        }
+        // LẤY URI
+        int imageResourceId = R.drawable.dv2_img;
+        // Kiểm tra xem tài nguyên hình ảnh có tồn tại hay không
+        if (imageResourceId != 0) {
+            // Lấy URI của tài nguyên Drawable
+            Uri imageUri = Uri.parse("android.resource://" + this.getPackageName() + "/" + imageResourceId);
+
+            // Bạn có thể sử dụng imageUri theo nhu cầu của mình ở đây
+            // Ví dụ: đặt hình ảnh vào ImageView bằng Glide hoặc Picasso
+            String Stringuri = String.valueOf(imageUri);
+            Toast.makeText(this, Stringuri, Toast.LENGTH_SHORT).show();
+            TextView n1 = findViewById(R.id.n1);
+            n1.setText(Stringuri);
+        } else {
+            // Xử lý trường hợp tài nguyên không tồn tại
+            // Ví dụ: hiển thị ảnh mặc định hoặc thông báo lỗi
+        }
         chua_cotaikhoan.setPaintFlags(chua_cotaikhoan.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
         chua_cotaikhoan.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -32,7 +32,7 @@ public class LichKhachHang_DAO {
         values.put("PTTT", Lkh.getPTTT());
         values.put("trangThat", Lkh.getTrangThai());
         values.put("feedBack", Lkh.getFeedBack());
-        values.put("ghiChu", sdf.format(Lkh.getGhiChu()));
+        values.put("ghiChu", Lkh.getGhiChu());
 
         return db.insert("LichKhachHang", null, values);
     }
@@ -46,7 +46,7 @@ public class LichKhachHang_DAO {
         values.put("PTTT", Lkh.getPTTT());
         values.put("trangThat", Lkh.getTrangThai());
         values.put("feedBack", Lkh.getFeedBack());
-        values.put("ghiChu", sdf.format(Lkh.getGhiChu()));
+        values.put("ghiChu", Lkh.getGhiChu());
         return db.update("LichKhachHang", values, "maLKH = ?", new String[]{String.valueOf(Lkh.getMaLKH())});
     }
 
@@ -59,7 +59,7 @@ public class LichKhachHang_DAO {
         Cursor cursor = db.rawQuery(sql, selectionArgs);
         while (cursor.moveToNext()) {
             LichKhachHang obj = new LichKhachHang();
-            obj.setMaLKH(cursor.getInt(cursor.getColumnIndex("maLLV")));
+            obj.setMaLKH(cursor.getInt(cursor.getColumnIndex("maLKH")));
             obj.setMaTK(cursor.getInt(cursor.getColumnIndex("maTK")));
             obj.setMaDV(cursor.getInt(cursor.getColumnIndex("maDV")));
             try {
@@ -82,4 +82,18 @@ public class LichKhachHang_DAO {
         String sql = "SELECT * FROM LichKhachHang";
         return getData(sql);
     }
+
+    //GET by maTK
+    public List<LichKhachHang> getByMaTK(int maTK) {
+        String sql = "SELECT * FROM LichKhachHang WHERE maTK = ?";
+        String[] selectionArgs = {String.valueOf(maTK)};
+        return getData(sql, selectionArgs);
+    }
+
+    public LichKhachHang getByMaLKH(int maLKH) {
+        String sql = "SELECT * FROM LichKhachHang WHERE maLKH=?";
+        List<LichKhachHang> list = getData(sql, String.valueOf(maLKH));
+        return list.isEmpty() ? null : list.get(0);
+    }
+
 }

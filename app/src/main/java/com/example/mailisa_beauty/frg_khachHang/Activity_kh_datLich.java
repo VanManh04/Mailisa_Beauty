@@ -2,14 +2,19 @@ package com.example.mailisa_beauty.frg_khachHang;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -26,15 +31,19 @@ import com.example.mailisa_beauty.ADAPTER.DichVuKHTrongGio_ADAPTER;
 import com.example.mailisa_beauty.ADAPTER.DichVuKH_ADAPTER;
 import com.example.mailisa_beauty.DAO.DichVuDAO;
 import com.example.mailisa_beauty.DAO.DichVuTrongGio_DAO;
+import com.example.mailisa_beauty.DAO.LichKhachHang_DAO;
 import com.example.mailisa_beauty.DAO.TaiKhoanDAO;
 import com.example.mailisa_beauty.Model.DichVu;
 import com.example.mailisa_beauty.Model.DichVuTrongGio;
+import com.example.mailisa_beauty.Model.LichKhachHang;
 import com.example.mailisa_beauty.Model.TaiKhoan;
 import com.example.mailisa_beauty.R;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Locale;
 
@@ -54,14 +63,15 @@ public class Activity_kh_datLich extends AppCompatActivity {
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
     String radioPTTT = "null";
     int giaGoc,giaSale;
+    LichKhachHang_DAO lichKhachHang_dao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_kh_datlich);
 
-        Intent intent = getIntent();
-        String dataMaTK = intent.getStringExtra("key_idTK2");
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        String DATA_MATK = preferences.getString("DATA_MATK", "null");
 
         toolbar = findViewById(R.id.toolbar); // Thay R.id.toolbar bằng ID của Toolbar trong XML
         setSupportActionBar(toolbar);
@@ -72,7 +82,7 @@ public class Activity_kh_datLich extends AppCompatActivity {
             getSupportActionBar().setTitle("Đặt lịch");
             toolbar.setTitleTextColor(Color.WHITE);
         }
-//        Toast.makeText(this, String.valueOf(dataMaTK), Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, String.valueOf(DATA_MATK), Toast.LENGTH_SHORT).show();
         rcv_ATVT_KHDL = findViewById(R.id.rcv_ATVT_KHDL);
         hoTen_ATVT_KHDL = findViewById(R.id.hoTen_ATVT_KHDL);
         sdt_ATVT_KHDL = findViewById(R.id.sdt_ATVT_KHDL);
@@ -84,7 +94,7 @@ public class Activity_kh_datLich extends AppCompatActivity {
         btnThanhToan_ATVT_KHDL = findViewById(R.id.btnThanhToan_ATVT_KHDL);
 
         taiKhoanDAO = new TaiKhoanDAO(this);
-        TaiKhoan taiKhoan = taiKhoanDAO.getID(dataMaTK);
+        TaiKhoan taiKhoan = taiKhoanDAO.getID(DATA_MATK);
         hoTen_ATVT_KHDL.setText("Họ tên: "+ taiKhoan.getHoTen());
         sdt_ATVT_KHDL.setText("SĐT: "+ taiKhoan.getSdt());
 
@@ -143,11 +153,17 @@ public class Activity_kh_datLich extends AppCompatActivity {
         });
 
 
+        Intent intent = getIntent();
+        String maDV_muaNgay = intent.getStringExtra("maDV_muaNgay");
+//            Toast.makeText(this, String.valueOf(maDV_muaNgay), Toast.LENGTH_SHORT).show();
         dichvutronggioDao = new DichVuTrongGio_DAO(this);
-        list = (ArrayList<DichVuTrongGio>) dichvutronggioDao.getAllByTrangThaiAndMaTK(true,dataMaTK);
+//            int setAllTrangThai = dichvutronggioDao.setAllTrangThai(false);
+        int setTT = dichvutronggioDao.setTrangThaiByMaTKAndMaDV(true,DATA_MATK,maDV_muaNgay);
+        list = (ArrayList<DichVuTrongGio>) dichvutronggioDao.getAllByTrangThaiAndMaTK(true,DATA_MATK);
+        DichVuTrongGio selectedDichVuTrongGio = list.get(0);
         LinearLayoutManager layout = new LinearLayoutManager(this);
         rcv_ATVT_KHDL.setLayoutManager(layout);
-        dichVuKHDatLichAdapter = new DichVuKHDatLich_ADAPTER(this, list, dataMaTK);
+        dichVuKHDatLichAdapter = new DichVuKHDatLich_ADAPTER(this, list, DATA_MATK);
         rcv_ATVT_KHDL.setAdapter(dichVuKHDatLichAdapter);
 
         dichVuDAO = new DichVuDAO(this);
@@ -158,18 +174,45 @@ public class Activity_kh_datLich extends AppCompatActivity {
         }
 
 
+        //addlich
+        lichKhachHang_dao = new LichKhachHang_DAO(this);
         btnThanhToan_ATVT_KHDL.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 tvtienGoc_ATVT_KHDL.setText(String.valueOf(giaGoc));
                 tvtienSale_ATVT_KHDL.setText(String.valueOf(giaSale));
-                if (radioPTTT.equals("null")){
-                    Toast.makeText(Activity_kh_datLich.this, "Chọn PTTT", Toast.LENGTH_SHORT).show();
-                }else {
-                    Toast.makeText(Activity_kh_datLich.this, radioPTTT, Toast.LENGTH_SHORT).show();
+
+                //add lich
+                LichKhachHang lichKhachHang = new LichKhachHang();
+//                hoTen_ATVT_KHDL,sdt_ATVT_KHDL,tvtienGoc_ATVT_KHDL,tvtienSale_ATVT_KHDL
+
+                lichKhachHang.setMaTK(Integer.parseInt(DATA_MATK));
+                lichKhachHang.setMaDV(Integer.parseInt(String.valueOf(selectedDichVuTrongGio.getMaDV())));
+                String gio = edGioDat_ATVT_KHDL.getText().toString();
+                String ngay =edNgayDat_ATVT_KHDL.getText().toString();
+
+                try {
+                    lichKhachHang.setNgayDat(sdf.parse(ngay));
+                } catch (ParseException e) {
+                    Toast.makeText(Activity_kh_datLich.this, "Lỗi ngày", Toast.LENGTH_SHORT).show();
                 }
-                // Sau khi thực hiện xong, gọi phương thức onBackPressed để quay lại trang trước đó
-//                onBackPressed();
+                lichKhachHang.setGioDat(gio);
+                lichKhachHang.setPTTT(radioPTTT);
+                lichKhachHang.setTrangThai("Đang chờ");
+                lichKhachHang.setFeedBack("");
+                lichKhachHang.setGhiChu("");
+                if (lichKhachHang_dao.insert(lichKhachHang)>0){
+
+                    Toast.makeText(Activity_kh_datLich.this, "Đặt lịch thành công!", Toast.LENGTH_SHORT).show();
+                }else {
+                    Toast.makeText(Activity_kh_datLich.this, "Lỗi !", Toast.LENGTH_SHORT).show();
+                }
+                for (DichVuTrongGio dichvuTG : list) {
+                    if (dichvutronggioDao.delete(dichvuTG.getMaDVTG())>0){
+                        Toast.makeText(Activity_kh_datLich.this, "ok Xóa", Toast.LENGTH_SHORT).show();
+                    }
+                }
+
             }
         });
     }
@@ -187,4 +230,7 @@ public class Activity_kh_datLich extends AppCompatActivity {
         }
     }
 
+    public void validate(){
+
+    }
 }

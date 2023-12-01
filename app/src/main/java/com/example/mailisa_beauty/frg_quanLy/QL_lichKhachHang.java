@@ -6,60 +6,38 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.mailisa_beauty.ADAPTER.LichKhachHang_QL_ADAPTER;
+import com.example.mailisa_beauty.ADAPTER.TaiKhoanADAPTER;
+import com.example.mailisa_beauty.DAO.LichKhachHang_DAO;
+import com.example.mailisa_beauty.DAO.TaiKhoanDAO;
+import com.example.mailisa_beauty.Model.LichKhachHang;
+import com.example.mailisa_beauty.Model.TaiKhoan;
 import com.example.mailisa_beauty.R;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link QL_lichKhachHang#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.util.ArrayList;
+
 public class QL_lichKhachHang extends Fragment {
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public QL_lichKhachHang() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment QL_lichKhachHang.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static QL_lichKhachHang newInstance(String param1, String param2) {
-        QL_lichKhachHang fragment = new QL_lichKhachHang();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
+    RecyclerView rcvLKH_QLLKH;
+    LichKhachHang_DAO lichKhachHangDao;
+    LichKhachHang_QL_ADAPTER lichKhachHang_ql_adapter;
+    private ArrayList<LichKhachHang> list = new ArrayList<LichKhachHang>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_ql_lichkhachhang, container, false);
+        View view = inflater.inflate(R.layout.fragment_ql_lichkhachhang, container, false);
+        rcvLKH_QLLKH = view.findViewById(R.id.rcvLKH_QLLKH);
+
+        lichKhachHangDao = new LichKhachHang_DAO(getActivity());
+        list = (ArrayList<LichKhachHang>) lichKhachHangDao.getAll();
+        LinearLayoutManager layout = new LinearLayoutManager(getActivity());
+        rcvLKH_QLLKH.setLayoutManager(layout);
+        lichKhachHang_ql_adapter = new LichKhachHang_QL_ADAPTER(getActivity(), list);
+        rcvLKH_QLLKH.setAdapter(lichKhachHang_ql_adapter);
+        return view;
     }
 }

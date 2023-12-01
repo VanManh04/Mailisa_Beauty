@@ -3,12 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".frg_quanLy.QL_lichKhachHang">
+    tools:context=".frg_khachHang.Frg_kh_LSHoatDong">
 
     <!-- TODO: Update blank fragment layout -->
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rcvLKH_QLLKH"
+        android:id="@+id/rcvLKH_FRGKH"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
     </androidx.recyclerview.widget.RecyclerView>
+
 </FrameLayout>

@@ -1,7 +1,9 @@
 package com.example.mailisa_beauty;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -19,10 +21,13 @@ import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
 import com.example.mailisa_beauty.DAO.TaiKhoanDAO;
 import com.example.mailisa_beauty.Login.dang_Nhap;
 import com.example.mailisa_beauty.Model.TaiKhoan;
+import com.example.mailisa_beauty.frg_khachHang.Frg_kh_LSHoatDong;
 import com.example.mailisa_beauty.frg_khachHang.Frg_kh_dichVu;
+import com.example.mailisa_beauty.frg_khachHang.Frg_kh_feedBack;
 import com.example.mailisa_beauty.frg_khachHang.Frg_kh_gioDichVu;
 import com.example.mailisa_beauty.frg_quanLy.QL_dichVu;
 import com.example.mailisa_beauty.frg_quanLy.QL_khachHang;
+import com.example.mailisa_beauty.frg_quanLy.QL_lichKhachHang;
 import com.example.mailisa_beauty.frg_quanLy.QL_lichLamViec;
 import com.example.mailisa_beauty.frg_quanLy.QL_nhanVien;
 import com.example.mailisa_beauty.frg_quanLy.QL_trangChu;
@@ -127,7 +132,19 @@ public class Nav_VIEW extends AppCompatActivity {
         TaiKhoan taiKhoan = taiKhoanDAO.getSDT(sdt);
         String chucVu = taiKhoan.getChucVu();
         String hoTen = taiKhoan.getHoTen();
-        headertennguoidung.setText(hoTen+" !");
+        headertennguoidung.setText(hoTen);
+
+
+        // WARNING--------------------------------------------------------------------------------------------------------
+        String DATA_MATK = String.valueOf(taiKhoan.getMa_TK());
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString("DATA_MATK", DATA_MATK);
+        editor.apply();
+//        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+//        String DATA_MATK = preferences.getString("DATA_MATK", "null");
+        // WARNING--------------------------------------------------------------------------------------------------------
+
 
         QL_trangChu qlTrangChu = new QL_trangChu();
         setTitle("Trang chủ");
@@ -205,7 +222,19 @@ public class Nav_VIEW extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
-                if (item.getItemId()==R.id.nav_datLichKH){
+                if (item.getItemId()==R.id.nav_feedBackKH){
+                    setTitle("Đánh giá");
+                    Frg_kh_feedBack frg_FB = new Frg_kh_feedBack();
+                    replaceFrg(frg_FB);
+                }else if (item.getItemId()==R.id.nav_lichSuKH){
+                    setTitle("Lịch sử hoạt động");
+                    Frg_kh_LSHoatDong ls_HD = new Frg_kh_LSHoatDong();
+                    replaceFrg(ls_HD);
+                }else if (item.getItemId()==R.id.nav_lichKhachHangQL){
+                    setTitle("Lịch đặt của khách hàng");
+                    QL_lichKhachHang ql_LKH = new QL_lichKhachHang();
+                    replaceFrg(ql_LKH);
+                }else if (item.getItemId()==R.id.nav_datLichKH){
                     setTitle("Giỏ dịch vụ");
                     Frg_kh_gioDichVu frggioDichVu = new Frg_kh_gioDichVu();
                     //Sent String to Frg_kh_gioDichVu

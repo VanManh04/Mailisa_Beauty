@@ -9,19 +9,20 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-    <Button
-        android:layout_width="match_parent"
-        android:id="@+id/btnAddNv"
-        android:layout_margin="20dp"
-        android:layout_height="wrap_content"
-        android:text="Thêm nhân viên"
-        android:backgroundTint="#FF00FF"
-        android:layout_gravity="center"/>
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rcvTKQL"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    </androidx.recyclerview.widget.RecyclerView>
+
+        <Button
+            android:id="@+id/btnAddNv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="20dp"
+            android:backgroundTint="#FF00FF"
+            android:text="Thêm nhân viên" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rcvTKQL"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></androidx.recyclerview.widget.RecyclerView>
     </LinearLayout>
 
 </FrameLayout>
