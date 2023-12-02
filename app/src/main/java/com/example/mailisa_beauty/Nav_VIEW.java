@@ -59,7 +59,6 @@ public class Nav_VIEW extends AppCompatActivity {
         nav = findViewById(R.id.nav);
 
         bottomNavigation= findViewById(R.id.bottomNavigation);
-        bottomNavigation.setVisibility(View.GONE);
 
         bottomNavigation.add(new MeowBottomNavigation.Model(1,R.drawable.icon_home));
         bottomNavigation.add(new MeowBottomNavigation.Model(2,R.drawable.icon_dichvu));
