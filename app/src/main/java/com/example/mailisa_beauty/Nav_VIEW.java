@@ -25,6 +25,9 @@ import com.example.mailisa_beauty.frg_khachHang.Frg_kh_LSHoatDong;
 import com.example.mailisa_beauty.frg_khachHang.Frg_kh_dichVu;
 import com.example.mailisa_beauty.frg_khachHang.Frg_kh_feedBack;
 import com.example.mailisa_beauty.frg_khachHang.Frg_kh_gioDichVu;
+import com.example.mailisa_beauty.frg_quanLy.QL_DoanhSo;
+import com.example.mailisa_beauty.frg_quanLy.QL_FeedBack;
+import com.example.mailisa_beauty.frg_quanLy.QL_HoaDon;
 import com.example.mailisa_beauty.frg_quanLy.QL_dichVu;
 import com.example.mailisa_beauty.frg_quanLy.QL_khachHang;
 import com.example.mailisa_beauty.frg_quanLy.QL_lichKhachHang;
@@ -54,58 +57,59 @@ public class Nav_VIEW extends AppCompatActivity {
         nav = findViewById(R.id.nav);
 
         bottomNavigation= findViewById(R.id.bottomNavigation);
-
-        bottomNavigation.add(new MeowBottomNavigation.Model(1,R.drawable.icon_home));
-        bottomNavigation.add(new MeowBottomNavigation.Model(2,R.drawable.icon_dichvu));
-        bottomNavigation.add(new MeowBottomNavigation.Model(3,R.drawable.icon_giodv));
-        bottomNavigation.add(new MeowBottomNavigation.Model(4,R.drawable.icon_ldckh));
-
-
-        bottomNavigation.show(1,true);
-
-        bottomNavigation.setOnClickMenuListener(new Function1<MeowBottomNavigation.Model, Unit>() {
-            @Override
-            public Unit invoke(MeowBottomNavigation.Model model) {
-                // YOUR CODES
-
-
-                switch (model.getId()){
-
-                    case 1:
-                        getSupportFragmentManager().beginTransaction()
-                                .replace(R.id.frmNav, new QL_trangChu())
-                                .commit();
-                                 setTitle("Trang chủ");
-                        break;
-
-                    case 2:
-                        getSupportFragmentManager().beginTransaction()
-                                .replace(R.id.frmNav, new Frg_kh_dichVu())
-                                .commit();;
-                        setTitle("Dịch vụ");
-                        break;
-                    case 3:
-
-                        break;
-                    case 4:
-
-                        break;
-                }
-
-                return null;
-            }
-        });
-
-        bottomNavigation.setOnShowListener(new Function1<MeowBottomNavigation.Model, Unit>() {
-            @Override
-            public Unit invoke(MeowBottomNavigation.Model model) {
-                // YOUR CODES
-
-
-
-                return null;
-            }
-        });
+        bottomNavigation.setVisibility(View.GONE);
+//
+//        bottomNavigation.add(new MeowBottomNavigation.Model(1,R.drawable.icon_home));
+//        bottomNavigation.add(new MeowBottomNavigation.Model(2,R.drawable.icon_dichvu));
+//        bottomNavigation.add(new MeowBottomNavigation.Model(3,R.drawable.icon_giodv));
+//        bottomNavigation.add(new MeowBottomNavigation.Model(4,R.drawable.icon_ldckh));
+//
+//
+//        bottomNavigation.show(1,true);
+//
+//        bottomNavigation.setOnClickMenuListener(new Function1<MeowBottomNavigation.Model, Unit>() {
+//            @Override
+//            public Unit invoke(MeowBottomNavigation.Model model) {
+//                // YOUR CODES
+//
+//
+//                switch (model.getId()){
+//
+//                    case 1:
+//                        getSupportFragmentManager().beginTransaction()
+//                                .replace(R.id.frmNav, new QL_trangChu())
+//                                .commit();
+//                                 setTitle("Trang chủ");
+//                        break;
+//
+//                    case 2:
+//                        getSupportFragmentManager().beginTransaction()
+//                                .replace(R.id.frmNav, new Frg_kh_dichVu())
+//                                .commit();;
+//                        setTitle("Dịch vụ");
+//                        break;
+//                    case 3:
+//
+//                        break;
+//                    case 4:
+//
+//                        break;
+//                }
+//
+//                return null;
+//            }
+//        });
+//
+//        bottomNavigation.setOnShowListener(new Function1<MeowBottomNavigation.Model, Unit>() {
+//            @Override
+//            public Unit invoke(MeowBottomNavigation.Model model) {
+//                // YOUR CODES
+//
+//
+//
+//                return null;
+//            }
+//        });
 
 
 
@@ -155,11 +159,11 @@ public class Nav_VIEW extends AppCompatActivity {
             nav.getMenu().findItem(R.id.nav_lichKhachHangQL).setVisible(true);
             nav.getMenu().findItem(R.id.nav_nhanVienQL).setVisible(true);
             nav.getMenu().findItem(R.id.nav_khachHangQL).setVisible(true);
-            nav.getMenu().findItem(R.id.nav_trangChuQL).setVisible(true);
             nav.getMenu().findItem(R.id.nav_lichLamViecQL).setVisible(true);
             nav.getMenu().findItem(R.id.nav_hoaDonQL).setVisible(true);
             nav.getMenu().findItem(R.id.nav_doanhSoQL).setVisible(true);
             nav.getMenu().findItem(R.id.nav_dichVuQL).setVisible(true);
+            nav.getMenu().findItem(R.id.nav_danhgiaQL).setVisible(true);
 
             nav.getMenu().findItem(R.id.nav_doiMatKhau).setVisible(true);
             nav.getMenu().findItem(R.id.nav_dangXuat).setVisible(true);
@@ -184,7 +188,6 @@ public class Nav_VIEW extends AppCompatActivity {
             nav.getMenu().findItem(R.id.nav_lichKhachHangQL).setVisible(false);
             nav.getMenu().findItem(R.id.nav_nhanVienQL).setVisible(false);
             nav.getMenu().findItem(R.id.nav_khachHangQL).setVisible(false);
-            nav.getMenu().findItem(R.id.nav_trangChuQL).setVisible(false);
             nav.getMenu().findItem(R.id.nav_lichLamViecQL).setVisible(false);
             nav.getMenu().findItem(R.id.nav_hoaDonQL).setVisible(false);
             nav.getMenu().findItem(R.id.nav_doanhSoQL).setVisible(false);
@@ -194,6 +197,7 @@ public class Nav_VIEW extends AppCompatActivity {
             nav.getMenu().findItem(R.id.nav_lichSuKH).setVisible(false);
             nav.getMenu().findItem(R.id.nav_feedBackKH).setVisible(false);
             nav.getMenu().findItem(R.id.nav_dichVuQL).setVisible(false);
+            nav.getMenu().findItem(R.id.nav_danhgiaQL).setVisible(false);
 
         }else {
             nav.getMenu().findItem(R.id.nav_trangChuKH).setVisible(true);
@@ -212,17 +216,29 @@ public class Nav_VIEW extends AppCompatActivity {
             nav.getMenu().findItem(R.id.nav_lichKhachHangQL).setVisible(false);
             nav.getMenu().findItem(R.id.nav_nhanVienQL).setVisible(false);
             nav.getMenu().findItem(R.id.nav_khachHangQL).setVisible(false);
-            nav.getMenu().findItem(R.id.nav_trangChuQL).setVisible(false);
             nav.getMenu().findItem(R.id.nav_lichLamViecQL).setVisible(false);
             nav.getMenu().findItem(R.id.nav_hoaDonQL).setVisible(false);
             nav.getMenu().findItem(R.id.nav_doanhSoQL).setVisible(false);
             nav.getMenu().findItem(R.id.nav_dichVuQL).setVisible(false);
+            nav.getMenu().findItem(R.id.nav_danhgiaQL).setVisible(false);
         }
         nav.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
-                if (item.getItemId()==R.id.nav_feedBackKH){
+                if (item.getItemId()==R.id.nav_doanhSoQL){
+                    setTitle("Quản lý doanh số");
+                    QL_DoanhSo QLDS = new QL_DoanhSo();
+                    replaceFrg(QLDS);
+                }else if (item.getItemId()==R.id.nav_hoaDonQL){
+                    setTitle("Quản lý hóa đơn");
+                    QL_HoaDon QL_HD = new QL_HoaDon();
+                    replaceFrg(QL_HD);
+                }else if (item.getItemId()==R.id.nav_danhgiaQL){
+                    setTitle("Đánh giá");
+                    QL_FeedBack QL_FB = new QL_FeedBack();
+                    replaceFrg(QL_FB);
+                }else if (item.getItemId()==R.id.nav_feedBackKH){
                     setTitle("Đánh giá");
                     Frg_kh_feedBack frg_FB = new Frg_kh_feedBack();
                     replaceFrg(frg_FB);

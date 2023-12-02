@@ -3,12 +3,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".frg_quanLy.QL_lichKhachHang">
 
     <!-- TODO: Update blank fragment layout -->
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rcvLKH_QLLKH"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    </androidx.recyclerview.widget.RecyclerView>
+        android:layout_height="match_parent"
+        android:id="@+id/rcvLKH_QLLKH"/>
+<!--    <com.tsuryo.swipeablerv.SwipeableRecyclerView-->
+<!--        android:id="@+id/rcvLKH_QLLKH"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        app:rightBgColor="@color/red"-->
+<!--        app:rightText="Xóa"-->
+<!--        app:textColor="@android:color/white"-->
+<!--        app:textSize="20sp" />-->
 </FrameLayout>

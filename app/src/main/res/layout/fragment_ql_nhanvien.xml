@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".frg_quanLy.QL_nhanVien">
     <!-- TODO: Update blank fragment layout -->
     <LinearLayout
@@ -19,10 +20,15 @@
             android:backgroundTint="#FF00FF"
             android:text="Thêm nhân viên" />
 
-        <androidx.recyclerview.widget.RecyclerView
+        <com.tsuryo.swipeablerv.SwipeableRecyclerView
             android:id="@+id/rcvTKQL"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"></androidx.recyclerview.widget.RecyclerView>
+            android:layout_height="match_parent"
+            app:rightBgColor="@color/red"
+            app:rightText="Xóa"
+            app:textColor="@android:color/white"
+            app:textSize="20sp"
+            />
     </LinearLayout>
 
 </FrameLayout>

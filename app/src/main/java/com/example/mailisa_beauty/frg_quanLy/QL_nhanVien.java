@@ -1,6 +1,7 @@
 package com.example.mailisa_beauty.frg_quanLy;
 
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,9 +17,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mailisa_beauty.ADAPTER.TaiKhoanADAPTER;
 import com.example.mailisa_beauty.DAO.TaiKhoanDAO;
+import com.example.mailisa_beauty.Model.DichVu;
 import com.example.mailisa_beauty.Model.TaiKhoan;
 import com.example.mailisa_beauty.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.tsuryo.swipeablerv.SwipeLeftRightCallback;
+import com.tsuryo.swipeablerv.SwipeableRecyclerView;
 
 import java.util.ArrayList;
 
@@ -28,7 +32,7 @@ public class QL_nhanVien extends Fragment {
         // Required empty public constructor
     }
 
-    RecyclerView rcvTaiKhoan;
+    SwipeableRecyclerView rcvTaiKhoan;
     Button fladdTK;
     TaiKhoanDAO taiKhoanDAO;
     TaiKhoanADAPTER taiKhoanADAPTER;
@@ -52,6 +56,44 @@ public class QL_nhanVien extends Fragment {
             @Override
             public void onClick(View v) {
                 opendialogthem();
+            }
+        });
+        rcvTaiKhoan.setListener(new SwipeLeftRightCallback.Listener() {
+            @Override
+            public void onSwipedRight(int position) {
+                taiKhoanADAPTER.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onSwipedLeft(int position) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                builder.setTitle("Cảnh báo");
+                builder.setIcon(R.drawable.icon_warning);
+                builder.setMessage("Bạn có muốn xóa không?");
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Xử lý logic khi người dùng chọn Yes
+                        TaiKhoan taikhoan = list.get(position); // Lấy đối tượng DichVu tại vị trí vuốt
+                        if (taiKhoanDAO.delete(taikhoan.getMa_TK()) > 0) {
+                            list.remove(position);
+                            taiKhoanADAPTER.notifyDataSetChanged();
+                            Toast.makeText(getActivity(), "Xóa thành công!", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(getActivity(), "Xóa thất bại", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Xử lý logic khi người dùng chọn No
+                        dialog.dismiss();
+                        taiKhoanADAPTER.notifyDataSetChanged();
+                    }
+                });
+                AlertDialog alertDialog = builder.create();
+                alertDialog.show();
             }
         });
         return view;

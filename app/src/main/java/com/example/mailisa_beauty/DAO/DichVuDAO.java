@@ -101,4 +101,8 @@ public class DichVuDAO {
         String sql = "SELECT * FROM DichVu WHERE trangThai='NEW' ";
         return getData(sql);
     }
+    public List<DichVu> getAllById(int ma_DV) {
+        String sql = "SELECT * FROM DichVu WHERE maDV=?";
+        return getData(sql, String.valueOf(ma_DV));
+    }
 }

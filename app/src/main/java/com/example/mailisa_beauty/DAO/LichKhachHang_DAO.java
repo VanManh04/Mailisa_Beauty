@@ -89,6 +89,11 @@ public class LichKhachHang_DAO {
         String[] selectionArgs = {String.valueOf(maTK)};
         return getData(sql, selectionArgs);
     }
+    public List<LichKhachHang> getALLByMaLKH(int maLKH) {
+        String sql = "SELECT * FROM LichKhachHang WHERE maLKH = ?";
+        String[] selectionArgs = {String.valueOf(maLKH)};
+        return getData(sql, selectionArgs);
+    }
 
     public LichKhachHang getByMaLKH(int maLKH) {
         String sql = "SELECT * FROM LichKhachHang WHERE maLKH=?";

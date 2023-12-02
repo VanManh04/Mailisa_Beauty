@@ -1,29 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".frg_quanLy.QL_lichLamViec">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-    <Button
-        android:layout_width="match_parent"
-        android:id="@+id/fladdQLLLVQL"
-        android:layout_margin="20dp"
-        android:layout_height="wrap_content"
-        android:text="Thêm lịch"
-        android:backgroundTint="#FF00FF"
-        android:layout_gravity="center"/>
-    <!-- TODO: Update blank fragment layout -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rcvQLLLVQL"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    </androidx.recyclerview.widget.RecyclerView>
-    </LinearLayout>
 
+        <Button
+            android:id="@+id/fladdQLLLVQL"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="20dp"
+            android:backgroundTint="#FF00FF"
+            android:text="Thêm lịch" />
+        <!-- TODO: Update blank fragment layout -->
+
+        <com.tsuryo.swipeablerv.SwipeableRecyclerView
+            android:id="@+id/rcvQLLLVQL"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:rightBgColor="@color/red"
+            app:rightText="Xóa"
+            app:textColor="@android:color/white"
+            app:textSize="20sp" />
+    </LinearLayout>
 
 
 </FrameLayout>

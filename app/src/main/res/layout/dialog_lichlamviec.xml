@@ -12,22 +12,35 @@
         android:layout_gravity="center"
         android:layout_marginTop="50dp"
         android:textColor="@color/black"/>
-    <com.google.android.material.textfield.TextInputLayout
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:text="Tên nhân viên"
+        android:textSize="16dp"
+        android:layout_marginLeft="20dp"
         android:layout_marginTop="50dp"
+        android:textColor="@color/black"/>
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:id="@+id/spnNV"/>
+
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edten_DLLLV"
-            android:inputType="number"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Họ tên"/>
-    </com.google.android.material.textfield.TextInputLayout>
-
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:textSize="17dp"
+        android:textStyle="bold"
+        android:text="ưiefkwe"
+        android:id="@+id/tenNhanVien_diaLongLLV"/>
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -39,7 +52,11 @@
             android:id="@+id/edngayBatDau_DLLLV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Ngày bắt đầu làm việc"/>
+            android:hint="Ngày bắt đầu làm việc"
+            android:clickable="false"
+            android:focusable="false"
+            android:inputType="none"
+            android:cursorVisible="false"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -53,7 +70,11 @@
             android:id="@+id/edca_DLLLV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Ca làm việc"/>
+            android:hint="Ca làm việc"
+            android:clickable="false"
+            android:focusable="false"
+            android:inputType="none"
+            android:cursorVisible="false"/>
     </com.google.android.material.textfield.TextInputLayout>
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"

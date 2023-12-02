@@ -1,0 +1,64 @@
+<!-- res/layout/dialog_danhgia.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:text="30dp"
+        android:textSize="20dp"
+        android:textColor="@color/black"
+        android:id="@+id/tvtenkh_phanhoi"/>
+    <RatingBar
+        android:id="@+id/ratingBar_phanhoi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:numStars="5"
+        android:stepSize="1.0"
+        android:isIndicator="true" />
+
+    <EditText
+        android:id="@+id/edDanhGia_phanhoi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:gravity="top"
+        android:clickable="false"
+        android:focusable="false"
+        android:inputType="none"
+        android:cursorVisible="false"
+        android:hint="Nhập đánh giá của bạn..."
+        android:lines="5" />
+
+    <EditText
+        android:id="@+id/edphanhoi_phanhoi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nhập phản hồi của bạn..."
+        android:inputType="textMultiLine"
+        android:lines="5"
+        android:gravity="top"
+        android:layout_marginTop="16dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/btnSubmit_phanhoi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gửi phản hồi"
+            android:layout_marginTop="16dp"/>
+        <Button
+            android:id="@+id/btnesc_phanhoi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hủy"
+            android:layout_marginTop="16dp"/>
+    </LinearLayout>
+</LinearLayout>

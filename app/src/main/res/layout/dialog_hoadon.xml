@@ -1,0 +1,86 @@
+<!-- res/layout/dialog_edit_ghi_chu.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <EditText
+        android:id="@+id/editTexttenkh"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Tên khách hàng"
+        android:clickable="false"
+        android:focusable="false"
+        android:inputType="none"
+        android:cursorVisible="false"/>
+    <EditText
+        android:id="@+id/editTextdichvu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Tên dịch vụ"
+        android:clickable="false"
+        android:focusable="false"
+        android:inputType="none"
+        android:cursorVisible="false"/>
+    <EditText
+        android:id="@+id/editTextngaythanhtoan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Ngày thanh toán"
+        android:clickable="false"
+        android:focusable="false"
+        android:inputType="none"
+        android:cursorVisible="false"/>
+    <EditText
+        android:id="@+id/editTexttongtien"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Tổng thanh toán"
+        android:clickable="false"
+        android:focusable="false"
+        android:inputType="none"
+        android:cursorVisible="false"/>
+    <EditText
+        android:id="@+id/editTextPTTT"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Phương thức thanh toán"
+        android:clickable="false"
+        android:focusable="false"
+        android:inputType="none"
+        android:cursorVisible="false"/>
+    <EditText
+        android:id="@+id/editTextngayTT"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Ngày thanh toán"
+        android:clickable="false"
+        android:focusable="false"
+        android:inputType="none"
+        android:cursorVisible="false"/>
+    <EditText
+        android:id="@+id/editTextGhiChu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nhập ghi chú"/>
+
+   <LinearLayout
+       android:layout_marginTop="20dp"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:gravity="center"
+       android:orientation="horizontal">
+       <Button
+           android:id="@+id/buttonSave111"
+           android:layout_width="wrap_content"
+           android:layout_marginRight="80dp"
+           android:layout_height="wrap_content"
+           android:text="Lưu"/>
+       <Button
+           android:id="@+id/buttoncance111"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="hủy"/>
+   </LinearLayout>
+</LinearLayout>

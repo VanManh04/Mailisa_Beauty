@@ -25,8 +25,10 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.mailisa_beauty.DAO.DichVuDAO;
 import com.example.mailisa_beauty.DAO.LichKhachHang_DAO;
 import com.example.mailisa_beauty.DAO.TaiKhoanDAO;
+import com.example.mailisa_beauty.Model.DichVu;
 import com.example.mailisa_beauty.Model.LichKhachHang;
 import com.example.mailisa_beauty.Model.TaiKhoan;
 import com.example.mailisa_beauty.R;
@@ -43,6 +45,7 @@ public class LichKhachHang_QL_ADAPTER extends RecyclerView.Adapter<LichKhachHang
     private final List<LichKhachHang> list;
     private final LichKhachHang_DAO lichKhachHangDAO;
     TaiKhoanDAO taiKhoanDAO;
+    DichVuDAO dichVuDAO;
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
 
     public LichKhachHang_QL_ADAPTER(Context context, List<LichKhachHang> list) {
@@ -62,12 +65,15 @@ public class LichKhachHang_QL_ADAPTER extends RecyclerView.Adapter<LichKhachHang
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.btndanhgia_itLDKH.setVisibility(View.GONE);
+        dichVuDAO = new DichVuDAO(context);
 
         LichKhachHang lichKhachHang = list.get(position);
+        DichVu dichVu = dichVuDAO.getID(String.valueOf(lichKhachHang.getMaDV()));
         int maTK = lichKhachHang.getMaTK();
         taiKhoanDAO = new TaiKhoanDAO(context);
         TaiKhoan taiKhoan = taiKhoanDAO.getID(String.valueOf(maTK));
         holder.hoTenLichKhachHang_itLDKH.setText("Họ và tên: " + taiKhoan.getHoTen());
+        holder.dichVuLichKhachHang_itLDKH.setText("Dịch vụ:"+ dichVu.getTenDV());
         holder.ngayDatLichKhachHang_itLDKH.setText("Ngày đặt: " + sdf.format(lichKhachHang.getNgayDat()));
         holder.gioDatLichKhachHang_itLDKH.setText("Giờ đặt: " + lichKhachHang.getGioDat());
         holder.ptttLichKhachHang_itLDKH.setText("PTTT: " + lichKhachHang.getPTTT());
@@ -75,6 +81,13 @@ public class LichKhachHang_QL_ADAPTER extends RecyclerView.Adapter<LichKhachHang
         holder.ghiChuLichKhachHang_itLDKH.setText("Ghi chú: " + lichKhachHang.getGhiChu());
         holder.feedbackLichKhachHang_itLDKH.setText("Feedback: " + lichKhachHang.getFeedBack());
 
+        if (lichKhachHang.getTrangThai().equals("Đang chờ")){
+            holder.btnxacnhan_itLDKH.setVisibility(View.VISIBLE);
+            holder.btnhuy_itLDKH.setVisibility(View.VISIBLE);
+        }else {
+            holder.btnxacnhan_itLDKH.setVisibility(View.GONE);
+            holder.btnhuy_itLDKH.setVisibility(View.GONE);
+        }
 //        holder.btndelete_itLDKH.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
@@ -144,7 +157,7 @@ public class LichKhachHang_QL_ADAPTER extends RecyclerView.Adapter<LichKhachHang
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView hoTenLichKhachHang_itLDKH, ngayDatLichKhachHang_itLDKH, gioDatLichKhachHang_itLDKH,
                 ptttLichKhachHang_itLDKH, trangThaiLichKhachHang_itLDKH, ghiChuLichKhachHang_itLDKH,
-                feedbackLichKhachHang_itLDKH;
+                feedbackLichKhachHang_itLDKH,dichVuLichKhachHang_itLDKH;
         Button  btnxacnhan_itLDKH,btnhuy_itLDKH,btndanhgia_itLDKH;
 
         public ViewHolder(@NonNull View itemView) {
@@ -159,6 +172,7 @@ public class LichKhachHang_QL_ADAPTER extends RecyclerView.Adapter<LichKhachHang
             btnxacnhan_itLDKH = itemView.findViewById(R.id.btnxacnhan_itLDKH);
             btnhuy_itLDKH = itemView.findViewById(R.id.btnhuy_itLDKH);
             btndanhgia_itLDKH = itemView.findViewById(R.id.btndanhgia_itLDKH);
+            dichVuLichKhachHang_itLDKH = itemView.findViewById(R.id.dichVuLichKhachHang_itLDKH);
         }
     }
 

@@ -22,15 +22,26 @@ public class LichLamViecDAO {
         db = dbHelper.getWritableDatabase();
     }
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+    private boolean isNhanVienHasLichLamViec(int maTK) {
+        String sql = "SELECT * FROM LichLamViec WHERE maTK = ?";
+        List<LichLamViec> list = getData(sql, String.valueOf(maTK));
+        // Nếu danh sách có ít nhất một lịch làm việc, trả về true
+        return list.size() > 0;
+    }
     public long insert(LichLamViec llv) {
-        ContentValues values = new ContentValues();
-//            values.put("maLLV");
-        values.put("maTK", llv.getMaTK());
-        values.put("ngayBatDau", sdf.format(llv.getNgayBatDau()));
-        values.put("Ca", llv.getCa());
-        values.put("ghiChu", llv.getGhiChu());
-
-        return db.insert("LichLamViec", null, values);
+        if (!isNhanVienHasLichLamViec(llv.getMaTK())) {
+            ContentValues values = new ContentValues();
+            values.put("maTK", llv.getMaTK());
+            values.put("ngayBatDau", sdf.format(llv.getNgayBatDau()));
+            values.put("Ca", llv.getCa());
+            values.put("ghiChu", llv.getGhiChu());
+            return db.insert("LichLamViec", null, values);
+        } else {
+            // Nhân viên đã có lịch làm việc, bạn có thể thực hiện xử lý tương ứng
+            // Ví dụ: hiển thị thông báo hoặc thực hiện hành động khác
+            // Trong trường hợp này, tôi trả về -1 để cho biết việc thêm lịch làm việc không thành công.
+            return -1;
+        }
     }
 
     public int update(LichLamViec llv) {

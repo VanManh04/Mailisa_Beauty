@@ -106,7 +106,7 @@ public class DbHelper extends SQLiteOpenHelper {
                 "Khi khách hàng thực sự hài lòng thì chuyên viên mới bắt đầu phun theo dáng mẫu vừa vẽ.\n" +
                 "\n" +
                 "Dụng cụ mới vô trùng riêng biệt cho từng khách hàng, kết hợp cùng màu mực Doctor Magic nhập khẩu chính hãng, giúp cho màu sắc được bền, đẹp, tự nhiên, tuyệt đối không bị trổ xanh trổ đỏ; tông màu chính xác, phối màu nào ra màu đó, an toàn cho sức khỏe, đảm bảo gu thẩm mỹ. '),"+
-                "(8,'android.resource://com.example.mailisa_beauty/2131165344','PHUN MÍ MỞ TRÒNG MẮT\n','PS','SALE',10500000,19500000,'Với phương châm “Trao Bạn Nét Đẹp Mà Tự Nhiên”, khi mỗi quý khách hàng đến với Mailisa sẽ được đội ngũ nhân viên chuyên môn cao, tay nghề giỏi tư vấn kiểu đường mí phù hợp, hài hòa với đôi mắt và khuôn mặt. Khi khách hàng thực sự hài lòng thì chuyên viên mới bắt đầu thực hiện phun mí. Đây là phương pháp sử dụng một đầu bút mảnh để tạo đường phun mí ôm nhuyễn theo đường cong trong lông mi, giúp cho “cửa sổ tâm hồn” có chiều sâu theo phong cách đẹp tự nhiên, thu hút mọi ánh nhìn.')"
+                "(8,'android.resource://com.example.mailisa_beauty/2131165344','PHUN MÍ MỞ TRÒNG MẮT\n','PS','SALE',10500000,9500000,'Với phương châm “Trao Bạn Nét Đẹp Mà Tự Nhiên”, khi mỗi quý khách hàng đến với Mailisa sẽ được đội ngũ nhân viên chuyên môn cao, tay nghề giỏi tư vấn kiểu đường mí phù hợp, hài hòa với đôi mắt và khuôn mặt. Khi khách hàng thực sự hài lòng thì chuyên viên mới bắt đầu thực hiện phun mí. Đây là phương pháp sử dụng một đầu bút mảnh để tạo đường phun mí ôm nhuyễn theo đường cong trong lông mi, giúp cho “cửa sổ tâm hồn” có chiều sâu theo phong cách đẹp tự nhiên, thu hút mọi ánh nhìn.')"
                 ;
         db.execSQL(data_DV);
 
@@ -142,23 +142,37 @@ public class DbHelper extends SQLiteOpenHelper {
         String data_LKH = "INSERT INTO LichKhachHang VALUES" +
                 "(1,1,1,'2023/09/23','12:30','Chuyển khoản','Đang chờ','feedBack','ghiChu')," +
                 "(2,6,3,'2023/08/22','9:10','Tiền mặt','Đã xác nhận','feedBack','ghiChu')," +
-                "(3,7,2,'2023/07/21','15:20','Tiền mặt','Bị hủy','feedBack','ghiChu')";
+                "(3,7,8,'2023/07/21','15:20','Tiền mặt','Đã xác nhận','feedBack','ghiChu')";
         db.execSQL(data_LKH);
 
 
 
-        //Bảng LỊCH ĐẶT CỦA KHÁCH HÀNG
+        //Bảng feedback KHÁCH HÀNG
         String CreateTableFeedBack = "CREATE TABLE FeedBack(" +
                 "maFB INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "maLKH INTEGER REFERENCES LichKhachHang(maLKH)," +
                 "soSao REAL DEFAULT 0," +
-                "ghiChuKH TEXT," +
+                "ghiChuKH TEXT,"  +
                 "ghiChuQL TEXT)";
         db.execSQL(CreateTableFeedBack);
 
         String data_FB = "INSERT INTO FeedBack VALUES" +
-                "(1,1,1.0,'ghiChuKH','ghiChuQL')";
+                "(1,1,1.0,'ghiChuKH','ghiChuQL')," +
+                "(2,2,2.0,'ghiChuKH1','ghiChuQL1')";
         db.execSQL(data_FB);
+
+        //Bảng HÓA ĐƠN
+        String CreateTableHoaDon = "CREATE TABLE HoaDon(" +
+                "maHD INTEGER PRIMARY KEY AUTOINCREMENT," +
+                "maLKH INTEGER REFERENCES LichKhachHang(maLKH),"+
+                "ngayTT DATE NOT NULL,"+
+                "ghiChu TEXT)";
+        db.execSQL(CreateTableHoaDon);
+
+        String data_HD = "INSERT INTO HoaDon VALUES" +
+                "(1,2,'2023/08/22','khong')," +
+                "(2,3,'2023/07/21','ghi chu 2')";
+        db.execSQL(data_HD);
     }
 
     @Override
@@ -170,7 +184,7 @@ public class DbHelper extends SQLiteOpenHelper {
             db.execSQL("DROP TABLE IF EXISTS DichVuTrongGio");
             db.execSQL("DROP TABLE IF EXISTS LichKhachHang");
             db.execSQL("DROP TABLE IF EXISTS FeedBack");
-
+            db.execSQL("DROP TABLE IF EXISTS HoaDon");
             onCreate(db);
         }
     }
