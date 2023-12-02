@@ -68,5 +68,8 @@ public class HoaDonDAO {
         return getData(sql);
     }
 
-
+    public List<HoaDon> getHoaDonByDateRange(String tuNgay, String denNgay) {
+        String sql = "SELECT * FROM HoaDon WHERE ngayTT BETWEEN ? AND ?";
+        return getData(sql, tuNgay, denNgay);
+    }
 }

@@ -2,9 +2,14 @@ package com.example.mailisa_beauty.frg_quanLy;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.app.SearchManager;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -15,12 +20,16 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mailisa_beauty.ADAPTER.LichLamViecADAPTER;
+import com.example.mailisa_beauty.ADAPTER.TaiKhoanADAPTER;
 import com.example.mailisa_beauty.ADAPTER.TaiKhoanNV_ADAPTER_SPINER;
 import com.example.mailisa_beauty.DAO.LichLamViecDAO;
 import com.example.mailisa_beauty.DAO.TaiKhoanDAO;
@@ -35,6 +44,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.List;
 
 public class QL_lichLamViec extends Fragment {
     public QL_lichLamViec() {
@@ -52,6 +62,7 @@ public class QL_lichLamViec extends Fragment {
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
     int mYear,mMonth,mDay;
     EditText edngayBatDau_DLLLV,edca_DLLLV,edghiChu_DLLLV;
+    private SearchView searchView;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -254,5 +265,47 @@ public class QL_lichLamViec extends Fragment {
             check = 0;
         }
         return check;
+    }
+    private void handleSearch(String query) {
+        List<LichLamViec> listSearch = new ArrayList<>();
+        for (LichLamViec lichLamViec : list) {
+            TaiKhoan taiKhoan = taiKhoanDAO.getID(String.valueOf(lichLamViec.getMaTK()));
+            if (String.valueOf(taiKhoan.getHoTen()).toLowerCase().contains(query.toLowerCase())) {
+                listSearch.add(lichLamViec);
+            }
+        }
+        lichLamViecADAPTER = new LichLamViecADAPTER(getActivity(), (ArrayList<LichLamViec>) listSearch);
+        rcvQLLLVQL.setAdapter(lichLamViecADAPTER);
+
+    }
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        inflater.inflate(R.menu.toolbar_search, menu);
+        SearchManager searchManager = (SearchManager) getActivity().getSystemService(Context.SEARCH_SERVICE);
+        MenuItem searchItem = menu.findItem(R.id.search);
+        searchView = (SearchView) searchItem.getActionView();
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(getActivity().getComponentName()));
+        searchView.setMaxWidth(Integer.MAX_VALUE);
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                handleSearch(newText);
+                return true;
+            }
+        });
+        super.onCreateOptionsMenu(menu, inflater);
     }
 }

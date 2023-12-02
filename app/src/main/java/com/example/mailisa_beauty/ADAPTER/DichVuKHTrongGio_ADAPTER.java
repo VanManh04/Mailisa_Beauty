@@ -158,6 +158,7 @@ public class DichVuKHTrongGio_ADAPTER extends RecyclerView.Adapter<DichVuKHTrong
             holder.tvgiaDV_itDVTG.setText(String.valueOf("Giá gốc: " +dichVu.getGiaDV())+" VNĐ");
             holder.tvgiaSALE_itDVTG.setText(String.valueOf("Giá SALE: " +dichVu.getGiaSALE())+" VNĐ");
         }
+        holder.imgdelete_itDVTG.setVisibility(View.GONE);
         holder.imgdelete_itDVTG.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

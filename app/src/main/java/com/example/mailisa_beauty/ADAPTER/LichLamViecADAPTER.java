@@ -6,6 +6,8 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -98,13 +100,26 @@ public class LichLamViecADAPTER extends RecyclerView.Adapter<LichLamViecADAPTER.
                 dialog.show();
             }
         });
-        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                opendialogsua(lichLamViec);
-                return true;
-            }
-        });
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        String DATA_MATK = preferences.getString("DATA_MATK", "null");
+        TaiKhoan taiKhoan1 = taiKhoanDAO.getID(DATA_MATK);
+        if (taiKhoan1.getChucVu().equals("QL")){
+            holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    opendialogsua(lichLamViec);
+                    return true;
+                }
+            });
+        }else {
+            holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    return false;
+                }
+            });
+        }
+
     }
 
     public void opendialogsua(LichLamViec lichLamViec) {

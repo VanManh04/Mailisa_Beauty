@@ -125,7 +125,6 @@ public class DichVuTrongGio_DAO {
     public DichVuTrongGio getSelectedDichVuTrongGioByMaTK(String maTK) {
         String sql = "SELECT * FROM DichVuTrongGio " +
                 "WHERE isCheck = 1 AND maTK = ?";
-
         Cursor cursor = db.rawQuery(sql, new String[]{maTK});
 
         if (cursor.moveToFirst()) {

@@ -8,6 +8,7 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
@@ -64,6 +65,7 @@ public class Activity_kh_datLich extends AppCompatActivity {
     String radioPTTT = "null";
     int giaGoc,giaSale;
     LichKhachHang_DAO lichKhachHang_dao;
+    int checkRdo=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,6 +109,9 @@ public class Activity_kh_datLich extends AppCompatActivity {
                 mDay = dayOfMonth;
                 GregorianCalendar gcalender = new GregorianCalendar(mYear,mMonth,mDay);
                 edNgayDat_ATVT_KHDL.setText(sdf.format(gcalender.getTime()));
+                if (isStartDateValid() == false) {
+                    return;
+                }
             }
         };
         edNgayDat_ATVT_KHDL.setOnClickListener(new View.OnClickListener() {
@@ -149,6 +154,7 @@ public class Activity_kh_datLich extends AppCompatActivity {
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 RadioButton radioButton  = findViewById(checkedId);
                 radioPTTT = radioButton.getText().toString();
+                checkRdo=1;
             }
         });
 
@@ -174,45 +180,59 @@ public class Activity_kh_datLich extends AppCompatActivity {
         }
 
 
+        tvtienGoc_ATVT_KHDL.setText(String.valueOf(giaGoc));
+        tvtienSale_ATVT_KHDL.setText(String.valueOf(giaSale));
+        if (giaSale<=giaGoc){
+
+        }else {
+            tvtienSale_ATVT_KHDL.setVisibility(View.GONE);
+            TextView b = findViewById(R.id.b);
+            b.setVisibility(View.GONE);
+        }
         //addlich
         lichKhachHang_dao = new LichKhachHang_DAO(this);
         btnThanhToan_ATVT_KHDL.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                tvtienGoc_ATVT_KHDL.setText(String.valueOf(giaGoc));
-                tvtienSale_ATVT_KHDL.setText(String.valueOf(giaSale));
-
-                //add lich
-                LichKhachHang lichKhachHang = new LichKhachHang();
-//                hoTen_ATVT_KHDL,sdt_ATVT_KHDL,tvtienGoc_ATVT_KHDL,tvtienSale_ATVT_KHDL
-
-                lichKhachHang.setMaTK(Integer.parseInt(DATA_MATK));
-                lichKhachHang.setMaDV(Integer.parseInt(String.valueOf(selectedDichVuTrongGio.getMaDV())));
-                String gio = edGioDat_ATVT_KHDL.getText().toString();
-                String ngay =edNgayDat_ATVT_KHDL.getText().toString();
-
-                try {
-                    lichKhachHang.setNgayDat(sdf.parse(ngay));
-                } catch (ParseException e) {
-                    Toast.makeText(Activity_kh_datLich.this, "Lỗi ngày", Toast.LENGTH_SHORT).show();
-                }
-                lichKhachHang.setGioDat(gio);
-                lichKhachHang.setPTTT(radioPTTT);
-                lichKhachHang.setTrangThai("Đang chờ");
-                lichKhachHang.setFeedBack("");
-                lichKhachHang.setGhiChu("");
-                if (lichKhachHang_dao.insert(lichKhachHang)>0){
-
-                    Toast.makeText(Activity_kh_datLich.this, "Đặt lịch thành công!", Toast.LENGTH_SHORT).show();
+                if (edNgayDat_ATVT_KHDL.getText().toString().trim().isEmpty()){
+                    Toast.makeText(Activity_kh_datLich.this, "Không bỏ trống ngày !", Toast.LENGTH_SHORT).show();
+                }else if (edGioDat_ATVT_KHDL.getText().toString().trim().isEmpty()){
+                    Toast.makeText(Activity_kh_datLich.this, "Không bỏ trống giờ !", Toast.LENGTH_SHORT).show();
+                }else if (checkRdo==0){
+                    Toast.makeText(Activity_kh_datLich.this, "Phải chọn phương thức thanh toán !", Toast.LENGTH_SHORT).show();
                 }else {
-                    Toast.makeText(Activity_kh_datLich.this, "Lỗi !", Toast.LENGTH_SHORT).show();
-                }
-                for (DichVuTrongGio dichvuTG : list) {
-                    if (dichvutronggioDao.delete(dichvuTG.getMaDVTG())>0){
-                        Toast.makeText(Activity_kh_datLich.this, "ok Xóa", Toast.LENGTH_SHORT).show();
+                    //add lich
+                    LichKhachHang lichKhachHang = new LichKhachHang();
+
+                    lichKhachHang.setMaTK(Integer.parseInt(DATA_MATK));
+                    lichKhachHang.setMaDV(Integer.parseInt(String.valueOf(selectedDichVuTrongGio.getMaDV())));
+                    String gio = edGioDat_ATVT_KHDL.getText().toString();
+                    String ngay =edNgayDat_ATVT_KHDL.getText().toString();
+
+                    try {
+                        lichKhachHang.setNgayDat(sdf.parse(ngay));
+                    } catch (ParseException e) {
+                        Toast.makeText(Activity_kh_datLich.this, "Lỗi ngày", Toast.LENGTH_SHORT).show();
+                    }
+                    lichKhachHang.setGioDat(gio);
+                    lichKhachHang.setPTTT(radioPTTT);
+                    lichKhachHang.setTrangThai("Đang chờ");
+                    lichKhachHang.setFeedBack("");
+                    lichKhachHang.setGhiChu("");
+                    if (lichKhachHang_dao.insert(lichKhachHang)>0){
+                        Intent resultIntent = new Intent();
+                        setResult(Activity.RESULT_OK, resultIntent);
+                        finish();
+                        Toast.makeText(Activity_kh_datLich.this, "Đặt lịch thành công!", Toast.LENGTH_SHORT).show();
+                    }else {
+                        Toast.makeText(Activity_kh_datLich.this, "Lỗi !", Toast.LENGTH_SHORT).show();
+                    }
+                    for (DichVuTrongGio dichvuTG : list) {
+                        if (dichvutronggioDao.delete(dichvuTG.getMaDVTG())>0){
+                            Toast.makeText(Activity_kh_datLich.this, "ok Xóa", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 }
-
             }
         });
     }
@@ -229,8 +249,17 @@ public class Activity_kh_datLich extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
+    private boolean isStartDateValid() {
+        Calendar selectedCalendar = new GregorianCalendar(mYear, mMonth, mDay);
+        Calendar currentCalendar = Calendar.getInstance();
 
-    public void validate(){
-
+        if (!selectedCalendar.before(currentCalendar) || selectedCalendar.equals(currentCalendar)) {
+            // Ngày đặt phải là ngày hiện tại hoặc sau ngày hiện tại
+            return true;
+        } else {
+            edNgayDat_ATVT_KHDL.setText("");
+            Toast.makeText(this, "Bạn phải đặt dịch vụ trước 1 ngày !", Toast.LENGTH_SHORT).show();
+            return false;
+        }
     }
 }

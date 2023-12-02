@@ -26,14 +26,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_gravity="center_vertical" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="Tất cả"
-                    android:gravity="center_vertical"
-                    android:textColor="@color/black"
-                    android:textSize="14dp" />
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:text="Tất cả"-->
+<!--                    android:gravity="center_vertical"-->
+<!--                    android:textColor="@color/black"-->
+<!--                    android:textSize="14dp" />-->
             </LinearLayout>
             <Button
                 android:id="@+id/btnDatLich_frg_kh_giohang"

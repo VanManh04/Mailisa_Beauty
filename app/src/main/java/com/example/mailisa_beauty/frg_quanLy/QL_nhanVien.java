@@ -1,23 +1,33 @@
 package com.example.mailisa_beauty.frg_quanLy;
 
 import android.app.Dialog;
+import android.app.SearchManager;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.mailisa_beauty.ADAPTER.LichKhachHang_QL_ADAPTER;
 import com.example.mailisa_beauty.ADAPTER.TaiKhoanADAPTER;
 import com.example.mailisa_beauty.DAO.TaiKhoanDAO;
 import com.example.mailisa_beauty.Model.DichVu;
+import com.example.mailisa_beauty.Model.LichKhachHang;
 import com.example.mailisa_beauty.Model.TaiKhoan;
 import com.example.mailisa_beauty.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -25,6 +35,7 @@ import com.tsuryo.swipeablerv.SwipeLeftRightCallback;
 import com.tsuryo.swipeablerv.SwipeableRecyclerView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class QL_nhanVien extends Fragment {
 
@@ -37,6 +48,7 @@ public class QL_nhanVien extends Fragment {
     TaiKhoanDAO taiKhoanDAO;
     TaiKhoanADAPTER taiKhoanADAPTER;
     private ArrayList<TaiKhoan> list = new ArrayList<TaiKhoan>();
+    private SearchView searchView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -168,5 +180,47 @@ public class QL_nhanVien extends Fragment {
                 }
             }
         });
+    }
+//    private SearchView searchView;
+    private void handleSearch(String query) {
+        List<TaiKhoan> listSearch = new ArrayList<>();
+        for (TaiKhoan taiKhoan : list) {
+            if (String.valueOf(taiKhoan.getHoTen()).toLowerCase().contains(query.toLowerCase())) {
+                listSearch.add(taiKhoan);
+            }
+        }
+        taiKhoanADAPTER = new TaiKhoanADAPTER(getActivity(), (ArrayList<TaiKhoan>) listSearch);
+        rcvTaiKhoan.setAdapter(taiKhoanADAPTER);
+
+    }
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        inflater.inflate(R.menu.toolbar_search, menu);
+        SearchManager searchManager = (SearchManager) getActivity().getSystemService(Context.SEARCH_SERVICE);
+        MenuItem searchItem = menu.findItem(R.id.search);
+        searchView = (SearchView) searchItem.getActionView();
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(getActivity().getComponentName()));
+        searchView.setMaxWidth(Integer.MAX_VALUE);
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                handleSearch(newText);
+                return true;
+            }
+        });
+        super.onCreateOptionsMenu(menu, inflater);
     }
 }

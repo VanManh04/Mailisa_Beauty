@@ -71,7 +71,8 @@ public class HoaDon_QL_ADAPTER extends RecyclerView.Adapter<HoaDon_QL_ADAPTER.Vi
         DichVu dichVu = dichVuDAO.getID(String.valueOf(lichKhachHang.getMaDV()));
 //        textViewTenKhachHang,textViewTenDichVu,textViewngayThanhToan,textViewTongTien
         holder.textViewTenKhachHang.setText("Tên khách hàng: "+taiKhoan.getHoTen());
-        holder.textViewTenDichVu.setText("Tên dịch vụ: "+lichKhachHang.getMaDV());
+
+        holder.textViewTenDichVu.setText("Tên dịch vụ: "+dichVu.getTenDV());
         holder.textViewngayThanhToan.setText("Ngày thanh toán: "+sdf.format(hoaDon.getNgayTT()));
 
         if (dichVu.getGiaSALE()<dichVu.getGiaDV()){

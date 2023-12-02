@@ -81,4 +81,9 @@ public class LichLamViecDAO {
         String sql = "SELECT * FROM LichLamViec";
         return getData(sql);
     }
+    public List<LichLamViec> getByMaTK(int maTK) {
+        String sql = "SELECT * FROM LichLamViec WHERE maTK = ?";
+        return getData(sql, String.valueOf(maTK));
+    }
+
 }

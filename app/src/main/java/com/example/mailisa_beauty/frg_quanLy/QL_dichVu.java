@@ -5,6 +5,8 @@ import static android.app.Activity.RESULT_OK;
 import static com.gun0912.tedpermission.provider.TedPermissionProvider.context;
 
 import android.app.Dialog;
+import android.app.SearchManager;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -12,6 +14,9 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -24,14 +29,19 @@ import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mailisa_beauty.ADAPTER.DichVuQL_ADAPTER;
+import com.example.mailisa_beauty.ADAPTER.TaiKhoanADAPTER;
 import com.example.mailisa_beauty.DAO.DichVuDAO;
 import com.example.mailisa_beauty.Model.DichVu;
+import com.example.mailisa_beauty.Model.TaiKhoan;
 import com.example.mailisa_beauty.R;
 import com.squareup.picasso.Picasso;
 import com.tsuryo.swipeablerv.SwipeLeftRightCallback;
@@ -40,6 +50,7 @@ import com.tsuryo.swipeablerv.SwipeableRecyclerView;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class QL_dichVu extends Fragment {
     public QL_dichVu() {
@@ -56,6 +67,7 @@ public class QL_dichVu extends Fragment {
 
     ImageView imgDV_DLDV;
     private boolean isImageSelected = false;
+    private SearchView searchView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -327,6 +339,7 @@ public class QL_dichVu extends Fragment {
             }
     );
 
+
 //    private ActivityResultLauncher<Intent> activityResultLauncher = registerForActivityResult(
 //            new ActivityResultContracts.StartActivityForResult(),
 //            new ActivityResultCallback<ActivityResult>() {
@@ -351,4 +364,45 @@ public class QL_dichVu extends Fragment {
 //                }
 //            }
 //    );
+private void handleSearch(String query) {
+    List<DichVu> listSearch = new ArrayList<>();
+    for (DichVu dichVu1 : list) {
+        if (String.valueOf(dichVu1.getTenDV()).toLowerCase().contains(query.toLowerCase())) {
+            listSearch.add(dichVu1);
+        }
+    }
+    dichVuADAPTER = new DichVuQL_ADAPTER(getActivity(), (ArrayList<DichVu>) listSearch);
+    rcvDichVu.setAdapter(dichVuADAPTER);
+
+}
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        inflater.inflate(R.menu.toolbar_search, menu);
+        SearchManager searchManager = (SearchManager) getActivity().getSystemService(Context.SEARCH_SERVICE);
+        MenuItem searchItem = menu.findItem(R.id.search);
+        searchView = (SearchView) searchItem.getActionView();
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(getActivity().getComponentName()));
+        searchView.setMaxWidth(Integer.MAX_VALUE);
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                handleSearch(newText);
+                return true;
+            }
+        });
+        super.onCreateOptionsMenu(menu, inflater);
+    }
 }

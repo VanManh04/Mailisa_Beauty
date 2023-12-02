@@ -32,6 +32,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.List;
 import java.util.Locale;
 
 public class QL_DoanhSo extends Fragment {
@@ -48,7 +49,7 @@ public class QL_DoanhSo extends Fragment {
     private ArrayList<HoaDon> listHoaDon = new ArrayList<HoaDon>();
     LichKhachHang_DAO lichKhachHangDao;
     private ArrayList<LichKhachHang> listLichKhachHang = new ArrayList<LichKhachHang>();
-    private ArrayList<LichKhachHang> listLichKhachHang1 = new ArrayList<LichKhachHang>();
+    private ArrayList<LichKhachHang> listLichKhachHang2 = new ArrayList<LichKhachHang>();
     DichVuDAO dichVuDAO;
     private ArrayList<DichVu> listDichVu = new ArrayList<DichVu>();
     int tongGoc, tongSale, tong;
@@ -73,20 +74,26 @@ public class QL_DoanhSo extends Fragment {
         lichKhachHangDao = new LichKhachHang_DAO(getActivity());
         dichVuDAO = new DichVuDAO(getActivity());
         listHoaDon = (ArrayList<HoaDon>) hoaDonDAO.getAll();
-        ArrayList<Integer> maLichKhachHangList = new ArrayList<>();
-        for (HoaDon hoadon : listHoaDon) {
-            listLichKhachHang = (ArrayList<LichKhachHang>) lichKhachHangDao.getALLByMaLKH(hoadon.getMaLKH());
-            for (LichKhachHang lichkhachhang : listLichKhachHang) {
-                maLichKhachHangList.add(lichkhachhang.getMaLKH());
-            }
-        }
         ArrayList<Integer> maDichVuList = new ArrayList<>();
-        for (Integer maLKH : maLichKhachHangList){
-            listDichVu = (ArrayList<DichVu>) dichVuDAO.getAllById(maLKH);
-            for (DichVu dichVu : listDichVu){
-                maDichVuList.add(dichVu.getMaDV());
+        for (HoaDon hoaDon : listHoaDon){
+            listLichKhachHang2 = (ArrayList<LichKhachHang>) lichKhachHangDao.getALLByMaLKH(hoaDon.getMaLKH());
+            for (LichKhachHang lichKhachHang : listLichKhachHang2){
+                maDichVuList.add(lichKhachHang.getMaDV());
             }
         }
+//        for (HoaDon hoadon : listHoaDon) {
+//            listLichKhachHang = (ArrayList<LichKhachHang>) lichKhachHangDao.getALLByMaLKH(hoadon.getMaLKH());
+//            for (LichKhachHang lichkhachhang : listLichKhachHang) {
+//                maLichKhachHangList.add(lichkhachhang.getMaLKH());
+//            }
+//        }
+//        ArrayList<Integer> maDichVuList = new ArrayList<>();
+//        for (Integer maLKH : maLichKhachHangList){
+//            listDichVu = (ArrayList<DichVu>) dichVuDAO.getAllById(maLKH);
+//            for (DichVu dichVu : listDichVu){
+//                maDichVuList.add(dichVu.getMaDV());
+//            }
+//        }
         int tong = 0;
         int gia = 0;
         for (Integer maDV : maDichVuList) {
@@ -97,10 +104,40 @@ public class QL_DoanhSo extends Fragment {
                 gia = dichVu.getGiaDV();
             }
             tong += gia;
-
+            Toast.makeText(getActivity(), String.valueOf(dichVu.getMaDV()), Toast.LENGTH_SHORT).show();
         }
-//        Toast.makeText(getActivity(), String.valueOf(maDichVuList.size()), Toast.LENGTH_SHORT).show();
+
         textViewTongDoanhThu.setText(String.valueOf(tong));
+
+        thongkebtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String tuNgay = editTextStartDate.getText().toString();
+                String denNgay = editTextEndDate.getText().toString();
+                ArrayList<Integer> maDVList2 = new ArrayList<>();
+                List<HoaDon> hoaDonList = hoaDonDAO.getHoaDonByDateRange(tuNgay, denNgay);
+                for (HoaDon hoaDon : hoaDonList){
+                    listLichKhachHang2 = (ArrayList<LichKhachHang>) lichKhachHangDao.getALLByMaLKH(hoaDon.getMaLKH());
+                    for (LichKhachHang lichKhachHang : listLichKhachHang2){
+                        maDVList2.add(lichKhachHang.getMaDV());
+                    }
+                }
+                int tong1 = 0;
+                int gia1 = 0;
+                for (Integer maDV : maDVList2) {
+                    DichVu dichVu = dichVuDAO.getID(String.valueOf(maDV));
+                    if (dichVu.getGiaSALE() < dichVu.getGiaDV()) {
+                        gia1 = dichVu.getGiaSALE();
+                    } else {
+                        gia1 = dichVu.getGiaDV();
+                    }
+                    tong1 += gia1;
+//                    Toast.makeText(getActivity(), ""+dichVu.getGiaDV(), Toast.LENGTH_SHORT).show();
+                }
+                tongtungaytoingay.setText(String.valueOf(tong1));
+            }
+        });
+
 
 
         DatePickerDialog.OnDateSetListener dayStar = new DatePickerDialog.OnDateSetListener() {
@@ -153,12 +190,6 @@ public class QL_DoanhSo extends Fragment {
             }
         });
 
-        thongkebtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
 
         return view;
     }
