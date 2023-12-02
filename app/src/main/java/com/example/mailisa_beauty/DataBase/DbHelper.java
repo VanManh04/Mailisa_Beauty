@@ -25,7 +25,7 @@ public class DbHelper extends SQLiteOpenHelper {
         db.execSQL(CreateTableTaiKhoan);
         String data_TK = "INSERT INTO TaiKhoan VALUES" +
                 "(1,'01234567890','Vũ Đức Anh','123','KH')," +
-                "(2,'01122334455','Phạm Thị Hà','123','KH')," +
+                "(2,'01122334455','Phạm Thị Hà','123','NV')," +
                 "(3,'01122334456','Hồng Quân','1234','NV')," +
                 "(4,'01122334457','Văn Đức','1234','NV')," +
                 "(5,'09988776655','Đỗ Thị Kim Anh','1235','QL')," +
@@ -44,8 +44,7 @@ public class DbHelper extends SQLiteOpenHelper {
         db.execSQL(CreateTableLichLamViec);
         String data_LLV = "INSERT INTO LichLamViec VALUES" +
                 "(1,1,'2023/09/23','Sáng','colich')," +
-                "(2,2,'2023/08/22','Chiều','1234')," +
-                "(3,2,'2023/07/21','Chiều','1235')";
+                "(2,2,'2023/08/22','Chiều','1234')";
         db.execSQL(data_LLV);
 
         //BẢNG DỊCH VỤ
@@ -122,8 +121,8 @@ public class DbHelper extends SQLiteOpenHelper {
                 "(1,1,1,1,0)," +
                 "(2,1,6,2,0)," +
                 "(3,1,2,3,0)," +
-                "(4,2,2,3,0)," +
-                "(5,2,6,3,0)";
+                "(4,6,2,3,0)," +
+                "(5,6,6,3,0)";
         db.execSQL(data_DVTG);
 
         //Bảng LỊCH ĐẶT CỦA KHÁCH HÀNG
@@ -157,8 +156,8 @@ public class DbHelper extends SQLiteOpenHelper {
         db.execSQL(CreateTableFeedBack);
 
         String data_FB = "INSERT INTO FeedBack VALUES" +
-                "(1,1,1.0,'ghiChuKH','ghiChuQL')," +
-                "(2,2,2.0,'ghiChuKH1','ghiChuQL1')";
+                "(1,1,1.0,'Dịch vụ tệ','Xin lỗi vì trải ngiệm không tốt....')," +
+                "(2,3,4.0,'ổn','Cám ơn vì đánh giá của bạn!')";
         db.execSQL(data_FB);
 
         //Bảng HÓA ĐƠN
@@ -170,8 +169,8 @@ public class DbHelper extends SQLiteOpenHelper {
         db.execSQL(CreateTableHoaDon);
 
         String data_HD = "INSERT INTO HoaDon VALUES" +
-                "(1,2,'2023/08/22','khong')," +
-                "(2,3,'2023/07/21','ghi chu 2')";
+                "(1,1,'2023/08/22','khong')," +
+                "(2,3,'2023/07/21','')";
         db.execSQL(data_HD);
     }
 
