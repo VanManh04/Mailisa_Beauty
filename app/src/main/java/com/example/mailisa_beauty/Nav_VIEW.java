@@ -61,9 +61,9 @@ public class Nav_VIEW extends AppCompatActivity {
         bottomNavigation= findViewById(R.id.bottomNavigation);
 
         bottomNavigation.add(new MeowBottomNavigation.Model(1,R.drawable.icon_home));
-        bottomNavigation.add(new MeowBottomNavigation.Model(2,R.drawable.icon_dichvu));
+        bottomNavigation.add(new MeowBottomNavigation.Model(2,R.drawable.icon_service2));
         bottomNavigation.add(new MeowBottomNavigation.Model(3,R.drawable.icon_giodv));
-        bottomNavigation.add(new MeowBottomNavigation.Model(4,R.drawable.icon_ldckh));
+        bottomNavigation.add(new MeowBottomNavigation.Model(4,R.drawable.icon_feedback_242));
 
 
         bottomNavigation.show(1,true);
@@ -90,10 +90,16 @@ public class Nav_VIEW extends AppCompatActivity {
                         setTitle("Dịch vụ");
                         break;
                     case 3:
-
+                        getSupportFragmentManager().beginTransaction()
+                                .replace(R.id.frmNav, new Frg_kh_gioDichVu())
+                                .commit();;
+                        setTitle("Giỏ dịch vụ");
                         break;
                     case 4:
-
+                        getSupportFragmentManager().beginTransaction()
+                                .replace(R.id.frmNav, new Frg_kh_feedBack())
+                                .commit();;
+                        setTitle("Feedback");
                         break;
                 }
 
