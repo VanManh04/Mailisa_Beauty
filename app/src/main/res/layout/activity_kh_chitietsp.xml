@@ -22,7 +22,14 @@
             android:background="@drawable/icon_back"
             android:id="@+id/icon_back"
              />
-
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Chi tiết dịch vụ"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            android:textColor="@color/white1"
+            android:layout_marginLeft="15dp"/>
     </LinearLayout>
 
 

@@ -54,10 +54,10 @@ public class Activity_kh_ChiTietSP extends AppCompatActivity {
 
 //        txtgiaspOld_ct
         TextView giaSale = findViewById(R.id.txtgiasp_ct);
-        giaSale.setText(String.valueOf(dichVu.getGiaSALE()));
+        giaSale.setText(String.valueOf("Giá sale: "+dichVu.getGiaSALE()));
 
         TextView giaLoaiTextView = findViewById(R.id.txtgiaspOld_ct);
-        giaLoaiTextView.setText(String.valueOf(dichVu.getGiaDV()));
+
 
         TextView moTa = findViewById(R.id.ghiChu_ct);
         moTa.setText(dichVu.getGhiChu());
@@ -65,7 +65,13 @@ public class Activity_kh_ChiTietSP extends AppCompatActivity {
         ImageView imgsanpham_chitiet = findViewById(R.id.imgsanpham_chitiet);
         imgsanpham_chitiet.setImageURI(dichVu.getHinhAnh());//Uri.parse(String.valueOf(dichVu.getHinhAnh()))
 
-
+        if (dichVu.getGiaDV()<=dichVu.getGiaSALE()){
+            giaSale.setVisibility(View.GONE);
+            giaLoaiTextView.setText(String.valueOf("Giá: "+dichVu.getGiaDV()));
+        }else {
+            giaSale.setVisibility(View.VISIBLE);
+            giaLoaiTextView.setText(String.valueOf("Giá gốc: "+dichVu.getGiaDV()));
+        }
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         String DATA_MATK = preferences.getString("DATA_MATK", "null");
 
@@ -106,7 +112,7 @@ public class Activity_kh_ChiTietSP extends AppCompatActivity {
                 if (dichVuTrongGio_dao.insert(dichVuTrongGio)>0){
                     list.clear();
                     list.addAll(dichVuTrongGio_dao.getAll());
-                    Toast.makeText(Activity_kh_ChiTietSP.this, "Thêm vào giỏ dịch vụ thành công !", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(Activity_kh_ChiTietSP.this, "Thêm vào giỏ dịch vụ thành công !", Toast.LENGTH_SHORT).show();
                 }else {
                     Toast.makeText(Activity_kh_ChiTietSP.this, "Lỗi", Toast.LENGTH_SHORT).show();
                 }

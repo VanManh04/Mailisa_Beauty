@@ -71,13 +71,13 @@ public class LichKhachHang_NV_ADAPTER extends RecyclerView.Adapter<LichKhachHang
         taiKhoanDAO = new TaiKhoanDAO(context);
         TaiKhoan taiKhoan = taiKhoanDAO.getID(String.valueOf(maTK));
         holder.hoTenLichKhachHang_itLDKH.setText("Họ và tên: " + taiKhoan.getHoTen());
-        holder.dichVuLichKhachHang_itLDKH.setText("Dịch vụ:"+ dichVu.getTenDV());
+        holder.dichVuLichKhachHang_itLDKH.setText("Dịch vụ: "+ dichVu.getTenDV());
         holder.ngayDatLichKhachHang_itLDKH.setText("Ngày đặt: " + sdf.format(lichKhachHang.getNgayDat()));
         holder.gioDatLichKhachHang_itLDKH.setText("Giờ đặt: " + lichKhachHang.getGioDat());
         holder.ptttLichKhachHang_itLDKH.setText("PTTT: " + lichKhachHang.getPTTT());
         holder.trangThaiLichKhachHang_itLDKH.setText("Trạng thái: " + lichKhachHang.getTrangThai());
         holder.ghiChuLichKhachHang_itLDKH.setText("Ghi chú: " + lichKhachHang.getGhiChu());
-        holder.feedbackLichKhachHang_itLDKH.setText("Feedback: " + lichKhachHang.getFeedBack());
+        holder.feedbackLichKhachHang_itLDKH.setText("Đánh giá: " + lichKhachHang.getFeedBack());
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
 //        String DATA_MATK = preferences.getString("DATA_MATK", "null");
 //        TaiKhoan taiKhoan1 = taiKhoanDAO.getID(DATA_MATK);

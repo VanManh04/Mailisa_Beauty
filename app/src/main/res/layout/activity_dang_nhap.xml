@@ -27,6 +27,8 @@
         android:id="@+id/n1"
         android:layout_marginTop="10dp"
         android:layout_width="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:textColor="@color/black"
         android:layout_height="wrap_content"
         android:text="Vui lòng đăng nhập để tiếp tục"
         android:textStyle="bold"
@@ -44,8 +46,10 @@
             android:id="@+id/edSdt"
             android:inputType="number"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:hint="Số điện thoại"
+            android:textColor="@color/black"
+            android:background="@drawable/khung_edittext"
             android:paddingLeft="5dp" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -60,8 +64,10 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edPass"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:hint="Mật khẩu"
+            android:background="@drawable/khung_edittext"
+            android:textColor="@color/black"
             android:inputType="textPassword"
             android:paddingLeft="5dp" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -69,9 +75,10 @@
     <TextView
         android:id="@+id/chua_cotaikhoan"
         android:layout_gravity="end"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         android:layout_marginRight="10dp"
         android:layout_width="wrap_content"
+        android:textColor="@color/black"
         android:layout_height="wrap_content"
         android:text="Bạn chưa có tài khoản ?"
         android:textStyle="italic|bold"/>
@@ -82,10 +89,6 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:text="Lưu mật khẩu" />
-
-
-
-
         <Button
             android:id="@+id/btnLogin"
             android:layout_width="150dp"
@@ -95,7 +98,7 @@
             android:layout_marginTop="20dp"
             android:textColor="#FBFBFB"
             android:textSize="16dp"
-            android:backgroundTint="#FF00AA"
+            android:background="@drawable/backgrow_btnhong"
             android:textStyle="bold" />
     </LinearLayout>
 

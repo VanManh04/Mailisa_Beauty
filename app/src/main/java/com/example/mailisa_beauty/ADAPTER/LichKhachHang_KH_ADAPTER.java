@@ -74,7 +74,7 @@ public class LichKhachHang_KH_ADAPTER extends RecyclerView.Adapter<LichKhachHang
         holder.ptttLichKhachHang_itLDKH.setText("PTTT: " + lichKhachHang.getPTTT());
         holder.trangThaiLichKhachHang_itLDKH.setText("Trạng thái: " + lichKhachHang.getTrangThai());
         holder.ghiChuLichKhachHang_itLDKH.setText("Ghi chú: " + lichKhachHang.getGhiChu());
-        holder.feedbackLichKhachHang_itLDKH.setText("Feedback: " + lichKhachHang.getFeedBack());
+        holder.feedbackLichKhachHang_itLDKH.setText("Đánh giá: " + lichKhachHang.getFeedBack());
 
 //        if (lichKhachHang.getFeedBack().length()>1){
 //            holder.btndanhgia_itLDKH.setVisibility(View.GONE);

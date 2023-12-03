@@ -229,7 +229,7 @@ public class Activity_kh_datLich extends AppCompatActivity {
                     }
                     for (DichVuTrongGio dichvuTG : list) {
                         if (dichvutronggioDao.delete(dichvuTG.getMaDVTG())>0){
-                            Toast.makeText(Activity_kh_datLich.this, "ok Xóa", Toast.LENGTH_SHORT).show();
+//                            Toast.makeText(Activity_kh_datLich.this, "ok Xóa", Toast.LENGTH_SHORT).show();
                         }
                     }
                 }

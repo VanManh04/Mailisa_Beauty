@@ -9,10 +9,10 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="181dp"
-        android:layout_marginTop="30dp"
         android:src="@drawable/logo_mailisa" />
 
     <TextView
+        android:textColor="@color/black"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="ĐĂNG KÝ"
@@ -30,8 +30,10 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edsdtDK"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
+            android:background="@drawable/khung_edittext"
             android:hint="Số điện thoại"
+            android:textColor="@color/black"
             android:inputType="number"
             android:paddingLeft="5dp" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -45,8 +47,10 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edhotenDK"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
+            android:background="@drawable/khung_edittext"
             android:hint="Họ tên"
+            android:textColor="@color/black"
             android:paddingLeft="5dp" />
     </com.google.android.material.textfield.TextInputLayout>
     <com.google.android.material.textfield.TextInputLayout
@@ -60,8 +64,10 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edmatkhauDK"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
+            android:background="@drawable/khung_edittext"
             android:hint="Mật khẩu"
+            android:textColor="@color/black"
             android:inputType="textPassword"
             android:paddingLeft="5dp" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -76,8 +82,10 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/ednhaplaimatkhauDK"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
+            android:background="@drawable/khung_edittext"
             android:hint="Nhập lại mật khẩu"
+            android:textColor="@color/black"
             android:inputType="textPassword"
             android:paddingLeft="5dp" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -88,6 +96,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginRight="10dp"
         android:layout_width="wrap_content"
+        android:textColor="@color/black"
         android:layout_height="wrap_content"
         android:text="Bạn đã có tài khoản ?"
         android:textStyle="italic|bold"/>
@@ -103,14 +112,14 @@
             android:id="@+id/btndangki"
             android:layout_width="150dp"
             android:layout_height="55dp"
-            android:layout_marginRight="70dp"
             android:text="ĐĂNG KÝ"
-            android:backgroundTint="#FF00AA"
+            android:background="@drawable/backgrow_btnhong"
             android:textColor="@color/white1"
             android:textSize="16dp"
             android:textStyle="bold" />
 
         <Button
+            android:visibility="gone"
             android:id="@+id/btnhuyDK"
             android:layout_width="150dp"
             android:layout_height="55dp"

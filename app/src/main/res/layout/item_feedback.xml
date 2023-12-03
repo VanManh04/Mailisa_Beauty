@@ -18,6 +18,9 @@
             <!-- Tên khách hàng hoặc số điện thoại -->
             <TextView
                 android:id="@+id/texttenkh_ITFB"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:layout_margin="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
@@ -29,6 +32,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:numStars="5"
+                android:layout_marginLeft="5dp"
                 android:stepSize="1"
                 android:rating="0" />
 
@@ -36,22 +40,27 @@
             <TextView
                 android:id="@+id/ghiChuKH_ITFB"
                 android:layout_width="match_parent"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="5dp"
                 android:layout_height="wrap_content"
                 android:hint="Nhập đánh giá"
                 android:textSize="17dp"/>
 
             <TextView
+                android:layout_marginLeft="5dp"
                 android:layout_marginTop="10dp"
                 android:textStyle="bold"
                 android:layout_marginBottom="5dp"
                 android:layout_width="match_parent"
+                android:textColor="@color/black"
                 android:layout_height="wrap_content"
-                android:hint="Phản hồi của spa"
+                android:text="Phản hồi của spa"
                 android:textSize="17dp"/>
             <TextView
                 android:id="@+id/ghiChuQL_ITFB"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
                 android:textSize="17dp"/>
         </LinearLayout>
 
