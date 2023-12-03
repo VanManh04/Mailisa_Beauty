@@ -26,7 +26,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Chi tiết dịch vụ"
-            android:textSize="25dp"
+            android:textSize="20dp"
             android:textStyle="bold"
             android:textColor="@color/white1"
             android:layout_marginLeft="15dp"/>
@@ -117,7 +117,7 @@
             android:layout_weight="1"
             android:background="#FF00AA"
             android:id="@+id/imgbt_giohang_ct"
-            android:src="@drawable/icon_giodv"/>
+            android:src="@drawable/icon_giodv2"/>
 
         <TextView
             android:layout_width="50dp"

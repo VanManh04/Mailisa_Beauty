@@ -104,7 +104,7 @@ public class QL_DoanhSo extends Fragment {
                 gia = dichVu.getGiaDV();
             }
             tong += gia;
-            Toast.makeText(getActivity(), String.valueOf(dichVu.getMaDV()), Toast.LENGTH_SHORT).show();
+//            Toast.makeText(getActivity(), String.valueOf(dichVu.getMaDV()), Toast.LENGTH_SHORT).show();
         }
 
         textViewTongDoanhThu.setText(String.valueOf(tong));

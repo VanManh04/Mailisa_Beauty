@@ -49,15 +49,20 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <Button
+            android:background="@drawable/backgrow_btnxanh"
             android:id="@+id/btnSubmit_phanhoi"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="130dp"
+            android:layout_marginRight="30dp"
+            android:layout_height="40dp"
+            android:textColor="@color/white1"
             android:text="Gửi phản hồi"
             android:layout_marginTop="16dp"/>
         <Button
             android:id="@+id/btnesc_phanhoi"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:background="@drawable/backgrow_btndo"
+            android:layout_width="90dp"
+            android:layout_height="40dp"
+            android:textColor="@color/white1"
             android:text="Hủy"
             android:layout_marginTop="16dp"/>
     </LinearLayout>

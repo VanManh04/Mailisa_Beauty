@@ -16,6 +16,10 @@
             android:layout_margin="10dp"
             android:orientation="vertical">
             <TextView
+                android:textStyle="bold"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="5dp"
+                android:textColor="@color/black"
                 android:id="@+id/textViewTenKhachHang"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -24,25 +28,43 @@
             <TextView
                 android:id="@+id/textViewTenDichVu"
                 android:layout_width="match_parent"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="5dp"
+                android:textColor="@color/black"
                 android:layout_height="wrap_content"
                 android:text="Tên Dịch Vụ"/>
             <TextView
                 android:id="@+id/textViewngayThanhToan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="5dp"
+                android:textColor="@color/black"
                 android:text="Ngày thanh toan"/>
             <TextView
                 android:id="@+id/textViewPTTT"
                 android:layout_width="match_parent"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="5dp"
+                android:textColor="@color/black"
                 android:layout_height="wrap_content"
                 android:text="Phương thức thanh toán"/>
+
             <TextView
                 android:id="@+id/textViewTongTien"
                 android:layout_width="match_parent"
+                android:layout_marginTop="5dp"
+                android:textStyle="bold"
+                android:layout_marginLeft="5dp"
+                android:textColor="@color/black"
                 android:layout_height="wrap_content"
-                android:text="Tổng Tiền"/>
+                android:text="Tổng Tiền" />
+
             <TextView
                 android:id="@+id/textViewGhiChu"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="5dp"
+                android:textColor="@color/black"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Ghi chú"/>

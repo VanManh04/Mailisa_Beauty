@@ -142,9 +142,9 @@ public class DbHelper extends SQLiteOpenHelper {
         db.execSQL(CreateTableLichKhachHang);
 
         String data_LKH = "INSERT INTO LichKhachHang VALUES" +
-                "(1,1,1,'2023/09/23','12:30','Chuyển khoản','Đang chờ','feedBack','ghiChu')," +
-                "(2,6,3,'2023/08/22','9:10','Tiền mặt','Đã xác nhận','feedBack','ghiChu')," +
-                "(3,7,8,'2023/07/21','15:20','Tiền mặt','Đã xác nhận','feedBack','ghiChu')";
+                "(1,1,1,'2023/09/23','12:30','Chuyển khoản','Đang chờ','','')," +
+                "(2,6,3,'2023/08/22','9:10','Tiền mặt','Đã xác nhận','','')," +
+                "(3,7,8,'2023/07/21','15:20','Tiền mặt','Đã xác nhận','','')";
         db.execSQL(data_LKH);
 
 
