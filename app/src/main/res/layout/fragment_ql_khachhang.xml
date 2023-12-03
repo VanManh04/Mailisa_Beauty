@@ -6,6 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".frg_quanLy.QL_khachHang">
     <LinearLayout
+        android:paddingBottom="50dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -16,7 +17,8 @@
         android:layout_margin="20dp"
         android:layout_height="wrap_content"
         android:text="Thêm khách hàng"
-        android:backgroundTint="#FF00FF"
+        android:textColor="@color/white1"
+        android:backgroundTint="#FF00AA"
         android:layout_gravity="center"/>
 
     <!-- TODO: Update blank fragment layout -->

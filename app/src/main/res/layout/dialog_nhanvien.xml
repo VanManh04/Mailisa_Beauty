@@ -79,7 +79,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Lưu"
-            android:drawableStart="@drawable/icon_save"
+            android:textColor="@color/white1"
             android:layout_marginHorizontal="20dp"
             android:backgroundTint="#4CAF50"
             android:layout_weight="1"/>
@@ -88,7 +88,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Hủy"
-            android:drawableStart="@drawable/icon_cancel"
+            android:textColor="@color/white1"
             android:backgroundTint="#F44336"
             android:layout_marginHorizontal="20dp"
             android:layout_weight="1"/>

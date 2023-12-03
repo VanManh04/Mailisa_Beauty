@@ -7,7 +7,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/khung_test"
+        android:background="@drawable/khungnv"
         android:layout_margin="10dp">
 
         <LinearLayout
@@ -19,7 +19,7 @@
                 android:id="@+id/hoTenLichKhachHang_itLDKH"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Họ và tên: John Doe"
+                android:text="Họ và tên: "
                 android:textSize="18sp"
                 android:textColor="@android:color/black"/>
 

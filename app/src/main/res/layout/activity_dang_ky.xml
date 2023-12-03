@@ -105,8 +105,8 @@
             android:layout_height="55dp"
             android:layout_marginRight="70dp"
             android:text="ĐĂNG KÝ"
-            android:backgroundTint="#7CB342"
-            android:textColor="@color/white"
+            android:backgroundTint="#FF00AA"
+            android:textColor="@color/white1"
             android:textSize="16dp"
             android:textStyle="bold" />
 
@@ -116,7 +116,7 @@
             android:layout_height="55dp"
             android:text="HỦY"
             android:backgroundTint="#FA1C17"
-            android:textColor="@color/white"
+            android:textColor="@color/white1"
             android:textSize="16dp"
             android:textStyle="bold" />
     </LinearLayout>

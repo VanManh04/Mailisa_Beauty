@@ -63,9 +63,8 @@
             android:text="Đổi mật khẩu"
             android:textSize="20dp"
             android:layout_weight="1"
-            android:backgroundTint="#6E716E"
-            android:drawableStart="@drawable/icon_save"/>
-
+            android:textColor="@color/white1"
+            android:background="#FF00AA"/>
         <Button
             android:id="@+id/btnCancelUserChange"
             android:layout_width="wrap_content"

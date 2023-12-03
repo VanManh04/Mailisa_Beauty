@@ -12,12 +12,14 @@
         android:orientation="vertical">
 
         <Button
+            android:textStyle="bold"
+            android:textColor="@color/white1"
             android:id="@+id/btnAddNv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_margin="20dp"
-            android:backgroundTint="#FF00FF"
+            android:backgroundTint="#FF00AA"
             android:text="Thêm nhân viên" />
 
         <com.tsuryo.swipeablerv.SwipeableRecyclerView

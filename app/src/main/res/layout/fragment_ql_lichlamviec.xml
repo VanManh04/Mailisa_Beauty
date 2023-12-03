@@ -9,6 +9,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:paddingBottom="50dp"
         android:orientation="vertical">
 
         <Button
@@ -17,7 +18,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_margin="20dp"
-            android:backgroundTint="#FF00FF"
+            android:textStyle="bold"
+            android:textColor="@color/white1"
+            android:backgroundTint="#FF00AA"
             android:text="Thêm lịch" />
         <!-- TODO: Update blank fragment layout -->
 

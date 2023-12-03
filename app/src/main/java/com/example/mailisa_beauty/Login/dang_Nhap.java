@@ -131,4 +131,6 @@ public class dang_Nhap extends AppCompatActivity {
         //save
         editor.commit();
     }
+
+
 }

@@ -6,11 +6,13 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -21,6 +23,7 @@ import com.example.mailisa_beauty.ADAPTER.DichVu_SL_NEW_ADAPTER;
 import com.example.mailisa_beauty.DAO.DichVuDAO;
 import com.example.mailisa_beauty.Model.DichVu;
 import com.example.mailisa_beauty.R;
+import com.example.mailisa_beauty.frg_khachHang.Frg_kh_gioDichVu;
 
 import java.util.ArrayList;
 public class QL_trangChu extends Fragment {
@@ -31,6 +34,8 @@ public class QL_trangChu extends Fragment {
     RecyclerView rcvTCSPSALE,rcvTCSPNEW;
     DichVuDAO dichVuDAO;
     DichVu_SL_NEW_ADAPTER dichVuSLAdapter;
+
+    Button btnDatLich,btnDichVu,btnLS,btnFB;
     private ArrayList<DichVu> list = new ArrayList<DichVu>();
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -55,11 +60,14 @@ public class QL_trangChu extends Fragment {
 
         dichVuSLAdapter = new DichVu_SL_NEW_ADAPTER(getActivity(), list);
         rcvTCSPNEW.setAdapter(dichVuSLAdapter);
+
+
         return view;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+
         ImageSlider imageSlider = view.findViewById(R.id.imageSlider);
         ArrayList<SlideModel> slideModels= new ArrayList<>();
         slideModels.add(new SlideModel(R.drawable.banner1, ScaleTypes.FIT));
@@ -87,7 +95,9 @@ public class QL_trangChu extends Fragment {
             }
         });
 
+
         super.onViewCreated(view, savedInstanceState);
 
     }
+
 }

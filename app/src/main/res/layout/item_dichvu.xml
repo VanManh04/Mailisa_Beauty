@@ -10,9 +10,10 @@
         android:background="@drawable/khungnv"
         android:layout_margin="20dp">
 
+
         <LinearLayout
             android:layout_width="350dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_margin="10dp"
             android:orientation="vertical">
 
@@ -27,8 +28,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="18dp"
                 android:textStyle="bold"
-                android:gravity="center"
-                android:textColor="#F353F8"
+                android:textColor="#FF00AA"
                 android:layout_marginTop="5dp"
                 android:text="Ten dv"/>
             <LinearLayout
@@ -123,6 +123,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
                 android:layout_marginTop="10dp"
+                android:textColor="@color/white1"
                 android:layout_marginRight="10dp"
                 android:backgroundTint="#4F9A42"
                 android:text="Thêm đặt lịch" />

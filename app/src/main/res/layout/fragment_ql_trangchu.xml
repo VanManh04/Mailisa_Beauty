@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:paddingBottom="50dp"
         android:orientation="vertical">
 
  
@@ -27,7 +28,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="166dp"
-            android:layout_gravity="center"
+            android:layout_gravity="center_horizontal"
             android:background="@drawable/background1"
             android:orientation="horizontal"
             android:paddingTop="20dp">
@@ -35,14 +36,14 @@
             <LinearLayout
                 android:layout_width="70dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="20dp"
+                android:layout_margin="17dp"
                 android:orientation="vertical">
 
                 <ImageButton
-                    android:layout_gravity="center"
                     android:id="@+id/buttondatlich"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
+                    android:layout_gravity="center"
                     android:background="@drawable/khungmenu"
                     android:src="@drawable/datlich" />
 
@@ -57,7 +58,7 @@
             <LinearLayout
                 android:layout_width="70dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="20dp"
+                android:layout_margin="17dp"
                 android:orientation="vertical">
 
                 <ImageButton
@@ -66,21 +67,21 @@
                     android:layout_height="50dp"
                     android:layout_gravity="center"
                     android:background="@drawable/khungmenu"
-                    android:src="@drawable/giamgia" />
+                    android:src="@drawable/icon_service2" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:textAlignment="center"
                     android:paddingTop="5dp"
-                    android:text="Khuyến mại" />
+                    android:text="Dịch vụ"
+                    android:textAlignment="center" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="70dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="20dp"
+                android:layout_margin="17dp"
                 android:orientation="vertical">
 
                 <ImageButton
@@ -102,26 +103,44 @@
             <LinearLayout
                 android:layout_width="70dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="20dp"
-                android:orientation="vertical"
-   >
+                android:layout_margin="17dp"
+                android:orientation="vertical">
 
                 <ImageButton
                     android:id="@+id/buttondichvu"
                     android:layout_width="50dp"
-                    android:layout_gravity="center"
                     android:layout_height="50dp"
+                    android:layout_gravity="center"
                     android:background="@drawable/khungmenu"
-                    android:src="@drawable/dichvu" />
+                    android:src="@drawable/icon_feedback_242" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:paddingTop="5dp"
-                    android:text="Dịch vụ" />
+                    android:text="Feedback" />
             </LinearLayout>
 
+        </LinearLayout>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="|         DỊCH VỤ NEW        |"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:textColor="#FF00AA"
+            android:layout_marginTop="20dp" android:layout_gravity="center"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="300dp"
+            android:orientation="horizontal">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rcvTCSPNEW"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
         </LinearLayout>
 
         <TextView
@@ -144,23 +163,7 @@
             app:iss_delay="2000"
             app:iss_period="2000" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="|         DỊCH VỤ NEW        |"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            android:textColor="#FF00AA"
-            android:layout_marginTop="20dp" android:layout_gravity="center"/>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="400dp"
-            android:orientation="horizontal">
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rcvTCSPNEW"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
-        </LinearLayout>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -171,13 +174,14 @@
             android:layout_marginTop="20dp" android:layout_gravity="center"/>
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="400dp"
+            android:layout_height="300dp"
             android:orientation="horizontal">
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rcvTCSPSALE"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>
         </LinearLayout>
+
         <TextView
             android:layout_width="699dp"
             android:layout_height="45dp"
