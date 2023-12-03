@@ -78,9 +78,9 @@ public class DichVu_SL_NEW_ADAPTER extends RecyclerView.Adapter<DichVu_SL_NEW_AD
             holder.tvghiChu_itDVSL.setVisibility(View.GONE);
         }
 
-        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onLongClick(View view) {
+            public void onClick(View view) {
 
                 String maDV = ""+list.get(position).getMaDV();
 
@@ -89,7 +89,6 @@ public class DichVu_SL_NEW_ADAPTER extends RecyclerView.Adapter<DichVu_SL_NEW_AD
                 Intent intent = new Intent(context, Activity_kh_ChiTietSP.class);
                 intent.putExtra("maDV", maDV);
                 context.startActivity(intent);
-                return false;
             }
         });
     }

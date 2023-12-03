@@ -112,10 +112,9 @@ public class LichLamViecADAPTER extends RecyclerView.Adapter<LichLamViecADAPTER.
                 }
             });
         }else {
-            holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public boolean onLongClick(View v) {
-                    return false;
+                public void onClick(View v) {
                 }
             });
         }

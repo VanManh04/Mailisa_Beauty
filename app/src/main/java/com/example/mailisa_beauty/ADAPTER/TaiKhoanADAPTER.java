@@ -82,11 +82,10 @@ public class TaiKhoanADAPTER extends RecyclerView.Adapter<TaiKhoanADAPTER.viewho
             }
         });
 
-        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onLongClick(View v) {
+            public void onClick(View v) {
                 opendialogsua(taiKhoan);
-                return true;
             }
         });
     }

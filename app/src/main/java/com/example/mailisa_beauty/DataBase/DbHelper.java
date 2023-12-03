@@ -10,7 +10,7 @@ public class DbHelper extends SQLiteOpenHelper {
     private static final String DbName = "QLDT";
 
     public DbHelper(@Nullable Context context) {
-        super(context, DbName, null, 2);
+        super(context, DbName, null, 3);
     }
 
     @Override
@@ -29,9 +29,12 @@ public class DbHelper extends SQLiteOpenHelper {
                 "(3,'01122334456','Hồng Quân','1234','NV')," +
                 "(4,'01122334457','Văn Đức','1234','NV')," +
                 "(5,'09988776655','Đỗ Thị Kim Anh','1235','QL')," +
-                "(6,'01234567891','Vũ Đức An','123','KH')," +
-                "(7,'01234567892','Vũ Đức A','123','KH')," +
-                "(8,'01234567893','Vũ Đức O','123','KH')";
+                "(6,'0941612689','Nguyễn Hoàng Long','1','QL')," +
+                "(7,'0364209536','Giáp Văn Mạnh','1','QL')," +
+                "(8,'0058387297','Nguyễn Thế Kỳ Anh','1','QL')," +
+                "(9,'01234567891','Vũ Đức An','123','KH')," +
+                "(10,'01234567892','Vũ Đức A','123','KH')," +
+                "(9,'01234567893','Vũ Đức O','123','KH')";
         db.execSQL(data_TK);
 
         //BẢNG LỊCH LÀM VIỆC

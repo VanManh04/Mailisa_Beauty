@@ -84,11 +84,10 @@ public class HoaDon_QL_ADAPTER extends RecyclerView.Adapter<HoaDon_QL_ADAPTER.Vi
         }
         holder.textViewPTTT.setText("PTTT: "+lichKhachHang.getPTTT());
         holder.textViewGhiChu.setText("Ghi chú: "+hoaDon.getGhiChu());
-        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onLongClick(View v) {
+            public void onClick(View v) {
                 opendialogsua(hoaDon);
-                return true;
             }
         });
     }

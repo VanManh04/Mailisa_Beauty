@@ -71,11 +71,10 @@ public class FeedBack_QL_ADAPTER extends RecyclerView.Adapter<FeedBack_QL_ADAPTE
         holder.ratingBar_ITFB.setRating(soSao);
         holder.ghiChuKH_ITFB.setText(ghiChuKH);
         holder.ghiChuQL_ITFB.setText(ghiChuQL);
-        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onLongClick(View v) {
+            public void onClick(View v) {
                 opendialogsua(feedBack);
-                return true;
             }
         });
     }

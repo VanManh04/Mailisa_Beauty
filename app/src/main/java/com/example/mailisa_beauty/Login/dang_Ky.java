@@ -1,9 +1,13 @@
 package com.example.mailisa_beauty.Login;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.Paint;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -26,6 +30,12 @@ public class dang_Ky extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dang_ky);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = getWindow();
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.setStatusBarColor(Color.WHITE);
+            window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+        }
 
         da_cotaikhoan = findViewById(R.id.da_cotaikhoan);
         edsdtDK = findViewById(R.id.edsdtDK);
@@ -49,10 +59,7 @@ public class dang_Ky extends AppCompatActivity {
         btnhuyDK.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                edsdtDK.setText("");
-                edhotenDK.setText("");
-                edmatkhauDK.setText("");
-                ednhaplaimatkhauDK.setText("");
+                finish();
             }
         });
         btndangki.setOnClickListener(new View.OnClickListener() {
