@@ -304,6 +304,7 @@ public class Nav_VIEW extends AppCompatActivity {
                 }else if (item.getItemId()==R.id.nav_dangXuat){
                     Intent i = new Intent(Nav_VIEW.this, dang_Nhap.class);
                     startActivity(i);
+                    finish();
                 }
                 drawerLayout.close();
                 return true;

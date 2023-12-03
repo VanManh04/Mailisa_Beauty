@@ -1,8 +1,10 @@
 package com.example.mailisa_beauty.frg_khachHang;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -24,6 +26,8 @@ import com.example.mailisa_beauty.Model.DichVu;
 import com.example.mailisa_beauty.Model.DichVuTrongGio;
 import com.example.mailisa_beauty.Model.TaiKhoan;
 import com.example.mailisa_beauty.R;
+import com.tsuryo.swipeablerv.SwipeLeftRightCallback;
+import com.tsuryo.swipeablerv.SwipeableRecyclerView;
 
 import java.util.ArrayList;
 
@@ -33,7 +37,7 @@ public class Frg_kh_gioDichVu extends Fragment {
         // Required empty public constructor
     }
 
-    RecyclerView rcvFRGKHGDV;
+    SwipeableRecyclerView rcvFRGKHGDV;
     CheckBox checkbox_frg_kh_giohang;
     Button btnDatLich_frg_kh_giohang;
     DichVuTrongGio_DAO dichVuTrongGio_dao;
@@ -110,6 +114,45 @@ public class Frg_kh_gioDichVu extends Fragment {
                 }else {
                     Toast.makeText(getActivity(), "Bạn chưa chọn dịch vụ!", Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+
+        rcvFRGKHGDV.setListener(new SwipeLeftRightCallback.Listener() {
+            @Override
+            public void onSwipedRight(int position) {
+                dichVuKHTrongGioAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onSwipedLeft(int position) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                builder.setTitle("Cảnh báo");
+                builder.setIcon(R.drawable.icon_warning);
+                builder.setMessage("Bạn có muốn xóa không?");
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Xử lý logic khi người dùng chọn Yes
+                        DichVuTrongGio dichVuTrongGio = list.get(position); // Lấy đối tượng DichVu tại vị trí vuốt
+                        if (dichVuTrongGio_dao.delete(dichVuTrongGio.getMaDVTG()) > 0) {
+                            list.remove(position);
+                            dichVuKHTrongGioAdapter.notifyDataSetChanged();
+                            Toast.makeText(getActivity(), "Xóa thành công!", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(getActivity(), "Xóa thất bại", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Xử lý logic khi người dùng chọn No
+                        dialog.dismiss();
+                        dichVuKHTrongGioAdapter.notifyDataSetChanged();
+                    }
+                });
+                AlertDialog alertDialog = builder.create();
+                alertDialog.show();
             }
         });
         return view;

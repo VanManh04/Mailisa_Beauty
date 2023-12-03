@@ -1,5 +1,7 @@
 package com.example.mailisa_beauty.Login;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -132,5 +134,26 @@ public class dang_Nhap extends AppCompatActivity {
         editor.commit();
     }
 
+    @Override
+    public void onBackPressed() {
+        // Kiểm tra xem người dùng có muốn thoát khỏi ứng dụng khi ở màn hình đăng nhập không
+        new AlertDialog.Builder(this)
+                .setMessage("Bạn có muốn thoát khỏi ứng dụng không?")
+                .setPositiveButton("Có", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Nếu người dùng chọn "Có", thoát khỏi ứng dụng
+                        finishAffinity();
+                    }
+                })
+                .setNegativeButton("Không", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Đóng hộp thoại nếu người dùng chọn "Không"
+                        dialog.dismiss();
+                    }
+                })
+                .show();
+    }
 
 }
