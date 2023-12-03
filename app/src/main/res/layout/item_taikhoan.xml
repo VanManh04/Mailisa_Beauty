@@ -12,6 +12,7 @@
         android:layout_margin="20dp">
 
         <ImageView
+            android:layout_gravity="center"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:src="@drawable/avt"/>
@@ -21,39 +22,44 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:orientation="vertical">
+
             <TextView
                 android:id="@+id/txtSDT_itNV"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="SDT"
-                android:textSize="16sp"
                 android:layout_margin="5dp"
-                android:textColor="#070707"/>
+                android:text="SDT"
+                android:textColor="#070707"
+                android:textSize="16sp" />
+
             <TextView
                 android:id="@+id/txthoTen_itNV"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="tên"
-                android:textStyle="bold"
-                android:textSize="16sp"
                 android:layout_margin="5dp"
-                android:textColor="#070707"/>
+                android:text="tên"
+                android:textColor="#070707"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
             <TextView
                 android:id="@+id/txtmatKhau_itNV"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="16sp"
-                android:text="mật khẩu"
                 android:layout_margin="5dp"
-                android:textColor="#070707"/>
-                <ImageView
-                    android:id="@+id/btndelete_itNV"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:src="@drawable/icon_delete"
-                    android:layout_gravity="end"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginBottom="5dp"/>
+                android:text="mật khẩu"
+                android:textColor="#070707"
+                android:textSize="16sp" />
+
+            <ImageView
+                android:visibility="gone"
+                android:id="@+id/btndelete_itNV"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_gravity="end"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="5dp"
+                android:src="@drawable/icon_delete" />
         </LinearLayout>
 
     </LinearLayout>
