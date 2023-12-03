@@ -20,6 +20,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Họ và tên: "
+                android:textStyle="bold"
                 android:textSize="18sp"
                 android:textColor="@android:color/black"/>
 
@@ -28,8 +29,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Dịch vụ :"
+                android:layout_marginTop="5dp"
                 android:textSize="16sp"
-                android:textColor="@android:color/darker_gray"/>
+                android:textColor="@android:color/black"/>
             <!-- Hiển thị thông tin Ngày đặt -->
             <TextView
                 android:id="@+id/ngayDatLichKhachHang_itLDKH"
@@ -37,7 +39,8 @@
                 android:layout_height="wrap_content"
                 android:text="Ngày đặt: 2023/12/01"
                 android:textSize="16sp"
-                android:textColor="@android:color/darker_gray"/>
+                android:layout_marginTop="5dp"
+                android:textColor="@android:color/black"/>
 
             <!-- Hiển thị thông tin Giờ đặt -->
             <TextView
@@ -45,26 +48,30 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Giờ đặt: 14:30"
+                android:layout_marginTop="5dp"
                 android:textSize="16sp"
-                android:textColor="@android:color/darker_gray"/>
+                android:textColor="@android:color/black"/>
 
             <!-- Hiển thị thông tin Phương thức thanh toán -->
             <TextView
                 android:id="@+id/ptttLichKhachHang_itLDKH"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
                 android:text="PTTT: Thanh toán khi nhận dịch vụ"
                 android:textSize="16sp"
-                android:textColor="@android:color/darker_gray"/>
+                android:textColor="@android:color/black"/>
 
             <!-- Hiển thị thông tin Trạng thái -->
             <TextView
+                android:textStyle="bold"
                 android:id="@+id/trangThaiLichKhachHang_itLDKH"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Trạng thái: Đã xác nhận"
+                android:layout_marginTop="5dp"
                 android:textSize="16sp"
-                android:textColor="@android:color/darker_gray"/>
+                android:textColor="@android:color/black"/>
 
             <!-- Hiển thị thông tin Ghi chú -->
             <TextView
@@ -73,19 +80,22 @@
                 android:layout_height="wrap_content"
                 android:text="Ghi chú: Đặt lịch trước 1 ngày"
                 android:textSize="16sp"
-                android:textColor="@android:color/darker_gray"/>
+                android:layout_marginTop="5dp"
+                android:textColor="#F57C00"/>
 
             <!-- Hiển thị thông tin Feedback -->
             <TextView
                 android:id="@+id/feedbackLichKhachHang_itLDKH"
                 android:layout_width="wrap_content"
+                android:layout_marginTop="5dp"
                 android:layout_height="wrap_content"
                 android:text="Feedback: Sản phẩm tốt, dịch vụ chuyên nghiệp"
                 android:textSize="16sp"
-                android:textColor="@android:color/darker_gray"/>
+                android:textColor="#388E3C"/>
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_gravity="end"
+                android:layout_marginTop="10dp"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
                 <Button

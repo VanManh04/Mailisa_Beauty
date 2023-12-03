@@ -1,5 +1,5 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="#E6E6E6"/>
+    <solid android:color="#E1E1E1"/>
     <stroke
         android:width="0dp"
        /> <!-- Độ dày viền -->
