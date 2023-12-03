@@ -104,11 +104,10 @@ public class LichLamViecADAPTER extends RecyclerView.Adapter<LichLamViecADAPTER.
         String DATA_MATK = preferences.getString("DATA_MATK", "null");
         TaiKhoan taiKhoan1 = taiKhoanDAO.getID(DATA_MATK);
         if (taiKhoan1.getChucVu().equals("QL")){
-            holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public boolean onLongClick(View v) {
+                public void onClick(View v) {
                     opendialogsua(lichLamViec);
-                    return true;
                 }
             });
         }else {

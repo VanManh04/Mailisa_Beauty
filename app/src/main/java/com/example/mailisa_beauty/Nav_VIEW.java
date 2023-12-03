@@ -99,7 +99,7 @@ public class Nav_VIEW extends AppCompatActivity {
                         getSupportFragmentManager().beginTransaction()
                                 .replace(R.id.frmNav, new Frg_kh_feedBack())
                                 .commit();;
-                        setTitle("Feedback");
+                        setTitle("Đánh giá");
                         break;
                 }
 

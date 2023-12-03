@@ -15,7 +15,7 @@
         <LinearLayout
             android:background="@drawable/backgroundlogin"
             android:layout_width="match_parent"
-            android:layout_height="70dp"
+            android:layout_height="50dp"
             android:gravity="end"
             android:orientation="horizontal">
             <LinearLayout
@@ -39,7 +39,7 @@
             <Button
                 android:id="@+id/btnDatLich_frg_kh_giohang"
                 android:layout_width="80dp"
-                android:layout_height="50dp"
+                android:layout_height="30dp"
                 android:layout_margin="10dp"
                 android:backgroundTint="#FF00AA"
                 android:background="@drawable/backgrow_btndatlich"

@@ -9,8 +9,8 @@
         android:title="Dịch vụ"/>
     <item
         android:id="@+id/nav_datLichKH"
-        android:icon="@drawable/icon_ldckh"
-        android:title="Đặt lịch"/>
+        android:icon="@drawable/icon_giodv"
+        android:title="Giỏ dịch vụ"/>
     <item
         android:id="@+id/nav_lichSuKH"
         android:icon="@drawable/icon_history_24"

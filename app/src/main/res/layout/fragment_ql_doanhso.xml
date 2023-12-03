@@ -11,37 +11,50 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:layout_margin="5dp"
         android:padding="16dp">
+        <LinearLayout
+            android:layout_margin="10dp"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:textColor="#2C2C2C"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tổng doanh thu của cửa hàng:"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:paddingBottom="8dp"/>
+
+            <TextView
+                android:layout_marginLeft="10dp"
+                android:id="@+id/textViewTongDoanhThu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tổng doanh thu"
+                android:textSize="16sp"
+                android:textColor="#388E3C"
+                android:textStyle="bold" />
+        </LinearLayout>
 
         <!-- TextView for displaying the selected date range -->
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Tổng doanh thu của cửa hàng"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:paddingBottom="8dp"/>
+
 
         <TextView
-            android:id="@+id/textViewTongDoanhThu"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Tổng doanh thu"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:paddingBottom="8dp"/>
-
-        <TextView
+            android:textColor="#393939"
             android:id="@+id/textViewDateRange"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Thống kê doanh thu theo ngày bắt đầu - kết thúc"
+            android:text="Thống kê doanh thu theo ngày bắt đầu - kết thúc:"
             android:textSize="16sp"
             android:textStyle="bold"
             android:paddingBottom="8dp"/>
 
         <!-- EditText for selecting the start date -->
         <EditText
+            android:layout_marginTop="10dp"
             android:id="@+id/editTextStartDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -54,6 +67,7 @@
 
         <!-- EditText for selecting the end date -->
         <EditText
+            android:layout_marginTop="10dp"
             android:id="@+id/editTextEndDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -63,16 +77,37 @@
             android:inputType="none"
             android:cursorVisible="false"
             android:onClick="showEndDatePicker"/>
-        <Button
+
+        <LinearLayout
+            android:layout_marginTop="40dp"
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:textColor="#252525"
+                android:layout_height="wrap_content"
+                android:text="Thống kê doanh thu được:"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tongtungaytoingay"
+                android:textColor="#388E3C"
+                android:layout_marginLeft="10dp"
+                android:textStyle="bold"
+                android:text="0"/>
+        </LinearLayout>
+        <Button
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Thống kê"
+            android:layout_marginTop="30dp"
+            android:textColor="@color/white1"
+            android:layout_gravity="center"
+            android:background="@drawable/backgrow_btnhong"
             android:id="@+id/thongkebtn"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/tongtungaytoingay"
-            android:text="273423"/>
+
     </LinearLayout>
 
 </FrameLayout>

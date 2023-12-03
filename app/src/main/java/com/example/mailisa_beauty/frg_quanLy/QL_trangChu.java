@@ -95,6 +95,85 @@ public class QL_trangChu extends Fragment {
             }
         });
 
+        ImageView imageView2 = view.findViewById(R.id.imageView2);
+        imageView2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Xử lý khi hình ảnh được click
+                Uri uri = Uri.parse("https://maps.app.goo.gl/gM2yuocDWpBuawyX9"); // Đường dẫn liên kết của bạn
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+            }
+        });
+
+        ImageView imageView3 = view.findViewById(R.id.imageView3);
+        imageView3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Xử lý khi hình ảnh được click
+                Uri uri = Uri.parse("https://maps.app.goo.gl/dDnBK2P3XuVezgNCA"); // Đường dẫn liên kết của bạn
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+            }
+        });
+
+        ImageView imageView4 = view.findViewById(R.id.imageView4);
+        imageView4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Xử lý khi hình ảnh được click
+                Uri uri = Uri.parse("https://maps.app.goo.gl/3d6wG5ZuYAag51hJ9"); // Đường dẫn liên kết của bạn
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+            }
+        });
+
+        ImageView imageView5 = view.findViewById(R.id.imageView5);
+        imageView5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Xử lý khi hình ảnh được click
+                Uri uri = Uri.parse("https://maps.app.goo.gl/KX2CUv9wE2iYVZVU6"); // Đường dẫn liên kết của bạn
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+            }
+        });
+
+        ImageView imageView6 = view.findViewById(R.id.imageView6);
+        imageView6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Xử lý khi hình ảnh được click
+                Uri uri = Uri.parse("https://maps.app.goo.gl/hQiRn7SFMTJQo1YDA"); // Đường dẫn liên kết của bạn
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+            }
+        });
+
+        ImageView imageView7 = view.findViewById(R.id.imageView7);
+        imageView7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Xử lý khi hình ảnh được click
+                Uri uri = Uri.parse("https://maps.app.goo.gl/T8WWXjCZBpn2Y7KZA"); // Đường dẫn liên kết của bạn
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+            }
+        });
+
+        ImageView imageView8 = view.findViewById(R.id.imageView8);
+        imageView8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Xử lý khi hình ảnh được click
+                Uri uri = Uri.parse("https://maps.app.goo.gl/MorTWoqdHZjVETJw8"); // Đường dẫn liên kết của bạn
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+            }
+        });
+
+
+
 
         super.onViewCreated(view, savedInstanceState);
 
