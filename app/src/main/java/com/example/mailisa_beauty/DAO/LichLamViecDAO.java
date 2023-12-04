@@ -48,7 +48,7 @@ public class LichLamViecDAO {
         ContentValues values = new ContentValues();
         values.put("maTK", llv.getMaTK());
         values.put("ngayBatDau", sdf.format(llv.getNgayBatDau()));
-        values.put("Ca", llv.getCa());
+        values.put("Ca",llv.getCa());
         values.put("ghiChu", llv.getGhiChu());
         return db.update("LichLamViec", values, "maLLV = ?", new String[]{String.valueOf(llv.getMaLLV())});
     }
