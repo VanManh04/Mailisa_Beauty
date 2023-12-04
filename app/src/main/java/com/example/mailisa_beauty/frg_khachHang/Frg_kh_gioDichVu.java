@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import com.example.mailisa_beauty.ADAPTER.DichVuKHTrongGio_ADAPTER;
@@ -36,7 +37,7 @@ public class Frg_kh_gioDichVu extends Fragment {
     public Frg_kh_gioDichVu() {
         // Required empty public constructor
     }
-
+    private SearchView searchView;
     SwipeableRecyclerView rcvFRGKHGDV;
     CheckBox checkbox_frg_kh_giohang;
     Button btnDatLich_frg_kh_giohang;

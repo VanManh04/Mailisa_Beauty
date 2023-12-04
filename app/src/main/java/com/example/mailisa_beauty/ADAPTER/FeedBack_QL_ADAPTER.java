@@ -118,9 +118,9 @@ public class FeedBack_QL_ADAPTER extends RecyclerView.Adapter<FeedBack_QL_ADAPTE
                         list.addAll(feedBackDAO.getAll());
                         notifyDataSetChanged();
                         dialog.dismiss();
-                        Toast.makeText(context, "Sửa thành công!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, "Gửi thành công!", Toast.LENGTH_SHORT).show();
                     } else {
-                        Toast.makeText(context, "Sửa thất bại.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, "Gửi thất bại.", Toast.LENGTH_SHORT).show();
                     }
                 }
             }

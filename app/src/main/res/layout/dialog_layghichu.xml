@@ -20,19 +20,19 @@
         <Button
             android:id="@+id/btnSave"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:layout_margin="10dp"
-            android:background="#689F38"
+            android:background="@drawable/backgrow_btnxanh"
             android:textColor="@color/white1"
             android:text="Gửi" />
 
         <Button
-            android:background="@color/red"
+            android:background="@drawable/backgrow_btndo"
             android:id="@+id/btnCancel"
             android:textColor="@color/white1"
             android:layout_width="wrap_content"
             android:layout_margin="10dp"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:text="Hủy" />
     </LinearLayout>
 </LinearLayout>

@@ -57,7 +57,7 @@ public class dang_Nhap extends AppCompatActivity {
 
 
         // LẤY URI
-//        int imageResourceId = R.drawable.dv2_img;
+//        int imageResourceId = R.drawable.dv1_8;
 //        // Kiểm tra xem tài nguyên hình ảnh có tồn tại hay không
 //        if (imageResourceId != 0) {
 //            // Lấy URI của tài nguyên Drawable

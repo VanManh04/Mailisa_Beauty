@@ -26,9 +26,11 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mailisa_beauty.DAO.DichVuDAO;
+import com.example.mailisa_beauty.DAO.HoaDonDAO;
 import com.example.mailisa_beauty.DAO.LichKhachHang_DAO;
 import com.example.mailisa_beauty.DAO.TaiKhoanDAO;
 import com.example.mailisa_beauty.Model.DichVu;
+import com.example.mailisa_beauty.Model.HoaDon;
 import com.example.mailisa_beauty.Model.LichKhachHang;
 import com.example.mailisa_beauty.Model.TaiKhoan;
 import com.example.mailisa_beauty.R;
@@ -46,6 +48,7 @@ public class LichKhachHang_QL_ADAPTER extends RecyclerView.Adapter<LichKhachHang
     private final LichKhachHang_DAO lichKhachHangDAO;
     TaiKhoanDAO taiKhoanDAO;
     DichVuDAO dichVuDAO;
+    HoaDonDAO hoaDonDAO;
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
 
     public LichKhachHang_QL_ADAPTER(Context context, List<LichKhachHang> list) {
@@ -64,6 +67,7 @@ public class LichKhachHang_QL_ADAPTER extends RecyclerView.Adapter<LichKhachHang
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        hoaDonDAO = new HoaDonDAO(context);
         holder.btndanhgia_itLDKH.setVisibility(View.GONE);
         dichVuDAO = new DichVuDAO(context);
 
@@ -136,6 +140,15 @@ public class LichKhachHang_QL_ADAPTER extends RecyclerView.Adapter<LichKhachHang
                 lichKhachHang.setTrangThai("Xác nhận");
                 if (lichKhachHangDAO.update(lichKhachHang)>0){
                     notifyDataSetChanged();
+                    HoaDon hoaDon = new HoaDon();
+                    hoaDon.setMaLKH(lichKhachHang.getMaLKH());
+                    hoaDon.setNgayTT(lichKhachHang.getNgayDat());
+                    hoaDon.setGhiChu("");
+                    if (hoaDonDAO.insert(hoaDon)>0){
+                        Toast.makeText(context, "Tạo hóa đơn thành công !", Toast.LENGTH_SHORT).show();
+                    }else {
+                        Toast.makeText(context, "Lỗi hóa đơn !", Toast.LENGTH_SHORT).show();
+                    }
                     Toast.makeText(context, "Đã xác nhận !", Toast.LENGTH_SHORT).show();
                 }
             }

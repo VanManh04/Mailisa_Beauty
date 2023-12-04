@@ -48,7 +48,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Thống kê doanh thu theo ngày bắt đầu - kết thúc:"
-            android:textSize="16sp"
+            android:textSize="15sp"
             android:textStyle="bold"
             android:paddingBottom="8dp"/>
 
