@@ -153,7 +153,7 @@ public class DbHelper extends SQLiteOpenHelper {
         db.execSQL(CreateTableFeedBack);
 
         String data_FB = "INSERT INTO FeedBack VALUES" +
-                "(1,3,4.0,'ổn','Cảm ơn vì bạn đã tới trải nghiệm dịch vụ !')," +
+                "(1,3,4.0,'ổn','Cảm ơn bạn!')," +
                 "(2,4,5.0,'Rất oke','')";
         db.execSQL(data_FB);
 
