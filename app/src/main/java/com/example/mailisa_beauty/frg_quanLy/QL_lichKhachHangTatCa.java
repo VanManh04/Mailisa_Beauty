@@ -2,7 +2,6 @@ package com.example.mailisa_beauty.frg_quanLy;
 
 import android.app.SearchManager;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -10,34 +9,29 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mailisa_beauty.ADAPTER.LichKhachHang_QL_ADAPTER;
-import com.example.mailisa_beauty.ADAPTER.TaiKhoanADAPTER;
 import com.example.mailisa_beauty.DAO.LichKhachHang_DAO;
 import com.example.mailisa_beauty.DAO.TaiKhoanDAO;
 import com.example.mailisa_beauty.Model.LichKhachHang;
 import com.example.mailisa_beauty.Model.TaiKhoan;
 import com.example.mailisa_beauty.R;
-import com.tsuryo.swipeablerv.SwipeLeftRightCallback;
-import com.tsuryo.swipeablerv.SwipeableRecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class QL_lichKhachHang extends Fragment {
+public class QL_lichKhachHangTatCa extends Fragment {
     RecyclerView rcvLKH_QLLKH;
-    LichKhachHang_DAO lichKhachHangDao;
-    LichKhachHang_QL_ADAPTER lichKhachHang_ql_adapter;
-    private ArrayList<LichKhachHang> list = new ArrayList<LichKhachHang>();
+    static LichKhachHang_DAO lichKhachHangDao;
+    static LichKhachHang_QL_ADAPTER lichKhachHang_ql_adapter;
+    private static ArrayList<LichKhachHang> list = new ArrayList<LichKhachHang>();
     private SearchView searchView;
     TaiKhoanDAO taiKhoanDAO;
 
@@ -46,7 +40,7 @@ public class QL_lichKhachHang extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_ql_lichkhachhang, container, false);
+        View view = inflater.inflate(R.layout.fragment_ql_lichkhachhangtatca, container, false);
         rcvLKH_QLLKH = view.findViewById(R.id.rcvLKH_QLLKH);
 
         taiKhoanDAO = new TaiKhoanDAO(getActivity());
@@ -97,6 +91,11 @@ public class QL_lichKhachHang extends Fragment {
 //            }
 //        });
         return view;
+    }
+    public static void reloadData() {
+        list.clear();
+        list.addAll(lichKhachHangDao.getAll());
+        lichKhachHang_ql_adapter.notifyDataSetChanged();
     }
     private void handleSearch(String query) {
         List<LichKhachHang> listSearch = new ArrayList<>();

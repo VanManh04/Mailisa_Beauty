@@ -102,9 +102,9 @@ public class DichVuKHTrongGio_ADAPTER extends RecyclerView.Adapter<DichVuKHTrong
                     list.clear();
                     list.addAll(dichVuTrongGio_dao.getAllByMaTK(dataMaTK));
                     notifyDataSetChanged();
-                    Toast.makeText(context, "Sửa thành công!", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(context, "Sửa thành công!", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(context, "Sửa thất bại.", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(context, "Sửa thất bại.", Toast.LENGTH_SHORT).show();
                 }
             }
         });

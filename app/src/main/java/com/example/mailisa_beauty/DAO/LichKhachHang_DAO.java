@@ -100,5 +100,14 @@ public class LichKhachHang_DAO {
         List<LichKhachHang> list = getData(sql, String.valueOf(maLKH));
         return list.isEmpty() ? null : list.get(0);
     }
-
+    public List<LichKhachHang> getAllByTrangThai(String trangThai) {
+        String sql = "SELECT * FROM LichKhachHang WHERE trangThat = ?";
+        String[] selectionArgs = {trangThai};
+        return getData(sql, selectionArgs);
+    }
+    public List<LichKhachHang> getByMaTKAndTrangThai(int maTK, String trangThai) {
+        String sql = "SELECT * FROM LichKhachHang WHERE maTK = ? AND trangThat = ?";
+        String[] selectionArgs = {String.valueOf(maTK), trangThai};
+        return getData(sql, selectionArgs);
+    }
 }

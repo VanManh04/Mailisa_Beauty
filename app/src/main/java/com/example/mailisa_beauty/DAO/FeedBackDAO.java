@@ -70,5 +70,9 @@ public class FeedBackDAO {
         String sql = "SELECT * FROM FeedBack WHERE maLKH IN (" + TextUtils.join(",", maLKHList) + ")";
         return getData(sql);
     }
+    public List<FeedBack> getAllByMaLKH(int maLKH) {
+        String sql = "SELECT * FROM FeedBack WHERE maLKH = ?";
+        return getData(sql, String.valueOf(maLKH));
+    }
 
 }

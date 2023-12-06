@@ -30,9 +30,10 @@ import com.example.mailisa_beauty.frg_nhanVien.NV_lichLamViec;
 import com.example.mailisa_beauty.frg_quanLy.QL_DoanhSo;
 import com.example.mailisa_beauty.frg_quanLy.QL_FeedBack;
 import com.example.mailisa_beauty.frg_quanLy.QL_HoaDon;
+import com.example.mailisa_beauty.frg_quanLy.QL_LKHMAIN;
 import com.example.mailisa_beauty.frg_quanLy.QL_dichVu;
 import com.example.mailisa_beauty.frg_quanLy.QL_khachHang;
-import com.example.mailisa_beauty.frg_quanLy.QL_lichKhachHang;
+import com.example.mailisa_beauty.frg_quanLy.QL_lichKhachHangTatCa;
 import com.example.mailisa_beauty.frg_quanLy.QL_lichLamViec;
 import com.example.mailisa_beauty.frg_quanLy.QL_nhanVien;
 import com.example.mailisa_beauty.frg_quanLy.QL_trangChu;
@@ -267,7 +268,7 @@ public class Nav_VIEW extends AppCompatActivity {
                     replaceFrg(ls_HD);
                 }else if (item.getItemId()==R.id.nav_lichKhachHangQL){
                     setTitle("Lịch đặt của khách hàng");
-                    QL_lichKhachHang ql_LKH = new QL_lichKhachHang();
+                    QL_LKHMAIN ql_LKH = new QL_LKHMAIN();
                     replaceFrg(ql_LKH);
                 }else if (item.getItemId()==R.id.nav_datLichKH){
                     setTitle("Giỏ dịch vụ");

@@ -68,6 +68,7 @@ public class LichKhachHang_KH_ADAPTER extends RecyclerView.Adapter<LichKhachHang
         DichVu dichVu = dichVuDAO.getID(String.valueOf(lichKhachHang.getMaDV()));
         TaiKhoan taiKhoan = taiKhoanDAO.getID(String.valueOf(maTK));
         holder.hoTenLichKhachHang_itLDKH.setText("Họ và tên: " + taiKhoan.getHoTen());
+        holder.sdtLichKhachHang_itLDKH.setText("SĐT: "+taiKhoan.getSdt());
         holder.dichVuLichKhachHang_itLDKH.setText("Dịch vụ: "+dichVu.getTenDV());
         holder.ngayDatLichKhachHang_itLDKH.setText("Ngày đặt: " + sdf.format(lichKhachHang.getNgayDat()));
         holder.gioDatLichKhachHang_itLDKH.setText("Giờ đặt: " + lichKhachHang.getGioDat());
@@ -92,6 +93,11 @@ public class LichKhachHang_KH_ADAPTER extends RecyclerView.Adapter<LichKhachHang
 
         if (lichKhachHang.getFeedBack().length()>1){
             holder.btndanhgia_itLDKH.setVisibility(View.GONE);
+        }
+        if (dichVu.getTrangThai().equals("SALE")){
+            holder.tongTienLichKhachHang_itLDKH.setText("Tổng thanh toán: "+dichVu.getGiaSALE()+" VNĐ");
+        }else {
+            holder.tongTienLichKhachHang_itLDKH.setText("Tổng thanh toán: "+dichVu.getGiaDV()+" VNĐ");
         }
 
 //        holder.btndelete_itLDKH.setOnClickListener(new View.OnClickListener() {
@@ -147,6 +153,14 @@ public class LichKhachHang_KH_ADAPTER extends RecyclerView.Adapter<LichKhachHang
 //            }
 //        });
 
+        if (lichKhachHang.getTrangThai().equals("Xác nhận")){
+            holder.trangThaiLichKhachHang_itLDKH.setTextColor(context.getResources().getColor(R.color.xanh));
+        }else if (lichKhachHang.getTrangThai().equals("Bị hủy")){
+            holder.trangThaiLichKhachHang_itLDKH.setTextColor(context.getResources().getColor(R.color.red));
+        }else {
+            holder.trangThaiLichKhachHang_itLDKH.setTextColor(context.getResources().getColor(R.color.vang));
+        }
+
         holder.btndanhgia_itLDKH.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -172,6 +186,7 @@ public class LichKhachHang_KH_ADAPTER extends RecyclerView.Adapter<LichKhachHang
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView hoTenLichKhachHang_itLDKH, ngayDatLichKhachHang_itLDKH, gioDatLichKhachHang_itLDKH,
                 ptttLichKhachHang_itLDKH, trangThaiLichKhachHang_itLDKH, ghiChuLichKhachHang_itLDKH,
+                tongTienLichKhachHang_itLDKH,sdtLichKhachHang_itLDKH,
                 feedbackLichKhachHang_itLDKH,dichVuLichKhachHang_itLDKH;
         Button  btnxacnhan_itLDKH,btnhuy_itLDKH,btndanhgia_itLDKH;
 
@@ -188,6 +203,8 @@ public class LichKhachHang_KH_ADAPTER extends RecyclerView.Adapter<LichKhachHang
             btnxacnhan_itLDKH = itemView.findViewById(R.id.btnxacnhan_itLDKH);
             btnhuy_itLDKH = itemView.findViewById(R.id.btnhuy_itLDKH);
             btndanhgia_itLDKH = itemView.findViewById(R.id.btndanhgia_itLDKH);
+            tongTienLichKhachHang_itLDKH = itemView.findViewById(R.id.tongTienLichKhachHang_itLDKH);
+            sdtLichKhachHang_itLDKH = itemView.findViewById(R.id.sdtLichKhachHang_itLDKH);
         }
     }
 

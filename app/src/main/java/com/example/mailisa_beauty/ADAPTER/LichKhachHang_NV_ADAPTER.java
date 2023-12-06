@@ -71,6 +71,7 @@ public class LichKhachHang_NV_ADAPTER extends RecyclerView.Adapter<LichKhachHang
         taiKhoanDAO = new TaiKhoanDAO(context);
         TaiKhoan taiKhoan = taiKhoanDAO.getID(String.valueOf(maTK));
         holder.hoTenLichKhachHang_itLDKH.setText("Họ và tên: " + taiKhoan.getHoTen());
+        holder.sdtLichKhachHang_itLDKH.setText("SĐT: "+ taiKhoan.getSdt());
         holder.dichVuLichKhachHang_itLDKH.setText("Dịch vụ: "+ dichVu.getTenDV());
         holder.ngayDatLichKhachHang_itLDKH.setText("Ngày đặt: " + sdf.format(lichKhachHang.getNgayDat()));
         holder.gioDatLichKhachHang_itLDKH.setText("Giờ đặt: " + lichKhachHang.getGioDat());
@@ -78,6 +79,11 @@ public class LichKhachHang_NV_ADAPTER extends RecyclerView.Adapter<LichKhachHang
         holder.trangThaiLichKhachHang_itLDKH.setText("Trạng thái: " + lichKhachHang.getTrangThai());
         holder.ghiChuLichKhachHang_itLDKH.setText("Ghi chú: " + lichKhachHang.getGhiChu());
         holder.feedbackLichKhachHang_itLDKH.setText("Đánh giá: " + lichKhachHang.getFeedBack());
+        if (dichVu.getTrangThai().equals("SALE")){
+            holder.tongTienLichKhachHang_itLDKH.setText("Tổng thanh toán: "+dichVu.getGiaSALE()+" VNĐ");
+        }else {
+            holder.tongTienLichKhachHang_itLDKH.setText("Tổng thanh toán: "+dichVu.getGiaDV()+" VNĐ");
+        }
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
 //        String DATA_MATK = preferences.getString("DATA_MATK", "null");
 //        TaiKhoan taiKhoan1 = taiKhoanDAO.getID(DATA_MATK);
@@ -99,7 +105,13 @@ public class LichKhachHang_NV_ADAPTER extends RecyclerView.Adapter<LichKhachHang
 //                }
 //            });
 //        }
-
+        if (lichKhachHang.getTrangThai().equals("Xác nhận")){
+            holder.trangThaiLichKhachHang_itLDKH.setTextColor(context.getResources().getColor(R.color.xanh));
+        }else if (lichKhachHang.getTrangThai().equals("Bị hủy")){
+            holder.trangThaiLichKhachHang_itLDKH.setTextColor(context.getResources().getColor(R.color.red));
+        }else {
+            holder.trangThaiLichKhachHang_itLDKH.setTextColor(context.getResources().getColor(R.color.vang));
+        }
         holder.btnhuy_itLDKH.setVisibility(View.GONE);
         holder.btnxacnhan_itLDKH.setVisibility(View.GONE);
 
@@ -119,7 +131,8 @@ public class LichKhachHang_NV_ADAPTER extends RecyclerView.Adapter<LichKhachHang
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView hoTenLichKhachHang_itLDKH, ngayDatLichKhachHang_itLDKH, gioDatLichKhachHang_itLDKH,
                 ptttLichKhachHang_itLDKH, trangThaiLichKhachHang_itLDKH, ghiChuLichKhachHang_itLDKH,
-                feedbackLichKhachHang_itLDKH,dichVuLichKhachHang_itLDKH;
+                feedbackLichKhachHang_itLDKH,dichVuLichKhachHang_itLDKH,tongTienLichKhachHang_itLDKH,
+                sdtLichKhachHang_itLDKH;
         Button  btnxacnhan_itLDKH,btnhuy_itLDKH,btndanhgia_itLDKH;
 
         public ViewHolder(@NonNull View itemView) {
@@ -135,6 +148,8 @@ public class LichKhachHang_NV_ADAPTER extends RecyclerView.Adapter<LichKhachHang
             btnhuy_itLDKH = itemView.findViewById(R.id.btnhuy_itLDKH);
             btndanhgia_itLDKH = itemView.findViewById(R.id.btndanhgia_itLDKH);
             dichVuLichKhachHang_itLDKH = itemView.findViewById(R.id.dichVuLichKhachHang_itLDKH);
+            tongTienLichKhachHang_itLDKH = itemView.findViewById(R.id.tongTienLichKhachHang_itLDKH);
+            sdtLichKhachHang_itLDKH = itemView.findViewById(R.id.sdtLichKhachHang_itLDKH);
         }
     }
 

@@ -54,7 +54,7 @@
                 android:layout_width="match_parent"
                 android:textColor="@color/black"
                 android:layout_height="wrap_content"
-                android:text="Phản hồi của spa"
+                android:text="Phản hồi của cửa hàng"
                 android:textSize="17dp"/>
             <TextView
                 android:id="@+id/ghiChuQL_ITFB"

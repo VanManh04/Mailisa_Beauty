@@ -1,10 +1,12 @@
 package com.example.mailisa_beauty.frg_khachHang;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -12,31 +14,45 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 
+import com.example.mailisa_beauty.ADAPTER.FeedBack_Xem_ADAPTER;
 import com.example.mailisa_beauty.DAO.DichVuDAO;
 import com.example.mailisa_beauty.DAO.DichVuTrongGio_DAO;
+import com.example.mailisa_beauty.DAO.FeedBackDAO;
+import com.example.mailisa_beauty.DAO.LichKhachHang_DAO;
 import com.example.mailisa_beauty.Model.DichVu;
 import com.example.mailisa_beauty.Model.DichVuTrongGio;
+import com.example.mailisa_beauty.Model.FeedBack;
+import com.example.mailisa_beauty.Model.LichKhachHang;
 import com.example.mailisa_beauty.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class Activity_kh_ChiTietSP extends AppCompatActivity {
     DichVuDAO dichVuDAO;
     DichVuTrongGio_DAO dichVuTrongGio_dao;
+    TextView soDanhgia;
+    ImageButton btnxemDanhGia;
+    RecyclerView rcvdanhgiatheotungsampham;
+    private ArrayList<FeedBack> listFeedBack = new ArrayList<FeedBack>();
+    private ArrayList<FeedBack> listFeedBackAll = new ArrayList<FeedBack>();
     private ArrayList<DichVuTrongGio> list = new ArrayList<DichVuTrongGio>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_kh_chitietsp);
-
         ImageButton imgbtTrove = findViewById(R.id.icon_back);
         imgbtTrove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();
+                listFeedBack.clear();
+                listFeedBackAll.clear();
             }
         });
 
@@ -119,5 +135,50 @@ public class Activity_kh_ChiTietSP extends AppCompatActivity {
                 startActivity(intent1);
             }
         });
+
+
+
+
+
+        soDanhgia = findViewById(R.id.soDanhgia);
+        btnxemDanhGia = findViewById(R.id.btnxemDanhGia);
+
+        FeedBackDAO feedBackDAO = new FeedBackDAO(this);
+        listFeedBackAll = (ArrayList<FeedBack>) feedBackDAO.getAll();
+        LichKhachHang_DAO lichKhachHangDao = new LichKhachHang_DAO(this);
+
+        for (FeedBack feedBack: listFeedBackAll){
+            int maLKH = feedBack.getMaLKH();
+            LichKhachHang lichKhachHang = lichKhachHangDao.getByMaLKH(maLKH);
+            DichVu dichVu1 = dichVuDAO.getID(String.valueOf(lichKhachHang.getMaDV()));
+            if (dichVu1.getTenDV().equals(dichVu.getTenDV())){
+                listFeedBack.add(feedBack);
+            }
+        }
+        soDanhgia.setText(String.valueOf(listFeedBack.size()));
+        btnxemDanhGia.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (soDanhgia.getText().equals("0")){
+                    Toast.makeText(Activity_kh_ChiTietSP.this, "Không có đánh giá !", Toast.LENGTH_SHORT).show();
+                }else {
+                    showDanhGiaDialog(listFeedBack);
+                }
+            }
+        });
     }
+    private void showDanhGiaDialog(List<FeedBack> danhGiaList) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = getLayoutInflater();
+        View view = inflater.inflate(R.layout.rcv_danhgia_sp, null); // Thay thế layout_danh_gia_rcv bằng layout của bạn
+        builder.setView(view);
+        rcvdanhgiatheotungsampham = view.findViewById(R.id.rcvdanhgiatheotungsampham );
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        rcvdanhgiatheotungsampham.setLayoutManager(layoutManager);
+        FeedBack_Xem_ADAPTER danhGiaAdapter = new FeedBack_Xem_ADAPTER(this, (ArrayList<FeedBack>) danhGiaList);
+        rcvdanhgiatheotungsampham.setAdapter(danhGiaAdapter);
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
 }

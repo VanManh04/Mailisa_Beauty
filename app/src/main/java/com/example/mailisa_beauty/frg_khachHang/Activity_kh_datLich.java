@@ -182,7 +182,7 @@ public class Activity_kh_datLich extends AppCompatActivity {
 
         tvtienGoc_ATVT_KHDL.setText(String.valueOf(giaGoc));
         tvtienSale_ATVT_KHDL.setText(String.valueOf(giaSale));
-        if (giaSale<=giaGoc){
+        if (giaSale<giaGoc){
 
         }else {
             tvtienSale_ATVT_KHDL.setVisibility(View.GONE);

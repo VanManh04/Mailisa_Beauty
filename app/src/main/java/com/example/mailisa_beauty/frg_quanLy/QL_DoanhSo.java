@@ -5,6 +5,8 @@ import android.app.TimePickerDialog;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +18,7 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.example.mailisa_beauty.ADAPTER.HoaDon_QL_ADAPTER;
 import com.example.mailisa_beauty.DAO.DichVuDAO;
 import com.example.mailisa_beauty.DAO.HoaDonDAO;
 import com.example.mailisa_beauty.DAO.LichKhachHang_DAO;
@@ -50,11 +53,14 @@ public class QL_DoanhSo extends Fragment {
     LichKhachHang_DAO lichKhachHangDao;
     private ArrayList<LichKhachHang> listLichKhachHang = new ArrayList<LichKhachHang>();
     private ArrayList<LichKhachHang> listLichKhachHang2 = new ArrayList<LichKhachHang>();
+    private ArrayList<HoaDon> ListHoaDon = new ArrayList<HoaDon>();
     DichVuDAO dichVuDAO;
     private ArrayList<DichVu> listDichVu = new ArrayList<DichVu>();
     int tongGoc, tongSale, tong;
     Button thongkebtn;
     TextView tongtungaytoingay;
+    RecyclerView rcvhoadonthongke;
+    HoaDon_QL_ADAPTER hoaDon_ql_adapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -66,11 +72,17 @@ public class QL_DoanhSo extends Fragment {
         textViewTongDoanhThu = view.findViewById(R.id.textViewTongDoanhThu);
         tongtungaytoingay = view.findViewById(R.id.tongtungaytoingay);
         thongkebtn = view.findViewById(R.id.thongkebtn);
+        rcvhoadonthongke = view.findViewById(R.id.rcvhoadonthongke);
         //lấy tất cả hóa đơn
         //lấy lịch khách hàng theo mã lkh từ hóa đơn
         //lấy dịch mụ theo mã dịch vụ từ lkh
         //lấy giá hoặc giá sale
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+        rcvhoadonthongke.setLayoutManager(layoutManager);
         hoaDonDAO = new HoaDonDAO(getActivity());
+//        listHoaDon = (ArrayList<HoaDon>) hoaDonDAO.getAll();
+//        hoaDon_ql_adapter = new HoaDon_QL_ADAPTER(getActivity(),listHoaDon);
+
         lichKhachHangDao = new LichKhachHang_DAO(getActivity());
         dichVuDAO = new DichVuDAO(getActivity());
         listHoaDon = (ArrayList<HoaDon>) hoaDonDAO.getAll();
@@ -108,36 +120,6 @@ public class QL_DoanhSo extends Fragment {
         }
 
         textViewTongDoanhThu.setText(String.valueOf(tong));
-
-        thongkebtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String tuNgay = editTextStartDate.getText().toString();
-                String denNgay = editTextEndDate.getText().toString();
-                ArrayList<Integer> maDVList2 = new ArrayList<>();
-                List<HoaDon> hoaDonList = hoaDonDAO.getHoaDonByDateRange(tuNgay, denNgay);
-                for (HoaDon hoaDon : hoaDonList){
-                    listLichKhachHang2 = (ArrayList<LichKhachHang>) lichKhachHangDao.getALLByMaLKH(hoaDon.getMaLKH());
-                    for (LichKhachHang lichKhachHang : listLichKhachHang2){
-                        maDVList2.add(lichKhachHang.getMaDV());
-                    }
-                }
-                int tong1 = 0;
-                int gia1 = 0;
-                for (Integer maDV : maDVList2) {
-                    DichVu dichVu = dichVuDAO.getID(String.valueOf(maDV));
-                    if (dichVu.getGiaSALE() < dichVu.getGiaDV()) {
-                        gia1 = dichVu.getGiaSALE();
-                    } else {
-                        gia1 = dichVu.getGiaDV();
-                    }
-                    tong1 += gia1;
-//                    Toast.makeText(getActivity(), ""+dichVu.getGiaDV(), Toast.LENGTH_SHORT).show();
-                }
-                tongtungaytoingay.setText(String.valueOf(tong1));
-            }
-        });
-
 
 
         DatePickerDialog.OnDateSetListener dayStar = new DatePickerDialog.OnDateSetListener() {
@@ -190,7 +172,45 @@ public class QL_DoanhSo extends Fragment {
             }
         });
 
+        thongkebtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String tuNgay = editTextStartDate.getText().toString();
+                String denNgay = editTextEndDate.getText().toString();
+                ArrayList<Integer> maDVList2 = new ArrayList<>();
+                List<HoaDon> hoaDonList = hoaDonDAO.getHoaDonByDateRange(tuNgay, denNgay);
+                for (HoaDon hoaDon : hoaDonList){
+                    listLichKhachHang2 = (ArrayList<LichKhachHang>) lichKhachHangDao.getALLByMaLKH(hoaDon.getMaLKH());
+                    for (LichKhachHang lichKhachHang : listLichKhachHang2){
+                        maDVList2.add(lichKhachHang.getMaDV());
+                    }
+                }
+                hoaDon_ql_adapter = new HoaDon_QL_ADAPTER(getActivity(), (ArrayList<HoaDon>) hoaDonList);
+                rcvhoadonthongke.setAdapter(hoaDon_ql_adapter);
 
+
+                int tong1 = 0;
+                int gia1 = 0;
+                for (Integer maDV : maDVList2) {
+                    DichVu dichVu = dichVuDAO.getID(String.valueOf(maDV));
+                    if (dichVu.getGiaSALE() < dichVu.getGiaDV()) {
+                        gia1 = dichVu.getGiaSALE();
+                    } else {
+                        gia1 = dichVu.getGiaDV();
+                    }
+                    tong1 += gia1;
+//                    Toast.makeText(getActivity(), ""+dichVu.getGiaDV(), Toast.LENGTH_SHORT).show();
+                }
+                tongtungaytoingay.setText(String.valueOf(tong1));
+                if (editTextStartDate.getText().toString().trim().isEmpty()||editTextEndDate.getText().toString().trim().isEmpty()){
+                    Toast.makeText(getActivity(), "Không được bỏ trống ngày bắt đầu hoặc kết thúc!", Toast.LENGTH_SHORT).show();
+                }else if (tong1==0){
+                    Toast.makeText(getActivity(), "Không có hóa đơn !", Toast.LENGTH_SHORT).show();
+                }else {
+
+                }
+            }
+        });
         return view;
     }
 
