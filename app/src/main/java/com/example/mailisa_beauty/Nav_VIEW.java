@@ -25,6 +25,7 @@ import com.example.mailisa_beauty.frg_khachHang.Frg_kh_LSHoatDong;
 import com.example.mailisa_beauty.frg_khachHang.Frg_kh_dichVu;
 import com.example.mailisa_beauty.frg_khachHang.Frg_kh_feedBack;
 import com.example.mailisa_beauty.frg_khachHang.Frg_kh_gioDichVu;
+import com.example.mailisa_beauty.frg_nhanVien.NV_QLKhachHang;
 import com.example.mailisa_beauty.frg_nhanVien.NV_lichKhachHang;
 import com.example.mailisa_beauty.frg_nhanVien.NV_lichLamViec;
 import com.example.mailisa_beauty.frg_quanLy.QL_DoanhSo;
@@ -240,7 +241,7 @@ public class Nav_VIEW extends AppCompatActivity {
                     replaceFrg(lkhnv);
                 }else if (item.getItemId()==R.id.nav_khachHangNV){
                     setTitle("Quản lý khách hàng");
-                    QL_khachHang qlkhhh = new QL_khachHang();
+                    NV_QLKhachHang qlkhhh = new NV_QLKhachHang();
                     replaceFrg(qlkhhh);
                 }else if (item.getItemId()==R.id.nav_lichLamViecNV){
                     setTitle("Lịch làm việc");

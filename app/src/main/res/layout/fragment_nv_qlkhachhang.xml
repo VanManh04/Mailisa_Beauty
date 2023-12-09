@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".frg_nhanVien.NV_QLKhachHang">
+
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:paddingBottom="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <Button
+            android:layout_width="match_parent"
+            android:id="@+id/btnAddKhNV"
+            android:layout_margin="20dp"
+            android:layout_height="wrap_content"
+            android:text="Thêm khách hàng"
+            android:textColor="@color/white1"
+            android:backgroundTint="#FF00AA"
+            android:layout_gravity="center"/>
+
+        <!-- TODO: Update blank fragment layout -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rcvTKKHNV"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
+    </LinearLayout>
+
+</FrameLayout>
