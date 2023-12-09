@@ -76,6 +76,10 @@ public class LichKhachHang_DAO {
         }
         return list;
     }
+    public int deleteAllByMaTK(int maTK) {
+        return db.delete("LichKhachHang", "maTK = ?", new String[]{String.valueOf(maTK)});
+    }
+
 
     //GET ALL
     public List<LichKhachHang> getAll(){

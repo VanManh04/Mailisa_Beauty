@@ -20,7 +20,7 @@
                 android:background="@drawable/backgrow_btnhong"
                 android:textColor="@color/white1"
                 android:layout_margin="6dp"
-                android:layout_width="wrap_content"
+                android:layout_width="70dp"
                 android:layout_height="wrap_content"
                 android:text="Tất cả"/>
             <Button
@@ -28,7 +28,7 @@
                 android:background="@drawable/backgrow_btnhong"
                 android:textColor="@color/white1"
                 android:layout_margin="6dp"
-                android:layout_width="wrap_content"
+                android:layout_width="70dp"
                 android:layout_height="wrap_content"
                 android:text="Đang chờ"/>
             <Button
@@ -36,15 +36,23 @@
                 android:background="@drawable/backgrow_btnhong"
                 android:textColor="@color/white1"
                 android:layout_margin="6dp"
-                android:layout_width="wrap_content"
+                android:layout_width="70dp"
                 android:layout_height="wrap_content"
                 android:text="Xác nhận"/>
+            <Button
+                android:id="@+id/btnhoanthanh"
+                android:background="@drawable/backgrow_btnhong"
+                android:textColor="@color/white1"
+                android:layout_margin="6dp"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:text="Hoàn thành"/>
             <Button
                 android:id="@+id/btnbihuy"
                 android:background="@drawable/backgrow_btnhong"
                 android:textColor="@color/white1"
                 android:layout_margin="6dp"
-                android:layout_width="wrap_content"
+                android:layout_width="70dp"
                 android:layout_height="wrap_content"
                 android:text="Bị hủy"/>
         </LinearLayout>

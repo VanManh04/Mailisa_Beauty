@@ -74,5 +74,9 @@ public class FeedBackDAO {
         String sql = "SELECT * FROM FeedBack WHERE maLKH = ?";
         return getData(sql, String.valueOf(maLKH));
     }
+    public int deleteAllByMaLKHFB(int maLKH) {
+        return db.delete("FeedBack", "maLKH = ?", new String[]{String.valueOf(maLKH)});
+    }
+
 
 }

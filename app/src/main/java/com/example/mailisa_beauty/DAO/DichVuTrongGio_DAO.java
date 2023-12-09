@@ -143,4 +143,8 @@ public class DichVuTrongGio_DAO {
             return null;
         }
     }
+    public int deleteAllByMaTK(String maTK) {
+        return db.delete("DichVuTrongGio", "maTK = ?", new String[]{maTK});
+    }
+
 }

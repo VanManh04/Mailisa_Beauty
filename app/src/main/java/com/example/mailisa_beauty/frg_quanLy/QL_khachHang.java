@@ -25,7 +25,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mailisa_beauty.ADAPTER.TaiKhoanADAPTER;
 import com.example.mailisa_beauty.ADAPTER.TaiKhoanKH_ADAPTER;
+import com.example.mailisa_beauty.DAO.DichVuTrongGio_DAO;
+import com.example.mailisa_beauty.DAO.FeedBackDAO;
+import com.example.mailisa_beauty.DAO.HoaDonDAO;
+import com.example.mailisa_beauty.DAO.LichKhachHang_DAO;
 import com.example.mailisa_beauty.DAO.TaiKhoanDAO;
+import com.example.mailisa_beauty.Model.HoaDon;
+import com.example.mailisa_beauty.Model.LichKhachHang;
 import com.example.mailisa_beauty.Model.TaiKhoan;
 import com.example.mailisa_beauty.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -45,7 +51,14 @@ public class QL_khachHang extends Fragment {
     TaiKhoanDAO taiKhoanDAO;
     TaiKhoanKH_ADAPTER taiKhoanADAPTER;
     private ArrayList<TaiKhoan> list = new ArrayList<TaiKhoan>();
+    private ArrayList<HoaDon> listhoadon = new ArrayList<HoaDon>();
+    private ArrayList<LichKhachHang> listLKH = new ArrayList<LichKhachHang>();
     private SearchView searchView;
+
+    LichKhachHang_DAO lichKhachHangDao;
+    HoaDonDAO hoaDonDAO;
+    FeedBackDAO feedBackDAO;
+    DichVuTrongGio_DAO dichVuTrongGio_dao;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -70,6 +83,14 @@ public class QL_khachHang extends Fragment {
                 opendialogthem();
             }
         });
+
+
+        dichVuTrongGio_dao = new DichVuTrongGio_DAO(getActivity());
+        lichKhachHangDao = new LichKhachHang_DAO(getActivity());
+        hoaDonDAO = new HoaDonDAO(getActivity());
+        feedBackDAO = new FeedBackDAO(getActivity());
+
+
         rcvTaikhoanKH.setListener(new SwipeLeftRightCallback.Listener() {
             @Override
             public void onSwipedRight(int position) {
@@ -86,7 +107,26 @@ public class QL_khachHang extends Fragment {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         // Xử lý logic khi người dùng chọn Yes
-                        TaiKhoan taikhoan = list.get(position); // Lấy đối tượng DichVu tại vị trí vuốt
+                        TaiKhoan taikhoan = list.get(position);
+                        int delete_dichVuTrongGio = dichVuTrongGio_dao.deleteAllByMaTK(String.valueOf(taikhoan.getMa_TK()));
+
+
+                        listhoadon = (ArrayList<HoaDon>) hoaDonDAO.getAll();
+                        listLKH = (ArrayList<LichKhachHang>) lichKhachHangDao.getAll();
+                        List<Integer> maLKH = new ArrayList<>();
+                        for (LichKhachHang lichKhachHang : listLKH){
+                            if (lichKhachHang.getMaTK()==taikhoan.getMa_TK()){
+                                maLKH.add(lichKhachHang.getMaLKH());
+                            }
+                        }
+                        for(Integer malkh : maLKH){
+                            int delete_hoadon = hoaDonDAO.deleteAllByMaLKH(malkh);
+                            int delete_feedback = feedBackDAO.deleteAllByMaLKHFB(malkh);
+                        }
+
+                        int delete_lichkhachhang = lichKhachHangDao.deleteAllByMaTK(taikhoan.getMa_TK());
+
+
                         if (taiKhoanDAO.delete(taikhoan.getMa_TK()) > 0) {
                             list.remove(position);
                             taiKhoanADAPTER.notifyDataSetChanged();
@@ -94,6 +134,8 @@ public class QL_khachHang extends Fragment {
                         } else {
                             Toast.makeText(getActivity(), "Xóa thất bại", Toast.LENGTH_SHORT).show();
                         }
+
+                        
                     }
                 });
                 builder.setNegativeButton("No", new DialogInterface.OnClickListener() {

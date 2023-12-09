@@ -5,6 +5,7 @@ import android.app.SearchManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -25,9 +26,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mailisa_beauty.ADAPTER.LichKhachHang_QL_ADAPTER;
 import com.example.mailisa_beauty.ADAPTER.TaiKhoanADAPTER;
+import com.example.mailisa_beauty.DAO.LichLamViecDAO;
 import com.example.mailisa_beauty.DAO.TaiKhoanDAO;
 import com.example.mailisa_beauty.Model.DichVu;
 import com.example.mailisa_beauty.Model.LichKhachHang;
+import com.example.mailisa_beauty.Model.LichLamViec;
 import com.example.mailisa_beauty.Model.TaiKhoan;
 import com.example.mailisa_beauty.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -46,6 +49,7 @@ public class QL_nhanVien extends Fragment {
     SwipeableRecyclerView rcvTaiKhoan;
     Button fladdTK;
     TaiKhoanDAO taiKhoanDAO;
+    LichLamViecDAO lichLamViecDAO;
     TaiKhoanADAPTER taiKhoanADAPTER;
     private ArrayList<TaiKhoan> list = new ArrayList<TaiKhoan>();
     private SearchView searchView;
@@ -57,6 +61,8 @@ public class QL_nhanVien extends Fragment {
         View view = inflater.inflate(R.layout.fragment_ql_nhanvien, container, false);
         rcvTaiKhoan = view.findViewById(R.id.rcvTKQL);
         fladdTK = view.findViewById(R.id.btnAddNv);
+
+        lichLamViecDAO = new LichLamViecDAO(getActivity());
 
         taiKhoanDAO = new TaiKhoanDAO(getActivity());
         list = (ArrayList<TaiKhoan>) taiKhoanDAO.getAllNV();
@@ -86,14 +92,21 @@ public class QL_nhanVien extends Fragment {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         // Xử lý logic khi người dùng chọn Yes
-                        TaiKhoan taikhoan = list.get(position); // Lấy đối tượng DichVu tại vị trí vuốt
-                        if (taiKhoanDAO.delete(taikhoan.getMa_TK()) > 0) {
-                            list.remove(position);
-                            taiKhoanADAPTER.notifyDataSetChanged();
-                            Toast.makeText(getActivity(), "Xóa thành công!", Toast.LENGTH_SHORT).show();
-                        } else {
-                            Toast.makeText(getActivity(), "Xóa thất bại", Toast.LENGTH_SHORT).show();
+                        TaiKhoan taikhoan = list.get(position);
+                        LichLamViec lichLamViec = lichLamViecDAO.getLichLamViecByMaTK(taikhoan.getMa_TK());// Lấy đối tượng DichVu tại vị trí vuốt
+                        try {
+                            int xoallv =lichLamViecDAO.delete(lichLamViec.getMaLLV());
+                            if (taiKhoanDAO.delete(taikhoan.getMa_TK()) > 0) {
+                                list.remove(position);
+                                taiKhoanADAPTER.notifyDataSetChanged();
+                                Toast.makeText(getActivity(), "Xóa thành công!", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(getActivity(), "Xóa thất bại", Toast.LENGTH_SHORT).show();
+                            }
+                        }catch (Exception e){
+                            Toast.makeText(getActivity(), "Lỗi xóa lịch làm việc !", Toast.LENGTH_SHORT).show();
                         }
+
                     }
                 });
                 builder.setNegativeButton("No", new DialogInterface.OnClickListener() {

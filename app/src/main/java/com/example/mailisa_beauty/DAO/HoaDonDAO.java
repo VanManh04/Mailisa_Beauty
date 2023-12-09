@@ -62,6 +62,10 @@ public class HoaDonDAO {
         cursor.close();
         return list;
     }
+    public int deleteAllByMaLKH(int maLKH) {
+        return db.delete("HoaDon", "maLKH = ?", new String[]{String.valueOf(maLKH)});
+    }
+
 
     public List<HoaDon> getAll() {
         String sql = "SELECT * FROM HoaDon";

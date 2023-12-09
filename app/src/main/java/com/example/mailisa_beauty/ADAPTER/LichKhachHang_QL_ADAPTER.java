@@ -43,6 +43,7 @@ import com.example.mailisa_beauty.frg_khachHang.trangChu;
 import com.example.mailisa_beauty.frg_quanLy.QL_HoaDon;
 import com.example.mailisa_beauty.frg_quanLy.QL_LKHchapNhan;
 import com.example.mailisa_beauty.frg_quanLy.QL_LKHchuaChapNhan;
+import com.example.mailisa_beauty.frg_quanLy.QL_LKHhoanThanh;
 import com.example.mailisa_beauty.frg_quanLy.QL_LKHhuy;
 import com.example.mailisa_beauty.frg_quanLy.QL_lichKhachHangTatCa;
 
@@ -104,9 +105,15 @@ public class LichKhachHang_QL_ADAPTER extends RecyclerView.Adapter<LichKhachHang
         if (lichKhachHang.getTrangThai().equals("Đang chờ")){
             holder.btnxacnhan_itLDKH.setVisibility(View.VISIBLE);
             holder.btnhuy_itLDKH.setVisibility(View.VISIBLE);
+            holder.btnhoanthanh_itLDKH.setVisibility(View.GONE);
+        }else if (lichKhachHang.getTrangThai().equals("Xác nhận")){
+            holder.btnxacnhan_itLDKH.setVisibility(View.GONE);
+            holder.btnhuy_itLDKH.setVisibility(View.GONE);
+            holder.btnhoanthanh_itLDKH.setVisibility(View.VISIBLE);
         }else {
             holder.btnxacnhan_itLDKH.setVisibility(View.GONE);
             holder.btnhuy_itLDKH.setVisibility(View.GONE);
+            holder.btnhoanthanh_itLDKH.setVisibility(View.GONE);
         }
 //        holder.btndelete_itLDKH.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -138,9 +145,11 @@ public class LichKhachHang_QL_ADAPTER extends RecyclerView.Adapter<LichKhachHang
 //            }
 //        });
         if (lichKhachHang.getTrangThai().equals("Xác nhận")){
-            holder.trangThaiLichKhachHang_itLDKH.setTextColor(context.getResources().getColor(R.color.xanh));
+            holder.trangThaiLichKhachHang_itLDKH.setTextColor(context.getResources().getColor(R.color.cam));
         }else if (lichKhachHang.getTrangThai().equals("Bị hủy")){
             holder.trangThaiLichKhachHang_itLDKH.setTextColor(context.getResources().getColor(R.color.red));
+        }else if (lichKhachHang.getTrangThai().equals("Hoàn thành")){
+            holder.trangThaiLichKhachHang_itLDKH.setTextColor(context.getResources().getColor(R.color.xanh));
         }else {
             holder.trangThaiLichKhachHang_itLDKH.setTextColor(context.getResources().getColor(R.color.vang));
         }
@@ -161,6 +170,25 @@ public class LichKhachHang_QL_ADAPTER extends RecyclerView.Adapter<LichKhachHang
                 opendialogGhiChu(lichKhachHang);
                 lichKhachHang.setTrangThai("Xác nhận");
                 if (lichKhachHangDAO.update(lichKhachHang)>0){
+//                    notifyDataSetChanged();
+//                    HoaDon hoaDon = new HoaDon();
+//                    hoaDon.setMaLKH(lichKhachHang.getMaLKH());
+//                    hoaDon.setNgayTT(lichKhachHang.getNgayDat());
+//                    hoaDon.setGhiChu("");
+//                    if (hoaDonDAO.insert(hoaDon)>0){
+//                        Toast.makeText(context, "Tạo hóa đơn thành công !", Toast.LENGTH_SHORT).show();
+//                    }else {
+//                        Toast.makeText(context, "Lỗi hóa đơn !", Toast.LENGTH_SHORT).show();
+//                    }
+                    Toast.makeText(context, "Đã xác nhận !", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        holder.btnhoanthanh_itLDKH.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                lichKhachHang.setTrangThai("Hoàn thành");
+                if (lichKhachHangDAO.update(lichKhachHang)>0){
                     notifyDataSetChanged();
                     HoaDon hoaDon = new HoaDon();
                     hoaDon.setMaLKH(lichKhachHang.getMaLKH());
@@ -171,8 +199,13 @@ public class LichKhachHang_QL_ADAPTER extends RecyclerView.Adapter<LichKhachHang
                     }else {
                         Toast.makeText(context, "Lỗi hóa đơn !", Toast.LENGTH_SHORT).show();
                     }
-                    Toast.makeText(context, "Đã xác nhận !", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Đã hoàn thành !", Toast.LENGTH_SHORT).show();
                 }
+                QL_LKHchuaChapNhan.reloadData();
+                QL_lichKhachHangTatCa.reloadData();
+                QL_LKHhuy.reloadData();
+                QL_LKHchapNhan.reloadData();
+                QL_LKHhoanThanh.reloadData();
             }
         });
 
@@ -194,7 +227,7 @@ public class LichKhachHang_QL_ADAPTER extends RecyclerView.Adapter<LichKhachHang
                 ptttLichKhachHang_itLDKH, trangThaiLichKhachHang_itLDKH, ghiChuLichKhachHang_itLDKH,
                 feedbackLichKhachHang_itLDKH,dichVuLichKhachHang_itLDKH,tongTienLichKhachHang_itLDKH,
                 sdtLichKhachHang_itLDKH;
-        Button  btnxacnhan_itLDKH,btnhuy_itLDKH,btndanhgia_itLDKH;
+        Button  btnxacnhan_itLDKH,btnhuy_itLDKH,btndanhgia_itLDKH,btnhoanthanh_itLDKH;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -211,6 +244,7 @@ public class LichKhachHang_QL_ADAPTER extends RecyclerView.Adapter<LichKhachHang
             btndanhgia_itLDKH = itemView.findViewById(R.id.btndanhgia_itLDKH);
             dichVuLichKhachHang_itLDKH = itemView.findViewById(R.id.dichVuLichKhachHang_itLDKH);
             sdtLichKhachHang_itLDKH = itemView.findViewById(R.id.sdtLichKhachHang_itLDKH);
+            btnhoanthanh_itLDKH = itemView.findViewById(R.id.btnhoanthanh_itLDKH);
         }
     }
 

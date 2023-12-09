@@ -106,14 +106,18 @@ public class LichKhachHang_NV_ADAPTER extends RecyclerView.Adapter<LichKhachHang
 //            });
 //        }
         if (lichKhachHang.getTrangThai().equals("Xác nhận")){
-            holder.trangThaiLichKhachHang_itLDKH.setTextColor(context.getResources().getColor(R.color.xanh));
+            holder.trangThaiLichKhachHang_itLDKH.setTextColor(context.getResources().getColor(R.color.cam));
         }else if (lichKhachHang.getTrangThai().equals("Bị hủy")){
             holder.trangThaiLichKhachHang_itLDKH.setTextColor(context.getResources().getColor(R.color.red));
+        }else if (lichKhachHang.getTrangThai().equals("Hoàn thành")){
+            holder.trangThaiLichKhachHang_itLDKH.setTextColor(context.getResources().getColor(R.color.xanh));
         }else {
             holder.trangThaiLichKhachHang_itLDKH.setTextColor(context.getResources().getColor(R.color.vang));
         }
         holder.btnhuy_itLDKH.setVisibility(View.GONE);
         holder.btnxacnhan_itLDKH.setVisibility(View.GONE);
+        holder.btnhoanthanh_itLDKH.setVisibility(View.GONE);
+
 
         holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
@@ -133,7 +137,7 @@ public class LichKhachHang_NV_ADAPTER extends RecyclerView.Adapter<LichKhachHang
                 ptttLichKhachHang_itLDKH, trangThaiLichKhachHang_itLDKH, ghiChuLichKhachHang_itLDKH,
                 feedbackLichKhachHang_itLDKH,dichVuLichKhachHang_itLDKH,tongTienLichKhachHang_itLDKH,
                 sdtLichKhachHang_itLDKH;
-        Button  btnxacnhan_itLDKH,btnhuy_itLDKH,btndanhgia_itLDKH;
+        Button  btnxacnhan_itLDKH,btnhuy_itLDKH,btndanhgia_itLDKH,btnhoanthanh_itLDKH;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -150,6 +154,7 @@ public class LichKhachHang_NV_ADAPTER extends RecyclerView.Adapter<LichKhachHang
             dichVuLichKhachHang_itLDKH = itemView.findViewById(R.id.dichVuLichKhachHang_itLDKH);
             tongTienLichKhachHang_itLDKH = itemView.findViewById(R.id.tongTienLichKhachHang_itLDKH);
             sdtLichKhachHang_itLDKH = itemView.findViewById(R.id.sdtLichKhachHang_itLDKH);
+            btnhoanthanh_itLDKH = itemView.findViewById(R.id.btnhoanthanh_itLDKH);
         }
     }
 

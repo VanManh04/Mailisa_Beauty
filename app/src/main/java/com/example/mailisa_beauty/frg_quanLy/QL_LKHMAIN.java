@@ -48,6 +48,9 @@ public class QL_LKHMAIN extends Fragment {
                         tab.setText("Xác nhận");
                         break;
                     case 3:
+                        tab.setText("Hoàn thành");
+                        break;
+                    case 4:
                         tab.setText("Bị hủy");
                         break;
                 }

@@ -32,7 +32,7 @@ public class QL_lichKhachHangTatCa extends Fragment {
     static LichKhachHang_DAO lichKhachHangDao;
     static LichKhachHang_QL_ADAPTER lichKhachHang_ql_adapter;
     private static ArrayList<LichKhachHang> list = new ArrayList<LichKhachHang>();
-    private SearchView searchView;
+//    private SearchView searchView;
     TaiKhoanDAO taiKhoanDAO;
 
 
@@ -92,6 +92,15 @@ public class QL_lichKhachHangTatCa extends Fragment {
 //        });
         return view;
     }
+//    @Override
+//    public void onDestroyView() {
+//        if (searchView != null && !searchView.isIconified()) {
+//            searchView.setIconified(true);
+//        }
+//        super.onDestroyView();
+//    }
+
+
     public static void reloadData() {
         list.clear();
         list.addAll(lichKhachHangDao.getAll());
@@ -111,34 +120,34 @@ public class QL_lichKhachHangTatCa extends Fragment {
         rcvLKH_QLLKH.setAdapter(lichKhachHang_ql_adapter);
 
     }
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setHasOptionsMenu(true);
-    }
-
-    @Override
-    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
-        inflater.inflate(R.menu.toolbar_search, menu);
-        SearchManager searchManager = (SearchManager) getActivity().getSystemService(Context.SEARCH_SERVICE);
-        MenuItem searchItem = menu.findItem(R.id.search);
-        searchView = (SearchView) searchItem.getActionView();
-        searchView.setSearchableInfo(searchManager.getSearchableInfo(getActivity().getComponentName()));
-        searchView.setMaxWidth(Integer.MAX_VALUE);
-
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-
-                return true;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                handleSearch(newText);
-                return true;
-            }
-        });
-        super.onCreateOptionsMenu(menu, inflater);
-    }
+//    @Override
+//    public void onCreate(@Nullable Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//        setHasOptionsMenu(true);
+//    }
+//
+//    @Override
+//    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+//        inflater.inflate(R.menu.toolbar_search, menu);
+//        SearchManager searchManager = (SearchManager) getActivity().getSystemService(Context.SEARCH_SERVICE);
+//        MenuItem searchItem = menu.findItem(R.id.search);
+//        searchView = (SearchView) searchItem.getActionView();
+//        searchView.setSearchableInfo(searchManager.getSearchableInfo(getActivity().getComponentName()));
+//        searchView.setMaxWidth(Integer.MAX_VALUE);
+//
+//        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+//            @Override
+//            public boolean onQueryTextSubmit(String query) {
+//
+//                return true;
+//            }
+//
+//            @Override
+//            public boolean onQueryTextChange(String newText) {
+//                handleSearch(newText);
+//                return true;
+//            }
+//        });
+//        super.onCreateOptionsMenu(menu, inflater);
+//    }
 }

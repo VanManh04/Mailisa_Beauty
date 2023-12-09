@@ -7,6 +7,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.example.mailisa_beauty.DataBase.DbHelper;
+import com.example.mailisa_beauty.Model.DichVu;
 import com.example.mailisa_beauty.Model.LichLamViec;
 import com.example.mailisa_beauty.Model.TaiKhoan;
 
@@ -84,6 +85,11 @@ public class LichLamViecDAO {
     public List<LichLamViec> getByMaTK(int maTK) {
         String sql = "SELECT * FROM LichLamViec WHERE maTK = ?";
         return getData(sql, String.valueOf(maTK));
+    }
+    public LichLamViec getLichLamViecByMaTK(int maTK) {
+        String sql = "SELECT * FROM LichLamViec WHERE maTK = ?";
+            List<LichLamViec> list = getData(sql, String.valueOf(maTK));
+            return list.get(0);
     }
 
 }

@@ -43,7 +43,7 @@ public class Frg_kh_LSHoatDong extends Fragment {
     private ArrayList<LichKhachHang> list = new ArrayList<LichKhachHang>();
     private SearchView searchView;
     DichVuDAO dichVuDAO;
-    Button btntatca,btndangcho,btnxacnhan,btnbihuy;
+    Button btntatca,btndangcho,btnxacnhan,btnbihuy,btnhoanthanh;
     String DATA_MATK;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -55,6 +55,7 @@ public class Frg_kh_LSHoatDong extends Fragment {
         btndangcho = view.findViewById(R.id.btndangcho);
         btnxacnhan = view.findViewById(R.id.btnxacnhan);
         btnbihuy = view.findViewById(R.id.btnbihuy);
+        btnhoanthanh = view.findViewById(R.id.btnhoanthanh);
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
         DATA_MATK = preferences.getString("DATA_MATK", "null");
 
@@ -92,6 +93,16 @@ public class Frg_kh_LSHoatDong extends Fragment {
             public void onClick(View v) {
                 list.clear();
                 list.addAll(lichKhachHangDao.getByMaTKAndTrangThai(Integer.parseInt(DATA_MATK),"Xác nhận"));
+                lichKhachHang_kh_adapter = new LichKhachHang_KH_ADAPTER(getActivity(), list);
+                rcvLKH_FRGKH.setAdapter(lichKhachHang_kh_adapter);
+                lichKhachHang_kh_adapter.notifyDataSetChanged();
+            }
+        });
+        btnhoanthanh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                list.clear();
+                list.addAll(lichKhachHangDao.getByMaTKAndTrangThai(Integer.parseInt(DATA_MATK),"Hoàn thành"));
                 lichKhachHang_kh_adapter = new LichKhachHang_KH_ADAPTER(getActivity(), list);
                 rcvLKH_FRGKH.setAdapter(lichKhachHang_kh_adapter);
                 lichKhachHang_kh_adapter.notifyDataSetChanged();

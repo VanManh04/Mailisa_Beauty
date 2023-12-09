@@ -56,7 +56,7 @@ public class dang_Nhap extends AppCompatActivity {
         btnLogin = findViewById(R.id.btnLogin);
 
 
-//        // LẤY URI
+        // LẤY URI
 //        int imageResourceId = R.drawable.dv1_img;
 //        // Kiểm tra xem tài nguyên hình ảnh có tồn tại hay không
 //        if (imageResourceId != 0) {

@@ -123,6 +123,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
+
                 <Button
                     android:layout_width="110sp"
                     android:layout_height="35dp"
@@ -149,6 +150,14 @@
                     android:layout_height="35dp"
                     android:text="Đánh giá"
                     android:background="@drawable/backgrow_btnvang"
+                    android:textStyle="bold" />
+                <Button
+                    android:id="@+id/btnhoanthanh_itLDKH"
+                    android:layout_width="110dp"
+                    android:textColor="@color/white1"
+                    android:layout_height="35dp"
+                    android:text="Hoàn thành"
+                    android:background="@drawable/backgrow_btnxanh"
                     android:textStyle="bold" />
             </LinearLayout>
         </LinearLayout>
