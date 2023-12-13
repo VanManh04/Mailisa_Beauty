@@ -108,9 +108,10 @@ public class LichKhachHang_QL_ADAPTER extends RecyclerView.Adapter<LichKhachHang
             holder.btnhoanthanh_itLDKH.setVisibility(View.GONE);
         }else if (lichKhachHang.getTrangThai().equals("Xác nhận")){
             holder.btnxacnhan_itLDKH.setVisibility(View.GONE);
-            holder.btnhuy_itLDKH.setVisibility(View.GONE);
+            holder.btnhuy_itLDKH.setVisibility(View.VISIBLE);
             holder.btnhoanthanh_itLDKH.setVisibility(View.VISIBLE);
         }else {
+            //bị hủy hoàn thành
             holder.btnxacnhan_itLDKH.setVisibility(View.GONE);
             holder.btnhuy_itLDKH.setVisibility(View.GONE);
             holder.btnhoanthanh_itLDKH.setVisibility(View.GONE);
@@ -156,11 +157,24 @@ public class LichKhachHang_QL_ADAPTER extends RecyclerView.Adapter<LichKhachHang
         holder.btnhuy_itLDKH.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                opendialogGhiChu(lichKhachHang);
-                lichKhachHang.setTrangThai("Bị hủy");
-                if (lichKhachHangDAO.update(lichKhachHang)>0){
-                    notifyDataSetChanged();
-                    Toast.makeText(context, "Đã hủy lịch !", Toast.LENGTH_SHORT).show();
+                if (lichKhachHang.getTrangThai().equals("Đang chờ")){
+                    opendialogGhiChu(lichKhachHang);
+                    lichKhachHang.setTrangThai("Bị hủy");
+                    if (lichKhachHangDAO.update(lichKhachHang)>0){
+                        notifyDataSetChanged();
+                        Toast.makeText(context, "Đã hủy lịch !", Toast.LENGTH_SHORT).show();
+                    }
+                }else {
+                    lichKhachHang.setTrangThai("Bị hủy");
+                    if (lichKhachHangDAO.update(lichKhachHang)>0){
+                        notifyDataSetChanged();
+                        Toast.makeText(context, "Đã hủy lịch !", Toast.LENGTH_SHORT).show();
+                    }
+                    QL_LKHchuaChapNhan.reloadData();
+                    QL_lichKhachHangTatCa.reloadData();
+                    QL_LKHhuy.reloadData();
+                    QL_LKHchapNhan.reloadData();
+                    QL_LKHhoanThanh.reloadData();
                 }
             }
         });
@@ -275,7 +289,7 @@ public class LichKhachHang_QL_ADAPTER extends RecyclerView.Adapter<LichKhachHang
                 }
                 QL_LKHchuaChapNhan.reloadData();
                 QL_lichKhachHangTatCa.reloadData();
-                QL_LKHhuy.reloadData();
+//                QL_LKHhuy.reloadData();
                 QL_LKHchapNhan.reloadData();
 //
 //                android.os.Handler handler = new Handler();

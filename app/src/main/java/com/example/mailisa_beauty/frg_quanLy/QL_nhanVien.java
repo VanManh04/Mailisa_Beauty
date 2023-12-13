@@ -93,9 +93,14 @@ public class QL_nhanVien extends Fragment {
                     public void onClick(DialogInterface dialog, int which) {
                         // Xử lý logic khi người dùng chọn Yes
                         TaiKhoan taikhoan = list.get(position);
-                        LichLamViec lichLamViec = lichLamViecDAO.getLichLamViecByMaTK(taikhoan.getMa_TK());// Lấy đối tượng DichVu tại vị trí vuốt
+
                         try {
-                            int xoallv =lichLamViecDAO.delete(lichLamViec.getMaLLV());
+                            try {
+                                LichLamViec lichLamViec = lichLamViecDAO.getLichLamViecByMaTK(taikhoan.getMa_TK());// Lấy đối tượng DichVu tại vị trí vuốt
+                                int xoallv =lichLamViecDAO.delete(lichLamViec.getMaLLV());
+                            }catch (Exception e){
+
+                            }
                             if (taiKhoanDAO.delete(taikhoan.getMa_TK()) > 0) {
                                 list.remove(position);
                                 taiKhoanADAPTER.notifyDataSetChanged();

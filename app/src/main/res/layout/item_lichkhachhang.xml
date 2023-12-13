@@ -152,6 +152,7 @@
                     android:background="@drawable/backgrow_btnvang"
                     android:textStyle="bold" />
                 <Button
+                    android:layout_marginLeft="30dp"
                     android:id="@+id/btnhoanthanh_itLDKH"
                     android:layout_width="110dp"
                     android:textColor="@color/white1"

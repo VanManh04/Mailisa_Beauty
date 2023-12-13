@@ -28,6 +28,11 @@ import com.example.mailisa_beauty.Model.FeedBack;
 import com.example.mailisa_beauty.Model.LichKhachHang;
 import com.example.mailisa_beauty.Model.TaiKhoan;
 import com.example.mailisa_beauty.R;
+import com.example.mailisa_beauty.frg_quanLy.QL_LKHchapNhan;
+import com.example.mailisa_beauty.frg_quanLy.QL_LKHchuaChapNhan;
+import com.example.mailisa_beauty.frg_quanLy.QL_LKHhoanThanh;
+import com.example.mailisa_beauty.frg_quanLy.QL_LKHhuy;
+import com.example.mailisa_beauty.frg_quanLy.QL_lichKhachHangTatCa;
 
 import java.text.SimpleDateFormat;
 import java.util.List;
@@ -59,7 +64,6 @@ public class LichKhachHang_KH_ADAPTER extends RecyclerView.Adapter<LichKhachHang
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         feedBackDAO = new FeedBackDAO(context);
-        holder.btnhuy_itLDKH.setVisibility(View.GONE);
         holder.btnxacnhan_itLDKH.setVisibility(View.GONE);
         holder.btnhoanthanh_itLDKH.setVisibility(View.GONE);
         LichKhachHang lichKhachHang = list.get(position);
@@ -90,6 +94,13 @@ public class LichKhachHang_KH_ADAPTER extends RecyclerView.Adapter<LichKhachHang
             holder.btndanhgia_itLDKH.setVisibility(View.VISIBLE);
         }else {
             holder.btndanhgia_itLDKH.setVisibility(View.GONE);
+        }
+
+        holder.btnhuy_itLDKH.setVisibility(View.GONE);
+        if (lichKhachHang.getTrangThai().equals("Đang chờ")){
+            holder.btnhuy_itLDKH.setVisibility(View.VISIBLE);
+        }else {
+            holder.btnhuy_itLDKH.setVisibility(View.GONE);
         }
 
         if (lichKhachHang.getFeedBack().length()>1){
@@ -131,17 +142,16 @@ public class LichKhachHang_KH_ADAPTER extends RecyclerView.Adapter<LichKhachHang
 //            }
 //        });
 
-//        holder.btnhuy_itLDKH.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                opendialogGhiChu(lichKhachHang);
-//                lichKhachHang.setTrangThai("Bị hủy");
-//                if (lichKhachHangDAO.update(lichKhachHang)>0){
-//                    notifyDataSetChanged();
-//                    Toast.makeText(context, "Đã hủy lịch !", Toast.LENGTH_SHORT).show();
-//                }
-//            }
-//        });
+        holder.btnhuy_itLDKH.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                lichKhachHang.setTrangThai("Bị hủy");
+                if (lichKhachHangDAO.update(lichKhachHang)>0){
+                    notifyDataSetChanged();
+                    Toast.makeText(context, "Đã hủy lịch !", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
 //        holder.btnxacnhan_itLDKH.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {

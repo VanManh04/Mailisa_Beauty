@@ -136,9 +136,9 @@ public class DbHelper extends SQLiteOpenHelper {
         String data_LKH = "INSERT INTO LichKhachHang VALUES" +
                 "(1,1,1,'2023/11/23','12:30','Chuyển khoản','Đang chờ','','')," +
                 "(2,1,3,'2023/11/22','9:10','Tiền mặt','Bị hủy','','')," +
-                "(3,1,8,'2023/11/21','15:20','Tiền mặt','Xác nhận','ổn','Bạn nhớ đến đúng giờ nhé ...')," +
+                "(3,1,8,'2023/11/21','15:20','Tiền mặt','Hoàn thành','ổn','Bạn nhớ đến đúng giờ nhé ...')," +
                 "(4,2,8,'2023/11/20','15:20','Tiền mặt','Hoàn thành','Rất oke','Bạn nhớ đến đúng giờ nhé ...')," +
-                "(5,1,3,'2023/11/25','9:10','Tiền mặt','Xác nhận','','Bạn nhớ đến đúng giờ nhé ...')";
+                "(5,1,3,'2023/11/25','9:10','Tiền mặt','Hoàn thành','','Bạn nhớ đến đúng giờ nhé ...')";
         db.execSQL(data_LKH);
 
 

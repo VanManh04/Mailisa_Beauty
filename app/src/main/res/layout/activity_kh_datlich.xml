@@ -242,7 +242,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="20dp"
                     android:background="@drawable/backgrow_btndatlich"
-                    android:text="Thanh toán"
+                    android:text="Đặt lịch"
                     android:textColor="@color/white1"
                     android:textSize="20dp" />
             </LinearLayout>

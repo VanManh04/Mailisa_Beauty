@@ -108,23 +108,27 @@ public class QL_khachHang extends Fragment {
                     public void onClick(DialogInterface dialog, int which) {
                         // Xử lý logic khi người dùng chọn Yes
                         TaiKhoan taikhoan = list.get(position);
-                        int delete_dichVuTrongGio = dichVuTrongGio_dao.deleteAllByMaTK(String.valueOf(taikhoan.getMa_TK()));
+                       try {
+                           int delete_dichVuTrongGio = dichVuTrongGio_dao.deleteAllByMaTK(String.valueOf(taikhoan.getMa_TK()));
 
 
-                        listhoadon = (ArrayList<HoaDon>) hoaDonDAO.getAll();
-                        listLKH = (ArrayList<LichKhachHang>) lichKhachHangDao.getAll();
-                        List<Integer> maLKH = new ArrayList<>();
-                        for (LichKhachHang lichKhachHang : listLKH){
-                            if (lichKhachHang.getMaTK()==taikhoan.getMa_TK()){
-                                maLKH.add(lichKhachHang.getMaLKH());
-                            }
-                        }
-                        for(Integer malkh : maLKH){
-                            int delete_hoadon = hoaDonDAO.deleteAllByMaLKH(malkh);
-                            int delete_feedback = feedBackDAO.deleteAllByMaLKHFB(malkh);
-                        }
+                           listhoadon = (ArrayList<HoaDon>) hoaDonDAO.getAll();
+                           listLKH = (ArrayList<LichKhachHang>) lichKhachHangDao.getAll();
+                           List<Integer> maLKH = new ArrayList<>();
+                           for (LichKhachHang lichKhachHang : listLKH){
+                               if (lichKhachHang.getMaTK()==taikhoan.getMa_TK()){
+                                   maLKH.add(lichKhachHang.getMaLKH());
+                               }
+                           }
+                           for(Integer malkh : maLKH){
+                               int delete_hoadon = hoaDonDAO.deleteAllByMaLKH(malkh);
+                               int delete_feedback = feedBackDAO.deleteAllByMaLKHFB(malkh);
+                           }
 
-                        int delete_lichkhachhang = lichKhachHangDao.deleteAllByMaTK(taikhoan.getMa_TK());
+                           int delete_lichkhachhang = lichKhachHangDao.deleteAllByMaTK(taikhoan.getMa_TK());
+                       }catch (Exception e){
+
+                       }
 
 
                         if (taiKhoanDAO.delete(taikhoan.getMa_TK()) > 0) {
